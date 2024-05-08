@@ -14,7 +14,7 @@
 </head>
 <body class="flex items-start justify-center h-full bg-gray-50">
 <div
-    class="flex flex-col justify-between max-w-full w-full px-3 antialiased bg-gradient-to-br from-gray-900 via-black to-gray-800 lg:px-6 min-h-screen">
+    class="flex flex-col justify-between max-w-full w-full px-3 antialiased bg-gradient-to-br from-gray-950 via-black to-gray-900 lg:px-6 min-h-screen">
     <section>
         <div class="mx-auto max-w-7xl">
             <nav class="flex items-center w-full h-24 select-none" x-data="{ showMenu: false }">
@@ -23,33 +23,9 @@
                     <a href="#">
                         <x-application-logo class="text-2xl text-white"/>
                     </a>
-                    <div :class="{'flex': showMenu, 'hidden md:flex': !showMenu }"
-                         class="absolute z-50 flex-col items-center justify-center w-full h-auto px-2 text-center text-gray-400 -translate-x-1/2 border-0 border-gray-700 rounded-full md:border md:w-auto md:h-10 left-1/2 md:flex-row md:items-center">
-                        <a href="#"
-                           class="relative inline-block w-full h-full px-4 py-5 mx-2 font-medium leading-tight text-center text-white md:py-2 group md:w-auto md:px-2 lg:mx-3 md:text-center">
-                            <span>Home</span>
-                            <span
-                                class="absolute bottom-0 left-0 w-full h-px duration-300 ease-out translate-y-px bg-gradient-to-r md:from-gray-700 md:via-gray-400 md:to-gray-700 from-gray-900 via-gray-600 to-gray-900"></span>
-                        </a>
-                        <a href="#"
-                           class="relative inline-block w-full h-full px-4 py-5 mx-2 font-medium leading-tight text-center duration-300 ease-out md:py-2 group hover:text-white md:w-auto md:px-2 lg:mx-3 md:text-center">
-                            <span>Features</span>
-                            <span
-                                class="absolute bottom-0 w-0 h-px duration-300 ease-out translate-y-px group-hover:left-0 left-1/2 group-hover:w-full bg-gradient-to-r md:from-gray-700 md:via-gray-400 md:to-gray-700 from-gray-900 via-gray-600 to-gray-900"></span>
-                        </a>
-                        <a href="#"
-                           class="relative inline-block w-full h-full px-4 py-5 mx-2 font-medium leading-tight text-center duration-300 ease-out md:py-2 group hover:text-white md:w-auto md:px-2 lg:mx-3 md:text-center">
-                            <span>Blog</span>
-                            <span
-                                class="absolute bottom-0 w-0 h-px duration-300 ease-out translate-y-px group-hover:left-0 left-1/2 group-hover:w-full bg-gradient-to-r md:from-gray-700 md:via-gray-400 md:to-gray-700 from-gray-900 via-gray-600 to-gray-900"></span>
-                        </a>
-                        <a href="#"
-                           class="relative inline-block w-full h-full px-4 py-5 mx-2 font-medium leading-tight text-center duration-300 ease-out md:py-2 group hover:text-white md:w-auto md:px-2 lg:mx-3 md:text-center">
-                            <span>Contact</span>
-                            <span
-                                class="absolute bottom-0 w-0 h-px duration-300 ease-out translate-y-px group-hover:left-0 left-1/2 group-hover:w-full bg-gradient-to-r md:from-gray-700 md:via-gray-400 md:to-gray-700 from-gray-900 via-gray-600 to-gray-900"></span>
-                        </a>
-                    </div>
+
+                    @include('layouts.guest-navigation')
+                    
                     <div
                         class="fixed top-0 left-0 z-40 items-center hidden w-full h-full p-3 text-sm bg-gray-900 bg-opacity-50 md:w-auto md:bg-transparent md:p-0 md:relative md:flex"
                         :class="{'flex': showMenu, 'hidden': !showMenu }">
