@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pines UI</title>
+    <title>Cashify</title>
     <style>[x-cloak] {
             display: none
         }</style>
@@ -14,7 +14,7 @@
 </head>
 <body class="flex items-start justify-center h-full bg-gray-50">
 <div
-    class="flex flex-col justify-between max-w-full w-full px-3 antialiased bg-gradient-to-br from-gray-950 via-black to-gray-900 lg:px-6 min-h-screen">
+    class="flex flex-col justify-between max-w-full w-full px-3 antialiased lg:px-6 min-h-screen bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-black via-black/95 to-black">
     <section>
         <div class="mx-auto max-w-7xl">
             <nav class="flex items-center w-full h-24 select-none" x-data="{ showMenu: false }">
@@ -25,7 +25,7 @@
                     </a>
 
                     @include('layouts.guest-navigation')
-                    
+
                     <div
                         class="fixed top-0 left-0 z-40 items-center hidden w-full h-full p-3 text-sm bg-gray-900 bg-opacity-50 md:w-auto md:bg-transparent md:p-0 md:relative md:flex"
                         :class="{'flex': showMenu, 'hidden': !showMenu }">
@@ -58,86 +58,9 @@
                 </div>
             </nav>
             <div class="container px-6 py-32 mx-auto md:text-center md:px-4">
-                <div
-                    x-data="{
-        text: '',
-        textArray : ['Wealth, like a tree, grows from a tiny seed.', 'A part of all you earn is yours to keep.'],
-        textIndex: 0,
-        charIndex: 0,
-        typeSpeed: 110,
-        cursorSpeed: 550,
-        pauseEnd: 1500,
-        pauseStart: 20,
-        direction: 'forward',
-    }"
-                    x-init="$nextTick(() => {
-        let typingInterval = setInterval(startTyping, $data.typeSpeed);
-
-        function startTyping(){
-            let current = $data.textArray[ $data.textIndex ];
-
-            // check to see if we hit the end of the string
-            if($data.charIndex > current.length){
-                    $data.direction = 'backward';
-                    clearInterval(typingInterval);
-
-                    setTimeout(function(){
-                        typingInterval = setInterval(startTyping, $data.typeSpeed);
-                    }, $data.pauseEnd);
-            }
-
-            $data.text = current.substring(0, $data.charIndex);
-
-            if($data.direction == 'forward')
-            {
-                $data.charIndex += 1;
-            }
-            else
-            {
-                if($data.charIndex == 0)
-                {
-                    $data.direction = 'forward';
-                    clearInterval(typingInterval);
-                    setTimeout(function(){
-                        $data.textIndex += 1;
-                        if($data.textIndex >= $data.textArray.length)
-                        {
-                            $data.textIndex = 0;
-                        }
-                        typingInterval = setInterval(startTyping, $data.typeSpeed);
-                    }, $data.pauseStart);
-                }
-                $data.charIndex -= 1;
-            }
-        }
-
-        setInterval(function(){
-            if($refs.cursor.classList.contains('hidden'))
-            {
-                $refs.cursor.classList.remove('hidden');
-            }
-            else
-            {
-                $refs.cursor.classList.add('hidden');
-            }
-        }, $data.cursorSpeed);
-
-    })"
-                    class="flex items-center justify-center mx-auto text-center max-w-7xl">
-                    <div class="relative hidden xl:flex items-center justify-center h-auto">
-                        <h1 class="text-5xl font-black text-white leading-tight" x-text="text"
-                            x-show="text !== ''"></h1>
-                        <p class="text-5xl font-black text-white leading-tight invisible" x-show="text === ''">'</p>
-                        <span class="absolute right-0 w-5 -mr-5 bg-white h-3/4" x-ref="cursor"></span>
-                    </div>
-                    <div class="relative flex xl:hidden items-center justify-center h-auto">
-                        <h1 class="text-5xl font-black text-white leading-tight">
-                            Wealth, like a tree, grows from a tiny seed.
-                        </h1>
-                    </div>
-                </div>
+                <x-typing-heading/>
                 <p class="mx-auto mt-6 text-sm text-left text-gray-200 md:text-center md:mt-12 sm:text-base md:max-w-xl md:text-lg xl:text-xl">
-                    “Gold cometh gladly and in increasing quantity to any man who will put by not less than one-tenth of
+                    “Gold comes gladly and in increasing quantity to any man who will put by not less than one-tenth of
                     his earnings to create an estate for his future and that of his family.”</p>
             </div>
         </div>
