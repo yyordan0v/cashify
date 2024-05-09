@@ -1,10 +1,12 @@
 <header class="flex items-center w-full h-24 select-none" x-data="{ showMenu: false }">
     <div
         class="relative flex flex-wrap items-start justify-between w-full mx-auto font-medium md:items-center md:h-24 md:justify-between">
+        {{--        Logo--}}
         <a href="{{ route('home') }}">
             <x-application-logo class="text-2xl text-white"/>
         </a>
 
+        {{--        Navigation--}}
         <x-guest-nav>
             <x-guest-nav-link :href="route('home')" :active="request()->routeIs('home')">
                 Home
@@ -14,6 +16,7 @@
             </x-guest-nav-link>
         </x-guest-nav>
 
+        {{--        Auth/Dashboard--}}
         <div
             class="fixed top-0 left-0 z-40 items-center hidden w-full h-full p-3 text-sm bg-gray-900 bg-opacity-50 md:w-auto md:bg-transparent md:p-0 md:relative md:flex"
             :class="{'flex': showMenu, 'hidden': !showMenu }">
@@ -33,7 +36,7 @@
                                 In</a>
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}"
-                                   class="inline-flex items-center justify-center w-full px-4 py-3 md:py-1.5 font-medium leading-6 text-center whitespace-no-wrap transition duration-150 ease-in-out border border-transparent md:mr-1 text-gray-600 md:w-auto bg-white rounded-lg md:rounded-full hover:bg-white focus:outline-none focus:border-gray-700 focus:shadow-outline-gray active:bg-gray-700">Register</a>
+                                   class="inline-flex items-center justify-center w-full px-4 py-3 md:py-1.5 font-medium leading-6 text-center whitespace-no-wrap transition duration-150 ease-in-out border border-transparent md:mr-1 text-gray-600 md:w-auto bg-white rounded-lg md:rounded-full hover:bg-neutral-200 focus:outline-none active:bg-gray-700">Register</a>
                             @endif
                         @endauth
                     </div>
@@ -41,6 +44,7 @@
             </div>
         </div>
 
+        {{--        Hamburger Menu--}}
         <x-hamburger-menu/>
     </div>
 </header>
