@@ -22,7 +22,8 @@
     @include('layouts.aside')
 
     <!-- Page Content -->
-    <div class="antialiased bg-gray-50 dark:bg-gray-900">
+    <div
+        class="antialiased bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-gray-50 dark:from-black via-gray-50/95 dark:via-black/95 to-gray-50 dark:to-black">
         <main class="p-4 md:ml-68 h-auto pt-20 md:pt-24">
             {{ $slot }}
         </main>
