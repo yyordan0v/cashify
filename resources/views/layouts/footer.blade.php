@@ -5,7 +5,7 @@
         <a href="{{ route('home') }}">
             <x-application-logo class="text-white text-lg"/>
         </a>
-        <p class="mt-4 text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l sm:border-gray-200 sm:mt-0">
+        <p class="mt-4 text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l sm:border-gray-600 dark:sm:border-gray-200 sm:mt-0">
             &copy; {{ date("Y") }}
             Cashify - Empowering Your Finances
         </p>
@@ -23,7 +23,8 @@
             </a>
 
             {{--            GitHub--}}
-            <a href="https://github.com/yyordan0v/cashify" target="_blank" class="text-gray-400 hover:text-gray-500">
+            <a href="https://github.com/yyordan0v/cashify" target="_blank"
+               class="text-gray-400 hover:text-gray-500">
                 <span class="sr-only">GitHub</span>
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path fill-rule="evenodd"
@@ -31,6 +32,8 @@
                           clip-rule="evenodd"/>
                 </svg>
             </a>
+
+            <x-switch-theme/>
         </span>
     </div>
 </footer>

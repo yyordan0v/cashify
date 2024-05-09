@@ -8,13 +8,14 @@
 
                 <div class="w-full mt-16 md:mt-0 md:w-2/5">
                     <x-panel>
-                        <h3 class="mb-6 text-2xl font-medium text-center text-white">
+                        <x-panel-heading class="mb-6 text-center">
                             Forgot your password? <br>
                             No problem.
-                        </h3>
+                        </x-panel-heading>
 
                         <p class="w-full my-10 text-sm text-center text-gray-500">
-                            Just let us know your email address and we will email you a password reset link that will
+                            Just let us know your email address and we will email you a password reset link that
+                            will
                             allow
                             you to choose a new one.
                         </p>

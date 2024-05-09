@@ -65,13 +65,13 @@
     })"
     class="flex items-center justify-center mx-auto text-center max-w-7xl">
     <div class="relative hidden xl:flex items-center justify-center h-auto">
-        <h1 class="text-5xl font-black text-white leading-tight" x-text="text"
+        <h1 class="text-5xl font-black text-black dark:text-white leading-tight" x-text="text"
             x-show="text !== ''"></h1>
-        <p class="text-5xl font-black text-white leading-tight invisible" x-show="text === ''">'</p>
-        <span class="absolute right-0 w-5 -mr-5 bg-white h-3/4" x-ref="cursor"></span>
+        <p class="text-5xl font-black text-black dark:text-white leading-tight invisible" x-show="text === ''">'</p>
+        <span class="absolute right-0 w-5 -mr-5 bg-black dark:bg-white h-3/4" x-ref="cursor"></span>
     </div>
     <div class="relative flex xl:hidden items-center justify-center h-auto">
-        <h1 class="text-5xl font-black text-white leading-tight">
+        <h1 class="text-5xl font-black text-black dark:text-white leading-tight">
             Wealth, like a tree, grows from a tiny seed.
         </h1>
     </div>

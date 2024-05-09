@@ -8,7 +8,9 @@
 
                 <div class="w-full mt-16 md:mt-0 md:w-2/5">
                     <x-panel>
-                        <h3 class="mb-6 text-2xl font-medium text-center text-white">Sign in to your Account</h3>
+                        <x-panel-heading class="mb-6 text-center">
+                            Sign in to your Account
+                        </x-panel-heading>
 
                         <!-- Session Status -->
                         <x-auth-session-status class="mb-4" :status="session('status')"/>

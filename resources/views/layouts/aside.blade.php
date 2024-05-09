@@ -1,25 +1,22 @@
 <aside
-    class="fixed top-0 left-0 z-40 w-64 h-screen pt-14 md:pt-2 md:rounded-xl md:m-4 md:mt-24 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+    class="fixed top-0 left-0 z-40 w-64 h-screen pt-14 md:pt-4 md:rounded-xl md:m-4 md:mt-24 transition-transform -translate-x-full bg-white/80 border-r md:border border-neutral-200/50 md:translate-x-0 dark:bg-neutral-900/20 backdrop-blur-sm dark:border-neutral-800/50"
     aria-label="Sidenav"
     id="drawer-navigation"
 >
-    <div class="overflow-y-auto py-5 px-3 h-full bg-white dark:bg-gray-800">
+    <div class="overflow-y-auto py-4 px-3 h-full bg-white/80 dark:bg-neutral-900/20">
         <ul class="space-y-2">
             <li>
                 <a
-                    href="/"
+                    href="{{ route('dashboard') }}"
                     class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group space-x-3"
                 >
                     <svg
                         class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                        viewBox="0 0 24 24">
-                        <path fill-rule="evenodd"
-                              d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z"
-                              clip-rule="evenodd"/>
+                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                     </svg>
-                    <span>Home</span>
+                    <span>Dashboard</span>
                 </a>
             </li>
             <li>
@@ -255,6 +252,23 @@
         <ul
             class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700"
         >
+            <li>
+                <a
+                    href="{{ route('home') }}"
+                    class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group space-x-3"
+                >
+                    <svg
+                        class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                              d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                    <span>Home</span>
+                </a>
+            </li>
             <li>
                 <a
                     href="#"
