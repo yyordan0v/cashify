@@ -1,6 +1,6 @@
 <footer class="mt-auto">
     <div class="container flex flex-col items-center px-8 py-8 mx-auto max-w-7xl sm:flex-row">
-        <a href="/">
+        <a href="{{ route('home') }}">
             <x-application-logo class="text-white text-lg"/>
         </a>
         <p class="mt-4 text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l sm:border-gray-200 sm:mt-0">
@@ -9,7 +9,7 @@
         </p>
         <span class="inline-flex justify-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start">
 
-            <a href="#" class="text-gray-400 hover:text-gray-500">
+            <a href="https://twitter.com/yyordan0v" target="_blank" class="text-gray-400 hover:text-gray-500">
                 <span class="sr-only">Twitter</span>
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path
@@ -17,7 +17,7 @@
                 </svg>
             </a>
 
-            <a href="#" class="text-gray-400 hover:text-gray-500">
+            <a href="https://github.com/yyordan0v/cashify" target="_blank" class="text-gray-400 hover:text-gray-500">
                 <span class="sr-only">GitHub</span>
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path fill-rule="evenodd"

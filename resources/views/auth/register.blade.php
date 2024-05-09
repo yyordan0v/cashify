@@ -64,7 +64,7 @@
                                     class="flex flex-col items-center justify-between w-full h-full pt-2 md:w-full md:flex-row md:py-0">
                                     <x-primary-button>Register</x-primary-button>
 
-                                    <x-auth-link :href="route('login')">Already registered?</x-auth-link>
+                                    <x-underline-link :href="route('login')">Already registered?</x-underline-link>
                                 </div>
                             </div>
                         </form>

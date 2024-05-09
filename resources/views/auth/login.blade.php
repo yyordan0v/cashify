@@ -47,9 +47,9 @@
                                     <x-primary-button>Log In</x-primary-button>
 
                                     @if (Route::has('password.request'))
-                                        <x-auth-link :href="route('password.request')">
+                                        <x-underline-link :href="route('password.request')">
                                             Forgot your password?
-                                        </x-auth-link>
+                                        </x-underline-link>
                                     @endif
                                 </div>
 
@@ -58,7 +58,7 @@
                     </x-panel>
                     <p class="w-full mt-4 text-sm text-center text-gray-500">
                         Don't have an account?
-                        <x-auth-link :href="route('register')">Register here</x-auth-link>
+                        <x-underline-link :href="route('register')">Register here</x-underline-link>
                     </p>
                 </div>
             </div>

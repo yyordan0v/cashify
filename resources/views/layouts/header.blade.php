@@ -1,7 +1,7 @@
 <header class="flex items-center w-full h-24 select-none" x-data="{ showMenu: false }">
     <div
         class="relative flex flex-wrap items-start justify-between w-full mx-auto font-medium md:items-center md:h-24 md:justify-between">
-        <a href="/">
+        <a href="{{ route('home') }}">
             <x-application-logo class="text-2xl text-white"/>
         </a>
 
