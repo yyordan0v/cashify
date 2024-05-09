@@ -1,31 +1,59 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
-    </div>
+    <section class="w-full px-8 py-16 xl:px-8">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col items-center md:flex-row">
 
-    @if (session('status') == 'verification-link-sent')
-        <div class="mb-4 font-medium text-sm text-green-600">
-            {{ __('A new verification link has been sent to the email address you provided during registration.') }}
-        </div>
-    @endif
+                <!-- Text Block -->
+                <x-text-block/>
 
-    <div class="mt-4 flex items-center justify-between">
-        <form method="POST" action="{{ route('verification.send') }}">
-            @csrf
+                <div class="w-full mt-16 md:mt-0 md:w-2/5">
+                    <x-panel>
+                        <h3 class="mb-6 text-2xl font-medium text-center text-white">
+                            Thanks for signing up!
+                        </h3>
 
-            <div>
-                <x-primary-button>
-                    {{ __('Resend Verification Email') }}
-                </x-primary-button>
+                        <p class="w-full my-10 text-sm text-center text-gray-500">
+                            Before getting started, could you verify your email address by
+                            clicking on the link we just emailed to you? If you didn't receive the email, we will
+                            gladly send you another.
+                        </p>
+
+
+                        @if (session('status') == 'verification-link-sent')
+                            <div class="mb-4 font-medium text-sm text-green-600">
+                                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                            </div>
+                        @endif
+
+                        <div
+                            class="flex flex-col items-center justify-between w-full h-full pt-2 md:w-full lg:flex-row md:py-0">
+
+                            <form method="POST" action="{{ route('verification.send') }}">
+                                @csrf
+
+                                <div class="space-y-10">
+                                    <div
+                                        class="flex flex-col items-center justify-between w-full h-full pt-2 md:w-full md:flex-row md:py-0">
+                                        <x-primary-button>Resend Verification Email</x-primary-button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <button type="submit"
+                                        class="text-gray-400 underline text-sm hover:text-white transition-colors duration-200 w-full py-5 mr-0 text-center md:py-3 md:w-auto md:pl-0 md:mr-3 lg:mr-5">
+                                    {{ __('Log Out') }}
+                                </button>
+                            </form>
+                        </div>
+                    </x-panel>
+                </div>
             </div>
-        </form>
-
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-
-            <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                {{ __('Log Out') }}
-            </button>
-        </form>
-    </div>
+        </div>
+    </section>
 </x-guest-layout>
+
+

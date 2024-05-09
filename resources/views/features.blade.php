@@ -21,7 +21,7 @@
 
 
             <div class="relative z-10 grid grid-cols-1 gap-10 pt-14 sm:grid-cols-2 lg:grid-cols-3">
-                <x-feature-card>
+                <x-panel>
                     <x-feature-card-icon>
                         <svg xmlns="http://www.w3.org/2000/svg"
                              class="icon icon-tabler icon-tabler-color-swatch" width="24"
@@ -39,9 +39,9 @@
                     <x-feature-card-text>
                         Crafted to fit your unique style, make it yours with a personal touch.
                     </x-feature-card-text>
-                </x-feature-card>
-                
-                <x-feature-card>
+                </x-panel>
+
+                <x-panel>
                     <x-feature-card-icon>
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bolt"
                              width="24"
@@ -55,9 +55,9 @@
                     <x-feature-card-text>
                         Engineered for swift execution in today's fast-paced world.
                     </x-feature-card-text>
-                </x-feature-card>
+                </x-panel>
 
-                <x-feature-card>
+                <x-panel>
                     <x-feature-card-icon>
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tools"
                              width="24"
@@ -76,7 +76,7 @@
                     <x-feature-card-text>
                         Everything you need to track your finances, right out of the box.
                     </x-feature-card-text>
-                </x-feature-card>
+                </x-panel>
             </div>
         </div>
     </section>
