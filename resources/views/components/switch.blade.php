@@ -8,7 +8,7 @@
         x-ref="switchButton"
         type="button"
         @click="switchOn = ! switchOn"
-        :class="switchOn ? 'bg-gray-400 dark:bg-gray-400' : 'bg-gray-200 dark:bg-gray-200'"
+        :class="switchOn ? 'bg-gray-300 dark:bg-gray-300' : 'bg-gray-200 dark:bg-gray-200'"
         class="relative inline-flex h-6 py-0.5 focus:outline-none rounded-full w-10 mr-2"
         x-cloak>
                                 <span :class="switchOn ? 'translate-x-[18px]' : 'translate-x-0.5'"

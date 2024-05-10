@@ -13,7 +13,7 @@
         </x-panel>
     </div>
 
-    <x-panel>
+    <x-panel :modal="true">
         <div class="max-w-xl">
             @include('profile.partials.delete-user-form')
         </div>

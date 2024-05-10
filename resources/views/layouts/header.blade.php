@@ -3,7 +3,7 @@
         class="relative flex flex-wrap items-start justify-between w-full mx-auto font-medium md:items-center md:h-24 md:justify-between">
         {{--        Logo--}}
         <a href="{{ route('home') }}">
-            <x-application-logo class="text-2xl text-white"/>
+            <x-application-logo class="text-2xl"/>
         </a>
 
         {{--        Navigation--}}
@@ -27,13 +27,13 @@
                     <div
                         class="flex flex-col items-center justify-end w-full h-full pt-2 md:w-full md:flex-row md:py-0">
                         @auth()
-                            <a href="{{ url('/dashboard') }}"
-                               class="w-full py-5 mr-0 text-center text-gray-200 md:py-3 md:w-auto hover:text-white md:pl-0 md:mr-3 lg:mr-5">
-                                Dashboard
-                            </a>
+                            <a href="{{ url('dashboard') }}"
+                               class="inline-flex items-center justify-center w-full px-4 py-3 md:py-1.5 font-medium leading-6 text-center whitespace-no-wrap transition duration-150 ease-in-out border border-transparent md:mr-1 text-white dark:text-gray-600 bg-black dark:bg-white md:w-auto rounded-lg md:rounded-full hover:bg-neutral-900 dark:hover:bg-neutral-200 focus:outline-none active:bg-neutral-800 dark:active:bg-gray-300">Dashboard</a>
                         @else
                             <a href="{{ route('login') }}"
-                               class="w-full py-5 mr-0 text-center text-gray-600 dark:text-gray-200 md:py-3 md:w-auto hover:text-gray-900 dark:hover:text-white md:pl-0 md:mr-3 lg:mr-5">
+                               class="w-full py-5 mr-0 text-center text-gray-600 dark:text-gray-200 md:py-3 md:w-auto hover:text-gray-900 dark:hover:text-white md:pl-0 md:mr-3 lg:mr-5"
+                               :class="{'text-gray-200': showMenu, 'text-gray-600': !showMenu}"
+                            >
                                 Log In</a>
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}"

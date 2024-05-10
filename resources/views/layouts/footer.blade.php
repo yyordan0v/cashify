@@ -3,7 +3,7 @@
 
         {{--        Logo--}}
         <a href="{{ route('home') }}">
-            <x-application-logo class="text-white text-lg"/>
+            <x-application-logo class="text-lg"/>
         </a>
         <p class="mt-4 text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l sm:border-gray-600 dark:sm:border-gray-200 sm:mt-0">
             &copy; {{ date("Y") }}
