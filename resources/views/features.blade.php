@@ -21,8 +21,8 @@
 
 
             <div class="relative z-10 grid grid-cols-1 gap-10 pt-14 sm:grid-cols-2 lg:grid-cols-3">
-                <x-panel>
-                    <x-feature-card-icon>
+                <x-panels.panel>
+                    <x-cards.icon>
                         <svg xmlns="http://www.w3.org/2000/svg"
                              class="icon icon-tabler icon-tabler-color-swatch" width="24"
                              height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -34,15 +34,15 @@
                             <path d="M7.3 13h-2.3a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h12"></path>
                             <line x1="17" y1="17" x2="17" y2="17.01"></line>
                         </svg>
-                    </x-feature-card-icon>
-                    <x-feature-card-title>Customizable</x-feature-card-title>
-                    <x-feature-card-text>
+                    </x-cards.icon>
+                    <x-cards.title>Customizable</x-cards.title>
+                    <x-cards.text>
                         Crafted to fit your unique style, make it yours with a personal touch.
-                    </x-feature-card-text>
-                </x-panel>
+                    </x-cards.text>
+                </x-panels.panel>
 
-                <x-panel>
-                    <x-feature-card-icon>
+                <x-panels.panel>
+                    <x-cards.icon>
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bolt"
                              width="24"
                              height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -50,15 +50,15 @@
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <polyline points="13 3 13 10 19 10 11 21 11 14 5 14 13 3"></polyline>
                         </svg>
-                    </x-feature-card-icon>
-                    <x-feature-card-title>Blazingly Fast</x-feature-card-title>
-                    <x-feature-card-text>
+                    </x-cards.icon>
+                    <x-cards.title>Blazingly Fast</x-cards.title>
+                    <x-cards.text>
                         Engineered for swift execution in today's fast-paced world.
-                    </x-feature-card-text>
-                </x-panel>
+                    </x-cards.text>
+                </x-panels.panel>
 
-                <x-panel>
-                    <x-feature-card-icon>
+                <x-panels.panel>
+                    <x-cards.icon>
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tools"
                              width="24"
                              height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -71,12 +71,12 @@
                             <polyline points="16 12 21 17 17 21 12 16"></polyline>
                             <line x1="16" y1="17" x2="14.5" y2="18.5"></line>
                         </svg>
-                    </x-feature-card-icon>
-                    <x-feature-card-title>Fully Featured</x-feature-card-title>
-                    <x-feature-card-text>
+                    </x-cards.icon>
+                    <x-cards.title>Fully Featured</x-cards.title>
+                    <x-cards.text>
                         Everything you need to track your finances, right out of the box.
-                    </x-feature-card-text>
-                </x-panel>
+                    </x-cards.text>
+                </x-panels.panel>
             </div>
         </div>
     </section>

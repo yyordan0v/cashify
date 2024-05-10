@@ -70,7 +70,7 @@
         <div class="flex items-center lg:order-2">
 
             <!-- Switch Theme -->
-            <x-switch-theme/>
+            <x-theme-switch/>
 
             <button
                 type="button"

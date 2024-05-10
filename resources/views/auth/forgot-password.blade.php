@@ -7,11 +7,11 @@
                 <x-text-block/>
 
                 <div class="w-full mt-16 md:mt-0 md:w-2/5">
-                    <x-panel>
-                        <x-panel-heading class="mb-6 text-center">
+                    <x-panels.panel>
+                        <x-panels.heading class="mb-6 text-center">
                             Forgot your password? <br>
                             No problem.
-                        </x-panel-heading>
+                        </x-panels.heading>
 
                         <p class="w-full my-10 text-sm text-center text-gray-500">
                             Just let us know your email address and we will email you a password reset link that
@@ -31,22 +31,22 @@
 
                                 <!-- Email Address -->
                                 <div>
-                                    <x-input-label for="email" :value="__('Email')"/>
-                                    <x-text-input id="email" class="block w-full" type="email" name="email"
-                                                  :value="old('email')" required
-                                                  autofocus/>
-                                    <x-input-error :messages="$errors->get('email')"/>
+                                    <x-forms.label for="email" :value="__('Email')"/>
+                                    <x-forms.input id="email" class="block w-full" type="email" name="email"
+                                                   :value="old('email')" required
+                                                   autofocus/>
+                                    <x-forms.error :messages="$errors->get('email')"/>
                                 </div>
 
 
                                 <div
                                     class="flex flex-col items-center justify-between w-full h-full pt-2 md:w-full md:flex-row md:py-0">
-                                    <x-primary-button>Email Password Reset Link</x-primary-button>
+                                    <x-buttons.primary>Email Password Reset Link</x-buttons.primary>
                                 </div>
 
                             </div>
                         </form>
-                    </x-panel>
+                    </x-panels.panel>
                 </div>
             </div>
         </div>

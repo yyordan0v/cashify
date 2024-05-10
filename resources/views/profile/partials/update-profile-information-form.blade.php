@@ -1,9 +1,9 @@
 @php use Illuminate\Contracts\Auth\MustVerifyEmail; @endphp
 <section>
     <header>
-        <x-panel-heading>
+        <x-panels.heading>
             {{ __('Profile Information') }}
-        </x-panel-heading>
+        </x-panels.heading>
 
         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
             {{ __("Update your account's profile information and email address.") }}
@@ -19,17 +19,17 @@
         @method('patch')
 
         <div>
-            <x-input-label for="name" :value="__('Name')"/>
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)"
-                          required autofocus autocomplete="name"/>
-            <x-input-error class="mt-2" :messages="$errors->get('name')"/>
+            <x-forms.label for="name" :value="__('Name')"/>
+            <x-forms.input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)"
+                           required autofocus autocomplete="name"/>
+            <x-forms.error class="mt-2" :messages="$errors->get('name')"/>
         </div>
 
         <div>
-            <x-input-label for="email" :value="__('Email')"/>
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full"
-                          :value="old('email', $user->email)" required autocomplete="username"/>
-            <x-input-error class="mt-2" :messages="$errors->get('email')"/>
+            <x-forms.label for="email" :value="__('Email')"/>
+            <x-forms.input id="email" name="email" type="email" class="mt-1 block w-full"
+                           :value="old('email', $user->email)" required autocomplete="username"/>
+            <x-forms.error class="mt-2" :messages="$errors->get('email')"/>
 
             @if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
@@ -52,7 +52,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-buttons.form>{{ __('Save') }}</x-buttons.form>
 
             @if (session('status') === 'profile-updated')
                 <p

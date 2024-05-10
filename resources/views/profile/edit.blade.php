@@ -1,21 +1,21 @@
 <x-app-layout>
     <div class="grid grid-cols-2 gap-4 mb-4">
-        <x-panel>
+        <x-panels.panel>
             <div class="max-w-xl">
                 @include('profile.partials.update-profile-information-form')
             </div>
-        </x-panel>
+        </x-panels.panel>
 
-        <x-panel>
+        <x-panels.panel>
             <div class="max-w-xl">
                 @include('profile.partials.update-password-form')
             </div>
-        </x-panel>
+        </x-panels.panel>
     </div>
 
-    <x-panel :modal="true">
+    <x-panels.panel :modal="true">
         <div class="max-w-xl">
             @include('profile.partials.delete-user-form')
         </div>
-    </x-panel>
+    </x-panels.panel>
 </x-app-layout>

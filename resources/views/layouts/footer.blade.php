@@ -33,7 +33,7 @@
                 </svg>
             </a>
 
-            <x-switch-theme/>
+            <x-theme-switch/>
         </span>
     </div>
 </footer>
