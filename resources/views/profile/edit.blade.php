@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="grid grid-cols-2 gap-4 mb-4">
+    <div class="grid lg:grid-cols-2 gap-4 mb-4">
         <x-panels.panel>
             <div class="max-w-xl">
                 @include('profile.partials.update-profile-information-form')
