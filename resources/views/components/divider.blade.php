@@ -1,0 +1,1 @@
+<hr {{ $attributes->merge(['class' => 'h-px mx-0 my-12 bg-transparent border-0 opacity-25 bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent']) }}/>
