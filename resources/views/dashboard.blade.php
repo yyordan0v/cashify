@@ -13,53 +13,22 @@
             <x-divider class="my-6"/>
             <x-cards.text class="text-gray-950">$4,000</x-cards.text>
         </x-panels.panel>
-        <x-panels.panel>
-            <x-cards.icon>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                    <path
-                        d="M2.273 5.625A4.483 4.483 0 0 1 5.25 4.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0 0 18.75 3H5.25a3 3 0 0 0-2.977 2.625ZM2.273 8.625A4.483 4.483 0 0 1 5.25 7.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0 0 18.75 6H5.25a3 3 0 0 0-2.977 2.625ZM5.25 9a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h13.5a3 3 0 0 0 3-3v-6a3 3 0 0 0-3-3H15a.75.75 0 0 0-.75.75 2.25 2.25 0 0 1-4.5 0A.75.75 0 0 0 9 9H5.25Z"/>
-                </svg>
-            </x-cards.icon>
 
-            <x-cards.title>Bank Account</x-cards.title>
-            <x-divider class="my-6"/>
-            <x-cards.text>$4,000</x-cards.text>
-        </x-panels.panel>
-        <x-panels.panel>
-            <x-cards.icon>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                    <path
-                        d="M2.273 5.625A4.483 4.483 0 0 1 5.25 4.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0 0 18.75 3H5.25a3 3 0 0 0-2.977 2.625ZM2.273 8.625A4.483 4.483 0 0 1 5.25 7.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0 0 18.75 6H5.25a3 3 0 0 0-2.977 2.625ZM5.25 9a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h13.5a3 3 0 0 0 3-3v-6a3 3 0 0 0-3-3H15a.75.75 0 0 0-.75.75 2.25 2.25 0 0 1-4.5 0A.75.75 0 0 0 9 9H5.25Z"/>
-                </svg>
-            </x-cards.icon>
+        {{--        <x-panels.panel>--}}
+        {{--            <x-cards.icon>--}}
+        {{--                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">--}}
+        {{--                    <path--}}
+        {{--                        d="M2.273 5.625A4.483 4.483 0 0 1 5.25 4.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0 0 18.75 3H5.25a3 3 0 0 0-2.977 2.625ZM2.273 8.625A4.483 4.483 0 0 1 5.25 7.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0 0 18.75 6H5.25a3 3 0 0 0-2.977 2.625ZM5.25 9a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h13.5a3 3 0 0 0 3-3v-6a3 3 0 0 0-3-3H15a.75.75 0 0 0-.75.75 2.25 2.25 0 0 1-4.5 0A.75.75 0 0 0 9 9H5.25Z"/>--}}
+        {{--                </svg>--}}
+        {{--            </x-cards.icon>--}}
 
-            <x-cards.title>Bank Account</x-cards.title>
-            <x-divider class="my-6"/>
-            <x-cards.text>$4,000</x-cards.text>
-        </x-panels.panel>
-        <x-panels.panel>
-            <x-cards.icon>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                    <path
-                        d="M2.273 5.625A4.483 4.483 0 0 1 5.25 4.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0 0 18.75 3H5.25a3 3 0 0 0-2.977 2.625ZM2.273 8.625A4.483 4.483 0 0 1 5.25 7.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0 0 18.75 6H5.25a3 3 0 0 0-2.977 2.625ZM5.25 9a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h13.5a3 3 0 0 0 3-3v-6a3 3 0 0 0-3-3H15a.75.75 0 0 0-.75.75 2.25 2.25 0 0 1-4.5 0A.75.75 0 0 0 9 9H5.25Z"/>
-                </svg>
-            </x-cards.icon>
+        {{--            <x-cards.title>Bank Account</x-cards.title>--}}
+        {{--            <x-divider class="my-6"/>--}}
+        {{--            <x-cards.text>$4,000</x-cards.text>--}}
+        {{--        </x-panels.panel>--}}
 
-            <x-cards.title>Bank Account</x-cards.title>
-            <x-divider class="my-6"/>
-            <x-cards.text>$4,000</x-cards.text>
-        </x-panels.panel>
-        <x-panels.panel>
-            <x-cards.icon>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                    <path
-                        d="M2.273 5.625A4.483 4.483 0 0 1 5.25 4.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0 0 18.75 3H5.25a3 3 0 0 0-2.977 2.625ZM2.273 8.625A4.483 4.483 0 0 1 5.25 7.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0 0 18.75 6H5.25a3 3 0 0 0-2.977 2.625ZM5.25 9a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h13.5a3 3 0 0 0 3-3v-6a3 3 0 0 0-3-3H15a.75.75 0 0 0-.75.75 2.25 2.25 0 0 1-4.5 0A.75.75 0 0 0 9 9H5.25Z"/>
-                </svg>
-            </x-cards.icon>
-
-            <x-cards.title>Bank Account</x-cards.title>
-            <x-divider class="my-6"/>
-            <x-cards.text>$4,000</x-cards.text>
+        <x-panels.panel class="md:col-span-4 p-0">
+            <canvas id="balanceChart" class="flex items-center justify-center self-center"></canvas>
         </x-panels.panel>
     </div>
 
@@ -67,7 +36,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         <x-panels.panel>
             <x-panels.heading>Spending by Categories</x-panels.heading>
-            <canvas id="myChart" class="flex items-center justify-center self-center"></canvas>
+            <canvas id="categoriesChart" class="flex items-center justify-center self-center"></canvas>
         </x-panels.panel>
 
         <x-panels.panel>
@@ -148,10 +117,97 @@
                 },
             };
 
-            const myChart = new Chart(
-                document.getElementById('myChart'),
+            const categoriesChart = new Chart(
+                document.getElementById('categoriesChart'),
                 config,
             );
+
+
+            if (document.querySelector("#balanceChart")) {
+
+                var ctx1 = document.getElementById("balanceChart").getContext("2d");
+
+                var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+
+                gradientStroke1.addColorStop(1, 'rgba(151, 151, 151, 0.2)');
+                gradientStroke1.addColorStop(0.2, 'rgba(151, 151, 151, 0.0)');
+                gradientStroke1.addColorStop(0, 'rgba(151, 151, 151, 0)');
+
+
+                new Chart(ctx1, {
+                    type: "line",
+                    data: {
+                        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                        datasets: [{
+                            label: "Balance",
+                            tension: 0.4,
+                            borderWidth: 0,
+                            pointRadius: 0,
+                            borderColor: "#808080",
+                            backgroundColor: gradientStroke1,
+                            borderWidth: 3,
+                            fill: true,
+                            data: [50, 40, 300, 220, 500, 250, 400, 230, 500, 50, 40, 300, 220, 500, 250, 400, 230, 500, 50, 40, 300, 220, 500, 250, 400, 230, 500],
+                            maxBarThickness: 6
+                        }],
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false,
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: 'index',
+                        },
+                        scales: {
+                            y: {
+                                grid: {
+                                    drawBorder: false,
+                                    display: true,
+                                    drawOnChartArea: true,
+                                    drawTicks: false,
+                                    borderDash: [5, 5]
+                                },
+                                ticks: {
+                                    display: true,
+                                    padding: 10,
+                                    color: '#808080',
+                                    font: {
+                                        size: 11,
+                                        family: "Open Sans",
+                                        style: 'normal',
+                                        lineHeight: 2
+                                    },
+                                },
+                            },
+                            x: {
+                                grid: {
+                                    drawBorder: false,
+                                    display: false,
+                                    drawOnChartArea: false,
+                                    drawTicks: false,
+                                    borderDash: [5, 5]
+                                },
+                                ticks: {
+                                    display: false,
+                                    color: '#808080',
+                                    padding: 20,
+                                    font: {
+                                        size: 11,
+                                        family: "Open Sans",
+                                        style: 'normal',
+                                        lineHeight: 2
+                                    },
+                                }
+                            },
+                        },
+                    },
+                });
+            }
         </script>
     @endpush
 </x-app-layout>

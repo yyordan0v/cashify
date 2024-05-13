@@ -12,6 +12,14 @@
                 </x-nav.link-icon>
                 <span>Dashboard</span>
             </x-nav.link>
+            <x-nav.link :href="route('transactions')" :active="request()->routeIs('transactions')">
+                <x-nav.link-icon viewBox="0 0 24 24" :active="request()->routeIs('transactions')">
+                    <path fill-rule="evenodd"
+                          d="M2.625 6.75a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875 0A.75.75 0 0 1 8.25 6h12a.75.75 0 0 1 0 1.5h-12a.75.75 0 0 1-.75-.75ZM2.625 12a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0ZM7.5 12a.75.75 0 0 1 .75-.75h12a.75.75 0 0 1 0 1.5h-12A.75.75 0 0 1 7.5 12Zm-4.875 5.25a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Zm4.875 0a.75.75 0 0 1 .75-.75h12a.75.75 0 0 1 0 1.5h-12a.75.75 0 0 1-.75-.75Z"
+                          clip-rule="evenodd"/>
+                </x-nav.link-icon>
+                <span>Transactions</span>
+            </x-nav.link>
         </ul>
         <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
             <x-nav.link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
