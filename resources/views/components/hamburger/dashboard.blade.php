@@ -6,6 +6,7 @@
     <svg
         aria-hidden="true"
         class="w-6 h-6"
+        x-show="!sidebarOpen"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +19,8 @@
     </svg>
     <svg
         aria-hidden="true"
-        class="hidden w-6 h-6"
+        class="w-6 h-6"
+        x-show="sidebarOpen"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"

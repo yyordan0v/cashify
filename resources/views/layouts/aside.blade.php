@@ -2,7 +2,6 @@
     class="fixed top-0 left-0 z-40 w-64 h-screen pt-14 md:pt-4 md:rounded-xl md:m-4 md:mt-24 transition-all duration-200 -translate-x-full bg-white/80 border-r md:border border-neutral-200/50 md:translate-x-0 dark:bg-neutral-900/20 backdrop-blur-lg dark:border-neutral-800/50"
     aria-label="Sidenav"
     :class="{ 'ml-64': sidebarOpen }"
-
 >
     <div class="overflow-y-auto py-4 px-3 h-full bg-white/80 dark:bg-neutral-900/20">
         <ul class="space-y-2">
@@ -27,5 +26,5 @@
     </div>
 </aside>
 
-<div x-show="sidebarOpen" class="fixed inset-0 z-30 bg-black opacity-85"></div>
+<div x-show="sidebarOpen" @click="sidebarOpen = !sidebarOpen" class="fixed inset-0 z-30 bg-black opacity-85"></div>
 

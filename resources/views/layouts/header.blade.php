@@ -4,7 +4,7 @@
 
         {{--        Logo--}}
         <a href="{{ route('home') }}">
-            <x-application-logo class="text-2xl"/>
+            <x-application-logo class="text-2xl mx-4 sm:mx-6 p-2"/>
         </a>
 
         {{--        Navigation--}}
