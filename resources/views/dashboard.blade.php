@@ -62,38 +62,96 @@
             <x-cards.text>$4,000</x-cards.text>
         </x-panels.panel>
     </div>
-    <div
-        class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-96 mb-4"
-    ></div>
-    <div class="grid grid-cols-2 gap-4 mb-4">
-        <div
-            class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
-        ></div>
-        <div
-            class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
-        ></div>
-        <div
-            class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
-        ></div>
-        <div
-            class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
-        ></div>
+
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+        <x-panels.panel>
+            <x-panels.heading>Spending by Categories</x-panels.heading>
+            <canvas id="myChart" class="flex items-center justify-center self-center"></canvas>
+        </x-panels.panel>
+
+        <x-panels.panel>
+            <div class="flex flex-wrap items-center justify-between mb-8">
+                <x-panels.heading>Latest Transactions</x-panels.heading>
+                <div
+                    class="flex items-center text-gray-500 dark:text-gray-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                         class="w-5 h-5 mr-2 mb-1 text-gray-700 dark:text-gray-200">
+                        <path
+                            d="M12.75 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM7.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM8.25 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM9.75 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM10.5 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM12.75 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM14.25 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"/>
+                        <path fill-rule="evenodd"
+                              d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z"
+                              clip-rule="evenodd"/>
+                    </svg>
+
+                    <small>23 - 30 March 2020</small>
+                </div>
+            </div>
+
+            <div class="flex-auto space-y-8">
+                <x-transactions.group heading="Today">
+                    <x-transactions.row type="income" description="Salary" date="26 March 2020, at 13:45 PM"
+                                        amount="$ 2,500"/>
+                    <x-transactions.row type="income" description="Gift" date="26 March 2020, at 13:45 PM"
+                                        amount="$ 500"/>
+                    <x-transactions.row type="expense" description="New iPhone" date="26 March 2020, at 13:45 PM"
+                                        amount="$ 2,500"/>
+                    <x-transactions.row type="expense" description="Rent" date="26 March 2020, at 13:45 PM"
+                                        amount="$ 1000"/>
+                </x-transactions.group>
+
+                <x-transactions.group heading="Yesterday">
+                    <x-transactions.row type="income" description="Salary" date="26 March 2020, at 13:45 PM"
+                                        amount="$ 2,500"/>
+                    <x-transactions.row type="income" description="Gift" date="26 March 2020, at 13:45 PM"
+                                        amount="$ 500"/>
+                    <x-transactions.row type="expense" description="New iPhone" date="26 March 2020, at 13:45 PM"
+                                        amount="$ 2,500"/>
+                    <x-transactions.row type="expense" description="Rent" date="26 March 2020, at 13:45 PM"
+                                        amount="$ 1000"/>
+                </x-transactions.group>
+            </div>
+        </x-panels.panel>
     </div>
-    <div
-        class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-96 mb-4"
-    ></div>
-    <div class="grid grid-cols-2 gap-4">
-        <div
-            class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
-        ></div>
-        <div
-            class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
-        ></div>
-        <div
-            class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
-        ></div>
-        <div
-            class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
-        ></div>
-    </div>
+
+
+    @push('scripts')
+        <script>
+            const data = {
+                labels: [
+                    'Red',
+                    'Blue',
+                    'Yellow'
+                ],
+                datasets: [{
+                    label: 'Dataset',
+                    data: [300, 50, 100],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ],
+                    hoverOffset: 4
+                }]
+            };
+
+            const config = {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                    }
+                },
+            };
+
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config,
+            );
+        </script>
+    @endpush
 </x-app-layout>
