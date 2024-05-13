@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-4">
-        <x-panels.panel class="col-span-1 md:col-span-2">
+        <x-panels.panel class="col-span-1 md:col-span-1">
             <x-cards.icon>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                     <path fill-rule="evenodd"
@@ -27,8 +27,8 @@
         {{--            <x-cards.text>$4,000</x-cards.text>--}}
         {{--        </x-panels.panel>--}}
 
-        <x-panels.panel class="md:col-span-4 p-0">
-            <canvas id="balanceChart" class="flex items-center justify-center self-center"></canvas>
+        <x-panels.panel class="md:col-span-5 p-0">
+            {!! $chart->container() !!}
         </x-panels.panel>
     </div>
 
@@ -36,7 +36,6 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         <x-panels.panel>
             <x-panels.heading>Spending by Categories</x-panels.heading>
-            <canvas id="categoriesChart" class="flex items-center justify-center self-center"></canvas>
         </x-panels.panel>
 
         <x-panels.panel>
@@ -83,131 +82,6 @@
         </x-panels.panel>
     </div>
 
-
-    @push('scripts')
-        <script>
-            const data = {
-                labels: [
-                    'Red',
-                    'Blue',
-                    'Yellow'
-                ],
-                datasets: [{
-                    label: 'Dataset',
-                    data: [300, 50, 100],
-                    backgroundColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)'
-                    ],
-                    hoverOffset: 4
-                }]
-            };
-
-            const config = {
-                type: 'doughnut',
-                data: data,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                        },
-                    }
-                },
-            };
-
-            const categoriesChart = new Chart(
-                document.getElementById('categoriesChart'),
-                config,
-            );
-
-
-            if (document.querySelector("#balanceChart")) {
-
-                var ctx1 = document.getElementById("balanceChart").getContext("2d");
-
-                var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
-
-                gradientStroke1.addColorStop(1, 'rgba(151, 151, 151, 0.2)');
-                gradientStroke1.addColorStop(0.2, 'rgba(151, 151, 151, 0.0)');
-                gradientStroke1.addColorStop(0, 'rgba(151, 151, 151, 0)');
-
-
-                new Chart(ctx1, {
-                    type: "line",
-                    data: {
-                        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                        datasets: [{
-                            label: "Balance",
-                            tension: 0.4,
-                            borderWidth: 0,
-                            pointRadius: 0,
-                            borderColor: "#808080",
-                            backgroundColor: gradientStroke1,
-                            borderWidth: 3,
-                            fill: true,
-                            data: [50, 40, 300, 220, 500, 250, 400, 230, 500, 50, 40, 300, 220, 500, 250, 400, 230, 500, 50, 40, 300, 220, 500, 250, 400, 230, 500],
-                            maxBarThickness: 6
-                        }],
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: false,
-                            }
-                        },
-                        interaction: {
-                            intersect: false,
-                            mode: 'index',
-                        },
-                        scales: {
-                            y: {
-                                grid: {
-                                    drawBorder: false,
-                                    display: true,
-                                    drawOnChartArea: true,
-                                    drawTicks: false,
-                                    borderDash: [5, 5]
-                                },
-                                ticks: {
-                                    display: true,
-                                    padding: 10,
-                                    color: '#808080',
-                                    font: {
-                                        size: 11,
-                                        family: "Open Sans",
-                                        style: 'normal',
-                                        lineHeight: 2
-                                    },
-                                },
-                            },
-                            x: {
-                                grid: {
-                                    drawBorder: false,
-                                    display: false,
-                                    drawOnChartArea: false,
-                                    drawTicks: false,
-                                    borderDash: [5, 5]
-                                },
-                                ticks: {
-                                    display: false,
-                                    color: '#808080',
-                                    padding: 20,
-                                    font: {
-                                        size: 11,
-                                        family: "Open Sans",
-                                        style: 'normal',
-                                        lineHeight: 2
-                                    },
-                                }
-                            },
-                        },
-                    },
-                });
-            }
-        </script>
-    @endpush
+    <script src="{{ $chart->cdn() }}"></script>
+    {{ $chart->script() }}
 </x-app-layout>
