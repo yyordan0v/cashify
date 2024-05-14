@@ -27,17 +27,19 @@
         {{--            <x-cards.text>$4,000</x-cards.text>--}}
         {{--        </x-panels.panel>--}}
 
-        <x-panels.panel class="md:col-span-5 p-0">
+        <x-panels.panel class="md:col-span-3">
+            <x-panels.heading>Balance</x-panels.heading>
             {!! $chart->container() !!}
+        </x-panels.panel>
+        <x-panels.panel class="md:col-span-2">
+            <x-panels.heading>Spending by Category</x-panels.heading>
+            {!! $categoryChart->container() !!}
         </x-panels.panel>
     </div>
 
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
-        <x-panels.panel>
-            <x-panels.heading>Spending by Categories</x-panels.heading>
-        </x-panels.panel>
-
+        <x-panels.panel/>
         <x-panels.panel>
             <div class="flex flex-wrap items-center justify-between mb-8">
                 <x-panels.heading>Latest Transactions</x-panels.heading>
@@ -84,4 +86,5 @@
 
     <script src="{{ $chart->cdn() }}"></script>
     {{ $chart->script() }}
+    {{ $categoryChart->script() }}
 </x-app-layout>

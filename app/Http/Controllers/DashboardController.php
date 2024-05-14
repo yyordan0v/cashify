@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\CategoryChart;
 use App\Charts\ExpensesChart;
 
 class DashboardController extends Controller
 {
-    public function __invoke(ExpensesChart $chart)
+    public function __invoke(ExpensesChart $chart, CategoryChart $categoryChart)
     {
         return view('dashboard', [
-            'chart' => $chart->build()
+            'chart' => $chart->build(),
+            'categoryChart' => $categoryChart->build(),
         ]);
     }
 }
