@@ -7,7 +7,6 @@
 @endphp
 
 
-<svg {{ $attributes->merge(['class' => $classes, 'viewBox' => '0 0 20 20']) }}
-     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<x-icon {{ $attributes->merge(['class' => $classes]) }}>
     {{ $slot }}
-</svg>
+</x-icon>

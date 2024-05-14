@@ -2,13 +2,13 @@
 
 namespace App\Charts;
 
-use marineusde\LarapexCharts\Charts\LineChart as OriginalLineChart;
+use marineusde\LarapexCharts\Charts\AreaChart as OriginalAreaChart;
 
-class ExpensesChart
+class IncomeChart
 {
-    public function build(): OriginalLineChart
+    public function build(): OriginalAreaChart
     {
-        return (new OriginalLineChart)
+        return (new OriginalAreaChart)
             ->addData('May', [
                 3200, 1500, 2950, 1800, 250, 3750, 410, 3100, 950, 2100, 3800, 800, 3400, 1450, 2050, 1750, 350, 3800,
                 3700, 2700, 900, 1900, 450, 3200, 3900, 1600, 2700, 3100, 1250, 2850, 1400
@@ -19,7 +19,7 @@ class ExpensesChart
             ])
             ->setColors(['#808080'])
             ->setFontColor('#808080')
-            ->setHeight(170)
+            ->setHeight(350)
             ->setGrid();
     }
 }

@@ -1,7 +1,7 @@
 @props(['type' => 'expense'])
 
 @php
-    $classes = 'text-xs p-3 rounded-full mr-4 flex items-center justify-center border border-solid bg-transparent text-center';
+    $classes = 'p-3 rounded-full mr-4 flex items-center justify-center border border-solid bg-transparent';
 @endphp
 
 @if( $type === 'income')
@@ -22,7 +22,7 @@
 
 @if( $type === 'expense')
     @php
-        $classes .= ' border-red-600 text-red-600';
+        $classes .= ' border-red-500 text-red-500';
     @endphp
 
     <div {{ $attributes->merge(['class' => $classes]) }}>

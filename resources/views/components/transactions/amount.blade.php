@@ -4,11 +4,11 @@
     $classes = 'relative z-10 inline-block m-0 text-sm font-semibold leading-normal text-transparent bg-gradient-to-tl bg-clip-text';
 
     if ($type === 'income') {
-        $classes .= ' from-emerald-600 to-lime-400';
+        $classes .= ' from-emerald-600 to-emerald-400';
         $symbol = '+ ';
     }
     if ($type === 'expense') {
-        $classes .= ' from-red-600 to-orange-600';
+        $classes .= ' from-red-600 to-red-400';
         $symbol = '- ';
     }
 @endphp

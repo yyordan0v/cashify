@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Charts\CategoryChart;
-use App\Charts\ExpensesChart;
+use App\Charts\IncomeChart;
 
 class DashboardController extends Controller
 {
-    public function __invoke(ExpensesChart $chart, CategoryChart $categoryChart)
+    public function __invoke(CategoryChart $categoryChart, IncomeChart $incomeChart)
     {
         return view('dashboard', [
-            'chart' => $chart->build(),
             'categoryChart' => $categoryChart->build(),
+            'incomeChart' => $incomeChart->build(),
         ]);
     }
 }
