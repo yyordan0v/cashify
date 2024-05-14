@@ -13,4 +13,6 @@
             </main>
         </div>
     </div>
+
+    @include('layouts.bottom-nav')
 </x-document>
