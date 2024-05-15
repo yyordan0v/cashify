@@ -7,7 +7,7 @@
 
         <!-- Page Content -->
         <div
-            class="antialiased min-h-screen bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] dark:from-black dark:via-black/90 dark:to-black bg-gray-50">
+            class="antialiased min-h-screen bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] dark:from-black dark:via-black/90 dark:to-black from-white via-white/90 to-white">
             <main class="p-4 md:ml-68 h-auto pt-20 md:pt-24">
                 {{ $slot }}
             </main>

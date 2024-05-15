@@ -21,5 +21,5 @@
                 </svg>
             </a>
 
-            <x-theme-switch/>
+            <x-theme-toggle/>
         </span>

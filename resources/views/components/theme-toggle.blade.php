@@ -1,5 +1,5 @@
 <div x-cloak class="h-6">
-    <button x-show=" darkMode=== 'light'" x-on:click="darkMode = 'dark'"
+    <button x-show=" darkMode === 'light'" x-on:click="darkMode = 'dark'"
             class="text-gray-400 hover:text-gray-500 focus:outline-none rounded-lg text-sm">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24"
              viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"

@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="flex flex-col gap-4 mb-4">
-        <x-panels.panel class="flex flex-col items-start space-y-4">
+        <x-panels.panel class="flex flex-col items-start">
             <div class="flex items-center justify-between w-full">
                 <x-cards.title class="mt-0">
                         <span class="font-bold text-xl">
@@ -72,11 +72,11 @@
                 </div>
             </div>
             <div class="flex flex-col items-start">
-                <x-cards.text class="text-gray-950 my-0">$420</x-cards.text>
+                <x-cards.text class="my-0">$420</x-cards.text>
                 <x-cards.text class="my-0 text-xs">4 transactions</x-cards.text>
             </div>
         </x-panels.panel>
-        <x-panels.panel class="flex flex-col items-start space-y-4">
+        <x-panels.panel class="flex flex-col items-start">
             <div class="flex items-center justify-between w-full">
                 <x-cards.title class="mt-0">
                         <span class="font-bold text-xl">
@@ -133,7 +133,7 @@
                 </div>
             </div>
             <div class="flex flex-col items-start">
-                <x-cards.text class="text-gray-950 my-0">$420</x-cards.text>
+                <x-cards.text class="my-0">$420</x-cards.text>
                 <x-cards.text class="my-0 text-xs">4 transactions</x-cards.text>
             </div>
         </x-panels.panel>

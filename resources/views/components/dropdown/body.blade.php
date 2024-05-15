@@ -7,7 +7,7 @@
     {{ $attributes->merge(['class' => 'absolute top-10 w-56 right-14']) }}
 >
     <div
-        class="p-1 mt-1 bg-white/80 dark:bg-neutral-900/20 border rounded-lg shadow-md border-neutral-200/50 dark:border-neutral-800/50 text-gray-600 dark:text-gray-400 text-sm backdrop-blur-lg">
+        class="p-1 mt-1 bg-white/80 dark:bg-neutral-900/95 border rounded-lg shadow-md border-neutral-200/50 dark:border-neutral-800/50 text-gray-600 dark:text-gray-400 text-sm backdrop-blur-lg">
         {{ $slot }}
     </div>
 </div>

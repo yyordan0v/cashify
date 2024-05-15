@@ -30,7 +30,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="antialiased" hx-boost="true">
+<body class="antialiased bg-neutral-500" hx-boost="true">
 {{ $slot }}
 </body>
 </html>
