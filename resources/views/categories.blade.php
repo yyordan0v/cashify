@@ -270,8 +270,8 @@
 
     <a href="#">
         <x-panels.panel
-            class="flex z-0 items-center justify-center h-full group transition-colors duration-150 hover:bg-gray-100/80 hover:dark:bg-neutral-700/20">
-            <div class="flex flex-col items-center">
+            class="flex z-0 items-center justify-center h-full group transition-colors duration-150 hover:bg-gray-100/80 hover:dark:bg-neutral-700/20 p-0">
+            <div class="flex flex-col items-center p-4">
                 <x-icon class="opacity-20 text-black dark:text-white" style="font-size: 32px">
                     format_list_bulleted_add
                 </x-icon>
