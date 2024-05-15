@@ -84,47 +84,32 @@
                         </span>
                 </x-cards.title>
 
-                <div class="lg:hidden"
-                     x-data="{ dropdownOpen: false }"
-                >
+                <x-dropdown.menu>
+                    <x-dropdown.button>
+                        more_vert
+                    </x-dropdown.button>
 
-                    <button @click="dropdownOpen=true" class="text-gray-800 dark:text-gray-200">
-                        <x-icon>
-                            more_vert
-                        </x-icon>
-                    </button>
-
-                    <div x-show="dropdownOpen"
-                         @click.away="dropdownOpen=false"
-                         x-transition:enter="ease-out duration-200"
-                         x-transition:enter-start="-translate-y-2"
-                         x-transition:enter-end="translate-y-0"
-                         class="absolute top-10 w-56 right-14"
-                         x-cloak>
-                        <div
-                            class="p-1 mt-1 bg-white/80 dark:bg-neutral-900/20 border rounded-lg shadow-md border-neutral-200/50 dark:border-neutral-800/50 text-gray-600 dark:text-gray-400 text-sm backdrop-blur-lg">
-                            <x-buttons.action :href="route('accounts')">
-                                <x-icon style="font-size: 20px">
-                                    compare_arrows
-                                </x-icon>
-                                Transfer Balance
-                            </x-buttons.action>
-                            <x-buttons.action :href="route('accounts')">
-                                <x-icon style="font-size: 20px">
-                                    edit
-                                </x-icon>
-                                Edit
-                            </x-buttons.action>
-                            <x-buttons.action :href="route('accounts')" class="text-red-600">
-                                <x-icon style="font-size: 20px">
-                                    delete
-                                </x-icon>
-                                Delete
-                            </x-buttons.action>
-                        </div>
-                    </div>
-                </div>
-
+                    <x-dropdown.body>
+                        <x-buttons.action :href="route('accounts')">
+                            <x-icon style="font-size: 20px">
+                                compare_arrows
+                            </x-icon>
+                            Transfer Balance
+                        </x-buttons.action>
+                        <x-buttons.action :href="route('accounts')">
+                            <x-icon style="font-size: 20px">
+                                edit
+                            </x-icon>
+                            Edit
+                        </x-buttons.action>
+                        <x-buttons.action :href="route('accounts')" class="text-red-600">
+                            <x-icon style="font-size: 20px">
+                                delete
+                            </x-icon>
+                            Delete
+                        </x-buttons.action>
+                    </x-dropdown.body>
+                </x-dropdown.menu>
 
                 <div class="hidden lg:flex items-center gap-2 text-gray-600 dark:text-gray-400 text-sm">
                     <x-buttons.action :href="route('accounts')">
