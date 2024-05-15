@@ -17,6 +17,12 @@
                 </x-nav.link-icon>
                 <span>Transactions</span>
             </x-nav.link>
+            <x-nav.link :href="route('goals')" :active="request()->routeIs('goals')">
+                <x-nav.link-icon :active="request()->routeIs('goals')">
+                    savings
+                </x-nav.link-icon>
+                <span>Goals</span>
+            </x-nav.link>
             <x-nav.link :href="route('accounts')" :active="request()->routeIs('accounts')">
                 <x-nav.link-icon :active="request()->routeIs('accounts')">
                     wallet

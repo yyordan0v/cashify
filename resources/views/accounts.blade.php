@@ -1,5 +1,6 @@
 <x-app-layout>
     <div class="grid xl:grid-cols-2 gap-4 mb-4">
+        {{--        show--}}
         <x-panels.panel class="flex flex-col items-start lg:items-center justify-center">
             <div class="flex items-center justify-between lg:justify-center w-full">
                 <x-cards.title class="mt-0">
@@ -69,6 +70,7 @@
 
         </x-panels.panel>
 
+        {{--        edit--}}
         <x-panels.panel class="flex flex-col items-start lg:items-center justify-start lg:justify-center">
             <div class="flex items-start lg:items-center w-full">
                 <x-cards.title class="mt-0 w-full">
@@ -79,7 +81,7 @@
             </div>
 
             <div class="flex flex-col items-start lg:items-center w-full">
-                <x-cards.text class="my-0 lg:mt-2 w-full">
+                <x-cards.text class="mt-2 w-full">
                     <x-forms.input value="$420" class="w-full lg:w-1/2"></x-forms.input>
                 </x-cards.text>
             </div>
@@ -87,16 +89,14 @@
             <x-divider class="my-8 w-full"/>
 
             <div
-                class="flex items-center justify-center w-full gap-2 text-gray-600 dark:text-gray-400 text-sm">
-
+                class="flex flex-col md:flex-row items-center justify-end lg:justify-center w-full gap-2 text-gray-600 dark:text-gray-400 text-sm">
                 <x-buttons.secondary>Cancel</x-buttons.secondary>
                 <x-buttons.primary>Save</x-buttons.primary>
-
             </div>
 
         </x-panels.panel>
 
-
+        {{--        add--}}
         <a href="#">
             <x-panels.panel
                 class="flex z-0 items-center justify-center h-full group transition-colors duration-150 hover:bg-gray-100/80 hover:dark:bg-neutral-700/20">

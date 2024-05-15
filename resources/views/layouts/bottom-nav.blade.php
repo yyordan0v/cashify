@@ -32,13 +32,13 @@
                 <span class="sr-only">New item</span>
             </a>
         </div>
+        <x-nav.bottom-link :href="route('goals')" :active="request()->routeIs('goals')"
+                           description="Goals">
+            savings
+        </x-nav.bottom-link>
         <x-nav.bottom-link href="{{ route('accounts') }}" :active="request()->routeIs('accounts')"
                            description="Accounts">
             wallet
-        </x-nav.bottom-link>
-        <x-nav.bottom-link :href="route('categories')" :active="request()->routeIs('categories')"
-                           description="Categories">
-            category
         </x-nav.bottom-link>
     </div>
 </div>
