@@ -1,7 +1,8 @@
 <span class="inline-flex justify-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start">
 
             {{--            Twitter--}}
-            <a href="https://twitter.com/yyordan0v" target="_blank" class="text-gray-400 hover:text-gray-500">
+            <a href="https://twitter.com/yyordan0v" target="_blank"
+               class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400">
                 <span class="sr-only">Twitter</span>
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path
@@ -11,7 +12,7 @@
 
             {{--            GitHub--}}
             <a href="https://github.com/yyordan0v/cashify" target="_blank"
-               class="text-gray-400 hover:text-gray-500">
+               class="text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400">
                 <span class="sr-only">GitHub</span>
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path fill-rule="evenodd"

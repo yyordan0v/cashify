@@ -1,9 +1,9 @@
 <x-app-layout>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-4">
+    <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 mb-4">
 
         <x-panels.panel>
             <x-cards.icon>
-                credit_card
+                wallet
             </x-cards.icon>
 
             <x-cards.title>Bank</x-cards.title>
@@ -13,7 +13,7 @@
 
         <x-panels.panel>
             <x-cards.icon>
-                credit_card
+                wallet
             </x-cards.icon>
 
             <x-cards.title>Bank</x-cards.title>
@@ -23,7 +23,7 @@
 
         <x-panels.panel>
             <x-cards.icon>
-                credit_card
+                wallet
             </x-cards.icon>
 
             <x-cards.title>Bank</x-cards.title>
@@ -31,13 +31,13 @@
             <x-cards.text class="text-gray-950">$420</x-cards.text>
         </x-panels.panel>
 
-        <a href="{{ route('transactions') }}">
+        <a href="{{ route('accounts') }}">
             <x-panels.panel
                 class="flex items-center justify-center h-full group transition-colors duration-150 hover:bg-gray-100/80 hover:dark:bg-neutral-700/20">
-                <div class="flex flex-col">
-                    <x-cards.icon class="opacity-20">
-                        add_card
-                    </x-cards.icon>
+                <div class="flex flex-col items-center">
+                    <x-icon class="opacity-20 text-black dark:text-white" style="font-size: 32px">
+                        format_list_bulleted_add
+                    </x-icon>
                     <x-cards.title class="opacity-60">Account</x-cards.title>
                 </div>
             </x-panels.panel>
@@ -47,7 +47,7 @@
 
     <div class="grid grid-cols-2 xl:grid-cols-3 gap-4 mb-4">
         <div
-            class="col-span-2 xl:col-span-1 grid grid-cols-2 grid-row-2 md:grid-cols-3 xl:grid-cols-2 xl:grid-row-2 gap-4">
+            class="col-span-2 xl:col-span-1 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-2 grid-row-2 xl:grid-row-2 gap-4">
             <x-panels.panel class="col-span-2 md:col-span-1 xl:col-span-2">
                 <x-cards.icon>
                     monitoring

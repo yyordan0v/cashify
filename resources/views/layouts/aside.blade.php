@@ -17,6 +17,18 @@
                 </x-nav.link-icon>
                 <span>Transactions</span>
             </x-nav.link>
+            <x-nav.link :href="route('accounts')" :active="request()->routeIs('accounts')">
+                <x-nav.link-icon :active="request()->routeIs('accounts')">
+                    wallet
+                </x-nav.link-icon>
+                <span>Accounts</span>
+            </x-nav.link>
+            <x-nav.link :href="route('categories')" :active="request()->routeIs('categories')">
+                <x-nav.link-icon :active="request()->routeIs('categories')">
+                    category
+                </x-nav.link-icon>
+                <span>Categories</span>
+            </x-nav.link>
         </ul>
         <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
             <x-nav.link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">

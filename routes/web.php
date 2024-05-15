@@ -16,9 +16,17 @@ Route::get('/dashboard', DashboardController::class)
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::get('/transactions', function () {
-    return view('transactions');
-})->middleware(['auth', 'verified'])->name('transactions');
+Route::view('/transactions', 'transactions')
+    ->middleware(['auth', 'verified'])
+    ->name('transactions');
+
+Route::view('/accounts', 'accounts')
+    ->middleware(['auth', 'verified'])
+    ->name('accounts');
+
+Route::view('/categories', 'categories')
+    ->middleware(['auth', 'verified'])
+    ->name('categories');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
