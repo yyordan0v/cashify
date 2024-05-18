@@ -3,10 +3,10 @@
         {{--        show--}}
         <x-panels.panel class="flex flex-col items-start lg:items-center justify-center">
             <div class="flex items-center justify-between lg:justify-center w-full">
-                <x-cards.title class="mt-0">
+                <x-cards.title class="mb-0 mt-0 lg:mt-4">
                     <span class="font-bold text-xl">
                             Bank
-                        </span>
+                    </span>
                 </x-cards.title>
 
                 <x-dropdown.menu>
@@ -38,7 +38,7 @@
             </div>
 
             <div class="flex flex-col items-start lg:items-center">
-                <x-cards.text class="my-0 lg:mt-2">$420</x-cards.text>
+                <x-cards.text class="mt-0 lg:mt-2">$420</x-cards.text>
                 <x-cards.text class="my-0 text-xs">4 transactions</x-cards.text>
             </div>
 
@@ -73,17 +73,15 @@
         {{--        edit--}}
         <x-panels.panel class="flex flex-col items-start lg:items-center justify-start lg:justify-center">
             <div class="flex items-start lg:items-center w-full">
-                <x-cards.title class="mt-0 w-full">
-                    <span class="font-bold text-xl">
-                        <x-forms.input value="Bank" class="mt-0 w-full lg:w-1/2"></x-forms.input>
-                    </span>
-                </x-cards.title>
+                <div class="w-full text-center">
+                    <x-forms.input value="Bank" class="w-full lg:w-1/2 mt-0"></x-forms.input>
+                </div>
             </div>
 
             <div class="flex flex-col items-start lg:items-center w-full">
-                <x-cards.text class="mt-2 w-full">
+                <div class="w-full text-center">
                     <x-forms.input value="$420" class="w-full lg:w-1/2"></x-forms.input>
-                </x-cards.text>
+                </div>
             </div>
 
             <x-divider class="my-8 w-full"/>
@@ -104,7 +102,7 @@
                     <x-icon class="opacity-20 text-black dark:text-white" style="font-size: 32px">
                         format_list_bulleted_add
                     </x-icon>
-                    <x-cards.title class="opacity-60">Account</x-cards.title>
+                    <x-cards.title class="opacity-60 mb-0">Account</x-cards.title>
                 </div>
             </x-panels.panel>
         </a>

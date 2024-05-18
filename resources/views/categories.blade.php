@@ -14,19 +14,19 @@
             <!-- Expense -->
             <x-tabs.content class="flex flex-col gap-4">
                 {{--                show--}}
-                <x-panels.panel class="p-0">
+                <x-panels.panel padding="4">
                     <div class="p-4 flex items-center">
 
-                        <x-category-image class="bg-fuchsia-100">
+                        <x-category-image class="bg-fuchsia-100 ">
                             shopping
                         </x-category-image>
 
                         <div class="w-full">
                             <div class="flex items-center justify-between">
-                                <x-cards.title class="mt-0">
-                        <span class="font-black">
-                            Shopping
-                        </span>
+                                <x-cards.title class="mt-0 mb-0">
+                                    <span class="font-black">
+                                        Shopping
+                                    </span>
                                 </x-cards.title>
 
                                 <x-dropdown.menu>
@@ -77,7 +77,7 @@
                 </x-panels.panel>
 
                 {{--                edit--}}
-                <x-panels.panel class="p-0">
+                <x-panels.panel padding="4">
 
                     <div class="flex flex-col items-start w-full p-4">
 
@@ -113,7 +113,7 @@
 
             <!-- Income -->
             <x-tabs.content class="flex flex-col gap-4">
-                <x-panels.panel class="p-0">
+                <x-panels.panel padding="4">
                     <div class="p-4 flex items-center">
 
                         <x-category-image class="bg-fuchsia-100">
@@ -122,10 +122,10 @@
 
                         <div class="w-full">
                             <div class="flex items-center justify-between">
-                                <x-cards.title class="mt-0">
-                        <span class="font-black">
-                            Shopping
-                        </span>
+                                <x-cards.title class="mt-0 mb-0">
+                                    <span class="font-black">
+                                        Shopping
+                                    </span>
                                 </x-cards.title>
 
                                 <x-dropdown.menu>
@@ -175,7 +175,7 @@
 
                 </x-panels.panel>
 
-                <x-panels.panel class="p-0">
+                <x-panels.panel padding="4">
                     <div class="p-4 flex items-center">
 
                         <x-category-image class="bg-cyan-100">
@@ -184,7 +184,7 @@
 
                         <div class="w-full">
                             <div class="flex items-center justify-between">
-                                <x-cards.title class="mt-0">
+                                <x-cards.title class="mt-0 mb-0">
                                         <span class="font-black">
                                             Salary
                                         </span>
@@ -242,12 +242,14 @@
 
     <a href="#">
         <x-panels.panel
-            class="flex z-0 items-center justify-center h-full group transition-colors duration-150 hover:bg-gray-100/80 hover:dark:bg-neutral-700/20 p-0">
+            class="flex z-0 items-center justify-center h-full group transition-colors duration-150 hover:bg-gray-100/80 hover:dark:bg-neutral-700/20"
+            padding="4"
+        >
             <div class="flex flex-col items-center p-4">
                 <x-icon class="opacity-20 text-black dark:text-white" style="font-size: 32px">
                     format_list_bulleted_add
                 </x-icon>
-                <x-cards.title class="opacity-60">Category</x-cards.title>
+                <x-cards.title class="opacity-60 mb-0">Category</x-cards.title>
             </div>
         </x-panels.panel>
     </a>

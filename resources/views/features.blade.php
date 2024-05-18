@@ -20,13 +20,13 @@
             </div>
 
 
-            <div class="relative z-10 grid grid-cols-1 gap-10 pt-14 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 pt-14">
                 <x-panels.panel>
                     <x-cards.icon>
                         style
                     </x-cards.icon>
                     <x-cards.title>Customizable</x-cards.title>
-                    <x-cards.text>
+                    <x-cards.text class="pt-2">
                         Crafted to fit your unique style, make it yours with a personal touch.
                     </x-cards.text>
                 </x-panels.panel>
@@ -36,7 +36,7 @@
                         bolt
                     </x-cards.icon>
                     <x-cards.title>Blazingly Fast</x-cards.title>
-                    <x-cards.text>
+                    <x-cards.text class="pt-2">
                         Engineered for swift execution in today's fast-paced world.
                     </x-cards.text>
                 </x-panels.panel>
@@ -46,7 +46,7 @@
                         extension
                     </x-cards.icon>
                     <x-cards.title>Fully Featured</x-cards.title>
-                    <x-cards.text>
+                    <x-cards.text class="pt-2">
                         Everything you need to track your finances, right out of the box.
                     </x-cards.text>
                 </x-panels.panel>
