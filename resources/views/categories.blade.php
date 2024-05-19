@@ -15,7 +15,7 @@
             <x-tabs.content class="flex flex-col gap-4">
                 {{--                show--}}
                 <x-panels.panel padding="4">
-                    <div class="p-4 flex items-center">
+                    <div class="flex items-center">
 
                         <x-category-image class="bg-fuchsia-100 ">
                             shopping
@@ -79,7 +79,7 @@
                 {{--                edit--}}
                 <x-panels.panel padding="4">
 
-                    <div class="flex flex-col items-start w-full p-4">
+                    <div class="flex flex-col items-start w-full">
 
                         <div class="flex items-center w-full">
                             <x-category-image class="bg-fuchsia-100">
@@ -104,7 +104,7 @@
                         <div
                             class="flex flex-col md:flex-row items-center justify-end w-full gap-2 text-gray-600 dark:text-gray-400 text-sm">
                             <x-buttons.secondary>Cancel</x-buttons.secondary>
-                            <x-buttons.primary>Save</x-buttons.primary>
+                            <x-buttons.form>Save</x-buttons.form>
                         </div>
 
                     </div>
@@ -114,7 +114,7 @@
             <!-- Income -->
             <x-tabs.content class="flex flex-col gap-4">
                 <x-panels.panel padding="4">
-                    <div class="p-4 flex items-center">
+                    <div class="flex items-center">
 
                         <x-category-image class="bg-fuchsia-100">
                             shopping
@@ -176,7 +176,7 @@
                 </x-panels.panel>
 
                 <x-panels.panel padding="4">
-                    <div class="p-4 flex items-center">
+                    <div class="flex items-center">
 
                         <x-category-image class="bg-cyan-100">
                             dollar-coin
@@ -240,17 +240,9 @@
         </x-tabs.content-group>
     </x-tabs.body>
 
-    <a href="#">
-        <x-panels.panel
-            class="flex z-0 items-center justify-center h-full group transition-colors duration-150 hover:bg-gray-100/80 hover:dark:bg-neutral-700/20"
-            padding="4"
-        >
-            <div class="flex flex-col items-center p-4">
-                <x-icon class="opacity-20 text-black dark:text-white" style="font-size: 32px">
-                    format_list_bulleted_add
-                </x-icon>
-                <x-cards.title class="opacity-60 mb-0">Category</x-cards.title>
-            </div>
-        </x-panels.panel>
+    <a href="{{ route('categories') }}">
+        <x-buttons.card-button>
+            Category
+        </x-buttons.card-button>
     </a>
 </x-app-layout>

@@ -1,6 +1,6 @@
 <footer class="mt-auto">
     <div class="container flex flex-col items-center px-8 py-8 mx-auto max-w-7xl sm:flex-row">
-        
+
         {{--        Logo--}}
         <a href="{{ route('home') }}">
             <x-application-logo class="text-lg"/>

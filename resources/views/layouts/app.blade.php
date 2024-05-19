@@ -7,11 +7,12 @@
 
         <!-- Page Content -->
         <div
-            class="antialiased min-h-screen bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] dark:from-black dark:via-black/90 dark:to-black from-white via-white/90 to-white">
-            <main class="p-4 md:ml-68 h-auto pt-20 md:pt-24">
+            class="antialiased min-h-screen bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] dark:from-black dark:via-black/90 dark:to-black">
+            <main class="p-4 md:ml-68 h-auto pt-20 md:pt-24 mb-12">
                 {{ $slot }}
             </main>
         </div>
+
     </div>
 
     @include('layouts.bottom-nav')

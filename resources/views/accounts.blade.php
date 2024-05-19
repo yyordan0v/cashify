@@ -89,22 +89,16 @@
             <div
                 class="flex flex-col md:flex-row items-center justify-end lg:justify-center w-full gap-2 text-gray-600 dark:text-gray-400 text-sm">
                 <x-buttons.secondary>Cancel</x-buttons.secondary>
-                <x-buttons.primary>Save</x-buttons.primary>
+                <x-buttons.form>Save</x-buttons.form>
             </div>
 
         </x-panels.panel>
 
         {{--        add--}}
-        <a href="#">
-            <x-panels.panel
-                class="flex z-0 items-center justify-center h-full group transition-colors duration-150 hover:bg-gray-100/80 hover:dark:bg-neutral-700/20">
-                <div class="flex flex-col items-center">
-                    <x-icon class="opacity-20 text-black dark:text-white" style="font-size: 32px">
-                        format_list_bulleted_add
-                    </x-icon>
-                    <x-cards.title class="opacity-60 mb-0">Account</x-cards.title>
-                </div>
-            </x-panels.panel>
+        <a href="{{ route('accounts') }}">
+            <x-buttons.card-button>
+                Account
+            </x-buttons.card-button>
         </a>
     </div>
 </x-app-layout>
