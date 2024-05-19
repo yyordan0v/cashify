@@ -21,7 +21,7 @@
                             shopping
                         </x-category-image>
 
-                        <div class="w-full">
+                        <div class="w-full pb-4">
                             <div class="flex items-center justify-between">
                                 <x-cards.title class="mt-0 mb-0">
                                     <span class="font-black">
@@ -120,7 +120,7 @@
                             shopping
                         </x-category-image>
 
-                        <div class="w-full">
+                        <div class="w-full pb-4">
                             <div class="flex items-center justify-between">
                                 <x-cards.title class="mt-0 mb-0">
                                     <span class="font-black">
@@ -182,7 +182,7 @@
                             dollar-coin
                         </x-category-image>
 
-                        <div class="w-full">
+                        <div class="w-full pb-4">
                             <div class="flex items-center justify-between">
                                 <x-cards.title class="mt-0 mb-0">
                                         <span class="font-black">

@@ -54,7 +54,7 @@
 
             <x-panels.panel>
                 <x-icon
-                    class="button-text mx-auto flex h-12 w-12 items-center justify-center rounded-xl text-white bg-gradient-to-tl from-emerald-600 to-emerald-400">
+                    class="button-text mx-auto flex h-12 w-12 items-center justify-center rounded-xl text-white bg-gradient-to-t from-emerald-600 to-emerald-400">
                     add_box
                 </x-icon>
 
