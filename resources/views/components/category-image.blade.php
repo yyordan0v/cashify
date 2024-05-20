@@ -1,10 +1,23 @@
 @props([
-    'background' => 'bg-gray-200',
-    'currentImage' => 'shopping'
+    'color' => 'bg-gray-200',
+    'image' => 'shopping',
+    'size' => 'base'
 ])
 
-<div {{ $attributes->merge(['class' => 'mr-4 p-6 rounded-full '.$background]) }}>
-    <img src="{{ Vite::asset('resources/images/categories/'.$currentImage.'.png') }}" alt="{{ $currentImage }}"
+@php
+    $classes = 'mr-4 rounded-full ' . $color;
+
+    if ($size === 'base') {
+        $classes .= ' p-6';
+    }
+
+    if ($size === 'small') {
+        $classes .= ' p-3';
+    }
+
+@endphp
+<div {{ $attributes->merge(['class' => $classes]) }}>
+    <img src="{{ Vite::asset('resources/images/categories/'.$image.'.png') }}" alt="{{ $image }}"
          class="max-w-8">
-    <span class="sr-only">{{ $currentImage }}</span>
+    <span class="sr-only">{{ $image }}</span>
 </div>

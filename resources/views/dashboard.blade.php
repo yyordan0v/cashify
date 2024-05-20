@@ -104,20 +104,26 @@
             <div class="flex-auto space-y-8">
                 <x-transactions.group heading="Today">
                     <x-transactions.row type="income" description="Salary" date="26 March 2020, at 13:45 PM"
-                                        amount="$ 2,500"/>
+                                        amount="2,500 лв." category-background="bg-rose-200"
+                                        category-image="dollar-coin"/>
                     <x-transactions.row type="income" description="Gift" date="26 March 2020, at 13:45 PM"
-                                        amount="$ 500"/>
+                                        amount="500 лв." category-background="bg-lime-200"
+                                        category-image="gift"/>
                     <x-transactions.row type="expense" description="New iPhone" date="26 March 2020, at 13:45 PM"
-                                        amount="$ 2,500"/>
+                                        amount="2,500 лв." category-background="bg-rose-200"
+                                        category-image="dollar-coin"/>
                     <x-transactions.row type="expense" description="Rent" date="26 March 2020, at 13:45 PM"
-                                        amount="$ 1000"/>
+                                        amount="1000 лв." category-background="bg-rose-200"
+                                        category-image="dollar-coin"/>
                 </x-transactions.group>
 
                 <x-transactions.group heading="Yesterday">
                     <x-transactions.row type="income" description="Salary" date="26 March 2020, at 13:45 PM"
-                                        amount="$ 2,500"/>
+                                        amount="2,500 лв." category-background="bg-rose-200"
+                                        category-image="dollar-coin"/>
                     <x-transactions.row type="expense" description="Rent" date="26 March 2020, at 13:45 PM"
-                                        amount="$ 1000"/>
+                                        amount="1000 лв." category-background="bg-rose-200"
+                                        category-image="dollar-coin"/>
                 </x-transactions.group>
             </div>
         </x-panels.panel>

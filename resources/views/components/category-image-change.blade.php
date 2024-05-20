@@ -1,14 +1,17 @@
 @props([
-    'background' => 'bg-gray-200',
-    'currentImage' => 'shopping'
+    'color' => 'bg-gray-200',
+    'image' => 'shopping'
 ])
 
+@php
+    $classes = 'mr-4 p-6 rounded-full relative group ' . $color;
+@endphp
+
 <button @click="slideOverOpen=true">
-    <div
-        class="mr-4 p-6 rounded-full relative group {{ $background }}">
-        <img src="{{ Vite::asset('resources/images/categories/'.$currentImage.'.png') }}"
+    <div {{ $attributes->merge(['class' => $classes]) }} :class="color">
+        <img src="{{ Vite::asset('resources/images/categories/'.$image.'.png') }}"
              class="max-w-8"
-             alt="{{ $currentImage }}"
+             alt="{{ $image }}"
         >
 
         <x-icon
