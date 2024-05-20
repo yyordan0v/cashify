@@ -1,10 +1,10 @@
 @props([
     'color' => 'bg-gray-200',
-    'image' => 'shopping'
+    'image' => 'image'
 ])
 
 @php
-    $classes = 'mr-4 p-6 rounded-full relative group ' . $color;
+    $classes = 'mr-4 p-6 rounded-full relative transition-all duration-150 opacity-80 hover:opacity-100 ' . $color;
 @endphp
 
 <button @click="slideOverOpen=true">
@@ -14,10 +14,10 @@
              alt="{{ $image }}"
         >
 
-        <x-icon
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 text-white group-hover:bg-black/40 transition-colors duration-150">
-            add_photo_alternate
-        </x-icon>
+        {{--        <x-icon--}}
+        {{--            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 text-white group-hover:bg-black/40 transition-colors duration-150">--}}
+        {{--            add_photo_alternate--}}
+        {{--        </x-icon>--}}
 
         <span class="sr-only">Change Category Image</span>
     </div>

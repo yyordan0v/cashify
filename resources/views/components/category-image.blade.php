@@ -1,6 +1,6 @@
 @props([
     'color' => 'bg-gray-200',
-    'image' => 'shopping',
+    'image' => 'image',
     'size' => 'base'
 ])
 

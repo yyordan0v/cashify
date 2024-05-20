@@ -91,7 +91,7 @@
 
                             <div x-data="{ slideOverOpen: false }" class="relative z-50 w-auto h-auto mt-2">
 
-                                <x-category-image-change image="shopping" color="bg-fuchsia-200"/>
+                                <x-category-image-change/>
 
                                 <template x-teleport="body">
                                     <div x-show="slideOverOpen" @keydown.window.escape="slideOverOpen=false"
