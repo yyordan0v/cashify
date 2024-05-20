@@ -4,7 +4,7 @@
 ])
 
 @php
-    $classes = 'mr-4 p-6 rounded-full relative transition-all duration-150 opacity-80 hover:opacity-100 ' . $color;
+    $classes = 'mr-4 p-6 rounded-full relative transition-all duration-150 opacity-90 hover:opacity-100 ' . $color;
 @endphp
 
 <button @click="slideOverOpen=true">

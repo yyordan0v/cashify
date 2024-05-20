@@ -96,7 +96,7 @@
                                 <template x-teleport="body">
                                     <div x-show="slideOverOpen" @keydown.window.escape="slideOverOpen=false"
                                          class="relative z-[99]">
-                                        <div x-show="slideOverOpen" x-transition.opacity.duration.600ms
+                                        <div x-show="slideOverOpen" x-transition.opacity.duration.200ms
                                              @click="slideOverOpen = false"
                                              class="fixed inset-0 bg-black bg-opacity-85"></div>
                                         <div class="fixed inset-0 overflow-hidden">
@@ -106,10 +106,10 @@
                                                     <div
                                                         x-show="slideOverOpen"
                                                         @click.away="slideOverOpen = false"
-                                                        x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
+                                                        x-transition:enter="transform transition ease-in duration-200"
                                                         x-transition:enter-start="translate-y-full"
                                                         x-transition:enter-end="translate-y-0"
-                                                        x-transition:leave="transform transition ease-in-out duration-500 sm:duration-700"
+                                                        x-transition:leave="transform transition ease-in duration-200"
                                                         x-transition:leave-start="translate-y-0"
                                                         x-transition:leave-end="translate-y-full"
                                                         class="w-screen max-h-full h-full">
@@ -154,30 +154,48 @@
                                 <div class="flex flex-col items-start justify-center w-full">
                                     <x-forms.input class="w-full mt-0" value="Shopping"></x-forms.input>
 
-                                    <x-forms.radio.group/>
+                                    <x-forms.radio.group>
+                                        <x-forms.radio.button name="type" id="expense" value="expense">
+                                            <div class="block">
+                                                <div class="w-full">Expense</div>
+                                            </div>
+                                            <x-icon class="text-red-500 mt-1">
+                                                arrow_drop_down
+                                            </x-icon>
+                                        </x-forms.radio.button>
+
+                                        <x-forms.radio.button name="type" id="income" value="income">
+                                            <div class="block">
+                                                <div class="w-full">Income</div>
+                                            </div>
+                                            <x-icon class="text-emerald-500 mt-1">
+                                                arrow_drop_up
+                                            </x-icon>
+                                        </x-forms.radio.button>
+                                    </x-forms.radio.group>
                                 </div>
                             </div>
                         </div>
 
                         <x-forms.radio.group type="color" class="pl-24">
-                            <x-forms.radio.color color="bg-gray-200" name="color" id="gray"/>
-                            <x-forms.radio.color color="bg-red-200" name="color" id="red"/>
-                            <x-forms.radio.color color="bg-orange-200" name="color" id="orange"/>
-                            <x-forms.radio.color color="bg-amber-200" name="color" id="amber"/>
-                            <x-forms.radio.color color="bg-yellow-200" name="color" id="yellow"/>
-                            <x-forms.radio.color color="bg-lime-200" name="color" id="lime"/>
-                            <x-forms.radio.color color="bg-green-200" name="color" id="green"/>
-                            <x-forms.radio.color color="bg-emerald-200" name="color" id="emerald"/>
-                            <x-forms.radio.color color="bg-teal-200" name="color" id="teal"/>
-                            <x-forms.radio.color color="bg-cyan-200" name="color" id="cyan"/>
-                            <x-forms.radio.color color="bg-sky-200" name="color" id="sky"/>
-                            <x-forms.radio.color color="bg-blue-200" name="color" id="blue"/>
-                            <x-forms.radio.color color="bg-indigo-200" name="color" id="indigo"/>
-                            <x-forms.radio.color color="bg-violet-200" name="color" id="violet"/>
-                            <x-forms.radio.color color="bg-purple-200" name="color" id="purple"/>
-                            <x-forms.radio.color color="bg-fuchsia-200" name="color" id="fuchsia"/>
-                            <x-forms.radio.color color="bg-pink-200" name="color" id="pink"/>
-                            <x-forms.radio.color color="bg-rose-200" name="color" id="rose"/>
+                            <x-forms.radio.color color="bg-gray-300" name="color" id="gray"/>
+                            <x-forms.radio.color color="bg-red-300" name="color" id="red"/>
+                            <x-forms.radio.color color="bg-orange-300" name="color" id="orange"/>
+                            <x-forms.radio.color color="bg-amber-300" name="color" id="amber"/>
+                            <x-forms.radio.color color="bg-yellow-300" name="color" id="yellow"/>
+                            <x-forms.radio.color color="bg-lime-300" name="color" id="lime"/>
+                            <x-forms.radio.color color="bg-green-300" name="color" id="green"/>
+                            <x-forms.radio.color color="bg-emerald-300" name="color" id="emerald"/>
+                            <x-forms.radio.color color="bg-teal-300" name="color" id="teal"/>
+                            <x-forms.radio.color color="bg-cyan-300" name="color" id="cyan"/>
+                            <x-forms.radio.color color="bg-sky-300" name="color" id="sky"/>
+                            <x-forms.radio.color color="bg-blue-300" name="color" id="blue"/>
+                            <x-forms.radio.color color="bg-indigo-300" name="color" id="indigo"/>
+                            <x-forms.radio.color color="bg-violet-300" name="color" id="violet"/>
+                            <x-forms.radio.color color="bg-purple-300" name="color" id="purple"/>
+                            <x-forms.radio.color color="bg-fuchsia-300" name="color" id="fuchsia"/>
+                            <x-forms.radio.color color="bg-pink-300" name="color" id="pink"/>
+                            <x-forms.radio.color color="bg-rose-300" name="color" id="rose"/>
                         </x-forms.radio.group>
 
                         <x-divider class="my-8 w-full"/>
