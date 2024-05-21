@@ -23,6 +23,20 @@
                 </x-nav.link-icon>
                 <span>Goals</span>
             </x-nav.link>
+            <x-nav.link :href="route('goals')" :active="request()->routeIs('scheduled')">
+                <x-nav.link-icon :active="request()->routeIs('scheduled')">
+                    calendar_clock
+                </x-nav.link-icon>
+                <span>Scheduled</span>
+            </x-nav.link>
+            <x-nav.link :href="route('goals')" :active="request()->routeIs('spending')">
+                <x-nav.link-icon :active="request()->routeIs('spending')">
+                    receipt_long
+                </x-nav.link-icon>
+                <span>All Spending</span>
+            </x-nav.link>
+        </ul>
+        <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
             <x-nav.link :href="route('accounts')" :active="request()->routeIs('accounts')">
                 <x-nav.link-icon :active="request()->routeIs('accounts')">
                     wallet
@@ -35,13 +49,11 @@
                 </x-nav.link-icon>
                 <span>Categories</span>
             </x-nav.link>
-        </ul>
-        <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
             <x-nav.link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                 <x-nav.link-icon :active="request()->routeIs('profile.edit')">
                     id_card
                 </x-nav.link-icon>
-                <span>Profile Settings</span>
+                <span>Profile</span>
             </x-nav.link>
         </ul>
     </div>

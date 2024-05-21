@@ -200,7 +200,7 @@
                                         'bg-neutral-300 dark:bg-neutral-400 dark:text-black': datePickerIsInRange(day),
                                         'text-gray-600 dark:text-gray-300 hover:bg-neutral-200 dark:hover:bg-neutral-700': !datePickerIsToday(day) && !datePickerIsSelectedDate(day) && !datePickerIsInRange(day)
                                     }"
-                                    class="flex items-center justify-center text-sm leading-none text-center rounded-full cursor-pointer h-7 w-7"></div>
+                                    class="flex items-center justify-center text-sm leading-none text-center rounded-lg cursor-pointer h-7 w-7"></div>
                             </div>
                         </template>
                     </div>

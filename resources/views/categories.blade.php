@@ -80,6 +80,41 @@
 
                 </x-panels.panel>
 
+                <x-modal name="category-image-change" :show="$errors->userDeletion->isNotEmpty()">
+                    <div class="p-6">
+
+                        <x-panels.heading>
+                            {{ __('Change Image Modal') }}
+                        </x-panels.heading>
+
+                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                            Make sure to select the right image for your category.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div
+                                class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
+                            ></div>
+                            <div
+                                class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
+                            ></div>
+                            <div
+                                class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
+                            ></div>
+                            <div
+                                class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
+                            ></div>
+                        </div>
+
+                        <div class="flex items-center justify-end ">
+                            <x-buttons.secondary x-on:click="$dispatch('close')">Cancel
+                            </x-buttons.secondary>
+                            <x-buttons.form>Apply</x-buttons.form>
+                        </div>
+
+                    </div>
+                </x-modal>
+
                 {{--                edit--}}
                 <x-panels.panel padding="4">
 
@@ -89,66 +124,10 @@
                         <div class=" flex items-start w-full
                     ">
 
-                            <div x-data="{ slideOverOpen: false }" class="relative z-50 w-auto h-auto mt-2">
+                            <x-category-image-change x-data=""
+                                                     x-on:click.prevent="$dispatch('open-modal', 'category-image-change')"
+                            />
 
-                                <x-category-image-change/>
-
-                                <template x-teleport="body">
-                                    <div x-show="slideOverOpen" @keydown.window.escape="slideOverOpen=false"
-                                         class="relative z-[99]">
-                                        <div x-show="slideOverOpen" x-transition.opacity.duration.200ms
-                                             @click="slideOverOpen = false"
-                                             class="fixed inset-0 bg-black bg-opacity-85"></div>
-                                        <div class="fixed inset-0 overflow-hidden">
-                                            <div class="absolute inset-0 overflow-hidden">
-                                                <div
-                                                    class="fixed inset-x-0 bottom-0 flex h-3/4 max-h-3/4">
-                                                    <div
-                                                        x-show="slideOverOpen"
-                                                        @click.away="slideOverOpen = false"
-                                                        x-transition:enter="transform transition ease-in duration-200"
-                                                        x-transition:enter-start="translate-y-full"
-                                                        x-transition:enter-end="translate-y-0"
-                                                        x-transition:leave="transform transition ease-in duration-200"
-                                                        x-transition:leave-start="translate-y-0"
-                                                        x-transition:leave-end="translate-y-full"
-                                                        class="w-screen max-h-full h-full">
-                                                        <div
-                                                            class="flex flex-col h-full py-5 overflow-y-scroll bg-white border-t shadow-lg border-neutral-100/70">
-                                                            <div class="px-4 sm:px-5">
-                                                                <div class="flex items-start justify-between pb-1">
-                                                                    <h2 class="text-base font-semibold leading-6 text-gray-900"
-                                                                        id="slide-over-title">Select Icon</h2>
-                                                                    <div class="flex items-center h-auto ml-3">
-                                                                        <button @click="slideOverOpen=false"
-                                                                                class="absolute top-0 right-0 z-30 flex items-center justify-center px-3 py-2 mt-4 mr-5 space-x-1 text-xs font-medium uppercase border rounded-md border-neutral-200 text-neutral-600 hover:bg-neutral-100">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                 fill="none" viewBox="0 0 24 24"
-                                                                                 stroke-width="1.5"
-                                                                                 stroke="currentColor" class="w-4 h-4">
-                                                                                <path stroke-linecap="round"
-                                                                                      stroke-linejoin="round"
-                                                                                      d="M6 18L18 6M6 6l12 12"></path>
-                                                                            </svg>
-                                                                            <span>Close</span>
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="relative flex-1 px-4 mt-5 sm:px-5">
-                                                                <div class="absolute inset-0 px-4 sm:px-5">
-                                                                    <div
-                                                                        class="relative grid grid-cols-8 gap-2 h-full border border-dashed border-gray-400 rounded-lg"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </template>
-                            </div>
 
                             <div class="flex items-center justify-between w-full">
                                 <div class="flex flex-col items-start justify-center w-full">
