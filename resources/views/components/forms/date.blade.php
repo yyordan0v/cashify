@@ -131,7 +131,7 @@
     " x-cloak>
     <div class="container px-4 py-2 mx-auto md:py-10">
         <div class="w-full mb-5">
-            <label for="datepicker" class="block mb-1 text-sm font-medium text-neutral-500">Select Date Range</label>
+            {{--            <label for="datepicker" class="block mb-1 text-sm font-medium text-neutral-500">Select Date Range</label>--}}
             <div class="relative w-[17rem]">
                 <input x-ref="datePickerInput" type="text" @click="datePickerOpen=!datePickerOpen"
                        :value="startDate && endDate ? `${startDate} - ${endDate}` : ''"
@@ -148,7 +148,7 @@
                     x-show="datePickerOpen"
                     x-transition
                     @click.away="datePickerOpen = false"
-                    class="absolute top-0 left-0 max-w-lg p-4 mt-12 antialiased shadow w-[17rem] rounded-xl border bg-white/20 border-neutral-300/50 dark:border-neutral-800/50 dark:bg-neutral-900/20 dark:shadow backdrop-blur-lg">
+                    class="absolute z-20 top-0 left-0 max-w-lg p-4 mt-12 antialiased shadow w-[17rem] rounded-xl border bg-white/95 border-neutral-300/50 dark:border-neutral-800/50 dark:bg-neutral-900/95 dark:shadow backdrop-blur-lg">
                     <div class="flex items-center justify-between mb-2">
                         <div>
                             <span x-text="datePickerMonthNames[datePickerMonth]"

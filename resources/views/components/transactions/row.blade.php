@@ -8,7 +8,7 @@
 ])
 
 <a {{ $attributes->merge() }}>
-    <li class="relative flex justify-between py-3 px-5 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 focus:bg-gray-200 dark:focus:bg-gray-700 transition-colors duration-75">
+    <li class="relative flex justify-between py-3 xl:px-5 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 focus:bg-gray-200 dark:focus:bg-gray-700 transition-colors duration-75">
         <div class="flex items-center">
             {{--        <x-transactions.icon type="{{ $type }}"/>--}}
             <x-category-image background="{{ $categoryBackground  }}" image="{{ $categoryImage }}" size="small"/>

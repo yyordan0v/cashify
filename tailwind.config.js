@@ -24,6 +24,9 @@ export default {
             padding: {
                 '5.5': '1.3625rem',
                 '6.5': '1.6125rem',
+            },
+            fontSize: {
+                '2xs': '0.625rem'
             }
         },
     },

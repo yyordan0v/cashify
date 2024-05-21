@@ -1,11 +1,13 @@
 @props([
     'color' => 'bg-gray-200',
     'image' => 'image',
-    'size' => 'base'
+    'size' => 'base',
+    'rounded' => 'full',
+    'margin' => 'mr-4'
 ])
 
 @php
-    $classes = 'mr-4 rounded-full ' . $color;
+    $classes = 'rounded-' . $rounded . ' ' . $color. ' ' . $margin;
 
     if ($size === 'base') {
         $classes .= ' p-6';
