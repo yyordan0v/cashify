@@ -5,7 +5,7 @@
 ])
 
 @php
-    $classes = 'snap-center inline-flex items-center justify-center w-full p-6 shadow-sm border-2 rounded-full cursor-pointer transition-all duration-200 border-transparent peer-checked:border-gray-600 dark:peer-checked:border-gray-50  opacity-90 hover:opacity-100 peer-checked:opacity-100 '.$color;
+    $classes = 'snap-center inline-flex items-center justify-center w-full p-6 shadow-sm border-2 rounded-full cursor-pointer transition-all duration-200 border-transparent peer-checked:border-gray-600 dark:peer-checked:border-gray-2https://gsap.com/00 peer-checked:p-5.5 opacity-90 hover:opacity-100 peer-checked:opacity-100 '.$color;
 @endphp
 
 <li>

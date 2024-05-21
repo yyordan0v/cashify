@@ -5,7 +5,7 @@
 >
     {{ $slot }}
 
-    <div x-ref="tabMarker" class="absolute left-0 z-10 w-1/2 h-full duration-300 ease-out" x-cloak>
+    <div x-ref="tabMarker" class="absolute left-0 z-10 h-full duration-300 ease-out w-1/{{ $count }}" x-cloak>
         <div class="w-full h-full bg-gray-200 dark:bg-gray-700 rounded-lg shadow-sm"></div>
     </div>
 </div>

@@ -25,7 +25,7 @@
 
                         <x-category-image image="shopping" color="bg-fuchsia-200"/>
 
-                        <div class="w-full pb-4">
+                        <div class="w-full pb-2">
                             <div class="flex items-center justify-between">
                                 <x-cards.title class="mt-0 mb-0">
                                     <span class="font-black">
@@ -217,7 +217,7 @@
 
                         <x-category-image color="bg-amber-200" image="gift"/>
 
-                        <div class="w-full pb-4">
+                        <div class="w-full pb-2">
                             <div class="flex items-center justify-between">
                                 <x-cards.title class="mt-0 mb-0">
                                     <span class="font-black">
@@ -277,7 +277,7 @@
 
                         <x-category-image color="bg-lime-200" current-image="dollar-coin"/>
 
-                        <div class="w-full pb-4">
+                        <div class="w-full pb-2">
                             <div class="flex items-center justify-between">
                                 <x-cards.title class="mt-0 mb-0">
                                         <span class="font-black">

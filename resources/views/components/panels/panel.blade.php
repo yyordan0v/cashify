@@ -9,6 +9,6 @@
 @endphp
 
 
-<div {{ $attributes->merge(['class' => $classes]) }}>
+<section {{ $attributes->merge(['class' => $classes]) }}>
     {{ $slot }}
-</div>
+</section>
