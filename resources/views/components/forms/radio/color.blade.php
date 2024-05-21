@@ -5,10 +5,10 @@
 ])
 
 @php
-    $classes = 'snap-center inline-flex items-center justify-center w-full p-6 shadow-sm border-2 rounded-full cursor-pointer transition-all duration-200 border-transparent peer-checked:border-gray-600 dark:peer-checked:border-gray-200 peer-checked:p-5.5 opacity-90 hover:opacity-100 peer-checked:opacity-100 '.$color;
+    $classes = 'snap-center inline-flex items-center justify-center w-full p-6 shadow-sm rounded-full cursor-pointer transition-all duration-200 opacity-90 hover:opacity-100 peer-checked:ring-2 dark:peer-checked:ring-4 peer-checked:ring-black dark:peer-checked:ring-white peer-checked:opacity-100 ' . $color;
 @endphp
 
-<li>
+<li class="my-1">
     <input type="radio" id="{{ $id }}" name="{{ $name }}" value="{{ $id }}" class="hidden peer" required
            @click="$dispatch('color-changed', { color: '{{ $color }}' })"/>
     <label for="{{ $id }}"

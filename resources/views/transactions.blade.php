@@ -58,72 +58,50 @@
                 </x-tabs.button-group>
 
                 <x-tabs.content-group class="mt-8">
-                    <x-tabs.content class="flex flex-wrap items-center justify-center gap-8">
-
-                        <div>
-                            <x-category-image margin="mr-0" rounded="xl"/>
-                            <x-cards.text class="text-2xs">Category 1</x-cards.text>
-                        </div>
-
-                        <div>
-                            <x-category-image margin="mr-0" rounded="xl"/>
-                            <x-cards.text class="text-2xs">Category 1</x-cards.text>
-                        </div>
-
-                        <div>
-                            <x-category-image margin="mr-0" rounded="xl"/>
-                            <x-cards.text class="text-2xs">Category 1</x-cards.text>
-                        </div>
-
-                        <div>
-                            <x-category-image margin="mr-0" rounded="xl"/>
-                            <x-cards.text class="text-2xs">Category 1</x-cards.text>
-                        </div>
-
-                        <div>
-                            <x-category-image margin="mr-0" rounded="xl"/>
-                            <x-cards.text class="text-2xs">Category 1</x-cards.text>
-                        </div>
-
-                        <div>
-                            <x-category-image margin="mr-0" rounded="xl"/>
-                            <x-cards.text class="text-2xs">Category 1</x-cards.text>
-                        </div>
-
-                        <div>
-                            <x-category-image margin="mr-0" rounded="xl"/>
-                            <x-cards.text class="text-2xs">Category 1</x-cards.text>
-                        </div>
-
-                        <div>
-                            <x-category-image margin="mr-0" rounded="xl"/>
-                            <x-cards.text class="text-2xs">Category 1</x-cards.text>
-                        </div>
-
+                    <x-tabs.content>
+                        <x-forms.radio.group type="category">
+                            <x-forms.radio.category id="category_1" color="bg-rose-200">
+                                Category Name
+                            </x-forms.radio.category>
+                            <x-forms.radio.category id="category_2" color="bg-rose-200">
+                                Category Name
+                            </x-forms.radio.category>
+                            <x-forms.radio.category id="category_3" color="bg-rose-200">
+                                Category Name
+                            </x-forms.radio.category>
+                            <x-forms.radio.category id="category_4" color="bg-rose-200">
+                                Category Name
+                            </x-forms.radio.category>
+                            <x-forms.radio.category id="category_5" color="bg-rose-200">
+                                Category Name
+                            </x-forms.radio.category>
+                            <x-forms.radio.category id="category_6" color="bg-rose-200">
+                                Category Name
+                            </x-forms.radio.category>
+                            <x-forms.radio.category id="category_7" color="bg-rose-200">
+                                Category Name
+                            </x-forms.radio.category>
+                            <x-forms.radio.category id="category_8" color="bg-rose-200">
+                                Category Name
+                            </x-forms.radio.category>
+                        </x-forms.radio.group>
                     </x-tabs.content>
 
-                    <x-tabs.content class="flex flex-wrap items-center justify-center gap-8">
-
-                        <div>
-                            <x-category-image margin="mr-0" rounded="xl"/>
-                            <x-cards.text class="text-2xs">Category 1</x-cards.text>
-                        </div>
-
-                        <div>
-                            <x-category-image margin="mr-0" rounded="xl"/>
-                            <x-cards.text class="text-2xs">Category 1</x-cards.text>
-                        </div>
-
-                        <div>
-                            <x-category-image margin="mr-0" rounded="xl"/>
-                            <x-cards.text class="text-2xs">Category 1</x-cards.text>
-                        </div>
-
-                        <div>
-                            <x-category-image margin="mr-0" rounded="xl"/>
-                            <x-cards.text class="text-2xs">Category 1</x-cards.text>
-                        </div>
-
+                    <x-tabs.content>
+                        <x-forms.radio.group type="category">
+                            <x-forms.radio.category id="category_10" color="bg-rose-200">
+                                Category Name
+                            </x-forms.radio.category>
+                            <x-forms.radio.category id="category_20" color="bg-rose-200">
+                                Category Name
+                            </x-forms.radio.category>
+                            <x-forms.radio.category id="category_30" color="bg-rose-200">
+                                Category Name
+                            </x-forms.radio.category>
+                            <x-forms.radio.category id="category_40" color="bg-rose-200">
+                                Category Name
+                            </x-forms.radio.category>
+                        </x-forms.radio.group>
                     </x-tabs.content>
                 </x-tabs.content-group>
             </x-tabs.body>
