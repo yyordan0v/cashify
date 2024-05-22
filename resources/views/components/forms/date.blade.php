@@ -159,20 +159,15 @@
                         <div>
                             <button @click="datePickerPreviousMonth()" type="button"
                                     class="inline-flex p-1 transition duration-100 ease-in-out rounded-full cursor-pointer focus:outline-none focus:shadow-outline hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <svg class="inline-flex w-6 h-6 text-gray-400" fill="none"
-                                     viewBox="0 0 24 24"
-                                     stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                          d="M15 19l-7-7 7-7"/>
-                                </svg>
+                                <x-icon class="text-gray-400">
+                                    chevron_left
+                                </x-icon>
                             </button>
                             <button @click="datePickerNextMonth()" type="button"
                                     class="inline-flex p-1 transition duration-100 ease-in-out rounded-full cursor-pointer focus:outline-none focus:shadow-outline hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <svg class="inline-flex w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24"
-                                     stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                          d="M9 5l7 7-7 7"/>
-                                </svg>
+                                <x-icon class="text-gray-400">
+                                    chevron_right
+                                </x-icon>
                             </button>
                         </div>
                     </div>

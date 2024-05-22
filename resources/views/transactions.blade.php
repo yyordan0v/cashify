@@ -1,6 +1,5 @@
 <x-app-layout>
-    <div class="grid grid-cols-1 xl:grid-cols-2 justify-center gap-4 mb-4 w-full">
-
+    <div class="w-full max-w-xl mx-auto">
         <x-modal name="filter-transactions" :show="$errors->userDeletion->isNotEmpty()">
             <div class="p-6">
 
@@ -29,7 +28,7 @@
                     ></div>
                 </div>
 
-                <div class="flex items-center justify-end ">
+                <div class="flex items-center justify-end gap-2">
                     <x-buttons.secondary x-on:click="$dispatch('close')">Cancel</x-buttons.secondary>
                     <x-buttons.form>Apply</x-buttons.form>
                 </div>
@@ -37,7 +36,7 @@
             </div>
         </x-modal>
 
-        <x-panels.panel padding="4" class="space-y-6">
+        <x-panels.panel padding="4" class="space-y-6 mb-4">
             <x-panels.heading class="mb-2">Add Transaction</x-panels.heading>
 
             <x-tabs.body class="flex flex-col gap-4">

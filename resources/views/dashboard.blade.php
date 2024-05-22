@@ -31,7 +31,7 @@
             <x-cards.text class="text-gray-950">$420</x-cards.text>
         </x-panels.panel>
 
-        <a href="{{ route('accounts') }}">
+        <a href="{{ route('accounts.index') }}">
             <x-buttons.card-button>
                 Accounts
             </x-buttons.card-button>

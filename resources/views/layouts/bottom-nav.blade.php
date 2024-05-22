@@ -36,7 +36,7 @@
                            description="Goals">
             savings
         </x-nav.bottom-link>
-        <x-nav.bottom-link href="{{ route('accounts') }}" :active="request()->routeIs('accounts')"
+        <x-nav.bottom-link href="{{ route('accounts.index') }}" :active="request()->routeIs('accounts')"
                            description="Accounts">
             wallet
         </x-nav.bottom-link>

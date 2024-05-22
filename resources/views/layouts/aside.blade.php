@@ -37,7 +37,7 @@
             </x-nav.link>
         </ul>
         <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
-            <x-nav.link :href="route('accounts')" :active="request()->routeIs('accounts')">
+            <x-nav.link :href="route('accounts.index')" :active="request()->routeIs('accounts')">
                 <x-nav.link-icon :active="request()->routeIs('accounts')">
                     wallet
                 </x-nav.link-icon>
