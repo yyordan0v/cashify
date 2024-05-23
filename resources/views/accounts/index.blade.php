@@ -5,7 +5,6 @@
             @include('accounts.show', ['account' => $account])
         @endforeach
 
-
         {{--        transfer--}}
         @if(false)
             <x-panels.panel class="flex flex-col items-start space-y-6">
@@ -55,6 +54,8 @@
 
             </x-panels.panel>
         @endif
+
+
 
         {{-- Add Account Button --}}
         <x-buttons.card-button hx-target="this"

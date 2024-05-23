@@ -1,38 +1,53 @@
 <x-app-layout>
     <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 mb-4">
 
-        <x-panels.panel>
-            <x-cards.icon>
-                wallet
-            </x-cards.icon>
+        <x-panels.panel padding="4">
+            <div class="flex items-start flex-col">
 
-            <x-cards.title>Bank</x-cards.title>
-            <x-divider class="my-6"/>
-            <x-cards.text class="text-gray-950">$420</x-cards.text>
+                <div class="flex items-center justify-between w-full">
+                    <x-cards.title class="text-base mt-0 mb-0">Bank</x-cards.title>
+
+                    <div class=" block w-4 h-4 rounded-full bg-fuchsia-300
+                    ">
+                    </div>
+                </div>
+                <x-cards.title class="mt-4 mb-0">$10,420 USD</x-cards.title>
+                <x-cards.text class="text-gray-950 text-sm">200 transactions</x-cards.text>
+            </div>
         </x-panels.panel>
 
-        <x-panels.panel>
-            <x-cards.icon>
-                wallet
-            </x-cards.icon>
+        <x-panels.panel padding="4">
+            <div class="flex items-start flex-col">
 
-            <x-cards.title>Bank</x-cards.title>
-            <x-divider class="my-6"/>
-            <x-cards.text class="text-gray-950">$420</x-cards.text>
+                <div class="flex items-center justify-between w-full">
+                    <x-cards.title class="text-base mt-0 mb-0">Bank</x-cards.title>
+
+                    <div class=" block w-4 h-4 rounded-full bg-amber-300
+                    ">
+                    </div>
+                </div>
+                <x-cards.title class="mt-4 mb-0">$10,420 USD</x-cards.title>
+                <x-cards.text class="text-gray-950 text-sm">200 transactions</x-cards.text>
+            </div>
         </x-panels.panel>
 
-        <x-panels.panel>
-            <x-cards.icon>
-                wallet
-            </x-cards.icon>
+        <x-panels.panel padding="4">
+            <div class="flex items-start flex-col">
 
-            <x-cards.title>Bank</x-cards.title>
-            <x-divider class="my-6"/>
-            <x-cards.text class="text-gray-950">$420</x-cards.text>
+                <div class="flex items-center justify-between w-full">
+                    <x-cards.title class="text-base mt-0 mb-0">Bank</x-cards.title>
+
+                    <div class=" block w-4 h-4 rounded-full bg-lime-300
+                    ">
+                    </div>
+                </div>
+                <x-cards.title class="mt-4 mb-0">$10,420 USD</x-cards.title>
+                <x-cards.text class="text-gray-950 text-sm">200 transactions</x-cards.text>
+            </div>
         </x-panels.panel>
 
         <a href="{{ route('accounts.index') }}">
-            <x-buttons.card-button>
+            <x-buttons.card-button padding="4">
                 Accounts
             </x-buttons.card-button>
         </a>
