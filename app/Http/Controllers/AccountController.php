@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 class AccountController extends Controller
@@ -89,23 +90,16 @@ class AccountController extends Controller
         $input = $request->all();
         $input['balance'] = str_replace(',', '.', $input['balance']);
 
-        $validator = Validator::make($input, [
+        $attributes = $request->merge($input)->validateWithBag('editAccount', [
             'name' => ['required', 'string', 'max:255'],
             'balance' => ['required', 'numeric', 'min:0'],
         ]);
 
-        if ($validator->fails()) {
-            return response()
-                ->view('accounts.edit', [
-                    'errors' => $validator->errors(),
-                    'oldInput' => $request->all(),
-                ]);
-        }
+        $account = Account::findOrFail($account->id);
 
-        $attributes = $validator->validated();
         $account->update($attributes);
 
-        return response()->view('accounts.show', compact('account'));
+        return Redirect::route('accounts.index')->with('status', 'profile-updated');
     }
 
     /**

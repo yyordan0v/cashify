@@ -31,7 +31,8 @@
                         </x-icon>
                         Transfer Balance
                     </x-buttons.action>
-                    <x-buttons.action hx-get="{{ route('accounts.edit', $account) }}">
+                    <x-buttons.action x-data=""
+                                      x-on:click.prevent="$dispatch('open-modal', 'edit-{{ $account->id }}')">
                         <x-icon style="font-size: 20px">
                             edit
                         </x-icon>
@@ -73,7 +74,8 @@
             </x-icon>
             Transfer Balance
         </x-buttons.action>
-        <x-buttons.action hx-get="{{ route('accounts.edit', $account->id) }}"
+        <x-buttons.action x-data=""
+                          x-on:click.prevent="$dispatch('open-modal', 'edit-{{ $account->id }}')"
         >
             <x-icon>
                 edit

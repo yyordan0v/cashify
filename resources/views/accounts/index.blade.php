@@ -5,6 +5,14 @@
             @include('accounts.show', ['account' => $account])
         @endforeach
 
+        @foreach($accounts as $account)
+            <x-modal name="edit-{{  $account->id }}" :show="$errors->editAccount->isNotEmpty()">
+                <div class="p-6">
+                    @include('accounts.edit', ['account' => $account])
+                </div>
+            </x-modal>
+        @endforeach
+
         {{--        transfer--}}
         @if(false)
             <x-panels.panel class="flex flex-col items-start space-y-6">
