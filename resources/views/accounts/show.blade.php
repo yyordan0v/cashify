@@ -28,6 +28,7 @@
                         </x-icon>
                         Transfer Balance
                     </x-buttons.action>
+                    
                     <a href="{{ route('accounts.edit', $account->id) }}">
                         <x-buttons.action>
                             <x-icon style="font-size: 20px">
@@ -36,20 +37,15 @@
                             Edit
                         </x-buttons.action>
                     </a>
-                    <form hx-delete="{{route('accounts.destroy', $account->id)}}"
-                          hx-target="closest section"
-                          hx-swap="delete"
-                          hx-confirm="Are you sure you want to delete this account?">
-                        @csrf
-                        <x-buttons.action class="text-red-600"
-                                          type="submit">
-                            <x-icon style="font-size: 20px">
-                                delete
-                            </x-icon>
-                            Delete
-                        </x-buttons.action>
-                    </form>
 
+                    <x-buttons.action class="text-red-600"
+                                      x-data=""
+                                      x-on:click.prevent="$dispatch('open-modal', 'confirm-account-{{ $account->id }}-deletion')">
+                        <x-icon style="font-size: 20px">
+                            delete
+                        </x-icon>
+                        Delete
+                    </x-buttons.action>
                 </x-dropdown.body>
             </x-dropdown.menu>
         </div>
@@ -81,18 +77,38 @@
                 Edit
             </x-buttons.action>
         </a>
-        <form hx-delete="{{route('accounts.destroy', $account->id)}}"
-              hx-target="closest section"
-              hx-swap="delete"
-              hx-confirm="Are you sure you want to delete this account?">
-            @csrf
-            <x-buttons.action class="text-red-600"
-                              type="submit">
-                <x-icon>
-                    delete
-                </x-icon>
-                Delete
-            </x-buttons.action>
-        </form>
+        <x-buttons.action class="text-red-600"
+                          x-data=""
+                          x-on:click.prevent="$dispatch('open-modal', 'confirm-account-{{ $account->id }}-deletion')">
+            <x-icon>
+                delete
+            </x-icon>
+            Delete
+        </x-buttons.action>
     </div>
 </x-panels.panel>
+
+<x-modal name="confirm-account-{{ $account->id }}-deletion">
+    <form method="post" action="{{ route('accounts.destroy', $account->id) }}" class="p-6">
+        @csrf
+        @method('DELETE')
+
+        <x-panels.heading>
+            {{ __('Are you sure you want to delete your account?') }}
+        </x-panels.heading>
+
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
+        </p>
+
+        <div class="mt-6 flex flex-col md:flex-row items-center justify-end w-full gap-2">
+            <x-buttons.secondary x-on:click="$dispatch('close')">
+                {{ __('Cancel') }}
+            </x-buttons.secondary>
+
+            <x-buttons.danger>
+                {{ __('Delete Account') }}
+            </x-buttons.danger>
+        </div>
+    </form>
+</x-modal>

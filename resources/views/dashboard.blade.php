@@ -1,50 +1,23 @@
 <x-app-layout>
     <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 mb-4">
 
-        <x-panels.panel padding="4">
-            <div class="flex items-start flex-col">
+        @foreach($accounts as $account)
+            <x-panels.panel padding="4">
+                <div class="flex items-start flex-col">
 
-                <div class="flex items-center justify-between w-full">
-                    <x-cards.title class="text-base mt-0 mb-0">Bank</x-cards.title>
+                    <div class="flex items-center justify-between w-full">
+                        <x-cards.title class="text-base mt-0 mb-0">{{ $account->name }}</x-cards.title>
 
-                    <div class=" block w-4 h-4 rounded-full bg-fuchsia-300
-                    ">
+                        <div class="block w-4 h-4 rounded-full {{ $account->color_class }}">
+                        </div>
                     </div>
+                    <x-cards.title class="mt-4 mb-0">
+                        {{ Number::currency($account->balance, in: 'BGN', locale: 'bg') }}
+                    </x-cards.title>
+                    <x-cards.text class="text-gray-950 text-sm">420 transaction</x-cards.text>
                 </div>
-                <x-cards.title class="mt-4 mb-0">$10,420 USD</x-cards.title>
-                <x-cards.text class="text-gray-950 text-sm">200 transactions</x-cards.text>
-            </div>
-        </x-panels.panel>
-
-        <x-panels.panel padding="4">
-            <div class="flex items-start flex-col">
-
-                <div class="flex items-center justify-between w-full">
-                    <x-cards.title class="text-base mt-0 mb-0">Bank</x-cards.title>
-
-                    <div class=" block w-4 h-4 rounded-full bg-amber-300
-                    ">
-                    </div>
-                </div>
-                <x-cards.title class="mt-4 mb-0">$10,420 USD</x-cards.title>
-                <x-cards.text class="text-gray-950 text-sm">200 transactions</x-cards.text>
-            </div>
-        </x-panels.panel>
-
-        <x-panels.panel padding="4">
-            <div class="flex items-start flex-col">
-
-                <div class="flex items-center justify-between w-full">
-                    <x-cards.title class="text-base mt-0 mb-0">Bank</x-cards.title>
-
-                    <div class=" block w-4 h-4 rounded-full bg-lime-300
-                    ">
-                    </div>
-                </div>
-                <x-cards.title class="mt-4 mb-0">$10,420 USD</x-cards.title>
-                <x-cards.text class="text-gray-950 text-sm">200 transactions</x-cards.text>
-            </div>
-        </x-panels.panel>
+            </x-panels.panel>
+        @endforeach
 
         <a href="{{ route('accounts.create') }}">
             <x-buttons.card-button padding="4">Account</x-buttons.card-button>

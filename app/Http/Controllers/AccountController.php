@@ -114,13 +114,9 @@ class AccountController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, Account $account)
+    public function destroy(Account $account): RedirectResponse
     {
         $account->delete();
-
-        if ($request->header('HX-Request')) {
-            return '';
-        }
 
         return Redirect::route('accounts.index');
     }

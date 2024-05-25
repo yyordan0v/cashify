@@ -16,6 +16,6 @@
     <x-icon {{ $attributes->merge(['class' => $iconClasses]) }}>
         {{ $slot }}
     </x-icon>
-    <span class="text-black/75 dark:text-white/75 text-xs mt-1">{{ $description }}</span>
+    <span class="text-black/75 dark:text-white/75 text-2xs mt-1">{{ $description }}</span>
     <span class="sr-only">{{ $description }}</span>
 </a>
