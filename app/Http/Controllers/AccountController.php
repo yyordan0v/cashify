@@ -45,17 +45,7 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-
-        if (isset($input['balance'])) {
-            $input['balance'] = str_replace(',', '.', $input['balance']);
-        }
-
-        $attributes = Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'balance' => ['required', 'numeric', 'min:0'],
-            'color' => ['required', 'string', Rule::in($this->availableColors)],
-        ])->validate();
+        $attributes = $this->getAttributes($request);
 
         Auth::user()->accounts()->create($attributes);
 
@@ -75,16 +65,8 @@ class AccountController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request, Account $account)
+    public function edit(Account $account)
     {
-        if ($request->header('HX-Request')) {
-            return response()->view('accounts.edit', [
-                'account' => $account,
-                'availableColors' => $this->availableColors,
-                'selectedColor' => $account->color,
-            ]);
-        }
-
         return view('accounts.edit', [
             'account' => $account,
             'availableColors' => $this->availableColors,
@@ -97,29 +79,10 @@ class AccountController extends Controller
      */
     public function update(Request $request, Account $account)
     {
-        $input = $request->all();
-        $input['balance'] = str_replace(',', '.', $input['balance']);
-
-        $validator = Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'balance' => ['required', 'numeric', 'min:0'],
-            'color' => ['required', 'string', Rule::in($this->availableColors)],
-        ]);
-
-        if ($validator->fails()) {
-            return response()
-                ->view('accounts.edit', [
-                    'account' => $account,
-                    'errors' => $validator->errors(),
-                    'oldInput' => $request->all(),
-                    'availableColors' => $this->availableColors,
-                    'selectedColor' => $request->input('color', Account::getDefaultColor()),
-                ]);
-        }
+        $attributes = $this->getAttributes($request);
 
         $account = Account::findOrFail($account->id);
 
-        $attributes = $validator->validated();
         $account->update($attributes);
 
         return redirect()->route('accounts.index');
@@ -131,11 +94,30 @@ class AccountController extends Controller
     public function destroy(Request $request, Account $account)
     {
         $account->delete();
-        
+
         if ($request->header('HX-Request')) {
             return '';
         }
 
         return redirect()->route('accounts.index');
+    }
+
+    /**
+     * @param  Request  $request
+     * @return array
+     */
+    public function getAttributes(Request $request): array
+    {
+        $input = $request->all();
+
+        if (isset($input['balance'])) {
+            $input['balance'] = str_replace(',', '.', $input['balance']);
+        }
+
+        return Validator::make($input, [
+            'name' => ['required', 'string', 'max:255'],
+            'balance' => ['required', 'numeric', 'min:0'],
+            'color' => ['required', 'string', Rule::in($this->availableColors)],
+        ])->validate();
     }
 }

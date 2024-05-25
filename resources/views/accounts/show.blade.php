@@ -1,8 +1,6 @@
 @props(['account'])
 
-<x-panels.panel padding="4" class="xl:p-8 col-span-2 sm:col-span-1"
-                hx-target="this"
-                hx-swap="outerHTML">
+<x-panels.panel padding="4" class="xl:p-8 col-span-2 sm:col-span-1">
     <div class="flex items-start flex-col">
         <div class="hidden xl:flex items-center justify-between w-full">
             <x-cards.title class="text-base mt-0 mb-0">
@@ -30,16 +28,14 @@
                         </x-icon>
                         Transfer Balance
                     </x-buttons.action>
-                    <x-buttons.action
-                        hx-get="{{ route('accounts.edit', $account->id) }}"
-                        hx-push-url="true"
-                        hx-target="body"
-                        hx-swap="outerHTML">
-                        <x-icon style="font-size: 20px">
-                            edit
-                        </x-icon>
-                        Edit
-                    </x-buttons.action>
+                    <a href="{{ route('accounts.edit', $account->id) }}">
+                        <x-buttons.action>
+                            <x-icon style="font-size: 20px">
+                                edit
+                            </x-icon>
+                            Edit
+                        </x-buttons.action>
+                    </a>
                     <form hx-delete="{{route('accounts.destroy', $account->id)}}"
                           hx-target="closest section"
                           hx-swap="delete"
@@ -76,17 +72,15 @@
             </x-icon>
             Transfer Balance
         </x-buttons.action>
+        <a href="{{ route('accounts.edit', $account->id) }}">
 
-        <x-buttons.action
-            hx-get="{{ route('accounts.edit', $account->id) }}"
-            hx-push-url="true"
-            hx-target="body"
-            hx-swap="outerHTML">
-            <x-icon>
-                edit
-            </x-icon>
-            Edit
-        </x-buttons.action>
+            <x-buttons.action>
+                <x-icon style="font-size: 20px">
+                    edit
+                </x-icon>
+                Edit
+            </x-buttons.action>
+        </a>
         <form hx-delete="{{route('accounts.destroy', $account->id)}}"
               hx-target="closest section"
               hx-swap="delete"
