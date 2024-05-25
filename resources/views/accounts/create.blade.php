@@ -1,8 +1,6 @@
 <x-app-layout>
-    <form hx-post="{{ route('accounts.store') }}"
-          hx-target="body"
-          hx-swap="outerHTML"
-          hx-push-url="true"
+    <form action="{{ route('accounts.store') }}"
+          method="POST"
           class="col-span-2">
         @csrf
 
@@ -37,12 +35,9 @@
             </x-forms.radio.group>
 
             <x-forms.form-actions>
-                <x-buttons.secondary hx-get="{{ route('accounts.index') }}"
-                                     hx-push-url="true"
-                                     hx-target="body"
-                                     hx-swap="outerHTML">
-                    Cancel
-                </x-buttons.secondary>
+                <a href="{{ route('accounts.index') }}">
+                    <x-buttons.secondary>Cancel</x-buttons.secondary>
+                </a>
 
                 <x-buttons.form>
                     Add Account

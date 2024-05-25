@@ -56,13 +56,9 @@
         @endif
 
         {{-- Add Account Button --}}
-        <x-buttons.card-button hx-target="body"
-                               hx-swap="outerHTML"
-                               hx-get="{{ route('accounts.create') }}"
-                               hx-push-url="true"
-                               class="col-span-2">
-            Account
-        </x-buttons.card-button>
+        <a href="{{ route('accounts.create') }}" class="col-span-2">
+            <x-buttons.card-button>Account</x-buttons.card-button>
+        </a>
     </div>
 </x-app-layout>
 

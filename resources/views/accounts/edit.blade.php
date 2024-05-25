@@ -36,13 +36,9 @@
             </x-forms.radio.group>
 
             <x-forms.form-actions>
-                <x-buttons.secondary
-                    hx-get="{{ route('accounts.index') }}"
-                    hx-push-url="true"
-                    hx-target="body"
-                    hx-swap="outerHTML">
-                    Cancel
-                </x-buttons.secondary>
+                <a href="{{ route('accounts.index') }}">
+                    <x-buttons.secondary>Cancel</x-buttons.secondary>
+                </a>
 
                 <x-buttons.form>
                     Save
