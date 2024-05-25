@@ -43,8 +43,7 @@ Route::middleware('auth')->group(function () {
 
     //accounts
     Route::get('/accounts', [AccountController::class, 'index'])
-        ->name('accounts.index')
-        ->can('view', 'account');
+        ->name('accounts.index');
 
     Route::get('/accounts/create', [AccountController::class, 'create'])
         ->name('accounts.create');
