@@ -67,9 +67,9 @@ class AccountController extends Controller
         }
 
         $attributes = $validator->validated();
-        $account = Auth::user()->accounts()->create($attributes);
+        Auth::user()->accounts()->create($attributes);
 
-        return response()->view('accounts.show', compact('account'));
+        return redirect()->route('accounts.index');
     }
 
     /**

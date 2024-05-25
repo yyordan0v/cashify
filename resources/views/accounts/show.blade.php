@@ -1,8 +1,8 @@
 @props(['account'])
 
-<x-panels.panel padding="4" class="lg:p-8"
+<x-panels.panel padding="4" class="xl:p-8 col-span-2 sm:col-span-1"
                 hx-target="this"
-                hx-swap="outerHTML" class="col-span-1">
+                hx-swap="outerHTML">
     <div class="flex items-start flex-col">
         <div class="hidden xl:flex items-center justify-between w-full">
             <x-cards.title class="text-base mt-0 mb-0">
@@ -15,7 +15,7 @@
             <div class="flex items-center">
                 <div class=" block w-4 h-4 rounded-full mr-4  {{ $account->color_class }}"></div>
 
-                <x-cards.title class="text-base mt-0 mb-0">Bank</x-cards.title>
+                <x-cards.title class="text-base mt-0 mb-0">{{ $account->name }}</x-cards.title>
             </div>
 
             <x-dropdown.menu>
@@ -32,6 +32,7 @@
                     </x-buttons.action>
                     <x-buttons.action
                         hx-get="{{ route('accounts.edit', $account->id) }}"
+                        hx-push-url="true"
                         hx-target="body">
                         <x-icon style="font-size: 20px">
                             edit
@@ -45,7 +46,8 @@
                         @csrf
 
                         <x-buttons.action class="text-red-600"
-                                          type="submit">
+                                          x-data=""
+                                          x-on:click.prevent="$dispatch('open-modal', 'confirm-account-deletion-{{ $account->id }}')">
                             <x-icon style="font-size: 20px">
                                 delete
                             </x-icon>
@@ -78,6 +80,7 @@
 
         <x-buttons.action
             hx-get="{{ route('accounts.edit', $account->id) }}"
+            hx-push-url="true"
             hx-target="body">
             <x-icon>
                 edit

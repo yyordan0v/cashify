@@ -6,7 +6,6 @@ trait HasColor
 {
     protected static array $availableColors = [
         'gray',
-        'red',
         'orange',
         'amber',
         'yellow',

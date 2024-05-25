@@ -55,7 +55,7 @@
                                 </x-dropdown.menu>
 
                                 <div
-                                    class="hidden lg:flex items-center gap-2 text-gray-600 dark:text-gray-400 text-sm">
+                                    class="hidden xl:flex items-center gap-2 text-gray-600 dark:text-gray-400 text-sm">
                                     <x-buttons.action :href="route('categories')">
                                         <x-icon>
                                             edit

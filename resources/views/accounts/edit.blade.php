@@ -1,5 +1,6 @@
 <x-app-layout>
-    <form method="POST" action="{{ route('accounts.update', $account) }}" class="col-span-2">
+    <form method="POST" action="{{ route('accounts.update', $account) }}"
+          class="col-span-2">
         @csrf
         @method('PATCH')
 
@@ -10,7 +11,7 @@
                 <x-forms.label for="name" :value="__('Name')"/>
                 <x-forms.input id="name" name="name" type="text"
                                :value="old('name', $oldInput['name'] ?? $account->name)"
-                               autofocus autocomplete="name"
+                               autofocus
                                class="w-full"/>
                 <x-forms.error :messages="$errors->get('name')"/>
             </div>
@@ -37,6 +38,7 @@
             <x-forms.form-actions>
                 <x-buttons.secondary
                     hx-get="{{ route('accounts.index') }}"
+                    hx-push-url="true"
                     hx-target="body">
                     Cancel
                 </x-buttons.secondary>

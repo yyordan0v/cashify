@@ -46,11 +46,12 @@
             </div>
         </x-panels.panel>
 
-        <a href="{{ route('accounts.index') }}">
-            <x-buttons.card-button padding="4">
-                Accounts
-            </x-buttons.card-button>
-        </a>
+        <x-buttons.card-button hx-target="body"
+                               hx-get="{{ route('accounts.create') }}"
+                               hx-push-url="true"
+                               padding="4">
+            Account
+        </x-buttons.card-button>
 
     </div>
 
