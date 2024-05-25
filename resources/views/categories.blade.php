@@ -156,26 +156,7 @@
                             </div>
                         </div>
 
-                        <x-forms.radio.group type="color" class="pl-24">
-                            <x-forms.radio.color color="bg-gray-300" name="color" id="gray"/>
-                            <x-forms.radio.color color="bg-red-300" name="color" id="red"/>
-                            <x-forms.radio.color color="bg-orange-300" name="color" id="orange"/>
-                            <x-forms.radio.color color="bg-amber-300" name="color" id="amber"/>
-                            <x-forms.radio.color color="bg-yellow-300" name="color" id="yellow"/>
-                            <x-forms.radio.color color="bg-lime-300" name="color" id="lime"/>
-                            <x-forms.radio.color color="bg-green-300" name="color" id="green"/>
-                            <x-forms.radio.color color="bg-emerald-300" name="color" id="emerald"/>
-                            <x-forms.radio.color color="bg-teal-300" name="color" id="teal"/>
-                            <x-forms.radio.color color="bg-cyan-300" name="color" id="cyan"/>
-                            <x-forms.radio.color color="bg-sky-300" name="color" id="sky"/>
-                            <x-forms.radio.color color="bg-blue-300" name="color" id="blue"/>
-                            <x-forms.radio.color color="bg-indigo-300" name="color" id="indigo"/>
-                            <x-forms.radio.color color="bg-violet-300" name="color" id="violet"/>
-                            <x-forms.radio.color color="bg-purple-300" name="color" id="purple"/>
-                            <x-forms.radio.color color="bg-fuchsia-300" name="color" id="fuchsia"/>
-                            <x-forms.radio.color color="bg-pink-300" name="color" id="pink"/>
-                            <x-forms.radio.color color="bg-rose-300" name="color" id="rose"/>
-                        </x-forms.radio.group>
+                        <x-forms.radio.group type="color" class="pl-24"/>
 
                         <x-divider class="my-8 w-full"/>
 

@@ -5,11 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class AccountController extends Controller
 {
+    protected array $availableColors;
+    protected string $selectedColor;
+
+    public function __construct()
+    {
+        $this->availableColors = Account::getAvailableColors();
+        $this->selectedColor = Account::getDefaultColor();
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -25,7 +34,11 @@ class AccountController extends Controller
      */
     public function create()
     {
-        return view('accounts.create', ['validated' => true]);
+        return view('accounts.create', [
+            'validated' => true,
+            'availableColors' => $this->availableColors,
+            'selectedColor' => $this->selectedColor,
+        ]);
     }
 
     /**
@@ -39,6 +52,7 @@ class AccountController extends Controller
         $validator = Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'balance' => ['required', 'numeric', 'min:0'],
+            'color' => ['required', 'string', Rule::in($this->availableColors)],
         ]);
 
         if ($validator->fails()) {
@@ -47,6 +61,8 @@ class AccountController extends Controller
                     'errors' => $validator->errors(),
                     'oldInput' => $request->all(),
                     'validated' => false,
+                    'availableColors' => $this->availableColors,
+                    'selectedColor' => $request->input('color', Account::getDefaultColor()),
                 ]);
         }
 
@@ -74,11 +90,15 @@ class AccountController extends Controller
         if ($request->header('HX-Request')) {
             return response()->view('accounts.edit', [
                 'account' => $account,
+                'availableColors' => $this->availableColors,
+                'selectedColor' => $account->color,
             ]);
         }
 
         return view('accounts.edit', [
-            '$account' => $account,
+            'account' => $account,
+            'availableColors' => $this->availableColors,
+            'selectedColor' => $account->color,
         ]);
     }
 
@@ -90,16 +110,29 @@ class AccountController extends Controller
         $input = $request->all();
         $input['balance'] = str_replace(',', '.', $input['balance']);
 
-        $attributes = $request->merge($input)->validateWithBag('editAccount', [
+        $validator = Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'balance' => ['required', 'numeric', 'min:0'],
+            'color' => ['required', 'string', Rule::in($this->availableColors)],
         ]);
+
+        if ($validator->fails()) {
+            return response()
+                ->view('accounts.edit', [
+                    'account' => $account,
+                    'errors' => $validator->errors(),
+                    'oldInput' => $request->all(),
+                    'availableColors' => $this->availableColors,
+                    'selectedColor' => $request->input('color', Account::getDefaultColor()),
+                ]);
+        }
 
         $account = Account::findOrFail($account->id);
 
+        $attributes = $validator->validated();
         $account->update($attributes);
 
-        return Redirect::route('accounts.index')->with('status', 'profile-updated');
+        return redirect()->route('accounts.index');
     }
 
     /**
@@ -107,11 +140,11 @@ class AccountController extends Controller
      */
     public function destroy(Request $request, Account $account)
     {
-        $account->delete();
+        $request->validateWithBag('accountDeletion', [
+            'password' => ['required', 'current_password'],
+        ]);
 
-        if ($request->header('HX-Request')) {
-            return '';
-        }
+        $account->delete();
 
         return redirect()->route('accounts.index');
     }

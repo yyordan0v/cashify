@@ -1,10 +1,10 @@
+import './htmx.min.js';
 import './bootstrap';
+import Alpine from 'alpinejs';
 
 import.meta.glob([
     '../images/**'
 ]);
-
-import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;
 

@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->decimal('balance', 15, 2)->default(0);
+            $table->string('color')->default('gray');
             $table->timestamps();
         });
     }

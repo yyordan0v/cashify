@@ -1,9 +1,9 @@
 <form hx-post="{{ route('accounts.store') }}"
       hx-target="this"
       hx-swap="outerHTML"
-      class="col-span-2"
->
+      class="col-span-2">
     @csrf
+    
     <x-panels.panel class="flex flex-col items-start justify-start w-full space-y-6">
         <x-panels.heading>Add Account</x-panels.heading>
 
@@ -23,6 +23,16 @@
             <x-forms.error :messages="$errors->get('balance')"/>
         </div>
 
+        <x-forms.radio.group type="color">
+            @foreach($availableColors as $color)
+                <x-forms.radio.color
+                    name="color"
+                    color="{{ $color }}"
+                    id="{{ $color }}"
+                    :checked="$color === $selectedColor"/>
+            @endforeach
+        </x-forms.radio.group>
+
         <x-divider class="my-8 w-full"/>
 
         <div
@@ -37,15 +47,13 @@
             </x-buttons.form>
         </div>
     </x-panels.panel>
-
 </form>
 
 @if($validated)
     <x-buttons.card-button hx-target="this"
                            hx-swap="outerHTML"
                            hx-get="{{ route('accounts.create') }}"
-                           class="col-span-2"
-    >
+                           class="col-span-2">
         Account
     </x-buttons.card-button>
 @endif

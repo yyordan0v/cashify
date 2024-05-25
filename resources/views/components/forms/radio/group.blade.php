@@ -12,7 +12,7 @@
          class="w-full">
         <ul
             :class="{ '': isTouch, 'flex-wrap': !isTouch }"
-            {{ $attributes->merge(['class' => 'flex items-center gap-4 mt-8 whitespace-nowrap overflow-auto touch-pan-x no-scrollbar snap-x']) }}>
+            {{ $attributes->merge(['class' => 'flex items-center gap-4 mt-8 px-2 whitespace-nowrap overflow-auto touch-pan-x no-scrollbar snap-x']) }}>
             {{ $slot }}
         </ul>
     </div>
