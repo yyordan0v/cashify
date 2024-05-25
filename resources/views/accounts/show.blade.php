@@ -62,7 +62,7 @@
             {{ Number::currency($account->balance, in: 'BGN', locale: 'bg') }}
         </x-cards.title>
 
-        <x-cards.text class="text-gray-950 text-sm">200 transactions</x-cards.text>
+        <x-cards.text class="text-gray-950 text-sm">420 transactions</x-cards.text>
     </div>
 
     <x-divider class="hidden xl:block"/>
