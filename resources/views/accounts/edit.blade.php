@@ -39,7 +39,8 @@
                 <x-buttons.secondary
                     hx-get="{{ route('accounts.index') }}"
                     hx-push-url="true"
-                    hx-target="body">
+                    hx-target="body"
+                    hx-swap="outerHTML">
                     Cancel
                 </x-buttons.secondary>
 

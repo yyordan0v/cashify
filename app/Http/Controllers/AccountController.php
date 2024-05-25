@@ -35,7 +35,6 @@ class AccountController extends Controller
     public function create()
     {
         return view('accounts.create', [
-            'validated' => true,
             'availableColors' => $this->availableColors,
             'selectedColor' => $this->selectedColor,
         ]);
@@ -47,26 +46,17 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $input['balance'] = str_replace(',', '.', $input['balance']);
 
-        $validator = Validator::make($input, [
+        if (isset($input['balance'])) {
+            $input['balance'] = str_replace(',', '.', $input['balance']);
+        }
+
+        $attributes = Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'balance' => ['required', 'numeric', 'min:0'],
             'color' => ['required', 'string', Rule::in($this->availableColors)],
-        ]);
+        ])->validate();
 
-        if ($validator->fails()) {
-            return response()
-                ->view('accounts.create', [
-                    'errors' => $validator->errors(),
-                    'oldInput' => $request->all(),
-                    'validated' => false,
-                    'availableColors' => $this->availableColors,
-                    'selectedColor' => $request->input('color', Account::getDefaultColor()),
-                ]);
-        }
-
-        $attributes = $validator->validated();
         Auth::user()->accounts()->create($attributes);
 
         return redirect()->route('accounts.index');
@@ -140,11 +130,11 @@ class AccountController extends Controller
      */
     public function destroy(Request $request, Account $account)
     {
-        $request->validateWithBag('accountDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
-
         $account->delete();
+        
+        if ($request->header('HX-Request')) {
+            return '';
+        }
 
         return redirect()->route('accounts.index');
     }

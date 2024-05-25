@@ -47,6 +47,7 @@
         </x-panels.panel>
 
         <x-buttons.card-button hx-target="body"
+                               hx-swap="outerHTML"
                                hx-get="{{ route('accounts.create') }}"
                                hx-push-url="true"
                                padding="4">

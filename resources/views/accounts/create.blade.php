@@ -1,6 +1,7 @@
 <x-app-layout>
     <form hx-post="{{ route('accounts.store') }}"
           hx-target="body"
+          hx-swap="outerHTML"
           hx-push-url="true"
           class="col-span-2">
         @csrf
@@ -10,7 +11,7 @@
 
             <div class="w-full">
                 <x-forms.label for="name" :value="__('Name')"/>
-                <x-forms.input id="name" name="name" type="text" :value="old('name', $oldInput['name'] ?? '')"
+                <x-forms.input id="name" name="name" type="text" :value="old('name')"
                                autofocus
                                class="w-full"/>
                 <x-forms.error :messages="$errors->get('name')"/>
@@ -19,7 +20,7 @@
             <div class="w-full">
                 <x-forms.label for="name" :value="__('Starting at')"/>
                 <x-forms.input id="balance" name="balance" type="text"
-                               :value="old('balance', $oldInput['balance'] ?? 0)"
+                               :value="old('balance', 0)"
                                autofocus autocomplete="balance"
                                class="w-full"/>
                 <x-forms.error :messages="$errors->get('balance')"/>
@@ -38,7 +39,8 @@
             <x-forms.form-actions>
                 <x-buttons.secondary hx-get="{{ route('accounts.index') }}"
                                      hx-push-url="true"
-                                     hx-target="body">
+                                     hx-target="body"
+                                     hx-swap="outerHTML">
                     Cancel
                 </x-buttons.secondary>
 
