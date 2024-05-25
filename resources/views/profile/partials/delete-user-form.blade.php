@@ -35,6 +35,7 @@
                     name="password"
                     type="password"
                     class="mt-1 block w-full"
+                    autofocus
                     placeholder="{{ __('Password') }}"
                 />
 

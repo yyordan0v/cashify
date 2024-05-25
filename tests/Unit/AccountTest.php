@@ -15,7 +15,7 @@ it('belongs to a user', function () {
 it('requires a user id', function () {
     $response = $this->post('/accounts', [
         'name' => 'Savings Account',
-        'ballance' => 1000.00
+        'balance' => 1000.00,
     ]);
 
     $response->assertSessionHasErrors('user_id');
