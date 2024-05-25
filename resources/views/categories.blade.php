@@ -158,13 +158,10 @@
 
                         <x-forms.radio.group type="color" class="pl-24"/>
 
-                        <x-divider class="my-8 w-full"/>
-
-                        <div
-                            class="flex flex-col md:flex-row items-center justify-end w-full gap-2 text-gray-600 dark:text-gray-400 text-sm">
+                        <x-forms.form-actions>
                             <x-buttons.secondary>Cancel</x-buttons.secondary>
                             <x-buttons.form>Save</x-buttons.form>
-                        </div>
+                        </x-forms.form-actions>
 
                     </div>
                 </x-panels.panel>

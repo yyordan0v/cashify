@@ -64,7 +64,7 @@
         <x-cards.text class="text-gray-950 text-sm">200 transactions</x-cards.text>
     </div>
 
-    <x-divider class="hidden xl:block my-6 w-full"/>
+    <x-divider class="hidden xl:block"/>
 
     <div
         class="hidden xl:flex items-center justify-center w-full gap-2 text-gray-600 dark:text-gray-400 text-sm">

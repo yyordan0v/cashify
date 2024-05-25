@@ -3,7 +3,7 @@
       hx-swap="outerHTML"
       class="col-span-2">
     @csrf
-    
+
     <x-panels.panel class="flex flex-col items-start justify-start w-full space-y-6">
         <x-panels.heading>Add Account</x-panels.heading>
 
@@ -33,11 +33,7 @@
             @endforeach
         </x-forms.radio.group>
 
-        <x-divider class="my-8 w-full"/>
-
-        <div
-            class="flex flex-col md:flex-row items-center justify-end w-full gap-2 text-gray-600 dark:text-gray-400 text-sm">
-
+        <x-forms.form-actions>
             <x-buttons.secondary hx-get="{{ route('accounts.index') }}" hx-target="body">
                 Cancel
             </x-buttons.secondary>
@@ -45,7 +41,7 @@
             <x-buttons.form>
                 Add Account
             </x-buttons.form>
-        </div>
+        </x-forms.form-actions>
     </x-panels.panel>
 </form>
 

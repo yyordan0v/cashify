@@ -63,7 +63,7 @@
                 </x-cards.icon>
 
                 <x-cards.title>Net Worth</x-cards.title>
-                <x-divider class="my-6"/>
+                <x-divider/>
                 <x-cards.text class="text-gray-950">$4,000</x-cards.text>
             </x-panels.panel>
 
@@ -74,7 +74,7 @@
                 </x-icon>
 
                 <x-cards.title>Income</x-cards.title>
-                <x-divider class="my-6"/>
+                <x-divider/>
                 <x-cards.text class="text-gray-950">$4,000</x-cards.text>
             </x-panels.panel>
 
@@ -85,7 +85,7 @@
                 </x-icon>
 
                 <x-cards.title>Expense</x-cards.title>
-                <x-divider class="my-6"/>
+                <x-divider/>
                 <x-cards.text class="text-gray-950">$4,000</x-cards.text>
             </x-panels.panel>
         </div>

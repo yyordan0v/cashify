@@ -34,11 +34,7 @@
                 @endforeach
             </x-forms.radio.group>
 
-            <x-divider class="my-6 w-full"/>
-
-            <div
-                class="flex flex-col md:flex-row items-center justify-end lg:justify-center w-full gap-2 text-gray-600 dark:text-gray-400 text-sm">
-
+            <x-forms.form-actions>
                 <x-buttons.secondary
                     hx-get="{{ route('accounts.index') }}"
                     hx-target="body">
@@ -48,7 +44,7 @@
                 <x-buttons.form>
                     Save
                 </x-buttons.form>
-            </div>
+            </x-forms.form-actions>
         </x-panels.panel>
     </form>
 </x-app-layout>
