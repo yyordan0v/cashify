@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AccountRequest;
-use App\Models\Account;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -15,8 +14,8 @@ class CategoryController extends Controller
 
     public function __construct()
     {
-        $this->availableColors = Account::getAvailableColors();
-        $this->selectedColor = Account::getDefaultColor();
+        $this->availableColors = Category::getAvailableColors();
+        $this->selectedColor = Category::getDefaultColor();
     }
 
     /**
