@@ -23,3 +23,10 @@
         {{ $slot }}
     </ul>
 @endif
+
+@if($type === 'icon')
+    <ul
+        {{ $attributes->merge(['class' => 'flex flex-wrap items-center gap-4 mt-8 px-2']) }}>
+        {{ $slot }}
+    </ul>
+@endif

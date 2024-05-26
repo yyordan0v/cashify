@@ -1,14 +1,15 @@
 @props([
-    'color' => 'bg-gray-200',
+    'color' => 'gray',
     'image' => 'image'
 ])
 
 @php
-    $classes = 'mr-4 p-6 rounded-full relative transition-all duration-150 opacity-90 hover:opacity-100';
+    $bgColor = 'bg-'.$color.'-300';
+    $classes = 'mr-4 p-6 mt-4 rounded-full relative transition-all duration-150 opacity-90 hover:opacity-100';
 @endphp
 
 <button>
-    <div {{ $attributes->merge(['class' => $classes]) }} :class="color ? color : 'bg-gray-200'">
+    <div {{ $attributes->merge(['class' => $classes]) }} :class="color ? {{ $bgColor }} : 'bg-gray-300'">
         <img src="{{ Vite::asset('resources/images/categories/'.$image.'.png') }}"
              class="max-w-8"
              alt="{{ $image }}"

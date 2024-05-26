@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Category\StoreAccountRequest;
-use App\Http\Requests\Category\UpdateAccountRequest;
+use App\Http\Requests\AccountRequest;
 use App\Models\Account;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
@@ -42,15 +42,22 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $icons = File::files(resource_path("images/categories"));
+
+        return view('category.create', [
+            'availableColors' => $this->availableColors,
+            'selectedColor' => $this->selectedColor,
+            'icons' => $icons,
+            'selectedIcon' => 'image',
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreAccountRequest $request)
+    public function store(AccountRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -58,7 +65,9 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return response()->view('category.show', [
+            'category' => $category,
+        ]);
     }
 
     /**
@@ -72,7 +81,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAccountRequest $request, Category $category)
+    public function update(AccountRequest $request, Category $category)
     {
         //
     }
