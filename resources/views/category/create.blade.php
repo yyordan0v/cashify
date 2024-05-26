@@ -1,5 +1,7 @@
 <x-app-layout>
-    <form action="{{ route('categories.store') }}" method="POST">
+    <form action="{{ route('categories.store') }}" method="POST"
+          x-data="{ icon: 'image.png' }" @icon-changed.window="icon = $event.detail.icon"
+    >
         @csrf
         <x-modal name="category-image-change">
             <div class="p-6">
@@ -7,6 +9,15 @@
                 <x-panels.heading>
                     {{ __('Select Icon') }}
                 </x-panels.heading>
+
+                <div class="relative mt-6 w-full">
+                    <div class="absolute inset-y-2 end-2 top-4 flex items-center pointer-events-none">
+                        <x-icon class="text-gray-500 dark:text-gray-400">
+                            search
+                        </x-icon>
+                    </div>
+                    <x-forms.input class="w-full" placeholder="Search..."/>
+                </div>
 
                 <div>
                     <x-forms.radio.group type="icon">
@@ -22,7 +33,7 @@
             </div>
         </x-modal>
 
-        {{--                edit--}}
+
         <x-panels.panel padding="4">
 
             <div class="flex flex-col items-start w-full"

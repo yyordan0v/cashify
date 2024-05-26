@@ -15,7 +15,7 @@
     <input type="radio" id="{{ $id }}" name="{{ $name }}" value="{{ $id }}"
            {{ $checked ? 'checked' : '' }}
            class="hidden peer" required
-           @click="$dispatch('color-changed', { color: '{{ $color }}' })"/>
+           @click="$dispatch('color-changed', { color: '{{ $bgColor }}' })"/>
     <label for="{{ $id }}"
         {{ $attributes->merge(['class' => $classes]) }}
     ></label>

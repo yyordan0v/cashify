@@ -17,6 +17,7 @@
     <label for="{{ $id }}"
            {{ $attributes->merge(['class' => $classes]) }}
            x-on:click="$dispatch('close')"
+           @click="$dispatch('icon-changed', { icon: '{{ $icon }}' })"
     >
         <img src="{{ Vite::asset('resources/images/categories/' . $icon) }}"
              alt="{{ $id }}" width="40" height="40">
