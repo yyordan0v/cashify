@@ -22,7 +22,7 @@ class CategoryFactory extends Factory
             'user_id' => User::factory(),
             'name' => fake()->word,
             'type' => fake()->randomElement(['expense', 'income']),
-            'color' => fake()->randomElement(['lime', 'blue', 'slate', 'pink', 'yellow', 'red']),
+            'color' => fake()->randomElement(['lime', 'blue', 'gray', 'pink', 'yellow', 'red']),
             'icon' => fake()->randomElement(['bill', 'bicycle', 'bread', 'butterfly', 'calendar', 'camera']),
         ];
     }

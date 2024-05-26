@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AccountRequest;
 use App\Models\Account;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class AccountController extends Controller
@@ -21,25 +19,6 @@ class AccountController extends Controller
     {
         $this->availableColors = Account::getAvailableColors();
         $this->selectedColor = Account::getDefaultColor();
-    }
-
-    /**
-     * @param  Request  $request
-     * @return array
-     */
-    public function getAttributes(Request $request): array
-    {
-        $input = $request->all();
-
-        if (isset($input['balance'])) {
-            $input['balance'] = str_replace(',', '.', $input['balance']);
-        }
-
-        return Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'balance' => ['required', 'numeric', 'min:0'],
-            'color' => ['required', 'string', Rule::in($this->availableColors)],
-        ])->validate();
     }
 
     /**
@@ -66,9 +45,9 @@ class AccountController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(AccountRequest $request): RedirectResponse
     {
-        $attributes = $this->getAttributes($request);
+        $attributes = $request->validated();
 
         Auth::user()->accounts()->create($attributes);
 
@@ -100,11 +79,11 @@ class AccountController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Account $account): RedirectResponse
+    public function update(AccountRequest $request, Account $account): RedirectResponse
     {
-        $attributes = $this->getAttributes($request);
-
         $account = Account::findOrFail($account->id);
+
+        $attributes = $request->validated();
 
         $account->update($attributes);
 
