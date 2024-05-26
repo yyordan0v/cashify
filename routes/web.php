@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -25,9 +26,6 @@ Route::view('/goals', 'goals')
     ->middleware(['auth', 'verified'])
     ->name('goals');
 
-Route::view('/categories', 'categories')
-    ->middleware(['auth', 'verified'])
-    ->name('categories');
 
 Route::middleware('auth')->group(function () {
     // profile
@@ -66,6 +64,32 @@ Route::middleware('auth')->group(function () {
     Route::delete('/accounts/{account}', [AccountController::class, 'destroy'])
         ->name('accounts.destroy')
         ->can('delete', 'account');
+
+    //categories
+    Route::get('/categories', [CategoryController::class, 'index'])
+        ->name('categories.index');
+
+    Route::get('/categories/create', [CategoryController::class, 'create'])
+        ->name('categories.create');
+
+    Route::post('/categories', [CategoryController::class, 'store'])
+        ->name('categories.store');
+
+    Route::get('/categories/{category}', [CategoryController::class, 'show'])
+        ->name('categories.show')
+        ->can('view', 'category');
+
+    Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])
+        ->name('categories.edit')
+        ->can('update', 'category');
+
+    Route::patch('/categories/{category}', [CategoryController::class, 'update'])
+        ->name('categories.update')
+        ->can('update', 'category');
+
+    Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])
+        ->name('categories.destroy')
+        ->can('delete', 'category');
 
 
 });

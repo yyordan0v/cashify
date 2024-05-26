@@ -11,7 +11,7 @@
 
         <div class="flex xl:hidden items-center justify-between w-full">
             <div class="flex items-center">
-                <div class=" block w-4 h-4 rounded-full mr-4  {{ $account->color_class }}"></div>
+                <div class="block w-4 h-4 rounded-full mr-4  {{ $account->color_class }}"></div>
 
                 <x-cards.title class="text-base mt-0 mb-0">{{ $account->name }}</x-cards.title>
             </div>
@@ -28,7 +28,7 @@
                         </x-icon>
                         Transfer Balance
                     </x-buttons.action>
-                    
+
                     <a href="{{ route('accounts.edit', $account->id) }}">
                         <x-buttons.action>
                             <x-icon style="font-size: 20px">

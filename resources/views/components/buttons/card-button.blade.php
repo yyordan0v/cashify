@@ -1,4 +1,5 @@
-<x-panels.panel {{ $attributes->merge(['class' => 'flex items-center justify-center h-full group transition-colors duration-150 hover:bg-white/40 hover:dark:bg-neutral-700/20 cursor-pointer']) }}>
+<x-panels.panel
+    {{ $attributes->merge(['class' => 'flex items-center justify-center h-full group transition-colors duration-150 hover:bg-white/40 hover:dark:bg-neutral-700/20 cursor-pointer']) }} padding="4">
     <div class="flex flex-col items-center">
         <x-icon class="opacity-20 text-black dark:text-white" style="font-size: 32px">
             format_list_bulleted_add

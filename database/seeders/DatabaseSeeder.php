@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Account;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -14,13 +16,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-//        User::factory(10)->create();
-
-        User::factory()->create([
+        User::factory()->has(
+            Account::factory()->count(3),
+            'accounts'
+        )->has(
+            Category::factory()->count(5),
+            'categories'
+        )->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
-
-        $this->call(AccountSeeder::class);
     }
 }

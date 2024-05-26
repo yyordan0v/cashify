@@ -43,7 +43,7 @@
                 </x-nav.link-icon>
                 <span>Accounts</span>
             </x-nav.link>
-            <x-nav.link :href="route('categories')" :active="request()->routeIs('categories')">
+            <x-nav.link :href="route('categories.index')" :active="request()->routeIs('categories')">
                 <x-nav.link-icon :active="request()->routeIs('categories')">
                     category
                 </x-nav.link-icon>
