@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -91,11 +92,13 @@ Route::middleware('auth')->group(function () {
         ->name('categories.destroy')
         ->can('delete', 'category');
 
-    Route::post('/categories/icons', [CategoryController::class, 'searchIcons'])
-        ->name('categories.searchIcons');
+    Route::controller(SearchController::class)->group(function () {
+        Route::post('/categories/icons', 'searchIcons')
+            ->name('categories.searchIcons');
 
-    Route::post('/categories/search/{type}', [CategoryController::class, 'search'])
-        ->name('categories.search');
+        Route::post('/categories/search/{type}', 'searchCategories')
+            ->name('categories.searchCategories');
+    });
 });
 
 require __DIR__.'/auth.php';

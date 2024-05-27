@@ -34,7 +34,7 @@
                         <x-forms.input class="w-full" style="margin-top: 0 !important"
                                        placeholder="Search your categories..."
                                        name="search" autofocus
-                                       hx-post="{{ route('categories.search', 'expense') }}"
+                                       hx-post="{{ route('categories.searchCategories', 'expense') }}"
                                        hx-trigger="input changed delay:300ms, search"
                                        hx-target="#expense-list"/>
                     </form>
@@ -62,7 +62,7 @@
                         <x-forms.input class="w-full" style="margin-top: 0 !important"
                                        placeholder="Search your categories..."
                                        name="search" autofocus
-                                       hx-post="{{ route('categories.search', 'income') }}"
+                                       hx-post="{{ route('categories.searchCategories', 'income') }}"
                                        hx-trigger="input changed delay:300ms, search"
                                        hx-target="#income-list"/>
                     </form>
