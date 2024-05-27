@@ -361,7 +361,7 @@ return [
         ],
     ],
     [
-        'icon' => 'car[1].png',
+        'icon' => 'car(1).png',
         'tags' => [
             'car',
             'transportation',
@@ -377,7 +377,7 @@ return [
         ],
     ],
     [
-        'icon' => 'car[2].png',
+        'icon' => 'car(2).png',
         'tags' => [
             'car',
             'transportation',
@@ -1725,9 +1725,9 @@ return [
         ],
     ],
     [
-        'icon' => 'makeup[1].png',
+        'icon' => 'makeup(1).png',
         'tags' => [
-            'makeup[1]',
+            'makeup(1)',
             'beauty',
             'cosmetics',
             'glamour',
@@ -2193,7 +2193,7 @@ return [
         ],
     ],
     [
-        'icon' => 'safety - helmet.png',
+        'icon' => 'safety-helmet.png',
         'tags' => [
             'safety helmet',
             'construction',
@@ -2238,7 +2238,7 @@ return [
         ],
     ],
     [
-        'icon' => 'school - backpack.png',
+        'icon' => 'school-backpack.png',
         'tags' => [
             'school backpack',
             'education',
@@ -2447,7 +2447,7 @@ return [
         ],
     ],
     [
-        'icon' => 'teddy - bear.png',
+        'icon' => 'teddy-bear.png',
         'tags' => [
             'teddy bear',
             'stuffed animal',
@@ -2628,7 +2628,7 @@ return [
         ],
     ],
     [
-        'icon' => 'washing - machine.png',
+        'icon' => 'washing-machine.png',
         'tags' => [
             'washingmachine',
             'laundry',
@@ -2658,7 +2658,7 @@ return [
         ],
     ],
     [
-        'icon' => 'watering - can.png',
+        'icon' => 'watering-can.png',
         'tags' => [
             'watering can',
             'garden',
@@ -2688,7 +2688,7 @@ return [
         ],
     ],
     [
-        'icon' => 'yarn - ball.png',
+        'icon' => 'yarn-ball.png',
         'tags' => [
             'yarn ball',
             'knitting',
@@ -2734,7 +2734,7 @@ return [
         ],
     ],
     [
-        'icon' => 'shopping - cart.png',
+        'icon' => 'shopping-cart.png',
         'tags' => [
             'shopping cart',
             'purchase',
@@ -2764,7 +2764,7 @@ return [
         ],
     ],
     [
-        'icon' => 'media - content.png',
+        'icon' => 'media-content.png',
         'tags' => [
             'media',
             'content',
@@ -2854,9 +2854,9 @@ return [
         ],
     ],
     [
-        'icon' => 'pet - bowl.png',
+        'icon' => 'pet-bowl.png',
         'tags' => [
-            'pet - bowl',
+            'pet-bowl',
             'pets',
             'animals',
             'food',
@@ -2869,9 +2869,9 @@ return [
         ],
     ],
     [
-        'icon' => 'location - pin.png',
+        'icon' => 'location-pin.png',
         'tags' => [
-            'location - pin',
+            'location-pin',
             'map',
             'pin',
             'location',
@@ -2884,9 +2884,9 @@ return [
         ],
     ],
     [
-        'icon' => 'sticky - notes.png',
+        'icon' => 'sticky-notes.png',
         'tags' => [
-            'sticky - notes',
+            'sticky-notes',
             'notes',
             'memos',
             'reminders',
@@ -2895,7 +2895,7 @@ return [
             'office',
             'organization',
             'stickers',
-            'post - it'
+            'post-it'
         ],
     ],
     [
@@ -3067,9 +3067,9 @@ return [
         ],
     ],
     [
-        'icon' => 'dollar - coin.png',
+        'icon' => 'dollar-coin.png',
         'tags' => [
-            'dollar - coin',
+            'dollar-coin',
             'money',
             'currency',
             'payment',
@@ -3083,9 +3083,9 @@ return [
         ],
     ],
     [
-        'icon' => 'cash - bill - dollar.png',
+        'icon' => 'cash-bill-dollar.png',
         'tags' => [
-            'cash - bill - dollar',
+            'cash-bill-dollar',
             'money',
             'currency',
             'payment',
@@ -3094,14 +3094,14 @@ return [
             'bills',
             'wealth',
             'monetary',
-            'currency - note',
+            'currency-note',
             'dollar',
         ],
     ],
     [
-        'icon' => 'internet - globe.png',
+        'icon' => 'internet-globe.png',
         'tags' => [
-            'internet - globe',
+            'internet-globe',
             'internet',
             'web',
             'online',
@@ -3114,9 +3114,9 @@ return [
         ],
     ],
     [
-        'icon' => 'checker - chess - board.png',
+        'icon' => 'checker-chess-board.png',
         'tags' => [
-            'checker - chess - board',
+            'checker-chess-board',
             'chess',
             'game',
             'board',
@@ -3129,9 +3129,9 @@ return [
         ],
     ],
     [
-        'icon' => 'portable - game - console.png',
+        'icon' => 'portable-game-console.png',
         'tags' => [
-            'portable - game - console',
+            'portable-game-console',
             'gaming',
             'video games',
             'entertainment',
@@ -3174,9 +3174,9 @@ return [
         ],
     ],
     [
-        'icon' => 'winter - hat.png',
+        'icon' => 'winter-hat.png',
         'tags' => [
-            'winter - hat',
+            'winter-hat',
             'hat',
             'cold',
             'winter',
@@ -3190,9 +3190,9 @@ return [
         ],
     ],
     [
-        'icon' => 'top - hat.png',
+        'icon' => 'top-hat.png',
         'tags' => [
-            'top - hat',
+            'top-hat',
             'hat',
             'formal',
             'headwear',
@@ -3310,9 +3310,9 @@ return [
         ],
     ],
     [
-        'icon' => 'organic - food.png',
+        'icon' => 'organic-food.png',
         'tags' => [
-            'organic - food',
+            'organic-food',
             'vegetables',
             'crate',
             'produce',
@@ -3340,9 +3340,9 @@ return [
         ],
     ],
     [
-        'icon' => 'healthy - food.png',
+        'icon' => 'healthy-food.png',
         'tags' => [
-            'healthy - food',
+            'healthy-food',
             'nutrition',
             'fruits',
             'vegetables',
@@ -3370,9 +3370,9 @@ return [
         ],
     ],
     [
-        'icon' => 'exchange - arrows - circle.png',
+        'icon' => 'exchange-arrows-circle.png',
         'tags' => [
-            'exchange - arrows - circle',
+            'exchange-arrows-circle',
             'arrows',
             'circle',
             'rotate',
@@ -3385,9 +3385,9 @@ return [
         ],
     ],
     [
-        'icon' => 'exchange - arrows.png',
+        'icon' => 'exchange-arrows.png',
         'tags' => [
-            'exchange - arrows',
+            'exchange-arrows',
             'arrows',
             'exchange',
             'swap',
@@ -3400,9 +3400,9 @@ return [
         ],
     ],
     [
-        'icon' => 'back - undo - arrow.png',
+        'icon' => 'back-undo-arrow.png',
         'tags' => [
-            'back - undo - arrow',
+            'back-undo-arrow',
             'arrow',
             'undo',
             'back',
@@ -3415,7 +3415,7 @@ return [
         ],
     ],
     [
-        'icon' => 'taxi[1].png',
+        'icon' => 'taxi(1).png',
         'tags' => [
             'taxi',
             'cab',
@@ -3430,7 +3430,7 @@ return [
         ],
     ],
     [
-        'icon' => 'taxi[2].png',
+        'icon' => 'taxi(2).png',
         'tags' => [
             'taxi',
             'cab',
@@ -3455,7 +3455,7 @@ return [
             'renew',
             'update',
             'cycle',
-            'reload - icon',
+            'reload-icon',
             'reloading',
         ],
     ],
@@ -3520,39 +3520,39 @@ return [
         ],
     ],
     [
-        'icon' => 'motor - bike[1].png',
+        'icon' => 'motor-bike(1).png',
         'tags' => [
-            'motor - bike',
+            'motor-bike',
             'motorcycle',
             'bike',
             'vehicle',
             'transportation',
             'ride',
             'motor',
-            'two - wheeler',
+            'two-wheeler',
             'cycle',
             'speed'
         ],
     ],
     [
-        'icon' => 'motor - bike[2].png',
+        'icon' => 'motor-bike(2).png',
         'tags' => [
-            'motor - bike',
+            'motor-bike',
             'motorcycle',
             'bike',
             'vehicle',
             'transportation',
             'ride',
             'motor',
-            'two - wheeler',
+            'two-wheeler',
             'cycle',
             'speed'
         ],
     ],
     [
-        'icon' => 'school - bus.png',
+        'icon' => 'school-bus.png',
         'tags' => [
-            'school - bus',
+            'school-bus',
             'bus',
             'education',
             'transportation',
@@ -3565,9 +3565,9 @@ return [
         ],
     ],
     [
-        'icon' => 'delivery - truck.png',
+        'icon' => 'delivery-truck.png',
         'tags' => [
-            'delivery - truck',
+            'delivery-truck',
             'truck',
             'delivery',
             'transportation',
@@ -3580,9 +3580,9 @@ return [
         ],
     ],
     [
-        'icon' => 'orange - juice.png',
+        'icon' => 'orange-juice.png',
         'tags' => [
-            'orange - juice',
+            'orange-juice',
             'juice',
             'beverage',
             'drinks',
@@ -3700,9 +3700,9 @@ return [
         ],
     ],
     [
-        'icon' => 'fizzy - drink.png',
+        'icon' => 'fizzy-drink.png',
         'tags' => [
-            'fizzy - drink',
+            'fizzy-drink',
             'cocktail',
             'drink',
             'beverage',
@@ -3710,7 +3710,7 @@ return [
             'soda',
             'fizz',
             'carbonated',
-            'mixed - drink',
+            'mixed-drink',
             'bartender',
             'beer',
             'drink',
@@ -3767,9 +3767,9 @@ return [
         ],
     ],
     [
-        'icon' => 'fried - egg.png',
+        'icon' => 'fried-egg.png',
         'tags' => [
-            'fried - egg',
+            'fried-egg',
             'egg',
             'food',
             'breakfast',
@@ -3782,9 +3782,9 @@ return [
         ],
     ],
     [
-        'icon' => 'car - charging - station.png',
+        'icon' => 'car-charging-station.png',
         'tags' => [
-            'car - charging - station',
+            'car-charging-station',
             'charging',
             'electric',
             'vehicle',
@@ -3797,9 +3797,9 @@ return [
         ],
     ],
     [
-        'icon' => 'battery - charge.png',
+        'icon' => 'battery-charge.png',
         'tags' => [
-            'battery - charge',
+            'battery-charge',
             'battery',
             'charge',
             'power',
@@ -3823,7 +3823,7 @@ return [
             'fresh',
             'chicken',
             'omelette',
-            'scrambled - eggs'
+            'scrambled-eggs'
         ],
     ],
     [
@@ -3842,9 +3842,9 @@ return [
         ],
     ],
     [
-        'icon' => 'raw - meat.png',
+        'icon' => 'raw-meat.png',
         'tags' => [
-            'raw - meat',
+            'raw-meat',
             'meat',
             'food',
             'butcher',
@@ -3872,7 +3872,7 @@ return [
         ],
     ],
     [
-        'icon' => '3d - printer.png',
+        'icon' => '3d-printer.png',
         'tags' => [
             '3d',
             'printer',
@@ -3902,9 +3902,9 @@ return [
         ],
     ],
     [
-        'icon' => 'magic - box.png',
+        'icon' => 'magic-box.png',
         'tags' => [
-            'magic - box',
+            'magic-box',
             'miscellaneous',
             'random',
             'items',
@@ -3951,7 +3951,7 @@ return [
         ],
     ],
     [
-        'icon' => 'house[1].png',
+        'icon' => 'house(1).png',
         'tags' => [
             'house',
             'home',
@@ -3966,9 +3966,9 @@ return [
         ],
     ],
     [
-        'icon' => 'water - bottle.png',
+        'icon' => 'water-bottle.png',
         'tags' => [
-            'water - bottle',
+            'water-bottle',
             'water',
             'bottle',
             'hydration',
@@ -3981,9 +3981,9 @@ return [
         ],
     ],
     [
-        'icon' => 'glass - of - water.png',
+        'icon' => 'glass-of-water.png',
         'tags' => [
-            'glass - of - water',
+            'glass-of-water',
             'water',
             'glass',
             'hydration',
@@ -4003,7 +4003,7 @@ return [
             'dessert',
             'sweet',
             'baked',
-            'chocolate - chip',
+            'chocolate-chip',
             'snack',
             'treat',
             'biscuits',
@@ -4011,9 +4011,9 @@ return [
         ],
     ],
     [
-        'icon' => 'paper - bill.png',
+        'icon' => 'paper-bill.png',
         'tags' => [
-            'paper - bill',
+            'paper-bill',
             'bill',
             'invoice',
             'payment',
@@ -4026,9 +4026,9 @@ return [
         ],
     ],
     [
-        'icon' => 'paper - ticket.png',
+        'icon' => 'paper-ticket.png',
         'tags' => [
-            'paper - ticket',
+            'paper-ticket',
             'ticket',
             'admission',
             'entry',
@@ -4047,24 +4047,24 @@ return [
         ],
     ],
     [
-        'icon' => 'gas - valve.png',
+        'icon' => 'gas-valve.png',
         'tags' => [
-            'gas - valve',
+            'gas-valve',
             'gas',
             'valve',
             'utility',
             'energy',
             'pipe',
             'fuel',
-            'natural - gas',
+            'natural-gas',
             'propane',
             'home'
         ],
     ],
     [
-        'icon' => 'water - tap.png',
+        'icon' => 'water-tap.png',
         'tags' => [
-            'water - tap',
+            'water-tap',
             'water',
             'tap',
             'faucet',
@@ -4077,9 +4077,9 @@ return [
         ],
     ],
     [
-        'icon' => 'atm - machine[2].png',
+        'icon' => 'atm-machine(2).png',
         'tags' => [
-            'atm - machine[2]',
+            'atm-machine(2)',
             'atm',
             'cash',
             'money',
@@ -4092,9 +4092,9 @@ return [
         ],
     ],
     [
-        'icon' => 'atm - machine[1].png',
+        'icon' => 'atm-machine(1).png',
         'tags' => [
-            'atm - machine[1]',
+            'atm-machine(1)',
             'atm',
             'cash',
             'money',
@@ -4107,9 +4107,9 @@ return [
         ],
     ],
     [
-        'icon' => 'sim - card.png',
+        'icon' => 'sim-card.png',
         'tags' => [
-            'sim - card',
+            'sim-card',
             'sim',
             'card',
             'mobile',
@@ -4123,9 +4123,9 @@ return [
         ],
     ],
     [
-        'icon' => 'christmas - tree.png',
+        'icon' => 'christmas-tree.png',
         'tags' => [
-            'christmas - tree',
+            'christmas-tree',
             'christmas',
             'tree',
             'holiday',
@@ -4138,9 +4138,9 @@ return [
         ],
     ],
     [
-        'icon' => 'confetti[2].png',
+        'icon' => 'confetti(2).png',
         'tags' => [
-            'confetti[2]',
+            'confetti(2)',
             'confetti',
             'celebration',
             'party',
@@ -4153,9 +4153,9 @@ return [
         ],
     ],
     [
-        'icon' => 'safe - box.png',
+        'icon' => 'safe-box.png',
         'tags' => [
-            'safe - box',
+            'safe-box',
             'safe',
             'security',
             'vault',
@@ -4168,9 +4168,9 @@ return [
         ],
     ],
     [
-        'icon' => 'security - box.png',
+        'icon' => 'security-box.png',
         'tags' => [
-            'security - box',
+            'security-box',
             'security',
             'box',
             'safe',
@@ -4228,9 +4228,9 @@ return [
         ],
     ],
     [
-        'icon' => 'gift - card.png',
+        'icon' => 'gift-card.png',
         'tags' => [
-            'gift - card',
+            'gift-card',
             'present',
             'shopping',
             'voucher',

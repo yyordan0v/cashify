@@ -16,11 +16,16 @@
                             search
                         </x-icon>
                     </div>
-                    <x-forms.input class="w-full" placeholder="Search..."/>
+                    <x-forms.input class="w-full" placeholder="Search..."
+                                   name="icon-search" id="icon-search" autofocus
+                                   hx-post="{{ route('categories.searchIcons') }}"
+                                   hx-trigger="input changed delay:500ms, search"
+                                   hx-target="#icon-list"
+                    />
                 </div>
 
                 <div>
-                    <x-forms.radio.group type="icon">
+                    <x-forms.radio.group type="icon" id="icon-list">
                         @foreach($icons as $icon)
                             <x-forms.radio.icon
                                 name="icon"

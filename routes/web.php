@@ -72,6 +72,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/categories/create', [CategoryController::class, 'create'])
         ->name('categories.create');
 
+    Route::post('/categories/icons', [CategoryController::class, 'searchIcons'])
+        ->name('categories.searchIcons');
+
     Route::post('/categories', [CategoryController::class, 'store'])
         ->name('categories.store');
 
