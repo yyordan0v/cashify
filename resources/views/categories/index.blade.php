@@ -27,7 +27,7 @@
             <x-tabs.content class="flex flex-col gap-4">
                 @if(count($expenseCategories) > 0)
                     @foreach($expenseCategories as $expenseCategory)
-                        <x-single.category :category="$expenseCategory"/>
+                        @include('categories.partials.show', ['category' => $expenseCategory])
                     @endforeach
 
                 @else
@@ -40,7 +40,7 @@
             <x-tabs.content class="flex flex-col gap-4">
                 @if(count($incomeCategories) > 0)
                     @foreach($incomeCategories as $incomeCategory)
-                        <x-single.category :category="$incomeCategory"/>
+                        @include('categories.partials.show', ['category' => $incomeCategory])
                     @endforeach
                 @else
                     <p class="text-center w-full">No expense categories found.</p>

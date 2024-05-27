@@ -2,7 +2,7 @@
     <div class="grid xl:grid-cols-2 gap-4 mb-4">
 
         @foreach($accounts as $account)
-            <x-single.account :account="$account"/>
+            @include('accounts.partials.show', ['account' => $account])
         @endforeach
 
         {{--        transfer--}}

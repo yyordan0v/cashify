@@ -32,7 +32,7 @@ class CategoryController extends Controller
             ->get()
             ->groupBy('type');
 
-        return view('category.index', [
+        return view('categories.index', [
             'incomeCategories' => $categories['income'] ?? [],
             'expenseCategories' => $categories['expense'] ?? [],
         ]);
@@ -45,7 +45,7 @@ class CategoryController extends Controller
     {
         $icons = File::files(resource_path("images/categories"));
 
-        return view('category.create', [
+        return view('categories.create', [
             'availableColors' => $this->availableColors,
             'selectedColor' => $this->selectedColor,
             'icons' => $icons,
@@ -58,7 +58,10 @@ class CategoryController extends Controller
      */
     public function store(AccountRequest $request)
     {
-        dd($request);
+        dd($request->validate([
+            'name' => 'required',
+            'color' => ['required'],
+        ]));
     }
 
     /**
@@ -66,7 +69,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return response()->view('category.show', [
+        return response()->view('categories.show', [
             'category' => $category,
         ]);
     }
@@ -99,6 +102,11 @@ class CategoryController extends Controller
     {
         $query = strtolower($request->input('icon-search', ''));
         $iconMetadata = Config::get('icons');
+
+        usort($iconMetadata, function ($a, $b) {
+            return strcmp($a['icon'], $b['icon']);
+        });
+
         $icons = [];
 
         foreach ($iconMetadata as $data) {

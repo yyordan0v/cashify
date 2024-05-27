@@ -1,6 +1,8 @@
 <x-app-layout>
     <form action="{{ route('categories.store') }}" method="POST"
-          x-data="{ icon: 'image.png' }" @icon-changed.window="icon = $event.detail.icon"
+          x-data="{ icon: 'image.png' }"
+          @icon-changed.window="icon = $event.detail.icon"
+          @submit.prevent="document.getElementById('icon-search').disabled = true; $event.target.submit()"
     >
         @csrf
         <x-modal name="category-image-change">

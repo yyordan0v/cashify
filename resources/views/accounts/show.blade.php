@@ -1,3 +1,3 @@
 <x-app-layout>
-    <x-single.account :account="$account"/>
+    @include('accounts.partials.show', ['account' => $account])
 </x-app-layout>
