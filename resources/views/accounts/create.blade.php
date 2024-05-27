@@ -30,7 +30,7 @@
                         name="color"
                         color="{{ $color }}"
                         id="{{ $color }}"
-                        :checked="$color === $selectedColor"/>
+                        :checked="old('color', $selectedColor) === $color"/>
                 @endforeach
             </x-forms.radio.group>
 

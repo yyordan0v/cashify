@@ -1,30 +1,27 @@
 <x-app-layout>
-    <form action="{{ route('categories.store') }}" method="POST"
-          x-data="{ icon: 'image.png' }"
-          @icon-changed.window="icon = $event.detail.icon"
-          @submit.prevent="document.getElementById('icon-search').disabled = true; $event.target.submit()"
-    >
+    <form
+        hx-post="{{ route('categories.store') }}"
+        hx-target="body"
+        hx-params="not icon-search"
+        x-data="{ icon: '{{ old('icon') ? old('icon').'.png' : 'image.png' }}' }"
+        @icon-changed.window="icon = $event.detail.icon">
         @csrf
+
         <x-modal name="category-image-change">
             <div class="p-6">
 
                 <x-panels.heading>
-                    {{ __('Select Icon') }}
+                    {{'Select Icon' }}
                 </x-panels.heading>
 
-                <div class="relative mt-6 w-full">
-                    <div class="absolute inset-y-2 end-2 top-4 flex items-center pointer-events-none">
-                        <x-icon class="text-gray-500 dark:text-gray-400">
-                            search
-                        </x-icon>
-                    </div>
+                <x-forms.search class="mt-6" position="top-4">
                     <x-forms.input class="w-full" placeholder="Search..."
                                    name="icon-search" id="icon-search" autofocus
                                    hx-post="{{ route('categories.searchIcons') }}"
-                                   hx-trigger="input changed delay:500ms, search"
-                                   hx-target="#icon-list"
-                    />
-                </div>
+                                   hx-params="icon-search,_token"
+                                   hx-trigger="input changed delay:300ms, search"
+                                   hx-target="#icon-list"/>
+                </x-forms.search>
 
                 <div>
                     <x-forms.radio.group type="icon" id="icon-list">
@@ -33,7 +30,7 @@
                                 name="icon"
                                 id="{{  $icon->getBasename('.png') }}"
                                 icon="{{ $icon->getFilename() }}"
-                                :checked="$icon === $selectedIcon"/>
+                                :checked="old('icon', $selectedIcon) === $icon->getBasename('.png')"/>
                         @endforeach
                     </x-forms.radio.group>
                 </div>
@@ -44,22 +41,26 @@
         <x-panels.panel padding="4">
 
             <div class="flex flex-col items-start w-full"
-                 x-data="{ color: '' }" @color-changed.window="color = $event.detail.color">
+                 x-data="{ color: '{{ old('color') ? 'bg-'.old('color').'-300' : '' }}' }"
+                 @color-changed.window="color = $event.detail.color">
 
-                <div class=" flex items-start w-full
-                    ">
+                <div class=" flex items-start w-full">
 
                     <x-category-image-change x-data=""
-                                             x-on:click.prevent="$dispatch('open-modal', 'category-image-change')"
-                    />
-
+                                             x-on:click.prevent="$dispatch('open-modal', 'category-image-change')"/>
 
                     <div class="flex items-center justify-between w-full">
                         <div class="flex flex-col items-start justify-center w-full">
-                            <x-forms.input class="w-full mt-0" value="Shopping"></x-forms.input>
+                            <div class="w-full">
+                                <x-forms.input id="name" name="name" type="text" :value="old('name')"
+                                               autofocus placeholder="Enter category name"
+                                               class="w-full"/>
+                                <x-forms.error :messages="$errors->get('name')"/>
+                            </div>
 
                             <x-forms.radio.group>
-                                <x-forms.radio.button name="type" id="expense" value="expense">
+                                <x-forms.radio.button name="type" id="expense" value="expense"
+                                                      :checked="old('type') === 'expense'">
                                     <div class="block">
                                         <div class="w-full">Expense</div>
                                     </div>
@@ -68,7 +69,8 @@
                                     </x-icon>
                                 </x-forms.radio.button>
 
-                                <x-forms.radio.button name="type" id="income" value="income">
+                                <x-forms.radio.button name="type" id="income" value="income"
+                                                      :checked="old('type') === 'income'">
                                     <div class="block">
                                         <div class="w-full">Income</div>
                                     </div>
@@ -76,7 +78,11 @@
                                         arrow_drop_up
                                     </x-icon>
                                 </x-forms.radio.button>
+
+                                <x-forms.error :messages="$errors->get('type')"/>
                             </x-forms.radio.group>
+                            <x-forms.error :messages="$errors->get('icon')"/>
+                            <x-forms.error :messages="$errors->get('color')"/>
                         </div>
                     </div>
                 </div>
@@ -84,12 +90,12 @@
                 <x-forms.radio.group type="color" class="pl-24">
                     @foreach($availableColors as $color)
                         <x-forms.radio.color
-                            name="color"
                             color="{{ $color }}"
                             id="{{ $color }}"
-                            :checked="$color === $selectedColor"/>
+                            :checked="old('color', $selectedColor) === $color"/>
                     @endforeach
                 </x-forms.radio.group>
+
 
                 <x-forms.form-actions>
                     <a href="{{ route('categories.index') }}">
@@ -97,8 +103,8 @@
                             Cancel
                         </x-buttons.secondary>
                     </a>
-                    <x-buttons.form type="submit">
-                        Save
+                    <x-buttons.form>
+                        Submit
                     </x-buttons.form>
                 </x-forms.form-actions>
 
@@ -106,5 +112,4 @@
 
         </x-panels.panel>
     </form>
-
 </x-app-layout>

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AccountRequest;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
@@ -56,12 +57,13 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(AccountRequest $request)
+    public function store(CategoryRequest $request)
     {
-        dd($request->validate([
-            'name' => 'required',
-            'color' => ['required'],
-        ]));
+        $attributes = $request->validated();
+
+        $category = Auth::user()->categories()->create($attributes);
+
+        return Redirect::route('categories.index');
     }
 
     /**
@@ -85,7 +87,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(AccountRequest $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
         //
     }
@@ -96,6 +98,17 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+    }
+
+    public function search(Request $request, $type)
+    {
+        $search = $request->input('search');
+
+        $categories = Category::where('type', $type)
+            ->where('name', 'like', '%'.$search.'%')
+            ->get();
+
+        return view('categories.partials.results', compact('categories'));
     }
 
     public function searchIcons(Request $request)

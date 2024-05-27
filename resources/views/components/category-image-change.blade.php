@@ -1,6 +1,5 @@
 @props([
-    'color' => 'bg-gray-200',
-    'image' => 'image'
+    'color' => 'bg-gray-200'
 ])
 
 @php

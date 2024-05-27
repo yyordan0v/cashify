@@ -12,7 +12,7 @@
 <li class="my-1">
     <input type="radio" id="{{ $id }}" name="{{ $name }}" value="{{ $id }}"
            {{ $checked ? 'checked' : '' }}
-           class="hidden peer" required
+           class="hidden peer"
     />
     <label for="{{ $id }}"
            {{ $attributes->merge(['class' => $classes]) }}
@@ -20,6 +20,6 @@
            @click="$dispatch('icon-changed', { icon: '{{ $icon }}' })"
     >
         <img src="{{ Vite::asset('resources/images/categories/' . $icon) }}"
-             alt="{{ $id }}" width="40" height="40">
+             alt="{{ $id }}" width="40" height="40" loading="lazy">
     </label>
 </li>

@@ -72,9 +72,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/categories/create', [CategoryController::class, 'create'])
         ->name('categories.create');
 
-    Route::post('/categories/icons', [CategoryController::class, 'searchIcons'])
-        ->name('categories.searchIcons');
-
     Route::post('/categories', [CategoryController::class, 'store'])
         ->name('categories.store');
 
@@ -94,7 +91,11 @@ Route::middleware('auth')->group(function () {
         ->name('categories.destroy')
         ->can('delete', 'category');
 
+    Route::post('/categories/icons', [CategoryController::class, 'searchIcons'])
+        ->name('categories.searchIcons');
 
+    Route::post('/categories/search/{type}', [CategoryController::class, 'search'])
+        ->name('categories.search');
 });
 
 require __DIR__.'/auth.php';
