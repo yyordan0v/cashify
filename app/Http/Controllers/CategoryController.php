@@ -95,7 +95,9 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, Category $category)
     {
-        //
+        return response()->view('categories.show', [
+            'category' => $category,
+        ]);
     }
 
     /**

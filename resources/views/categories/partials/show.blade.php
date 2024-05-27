@@ -20,7 +20,10 @@
                     </x-dropdown.button>
 
                     <x-dropdown.body>
-                        <x-buttons.action :href="route('categories.index')">
+                        <x-buttons.action hx-get="{{ route('categories.edit', $category->id) }}"
+                                          hx-push-url="true"
+                                          hx-target="this"
+                                          hx-swap="outerHTML">
                             <x-icon style="font-size: 20px">
                                 edit
                             </x-icon>
@@ -38,7 +41,10 @@
 
                 <div
                     class="hidden xl:flex items-center gap-2 text-gray-600 dark:text-gray-400 text-sm">
-                    <x-buttons.action :href="route('categories.index')">
+                    <x-buttons.action hx-get="{{ route('categories.edit', $category->id) }}"
+                                      hx-push-url="true"
+                                      hx-target="closest section"
+                                      hx-swap="outerHTML">
                         <x-icon>
                             edit
                         </x-icon>
