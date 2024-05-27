@@ -32,7 +32,7 @@ class AccountRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'balance' => ['required', 'numeric', 'min:0'],
+            'balance' => ['required', 'numeric'],
             'color' => ['required', 'string', Rule::in($this->getAvailableColors())],
         ];
     }

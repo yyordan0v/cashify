@@ -79,7 +79,15 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $icons = File::files(resource_path("images/categories"));
+
+        return view('categories.edit', [
+            'category' => $category,
+            'availableColors' => $this->availableColors,
+            'selectedColor' => $category->color,
+            'icons' => $icons,
+            'selectedIcon' => $category->icon,
+        ]);
     }
 
     /**

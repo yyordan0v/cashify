@@ -9,7 +9,6 @@
 
         <x-modal name="category-image-change">
             <div class="p-6">
-
                 <x-panels.heading>
                     {{'Select Icon' }}
                 </x-panels.heading>
@@ -38,7 +37,11 @@
         </x-modal>
 
 
-        <x-panels.panel padding="4">
+        <x-panels.panel>
+
+            <x-panels.heading class="mb-7">
+                Add Category
+            </x-panels.heading>
 
             <div class="flex flex-col items-start w-full"
                  x-data="{ color: '{{ old('color') ? 'bg-'.old('color').'-300' : '' }}' }"
