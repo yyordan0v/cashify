@@ -94,6 +94,10 @@ Route::middleware('auth')->group(function () {
         Route::delete('/categories/{category}', 'destroy')
             ->name('categories.destroy')
             ->can('delete', 'category');
+
+        Route::get('/categories/load-tab/{type}', 'loadTab')
+            ->name('categories.loadTab');
+
     });
 
     Route::controller(SearchController::class)->group(function () {

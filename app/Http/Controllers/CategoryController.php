@@ -107,4 +107,27 @@ class CategoryController extends Controller
     {
         //
     }
+
+    public function loadTab($type)
+    {
+        $categories = Auth::user()
+            ->categories()
+            ->latest()
+            ->with('user')
+            ->get()
+            ->groupBy('type');
+
+
+        if ($type == 'expense') {
+            return view('categories.partials.expense', [
+                'expenseCategories' => $categories['expense'],
+            ]);
+        } elseif ($type == 'income') {
+            return view('categories.partials.income', [
+                'incomeCategories' => $categories['income'],
+            ]);
+        }
+
+        return response()->json(['message' => 'Invalid category type'], 400);
+    }
 }
