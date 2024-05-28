@@ -59,7 +59,7 @@ class CategoryController extends Controller
     {
         $attributes = $request->validated();
 
-        $category = Auth::user()->categories()->create($attributes);
+        Auth::user()->categories()->create($attributes);
 
         return Redirect::route('categories.index');
     }
