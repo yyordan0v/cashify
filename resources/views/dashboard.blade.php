@@ -35,7 +35,9 @@
 
                 <x-cards.title>Net Worth</x-cards.title>
                 <x-divider/>
-                <x-cards.text class="text-gray-950">$4,000</x-cards.text>
+                <x-cards.text class="text-gray-950">
+                    {{ Number::currency($netWorth, in: 'BGN', locale: 'bg') }}
+                </x-cards.text>
             </x-panels.panel>
 
             <x-panels.panel>

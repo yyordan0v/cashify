@@ -12,10 +12,13 @@ class DashboardController extends Controller
     {
         $accounts = Auth::user()->accounts()->with('user')->get();
 
+        $netWorth = $accounts->sum('balance');
+
         return view('dashboard', [
             'categoryChart' => $categoryChart->build(),
             'incomeChart' => $incomeChart->build(),
             'accounts' => $accounts,
+            'netWorth' => $netWorth,
         ]);
     }
 }
