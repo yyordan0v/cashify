@@ -12,7 +12,6 @@
                 {{ $slot }}
             </main>
         </div>
-
     </div>
 
     @include('layouts.bottom-nav')

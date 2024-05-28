@@ -12,7 +12,7 @@ if (!function_exists('getButtonRoute')) {
         return match (true) {
             str_contains($currentRoute, 'categories') => route('categories.create'),
             str_contains($currentRoute, 'accounts') => route('accounts.create'),
-            default => route('transactions.index'),
+            default => route('transactions'),
         };
     }
 }
