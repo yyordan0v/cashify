@@ -7,12 +7,12 @@
                            name="search" autofocus
                            hx-post="{{ route('categories.searchCategories', 'income') }}"
                            hx-trigger="input changed delay:300ms, search"
-                           hx-target="#categories-list"/>
+                           hx-target="#list"/>
         </form>
     </x-forms.search>
 
     @if(count($incomeCategories) > 0)
-        <div id="categories-list" class="flex flex-col gap-4">
+        <div id="list" class="flex flex-col gap-4">
             @foreach($incomeCategories as $category)
                 @include('categories.partials.show', ['category' => $category])
             @endforeach

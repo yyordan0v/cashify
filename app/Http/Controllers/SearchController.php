@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 
 class SearchController extends Controller
@@ -12,8 +12,14 @@ class SearchController extends Controller
     {
         $search = $request->input('search');
 
-        $categories = Category::where('type', $type)
-            ->where('name', 'like', '%'.$search.'%')
+        $categories = Auth::user()
+            ->categories()
+            ->latest()
+            ->with('user')
+            ->where('type', $type)
+            ->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%'.$search.'%');
+            })
             ->get();
 
         return view('categories.partials.results', compact('categories'));

@@ -24,17 +24,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Auth::user()
-            ->categories()
-            ->latest()
-            ->with('user')
-            ->get()
-            ->groupBy('type');
-
-        return view('categories.index', [
-            'incomeCategories' => $categories['income'] ?? [],
-            'expenseCategories' => $categories['expense'] ?? [],
-        ]);
+        return view('categories.index');
     }
 
     /**
