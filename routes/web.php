@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\CancelController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
@@ -30,14 +31,18 @@ Route::view('/goals', 'goals')
 
 Route::middleware('auth')->group(function () {
     // profile
-    Route::get('/profile', [ProfileController::class, 'edit'])
-        ->name('profile.edit');
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('/profile', 'edit')
+            ->name('profile.edit');
 
-    Route::patch('/profile', [ProfileController::class, 'update'])
-        ->name('profile.update');
+        Route::patch('/profile', 'update')
+            ->name('profile.update');
 
-    Route::delete('/profile', [ProfileController::class, 'destroy'])
-        ->name('profile.destroy');
+        Route::delete('/profile', 'destroy')
+            ->name('profile.destroy');
+    });
+
+    Route::post('/cancel', CancelController::class)->name('cancel');
 
 
     // Accounts

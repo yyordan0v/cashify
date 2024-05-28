@@ -6,7 +6,8 @@ use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Redirect;
+use Mauricius\LaravelHtmx\Facades\HtmxResponse;
+use Mauricius\LaravelHtmx\Http\HtmxRequest;
 
 class CategoryController extends Controller
 {
@@ -30,9 +31,18 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(HtmxRequest $request)
     {
         $icons = File::files(resource_path("images/categories"));
+
+        if ($request->isHtmxRequest()) {
+            return HtmxResponse::addFragment('categories.create', 'form', [
+                'availableColors' => $this->availableColors,
+                'selectedColor' => $this->selectedColor,
+                'icons' => $icons,
+                'selectedIcon' => 'image',
+            ]);
+        }
 
         return view('categories.create', [
             'availableColors' => $this->availableColors,
@@ -49,17 +59,23 @@ class CategoryController extends Controller
     {
         $attributes = $request->validated();
 
-        Auth::user()->categories()->create($attributes);
+        $category = Auth::user()->categories()->create($attributes);
 
-        return Redirect::route('categories.index');
+        return HtmxResponse::addFragment('categories.show', 'panel', ['category' => $category]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(HtmxRequest $request, Category $category)
     {
-        return response()->view('categories.show', [
+        if ($request->isHtmxRequest()) {
+            return HtmxResponse::addFragment('categories.show', 'panel', [
+                'category' => $category,
+            ]);
+        }
+
+        return view('categories.show', [
             'category' => $category,
         ]);
     }
@@ -109,12 +125,14 @@ class CategoryController extends Controller
 
 
         if ($type == 'expense') {
-            return view('categories.partials.expense', [
+            return HtmxResponse::addFragment('categories.index', 'expense', [
                 'expenseCategories' => $categories['expense'],
+                'type' => $type
             ]);
         } elseif ($type == 'income') {
-            return view('categories.partials.income', [
+            return HtmxResponse::addFragment('categories.index', 'income', [
                 'incomeCategories' => $categories['income'],
+                'type' => $type
             ]);
         }
 
