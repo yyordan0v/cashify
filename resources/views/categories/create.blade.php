@@ -103,10 +103,10 @@
 
 
                     <x-forms.form-actions>
-                        <x-buttons.cancel :newRoute="route('categories.index')"/>
+                        <x-buttons.cancel to="categories"/>
 
                         <x-buttons.form>
-                            Submit
+                            Add Category
                         </x-buttons.form>
                     </x-forms.form-actions>
 

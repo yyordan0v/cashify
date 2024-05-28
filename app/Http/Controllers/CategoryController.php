@@ -34,22 +34,18 @@ class CategoryController extends Controller
     public function create(HtmxRequest $request)
     {
         $icons = File::files(resource_path("images/categories"));
-
-        if ($request->isHtmxRequest()) {
-            return HtmxResponse::addFragment('categories.create', 'form', [
-                'availableColors' => $this->availableColors,
-                'selectedColor' => $this->selectedColor,
-                'icons' => $icons,
-                'selectedIcon' => 'image',
-            ]);
-        }
-
-        return view('categories.create', [
+        $data = [
             'availableColors' => $this->availableColors,
             'selectedColor' => $this->selectedColor,
             'icons' => $icons,
             'selectedIcon' => 'image',
-        ]);
+        ];
+
+        if ($request->isHtmxRequest()) {
+            return HtmxResponse::addFragment('categories.create', 'form', $data);
+        }
+
+        return view('categories.create', $data);
     }
 
     /**
@@ -83,17 +79,22 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(HtmxRequest $request, Category $category)
     {
         $icons = File::files(resource_path("images/categories"));
-
-        return view('categories.edit', [
+        $data = [
             'category' => $category,
             'availableColors' => $this->availableColors,
             'selectedColor' => $category->color,
             'icons' => $icons,
             'selectedIcon' => $category->icon,
-        ]);
+        ];
+
+        if ($request->isHtmxRequest()) {
+            return HtmxResponse::addFragment('categories.edit', 'form', $data);
+        }
+
+        return view('categories.edit', $data);
     }
 
     /**
@@ -101,9 +102,13 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, Category $category)
     {
-        return response()->view('categories.show', [
-            'category' => $category,
-        ]);
+        $category = Category::findOrFail($category->id);
+
+        $attributes = $request->validated();
+
+        $category->update($attributes);
+
+        return HtmxResponse::addFragment('categories.show', 'panel', ['category' => $category]);
     }
 
     /**
@@ -111,7 +116,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return '';
     }
 
     public function loadTab($type)
@@ -126,12 +133,12 @@ class CategoryController extends Controller
 
         if ($type == 'expense') {
             return HtmxResponse::addFragment('categories.index', 'expense', [
-                'expenseCategories' => $categories['expense'],
+                'expenseCategories' => $categories['expense'] ?? [],
                 'type' => $type
             ]);
         } elseif ($type == 'income') {
             return HtmxResponse::addFragment('categories.index', 'income', [
-                'incomeCategories' => $categories['income'],
+                'incomeCategories' => $categories['income'] ?? [],
                 'type' => $type
             ]);
         }

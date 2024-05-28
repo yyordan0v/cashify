@@ -37,14 +37,14 @@
             </x-nav.link>
         </ul>
         <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
-            <x-nav.link :href="route('accounts.index')" :active="request()->routeIs('accounts')">
-                <x-nav.link-icon :active="request()->routeIs('accounts')">
+            <x-nav.link :href="route('accounts.index')" :active="request()->routeIs('accounts.index')">
+                <x-nav.link-icon :active="request()->routeIs('accounts.index')">
                     wallet
                 </x-nav.link-icon>
                 <span>Accounts</span>
             </x-nav.link>
-            <x-nav.link :href="route('categories.index')" :active="request()->routeIs('categories')">
-                <x-nav.link-icon :active="request()->routeIs('categories')">
+            <x-nav.link :href="route('categories.index')" :active="request()->routeIs('categories.index')">
+                <x-nav.link-icon :active="request()->routeIs('categories.index')">
                     category
                 </x-nav.link-icon>
                 <span>Categories</span>

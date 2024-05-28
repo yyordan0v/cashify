@@ -25,7 +25,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="relative antialiased bg-gray-50" hx-boost="true">
+<body class="relative antialiased bg-gray-50">
 
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
      viewBox="0 0 800 450"

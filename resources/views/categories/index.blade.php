@@ -36,19 +36,19 @@
                             </form>
                         </x-forms.search>
 
-                        @if(count($expenseCategories) > 0)
-                            <div id="list" class="flex flex-col gap-4">
+                        <div id="list" class="flex flex-col gap-4">
+                            @if(count($expenseCategories) > 0)
                                 @foreach($expenseCategories as $category)
                                     @include('categories.partials.show', ['category' => $category])
                                 @endforeach
-                            </div>
-                        @else
-                            <x-panels.panel padding="4">
-                                <x-panels.heading class="text-center w-full">
-                                    No expense categories found.
-                                </x-panels.heading>
-                            </x-panels.panel>
-                        @endif
+                            @else
+                                <x-panels.panel padding="4">
+                                    <x-panels.heading class="text-sm text-center w-full">
+                                        No expense categories found.
+                                    </x-panels.heading>
+                                </x-panels.panel>
+                            @endif
+                        </div>
                     </x-tabs.content>
 
                 @endfragment
@@ -69,19 +69,19 @@
                             </form>
                         </x-forms.search>
 
-                        @if(count($incomeCategories) > 0)
-                            <div id="list" class="flex flex-col gap-4">
+                        <div id="list" class="flex flex-col gap-4">
+                            @if(count($incomeCategories) > 0)
                                 @foreach($incomeCategories as $category)
                                     @include('categories.partials.show', ['category' => $category])
                                 @endforeach
-                            </div>
-                        @else
-                            <x-panels.panel padding="4">
-                                <x-panels.heading class="text-center w-full">
-                                    No income categories found.
-                                </x-panels.heading>
-                            </x-panels.panel>
-                        @endif
+                            @else
+                                <x-panels.panel padding="4">
+                                    <x-panels.heading class="text-sm text-center w-full">
+                                        No income categories found.
+                                    </x-panels.heading>
+                                </x-panels.panel>
+                            @endif
+                        </div>
                     </x-tabs.content>
                 @endfragment
             @endif
