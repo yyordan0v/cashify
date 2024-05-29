@@ -1,8 +1,5 @@
-@props(['type' => 'default'])
-
-@if($type === 'default')
-    <div
-        x-data="{
+<div
+    x-data="{
             tabSelected: 1,
             tabId: $id('tabs'),
             tabButtonClicked(tabButton){
@@ -23,36 +20,12 @@
             }
         }"
 
-        x-init="tabRepositionMarker($refs.tabButtons.firstElementChild);"
-        {{ $attributes->merge(['class' => 'relative w-full']) }}
-    >
+    x-init="tabRepositionMarker($refs.tabButtons.firstElementChild);"
+    {{ $attributes->merge(['class' => 'relative w-full']) }}
+>
 
-        {{ $slot }}
-    </div>
-@elseif($type === 'htmx')
-    <div
-        x-data="{
-            tabSelected: 1,
-            tabId: $id('tabs'),
-            tabButtonClicked(tabButton){
-                this.tabSelected = tabButton.id.replace(this.tabId + '-', '');
-                this.tabRepositionMarker(tabButton);
-            },
-            tabRepositionMarker(tabButton){
-                this.$refs.tabMarker.style.width=tabButton.offsetWidth + 'px';
-                this.$refs.tabMarker.style.height=tabButton.offsetHeight + 'px';
-                this.$refs.tabMarker.style.left=tabButton.offsetLeft + 'px';
-            }
-        }"
-
-        x-init="tabRepositionMarker($refs.tabButtons.firstElementChild);"
-        {{ $attributes->merge(['class' => 'relative w-full']) }}
-    >
-
-        {{ $slot }}
-
-    </div>
-@endif
+    {{ $slot }}
+</div>
 
 
 

@@ -26,7 +26,17 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('categories.index');
+        $categories = Auth::user()
+            ->categories()
+            ->latest()
+            ->with('user')
+            ->get()
+            ->groupBy('type');
+
+        return view('categories.index', [
+            'incomeCategories' => $categories['income'] ?? [],
+            'expenseCategories' => $categories['expense'] ?? [],
+        ]);
     }
 
     /**
@@ -116,30 +126,5 @@ class CategoryController extends Controller
         $category->delete();
 
         return '';
-    }
-
-    public function loadTab($type)
-    {
-        $categories = Auth::user()
-            ->categories()
-            ->latest()
-            ->with('user')
-            ->get()
-            ->groupBy('type');
-
-
-        if ($type == 'expense') {
-            return HtmxResponse::addFragment('categories.index', 'expense', [
-                'expenseCategories' => $categories['expense'] ?? [],
-                'type' => $type
-            ]);
-        } elseif ($type == 'income') {
-            return HtmxResponse::addFragment('categories.index', 'income', [
-                'incomeCategories' => $categories['income'] ?? [],
-                'type' => $type
-            ]);
-        }
-
-        return response()->json(['message' => 'Invalid category type'], 400);
     }
 }
