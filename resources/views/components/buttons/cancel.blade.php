@@ -10,8 +10,7 @@
     </x-buttons.secondary>
 @else
     <x-buttons.secondary hx-post="{{ route('cancel') }}" hx-swap="outerHTML"
-                         hx-push-url="{{ route($to.'.index') }}" hx-params="_token"
-    >
+                         hx-push-url="{{ route($to.'.index') }}" hx-params="_token">
         Cancel
     </x-buttons.secondary>
 @endif

@@ -109,13 +109,25 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, Category $category)
     {
+        $oldType = $category->type;
+
         $category = Category::findOrFail($category->id);
 
         $attributes = $request->validated();
 
         $category->update($attributes);
 
-        return HtmxResponse::addFragment('categories.show', 'panel', ['category' => $category]);
+        if ($oldType !== $category->type) {
+            return HtmxResponse::addFragment('categories.show', 'panel', ['category' => $category])
+                ->location(route('categories.index'))
+                ->retarget('#'.$category->type.'-list')
+                ->reswap('afterbegin');
+        }
+
+        return HtmxResponse::addFragment('categories.show', 'panel', ['category' => $category])
+            ->pushUrl(route('categories.index'))
+            ->retarget('this')
+            ->reswap('outerHTML');
     }
 
     /**
