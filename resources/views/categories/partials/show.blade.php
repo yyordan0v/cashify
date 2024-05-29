@@ -22,16 +22,16 @@
                         <x-dropdown.body>
                             <x-buttons.action hx-get="{{ route('categories.edit', $category->id) }}"
                                               hx-push-url="true"
-                                              hx-target="this"
-                                              hx-swap="outerHTML">
+                                              hx-swap="outerHTML"
+                                              class="w-full">
                                 <x-icon style="font-size: 20px">
                                     edit
                                 </x-icon>
                                 Edit
                             </x-buttons.action>
-                            <x-buttons.action class="text-red-600"
-                                              x-data=""
-                                              x-on:click.prevent="$dispatch('open-modal', 'confirm-category-{{ $category->id }}-deletion')">
+                            <x-buttons.action x-data=""
+                                              x-on:click.prevent="$dispatch('open-modal', 'confirm-category-{{ $category->id }}-deletion')"
+                                              class="text-red-600 w-full">
                                 <x-icon style="font-size: 20px">
                                     delete
                                 </x-icon>

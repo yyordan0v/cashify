@@ -1,8 +1,7 @@
 <x-app-layout>
     @fragment('form')
         <form
-            action="{{ route('categories.update', $category->id) }}"
-            method="POST"
+            hx-post="{{ route('categories.update', $category->id) }}"
             hx-params="not icon-search"
             x-data="{ icon: '{{ old('icon', $selectedIcon) ? old('icon', $selectedIcon).'.png' : 'image.png' }}' }"
             @icon-changed.window="icon = $event.detail.icon">
