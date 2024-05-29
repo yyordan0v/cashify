@@ -118,8 +118,10 @@ class CategoryController extends Controller
         $category->update($attributes);
 
         if ($oldType !== $category->type) {
+            $urlParams = $category->type === 'income' ? ['tab' => '2'] : [];
+
             return HtmxResponse::addFragment('categories.show', 'panel', ['category' => $category])
-                ->location(route('categories.index'))
+                ->location(route('categories.index', $urlParams))
                 ->retarget('#'.$category->type.'-list')
                 ->reswap('afterbegin');
         }
@@ -129,6 +131,7 @@ class CategoryController extends Controller
             ->retarget('this')
             ->reswap('outerHTML');
     }
+
 
     /**
      * Remove the specified resource from storage.
