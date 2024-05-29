@@ -20,6 +20,7 @@
                                        name="icon-search" id="icon-search" autofocus
                                        hx-post="{{ route('categories.searchIcons') }}"
                                        hx-params="icon-search,_token"
+                                       hx-push-url="false"
                                        hx-trigger="input changed delay:300ms, search"
                                        hx-target="#icon-list"/>
                     </x-forms.search>

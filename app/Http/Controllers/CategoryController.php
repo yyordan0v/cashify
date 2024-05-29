@@ -64,7 +64,9 @@ class CategoryController extends Controller
 
         Auth::user()->categories()->create($attributes);
 
-        return Redirect::route('categories.index');
+        $urlParams = $attributes['type'] === 'income' ? ['tab' => '2'] : [];
+
+        return Redirect::route('categories.index', $urlParams);
     }
 
     /**
