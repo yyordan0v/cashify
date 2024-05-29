@@ -104,7 +104,7 @@
                         <x-buttons.cancel to="categories" keep :id="$category->id"/>
 
                         <x-buttons.form>
-                            Submit
+                            Save
                         </x-buttons.form>
                     </x-forms.form-actions>
 

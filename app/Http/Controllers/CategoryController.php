@@ -6,6 +6,7 @@ use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
 use Mauricius\LaravelHtmx\Facades\HtmxResponse;
 use Mauricius\LaravelHtmx\Http\HtmxRequest;
 
@@ -41,10 +42,6 @@ class CategoryController extends Controller
             'selectedIcon' => 'image',
         ];
 
-        if ($request->isHtmxRequest()) {
-            return HtmxResponse::addFragment('categories.create', 'form', $data);
-        }
-
         return view('categories.create', $data);
     }
 
@@ -55,9 +52,9 @@ class CategoryController extends Controller
     {
         $attributes = $request->validated();
 
-        $category = Auth::user()->categories()->create($attributes);
+        Auth::user()->categories()->create($attributes);
 
-        return HtmxResponse::addFragment('categories.show', 'panel', ['category' => $category]);
+        return Redirect::route('categories.index');
     }
 
     /**

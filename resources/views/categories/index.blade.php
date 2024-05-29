@@ -17,9 +17,16 @@
             </x-tabs.button>
         </x-tabs.button-group>
 
+        <a href="{{ route('categories.create') }}" class="col-span-2">
+            <x-buttons.card-button padding="8">
+                Category
+            </x-buttons.card-button>
+        </a>
+
         <x-tabs.content-group id="tab-content" class="mb-4" hx-get="{{ route('categories.loadTab', 'expense') }}"
                               hx-target="#tab-content"
                               hx-swap="innerHTML" hx-trigger="load">
+
 
             @if(isset($type) && $type == 'expense')
                 @fragment('expense')

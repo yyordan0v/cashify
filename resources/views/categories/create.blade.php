@@ -2,7 +2,7 @@
     @fragment('form')
         <form
             hx-post="{{ route('categories.store') }}"
-            hx-target="this"
+            hx-target="body"
             hx-params="not icon-search"
             hx-push-url="true"
             x-data="{ icon: '{{ old('icon') ? old('icon').'.png' : 'image.png' }}' }"
@@ -103,7 +103,11 @@
 
 
                     <x-forms.form-actions>
-                        <x-buttons.cancel to="categories"/>
+                        <a href="{{ route('categories.index') }}">
+                            <x-buttons.secondary>
+                                Cancel
+                            </x-buttons.secondary>
+                        </a>
 
                         <x-buttons.form>
                             Add Category

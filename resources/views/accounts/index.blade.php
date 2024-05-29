@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="grid xl:grid-cols-2 gap-4 mb-4">
+    <div class="grid xl:grid-cols-2 gap-4 mb-4" id="list">
 
         @foreach($accounts as $account)
             @include('accounts.partials.show', ['account' => $account])
@@ -7,7 +7,7 @@
 
         {{--        transfer--}}
         @if(false)
-            <x-panels.panel class="flex flex-col items-start space-y-6">
+            <x-panels.panel class=" flex flex-col items-start space-y-6">
 
                 <div class="w-full">
                     <x-forms.label for="name" :value="__('Transfer to')"/>
@@ -62,7 +62,5 @@
             </x-buttons.card-button>
         </a>
     </div>
-
-
 </x-app-layout>
 
