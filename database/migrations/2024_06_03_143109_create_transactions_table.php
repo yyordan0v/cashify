@@ -1,11 +1,13 @@
 <?php
 
+use App\Models\Account;
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Account::class)->constrained()->cascadeOnDelete();
+            $table->enum('type', ['income', 'expense']);
+            $table->string('category');
+            $table->string('account');
+            $table->string('title');
+            $table->decimal('amount', 15, 2)->default(0);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

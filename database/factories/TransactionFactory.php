@@ -2,10 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\Account;
+use App\Models\Category;
+use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Transaction>
+ * @extends Factory<Transaction>
  */
 class TransactionFactory extends Factory
 {
@@ -17,7 +21,13 @@ class TransactionFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => User::factory(),
+            'category_id' => Category::factory(),
+            'account_id' => Account::factory(),
+            'title' => $this->faker->sentence,
+            'amount' => $this->faker->randomFloat(2, -10000, 10000),
+            'description' => $this->faker->paragraph,
+            'type' => $this->faker->randomElement(['expense', 'income']),
         ];
     }
 }
