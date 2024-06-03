@@ -5,14 +5,12 @@
 
     if ($type === 'income') {
         $classes .= ' from-emerald-600 to-emerald-400';
-        $symbol = '+ ';
     }
     if ($type === 'expense') {
         $classes .= ' from-red-600 to-red-400';
-        $symbol = '- ';
     }
 @endphp
 
 <p {{ $attributes->merge(['class' => $classes]) }}>
-    {{ $symbol . $slot }}
+    {{ $slot }}
 </p>
