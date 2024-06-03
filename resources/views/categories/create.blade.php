@@ -53,8 +53,7 @@
                     <div class=" flex items-start w-full">
 
                         <x-category-image-change x-data=""
-                                                 x-on:click.prevent="$dispatch('open-modal', 'category-image-change')"
-                                                 shade="300"/>
+                                                 x-on:click.prevent="$dispatch('open-modal', 'category-image-change')"/>
 
                         <div class="flex items-center justify-between w-full">
                             <div class="flex flex-col items-start justify-center w-full">
