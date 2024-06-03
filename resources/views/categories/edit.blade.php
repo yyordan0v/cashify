@@ -41,7 +41,7 @@
             <x-panels.panel padding="4">
 
                 <div class="flex flex-col items-start w-full"
-                     x-data="{ color: '{{ old('color', $selectedColor) ? 'bg-'.old('color', $selectedColor).'-300' : '' }}' }"
+                     x-data="{ color: '{{ old('color', $selectedColor) ? 'bg-'.old('color', $selectedColor).'-'.$colorShade : '' }}' }"
                      @color-changed.window="color = $event.detail.color">
 
                     <div class=" flex items-start w-full">
@@ -93,6 +93,7 @@
                             <x-forms.radio.color
                                 color="{{ $color }}"
                                 id="{{ $color }}"
+                                shade="{{ $colorShade }}"
                                 :checked="old('color', $selectedColor) === $color"/>
                         @endforeach
                     </x-forms.radio.group>

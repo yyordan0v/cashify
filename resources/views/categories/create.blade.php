@@ -47,7 +47,7 @@
                 </x-panels.heading>
 
                 <div class="flex flex-col items-start w-full"
-                     x-data="{ color: '{{ old('color') ? 'bg-'.old('color').'-300' : '' }}' }"
+                     x-data="{ color: '{{ old('color') ? 'bg-'.old('color').'-'.$colorShade : '' }}' }"
                      @color-changed.window="color = $event.detail.color">
 
                     <div class=" flex items-start w-full">

@@ -14,11 +14,14 @@ class CategoryController extends Controller
 {
     protected array $availableColors;
     protected string $selectedColor;
+    protected string $colorShade;
 
     public function __construct()
     {
-        $this->availableColors = Category::getAvailableColors();
-        $this->selectedColor = Category::getDefaultColor();
+        $category = new Category();
+        $this->colorShade = $category->shade ?? 300;
+        $this->availableColors = $category::getAvailableColors();
+        $this->selectedColor = $category::getDefaultColor();
     }
 
     /**
@@ -48,6 +51,7 @@ class CategoryController extends Controller
         $data = [
             'availableColors' => $this->availableColors,
             'selectedColor' => $this->selectedColor,
+            'colorShade' => $this->colorShade,
             'icons' => $icons,
             'selectedIcon' => 'image',
         ];
@@ -95,6 +99,7 @@ class CategoryController extends Controller
             'category' => $category,
             'availableColors' => $this->availableColors,
             'selectedColor' => $category->color,
+            'colorShade' => $this->colorShade,
             'icons' => $icons,
             'selectedIcon' => $category->icon,
         ];
