@@ -18,9 +18,6 @@ return new class extends Migration {
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Account::class)->constrained()->cascadeOnDelete();
-            $table->enum('type', ['income', 'expense']);
-            $table->string('category');
-            $table->string('account');
             $table->string('title');
             $table->decimal('amount', 15, 2)->default(0);
             $table->text('description')->nullable();

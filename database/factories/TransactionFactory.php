@@ -27,7 +27,6 @@ class TransactionFactory extends Factory
             'title' => $this->faker->sentence,
             'amount' => $this->faker->randomFloat(2, -10000, 10000),
             'description' => $this->faker->paragraph,
-            'type' => $this->faker->randomElement(['expense', 'income']),
         ];
     }
 }
