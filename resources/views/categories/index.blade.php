@@ -16,7 +16,7 @@
         </x-tabs.button-group>
 
         <a href="{{ route('categories.create') }}" class="col-span-2">
-            <x-buttons.card-button padding="8">
+            <x-buttons.card-button padding="p-8">
                 Category
             </x-buttons.card-button>
         </a>
@@ -42,7 +42,7 @@
                             @include('categories.partials.show', ['category' => $category])
                         @endforeach
                     @else
-                        <x-panels.panel padding="4">
+                        <x-panels.panel padding="p-4">
                             <x-panels.heading class="text-sm text-center w-full">
                                 No expense categories found.
                             </x-panels.heading>
@@ -71,7 +71,7 @@
                             @include('categories.partials.show', ['category' => $category])
                         @endforeach
                     @else
-                        <x-panels.panel padding="4">
+                        <x-panels.panel padding="p-4">
                             <x-panels.heading class="text-sm text-center w-full">
                                 No income categories found.
                             </x-panels.heading>

@@ -13,7 +13,7 @@
     <input type="radio" id="{{ $id }}" name="{{ $name }}" value="{{ $id }}" class="hidden peer" required
            @click="$dispatch('color-changed', { color: '{{ $color }}' })"/>
 
-    <x-category-image :is-label="true" margin="mr-0" rounded="xl" :color="$color" :image="$image"
+    <x-category-image :is-label="true" margin="mr-0" rounded="rounded-xl" :color="$color" :image="$image"
                       for="{{ $id }}"
         {{ $attributes->merge(['class' => $classes]) }}
     />

@@ -53,7 +53,8 @@
                     <div class=" flex items-start w-full">
 
                         <x-category-image-change x-data=""
-                                                 x-on:click.prevent="$dispatch('open-modal', 'category-image-change')"/>
+                                                 x-on:click.prevent="$dispatch('open-modal', 'category-image-change')"
+                                                 shade="300"/>
 
                         <div class="flex items-center justify-between w-full">
                             <div class="flex flex-col items-start justify-center w-full">
@@ -98,6 +99,7 @@
                             <x-forms.radio.color
                                 color="{{ $color }}"
                                 id="{{ $color }}"
+                                shade="{{ $colorShade }}"
                                 :checked="old('color', $selectedColor) === $color"/>
                         @endforeach
                     </x-forms.radio.group>

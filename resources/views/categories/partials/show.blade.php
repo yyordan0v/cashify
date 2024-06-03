@@ -1,6 +1,6 @@
 @props(['category'])
 <div hx-target="this">
-    <x-panels.panel padding="4">
+    <x-panels.panel padding="p-4">
         <div class="flex items-center">
 
             <x-category-image image="{{ $category->icon }}"

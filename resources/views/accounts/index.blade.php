@@ -57,7 +57,7 @@
 
         {{-- Add Account Button --}}
         <a href="{{ route('accounts.create') }}" class="col-span-2">
-            <x-buttons.card-button padding="8">
+            <x-buttons.card-button padding="p-8">
                 Account
             </x-buttons.card-button>
         </a>

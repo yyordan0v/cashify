@@ -11,6 +11,12 @@ export default {
         './resources/views/**/*.blade.php',
     ],
 
+    safelist: [
+        {
+            pattern: /bg-+/, // 👈  This includes bg of all colors and shades
+        },
+    ],
+
     theme: {
         extend: {
             fontFamily: {

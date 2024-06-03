@@ -38,7 +38,7 @@
             </x-modal>
 
 
-            <x-panels.panel padding="4">
+            <x-panels.panel padding="p-4">
 
                 <div class="flex flex-col items-start w-full"
                      x-data="{ color: '{{ old('color', $selectedColor) ? 'bg-'.old('color', $selectedColor).'-'.$colorShade : '' }}' }"

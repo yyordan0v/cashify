@@ -1,6 +1,6 @@
 @props(['account'])
 
-<x-panels.panel padding="4" class="xl:p-8 col-span-2 sm:col-span-1">
+<x-panels.panel padding="p-4" class="xl:p-8 col-span-2 sm:col-span-1">
     <div class="flex items-start flex-col">
         <div class="hidden xl:flex items-center justify-between w-full">
             <x-cards.title class="text-base mt-0 mb-0">

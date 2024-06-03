@@ -7,7 +7,7 @@
 @endphp
 
 <button>
-    <div {{ $attributes->merge(['class' => $classes]) }} :class="color ? color : 'bg-gray-200'">
+    <div {{ $attributes->merge(['class' => $classes]) }} :class="color ? color : 'bg-gray-300'">
         <img :src="`{{ Vite::asset('resources/images/categories/') }}${icon}`"
              class="max-w-8"
         >

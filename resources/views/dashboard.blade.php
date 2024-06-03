@@ -2,7 +2,7 @@
     <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 mb-4">
 
         @foreach($accounts as $account)
-            <x-panels.panel padding="4">
+            <x-panels.panel padding="p-4">
                 <div class="flex items-start flex-col">
 
                     <div class="flex items-center justify-between w-full">
@@ -20,7 +20,7 @@
         @endforeach
 
         <a href="{{ route('accounts.create') }}">
-            <x-buttons.card-button padding="4">Account</x-buttons.card-button>
+            <x-buttons.card-button padding="p-4">Account</x-buttons.card-button>
         </a>
 
     </div>

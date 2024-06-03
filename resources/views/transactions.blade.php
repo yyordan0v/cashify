@@ -36,7 +36,7 @@
             </div>
         </x-modal>
 
-        <x-panels.panel padding="4" class="space-y-6 mb-4">
+        <x-panels.panel padding="p-4" class="space-y-6 mb-4">
             <x-panels.heading class="mb-2">Add Transaction</x-panels.heading>
 
             <x-tabs.body class="flex flex-col gap-4">
@@ -155,7 +155,7 @@
 
         </x-panels.panel>
 
-        <x-panels.panel padding="4">
+        <x-panels.panel padding="p-4">
             <div class="flex flex-wrap items-center justify-between mb-8">
                 <x-panels.heading>Latest Transactions</x-panels.heading>
                 <div

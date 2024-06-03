@@ -2,13 +2,13 @@
     'color' => 'bg-gray-200',
     'image' => 'image',
     'size' => 'base',
-    'rounded' => 'full',
+    'rounded' => 'rounded-full',
     'margin' => 'mr-4',
     'isLabel' => false
 ])
 
 @php
-    $classes = 'block rounded-' . $rounded . ' ' . $color. ' ' . $margin;
+    $classes = 'block ' . $rounded . ' ' . $color. ' ' . $margin;
 
     if ($size === 'base') {
         $classes .= ' p-6';
