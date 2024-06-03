@@ -13,7 +13,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        return view('transactions.index');
     }
 
     /**
@@ -21,7 +21,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('transactions.create');
     }
 
     /**

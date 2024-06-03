@@ -103,30 +103,31 @@
                     {{--                    All--}}
                     <x-tabs.content class="flex-auto space-y-8">
                         <x-transactions.group heading="Today, May 21">
-                            <x-transactions.row :href="route('transactions')" type="income" description="Salary"
+                            <x-transactions.row :href="route('transactions.index')" type="income" description="Salary"
                                                 date="26 March 2020, at 13:45 PM"
                                                 amount="2,500 лв." category-background="bg-rose-200"
                                                 category-image="dollar-coin"/>
-                            <x-transactions.row :href="route('transactions')" type="income" description="Gift"
+                            <x-transactions.row :href="route('transactions.index')" type="income" description="Gift"
                                                 date="26 March 2020, at 13:45 PM"
                                                 amount="500 лв." category-background="bg-lime-200"
                                                 category-image="gift"/>
-                            <x-transactions.row :href="route('transactions')" type="expense" description="New iPhone"
+                            <x-transactions.row :href="route('transactions.index')" type="expense"
+                                                description="New iPhone"
                                                 date="26 March 2020, at 13:45 PM"
                                                 amount="2,500 лв." category-background="bg-rose-200"
                                                 category-image="dollar-coin"/>
-                            <x-transactions.row :href="route('transactions')" type="expense" description="Rent"
+                            <x-transactions.row :href="route('transactions.index')" type="expense" description="Rent"
                                                 date="26 March 2020, at 13:45 PM"
                                                 amount="1000 лв." category-background="bg-rose-200"
                                                 category-image="dollar-coin"/>
                         </x-transactions.group>
 
                         <x-transactions.group heading="Yesterday, May 20">
-                            <x-transactions.row :href="route('transactions')" type="income" description="Salary"
+                            <x-transactions.row :href="route('transactions.index')" type="income" description="Salary"
                                                 date="26 March 2020, at 13:45 PM"
                                                 amount="2,500 лв." category-background="bg-rose-200"
                                                 category-image="dollar-coin"/>
-                            <x-transactions.row :href="route('transactions')" type="expense" description="Rent"
+                            <x-transactions.row :href="route('transactions.index')" type="expense" description="Rent"
                                                 date="26 March 2020, at 13:45 PM"
                                                 amount="1000 лв." category-background="bg-rose-200"
                                                 category-image="dollar-coin"/>
@@ -136,18 +137,19 @@
                     {{--                    Expense--}}
                     <x-tabs.content class="flex-auto space-y-8">
                         <x-transactions.group heading="Today, May 21">
-                            <x-transactions.row :href="route('transactions')" type="expense" description="New iPhone"
+                            <x-transactions.row :href="route('transactions.index')" type="expense"
+                                                description="New iPhone"
                                                 date="26 March 2020, at 13:45 PM"
                                                 amount="2,500 лв." category-background="bg-rose-200"
                                                 category-image="dollar-coin"/>
-                            <x-transactions.row :href="route('transactions')" type="expense" description="Rent"
+                            <x-transactions.row :href="route('transactions.index')" type="expense" description="Rent"
                                                 date="26 March 2020, at 13:45 PM"
                                                 amount="1000 лв." category-background="bg-rose-200"
                                                 category-image="dollar-coin"/>
                         </x-transactions.group>
 
                         <x-transactions.group heading="Yesterday, May 20">
-                            <x-transactions.row :href="route('transactions')" type="expense" description="Rent"
+                            <x-transactions.row :href="route('transactions.index')" type="expense" description="Rent"
                                                 date="26 March 2020, at 13:45 PM"
                                                 amount="1000 лв." category-background="bg-rose-200"
                                                 category-image="dollar-coin"/>
@@ -157,18 +159,18 @@
                     {{--                    Income--}}
                     <x-tabs.content class="flex-auto space-y-8">
                         <x-transactions.group heading="Today, May 21">
-                            <x-transactions.row :href="route('transactions')" type="income" description="Salary"
+                            <x-transactions.row :href="route('transactions.index')" type="income" description="Salary"
                                                 date="26 March 2020, at 13:45 PM"
                                                 amount="2,500 лв." category-background="bg-rose-200"
                                                 category-image="dollar-coin"/>
-                            <x-transactions.row :href="route('transactions')" type="income" description="Gift"
+                            <x-transactions.row :href="route('transactions.index')" type="income" description="Gift"
                                                 date="26 March 2020, at 13:45 PM"
                                                 amount="500 лв." category-background="bg-lime-200"
                                                 category-image="gift"/>
                         </x-transactions.group>
 
                         <x-transactions.group heading="Yesterday, May 20">
-                            <x-transactions.row :href="route('transactions')" type="income" description="Salary"
+                            <x-transactions.row :href="route('transactions.index')" type="income" description="Salary"
                                                 date="26 March 2020, at 13:45 PM"
                                                 amount="2,500 лв." category-background="bg-rose-200"
                                                 category-image="dollar-coin"/>

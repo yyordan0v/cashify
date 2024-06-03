@@ -11,8 +11,10 @@
                 </x-nav.link-icon>
                 <span>Dashboard</span>
             </x-nav.link>
-            <x-nav.link :href="route('transactions')" :active="request()->routeIs('transactions')">
-                <x-nav.link-icon :active="request()->routeIs('transactions')">
+            <x-nav.link :href="route('transactions.index')"
+                        :active="request()->routeIs(['transactions.index', 'transactions.create', 'transactions.edit'])">
+                <x-nav.link-icon
+                    :active="request()->routeIs(['transactions.index', 'transactions.create', 'transactions.edit'])">
                     payments
                 </x-nav.link-icon>
                 <span>Transactions</span>
@@ -38,8 +40,9 @@
         </ul>
         <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
             <x-nav.link :href="route('accounts.index')"
-                        :active="request()->routeIs(['accounts.index', 'accounts.edit', 'accounts.create'])">
-                <x-nav.link-icon :active="request()->routeIs(['accounts.index', 'accounts.edit', 'accounts.create'])">
+                        :active="request()->routeIs(['accounts.index', 'accounts.edit', 'accounts.create', 'accounts.show'])">
+                <x-nav.link-icon
+                    :active="request()->routeIs(['accounts.index', 'accounts.edit', 'accounts.create', 'accounts.show'])">
                     wallet
                 </x-nav.link-icon>
                 <span>Accounts</span>
