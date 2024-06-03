@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,7 +30,7 @@ Route::view('/goals', 'goals')
     ->name('goals');
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(callback: function () {
     // profile
     Route::controller(ProfileController::class)->group(function () {
         Route::get('/profile', 'edit')
@@ -101,6 +102,37 @@ Route::middleware('auth')->group(function () {
             ->can('delete', 'category');
     });
 
+
+    //    Transactions
+    Route::controller(TransactionController::class)->group(function () {
+        Route::get('/transactions', 'index')
+            ->name('transactions.index');
+
+        Route::get('/transactions/create', 'create')
+            ->name('transactions.create');
+
+        Route::post('/transactions', 'store')
+            ->name('transactions.store');
+
+        Route::get('/transactions/{transaction}', 'show')
+            ->name('transactions.show')
+            ->can('view', 'transaction');
+
+        Route::get('/transactions/{transaction}/edit', 'edit')
+            ->name('transactions.edit')
+            ->can('update', 'transaction');
+
+        Route::patch('/transactions/{transaction}', 'update')
+            ->name('transactions.update')
+            ->can('update', 'transaction');
+
+        Route::delete('/transactions/{transaction}', 'destroy')
+            ->name('transactions.destroy')
+            ->can('delete', 'transaction');
+    });
+
+
+    //    Search
     Route::controller(SearchController::class)->group(function () {
         Route::post('/search/icons', 'searchIcons')
             ->name('categories.searchIcons');
