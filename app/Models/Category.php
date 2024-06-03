@@ -11,7 +11,7 @@ class Category extends Model
 {
     use HasFactory, HasColor;
 
-//    protected $shade = 200;
+    protected $shade = 200;
 
     protected $fillable = [
         'name',
