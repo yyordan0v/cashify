@@ -6,7 +6,7 @@
     'amount',
     'categoryColor' => 'bg-gray-200',
     'categoryIcon' => 'shopping',
-    'description' => false
+    'details' => false
 ])
 
 <a {{ $attributes->merge() }}>
@@ -23,8 +23,8 @@
         </div>
         <div class="flex items-center gap-2">
 
-            @if($description)
-                <x-tooltip text="{{ $description }}" position="bottom" ref="content">
+            @if($details)
+                <x-tooltip text="{{ $details }}" position="bottom" ref="content">
                     <x-icon class="text-lg text-gray-500" x-ref="content">
                         description
                     </x-icon>

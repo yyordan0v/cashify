@@ -19,7 +19,7 @@
 @endif
 
 @if($type === 'category')
-    <ul {{ $attributes->merge(['class' => 'flex flex-wrap items-center justify-center gap-8']) }}>
+    <ul {{ $attributes->merge(['class' => 'flex flex-wrap items-center justify-center gap-6    ']) }}>
         {{ $slot }}
     </ul>
 @endif

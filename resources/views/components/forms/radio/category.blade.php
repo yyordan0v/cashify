@@ -3,6 +3,7 @@
     'image' => 'image',
     'name' => 'category',
     'id' => 'shopping',
+    'checked' => false
 ])
 
 @php
@@ -10,7 +11,8 @@
 @endphp
 
 <li>
-    <input type="radio" id="{{ $id }}" name="{{ $name }}" value="{{ $id }}" class="hidden peer" required
+    <input type="radio" id="{{ $id }}" name="{{ $name }}" value="{{ $id }}" class="hidden peer"
+           {{ $checked ? 'checked' : '' }}
            @click="$dispatch('color-changed', { color: '{{ $color }}' })"/>
 
     <x-category-image :is-label="true" margin="mr-0" rounded="rounded-xl" :color="$color" :image="$image"
@@ -21,8 +23,3 @@
         {{ $slot }}
     </x-cards.text>
 </li>
-
-
-
-
-

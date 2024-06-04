@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTransactionRequest;
-use App\Http\Requests\UpdateTransactionRequest;
+use App\Http\Requests\TransactionRequest;
+use App\Models\Account;
+use App\Models\Category;
 use App\Models\Transaction;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class TransactionController extends Controller
 {
@@ -36,16 +40,45 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        return view('transactions.create');
+        $categories = Auth::user()
+            ->categories()
+            ->latest()
+            ->with('user')
+            ->get()
+            ->groupBy('type');
+
+        $accounts = Auth::user()->accounts()->with('user')->get();
+
+        return view('transactions.create', [
+            'incomeCategories' => $categories['income'] ?? [],
+            'expenseCategories' => $categories['expense'] ?? [],
+            'accounts' => $accounts,
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTransactionRequest $request)
+    public function store(TransactionRequest $request)
     {
-        //
+        $attributes = $request->validated();
+
+        $account = Account::findOrFail($attributes['account_id']);
+        $category = Category::findOrFail($attributes['category_id']);
+
+        if ($category->type == 'expense') {
+            $attributes['amount'] = -abs($attributes['amount']);
+        }
+
+        $account->update([
+            'balance' => $account->balance + $attributes['amount'],
+        ]);
+
+        Auth::user()->transactions()->create($attributes);
+
+        return Redirect::route('transactions.index')->with('success', 'Transaction created successfully.');
     }
+
 
     /**
      * Display the specified resource.
@@ -66,7 +99,7 @@ class TransactionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTransactionRequest $request, Transaction $transaction)
+    public function update(TransactionRequest $request, Transaction $transaction)
     {
         //
     }

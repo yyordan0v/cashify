@@ -26,7 +26,7 @@ class TransactionFactory extends Factory
             'account_id' => Account::factory(),
             'title' => $this->faker->sentence,
             'amount' => $this->faker->randomFloat(2, -10000, 10000),
-            'description' => $this->faker->paragraph,
+            'details' => $this->faker->paragraph,
         ];
     }
 }

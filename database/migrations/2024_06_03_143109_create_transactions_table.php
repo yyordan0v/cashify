@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->foreignIdFor(Account::class)->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->decimal('amount', 15, 2)->default(0);
-            $table->text('description')->nullable();
+            $table->text('details')->nullable();
             $table->timestamps();
         });
     }
