@@ -4,7 +4,8 @@
     'date',
     'amount',
     'categoryColor' => 'bg-gray-200',
-    'categoryIcon' => 'shopping'
+    'categoryIcon' => 'shopping',
+    'description' => false
 ])
 
 <a {{ $attributes->merge() }}>
@@ -19,7 +20,16 @@
                 <x-transactions.date>{{ $date }}</x-transactions.date>
             </div>
         </div>
-        <div class="flex flex-col items-center justify-center">
+        <div class="flex items-center gap-2">
+
+            @if($description)
+                <x-tooltip text="{{ $description }}" position="bottom" ref="content">
+                    <x-icon class="text-lg text-gray-500" x-ref="content">
+                        description
+                    </x-icon>
+                </x-tooltip>
+            @endif
+
             <x-transactions.amount type="{{ $type }}">
                 {{ $amount }}
             </x-transactions.amount>

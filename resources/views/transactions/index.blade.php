@@ -76,9 +76,11 @@
                         <x-transactions.group heading="Today, May 21">
                             @foreach($transactions as $transaction)
 
-                                <x-transactions.row :type="$transaction->category->type"
+                                <x-transactions.row :href="route('transactions.index')"
+                                                    :type="$transaction->category->type"
                                                     :title="$transaction->title"
                                                     :date="$transaction->created_at"
+                                                    :description="$transaction->description"
                                                     :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
                                                     :category-color="$transaction->category->color_class"
                                                     :category-icon="$transaction->category->icon"/>

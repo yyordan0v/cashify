@@ -108,7 +108,7 @@
                                                 amount="2,500 лв." category-background="bg-rose-200"
                                                 category-image="dollar-coin"/>
                             <x-transactions.row :href="route('transactions.index')" type="income" title="Gift"
-                                                date="26 March 2020, at 13:45 PM"
+                                                date="26 March 2020, at 13:45 PM" description="Sample description"
                                                 amount="500 лв." category-background="bg-lime-200"
                                                 category-image="gift"/>
                             <x-transactions.row :href="route('transactions.index')" type="expense"
@@ -144,7 +144,8 @@
                                                 category-image="dollar-coin"/>
                             <x-transactions.row :href="route('transactions.index')" type="expense" title="Rent"
                                                 date="26 March 2020, at 13:45 PM"
-                                                amount="1000 лв." category-background="bg-rose-200"
+                                                amount="1000 лв."
+                                                category-background="bg-rose-200"
                                                 category-image="dollar-coin"/>
                         </x-transactions.group>
 
