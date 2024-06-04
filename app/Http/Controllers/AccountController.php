@@ -85,7 +85,7 @@ class AccountController extends Controller
 
         $account = Account::findOrFail($account->id);
 
-        if ($attributes['balance'] !== $account->balance) {
+        if ($attributes['balance'] != $account->balance) {
             $correctionCategory = Auth::user()->categories()->where('type', 'correction')->get();
 
             Auth::user()->transactions()->create([
