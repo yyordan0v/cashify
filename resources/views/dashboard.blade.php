@@ -14,7 +14,9 @@
                     <x-cards.title class="mt-4 mb-0">
                         {{ Number::currency($account->balance, in: 'BGN', locale: 'bg') }}
                     </x-cards.title>
-                    <x-cards.text class="text-gray-950 text-sm">420 transaction</x-cards.text>
+                    <x-cards.text class="text-gray-950 text-sm">
+                        {{  count($account->transactions) }} transactions
+                    </x-cards.text>
                 </div>
             </x-panels.panel>
         @endforeach
