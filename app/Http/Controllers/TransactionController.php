@@ -8,6 +8,7 @@ use App\Models\Account;
 use App\Models\Category;
 use App\Models\Transaction;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -59,7 +60,7 @@ class TransactionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(TransactionRequest $request)
+    public function store(TransactionRequest $request): RedirectResponse
     {
         $attributes = $request->validated();
 
@@ -76,7 +77,7 @@ class TransactionController extends Controller
 
         Auth::user()->transactions()->create($attributes);
 
-        return Redirect::route('transactions.index')->with('success', 'Transaction created successfully.');
+        return Redirect::route('transactions.index');
     }
 
 

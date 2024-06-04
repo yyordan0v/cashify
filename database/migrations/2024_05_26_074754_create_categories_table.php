@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->string('name');
-            $table->enum('type', ['income', 'expense']);
+            $table->enum('type', ['income', 'expense', 'correction', 'transfer']);
             $table->string('color')->default('gray');
             $table->string('icon')->default('image');
             $table->timestamps();

@@ -81,9 +81,22 @@ class AccountController extends Controller
      */
     public function update(AccountRequest $request, Account $account): RedirectResponse
     {
+        $attributes = $request->validated();
+
         $account = Account::findOrFail($account->id);
 
-        $attributes = $request->validated();
+        if ($attributes['balance'] !== $account->balance) {
+            $correctionCategory = Auth::user()->categories()->where('type', 'correction')->get();
+
+            Auth::user()->transactions()->create([
+                'user_id' => Auth::id(),
+                'category_id' => $correctionCategory->first()->id,
+                'account_id' => $account->id,
+                'title' => 'Balance Correction',
+                'amount' => $attributes['balance'] - $account->balance,
+                'details' => $account->name.' - Old Balance: '.$account->balance.', New Balance: '.$attributes['balance'].'.',
+            ]);
+        }
 
         $account->update($attributes);
 

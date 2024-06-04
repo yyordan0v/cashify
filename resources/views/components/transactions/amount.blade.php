@@ -9,6 +9,9 @@
     if ($type === 'expense') {
         $classes .= ' from-red-600 to-red-400';
     }
+    if ($type === 'correction' || $type === 'transfer') {
+        $classes .= ' from-amber-600 to-amber-400';
+    }
 @endphp
 
 <p {{ $attributes->merge(['class' => $classes]) }}>

@@ -21,7 +21,7 @@ class CategoryFactory extends Factory
         return [
             'user_id' => User::factory(),
             'name' => fake()->word,
-            'type' => fake()->randomElement(['expense', 'income']),
+            'type' => fake()->randomElement(['expense', 'income', 'correction', 'transfer']),
             'color' => fake()->randomElement(['lime', 'blue', 'gray', 'pink', 'yellow']),
             'icon' => fake()->randomElement(['bill', 'bicycle', 'bread', 'butterfly', 'calendar', 'camera']),
         ];

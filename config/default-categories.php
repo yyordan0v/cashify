@@ -112,4 +112,17 @@ return [
         'color' => 'gray',
         'icon' => 'cleaning'
     ],
+    // others
+    [
+        'name' => 'Balance Correction',
+        'type' => 'correction',
+        'color' => 'gray',
+        'icon' => 'charts'
+    ],
+    [
+        'name' => 'Balance Transfer',
+        'type' => 'transfer',
+        'color' => 'gray',
+        'icon' => 'exchange-arrows'
+    ],
 ];

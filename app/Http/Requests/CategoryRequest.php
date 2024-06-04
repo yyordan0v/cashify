@@ -26,7 +26,7 @@ class CategoryRequest extends FormRequest
 
         return [
             'name' => ['required', 'string', 'max:255'],
-            'type' => ['required', 'string', Rule::in(['expense', 'income'])],
+            'type' => ['required', 'string', Rule::in(['expense', 'income', 'correction', 'transfer'])],
             'color' => ['required', 'string', Rule::in($this->getAvailableColors())],
             'icon' => ['required', 'string', Rule::in($availableIcons)],
         ];
