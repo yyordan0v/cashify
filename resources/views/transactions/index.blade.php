@@ -73,77 +73,58 @@
 
                     {{--                    All--}}
                     <x-tabs.content class="flex-auto space-y-8">
-                        <x-transactions.group heading="Today, May 21">
-                            @foreach($transactions as $transaction)
-
-                                <x-transactions.row :href="route('transactions.index')"
-                                                    :type="$transaction->category->type"
-                                                    :title="$transaction->title"
-                                                    :date="$transaction->created_at"
-                                                    :description="$transaction->description"
-                                                    :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
-                                                    :category-color="$transaction->category->color_class"
-                                                    :category-icon="$transaction->category->icon"/>
-                            @endforeach
-
-                        </x-transactions.group>
-
-                        <x-transactions.group heading="Yesterday, May 20">
-                            <x-transactions.row :href="route('transactions.index')" type="income" title="Salary"
-                                                date="26 March 2020, at 13:45 PM"
-                                                amount="2,500 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                            <x-transactions.row :href="route('transactions.index')" type="expense" title="Rent"
-                                                date="26 March 2020, at 13:45 PM"
-                                                amount="1000 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                        </x-transactions.group>
+                        @foreach ($groupedTransactions as $date => $transactions)
+                            <x-transactions.group :heading="$date">
+                                @foreach($transactions as $transaction)
+                                    <x-transactions.row :href="route('transactions.index')"
+                                                        :type="$transaction->category->type"
+                                                        :title="$transaction->title"
+                                                        :date="$transaction->created_at"
+                                                        :description="$transaction->description"
+                                                        :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
+                                                        :category-color="$transaction->category->color_class"
+                                                        :category-icon="$transaction->category->icon"/>
+                                @endforeach
+                            </x-transactions.group>
+                        @endforeach
                     </x-tabs.content>
 
                     {{--                    Expense--}}
                     <x-tabs.content class="flex-auto space-y-8">
-                        <x-transactions.group heading="Today, May 21">
-                            <x-transactions.row :href="route('transactions.index')" type="expense"
-                                                title="New iPhone"
-                                                date="26 March 2020, at 13:45 PM"
-                                                amount="2,500 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                            <x-transactions.row :href="route('transactions.index')" type="expense" title="Rent"
-                                                date="26 March 2020, at 13:45 PM"
-                                                amount="1000 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                        </x-transactions.group>
-
-                        <x-transactions.group heading="Yesterday, May 20">
-                            <x-transactions.row :href="route('transactions.index')" type="expense" title="Rent"
-                                                date="26 March 2020, at 13:45 PM"
-                                                amount="1000 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                        </x-transactions.group>
+                        @foreach ($groupedExpenses as $date => $transactions)
+                            <x-transactions.group :heading="$date">
+                                @foreach($transactions as $transaction)
+                                    <x-transactions.row :href="route('transactions.index')"
+                                                        :type="$transaction->category->type"
+                                                        :title="$transaction->title"
+                                                        :date="$transaction->created_at"
+                                                        :description="$transaction->description"
+                                                        :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
+                                                        :category-color="$transaction->category->color_class"
+                                                        :category-icon="$transaction->category->icon"/>
+                                @endforeach
+                            </x-transactions.group>
+                        @endforeach
                     </x-tabs.content>
-
+                    
                     {{--                    Income--}}
                     <x-tabs.content class="flex-auto space-y-8">
-                        <x-transactions.group heading="Today, May 21">
-                            <x-transactions.row :href="route('transactions.index')" type="income" title="Salary"
-                                                date="26 March 2020, at 13:45 PM"
-                                                amount="2,500 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                            <x-transactions.row :href="route('transactions.index')" type="income" title="Gift"
-                                                date="26 March 2020, at 13:45 PM"
-                                                amount="500 лв." category-background="bg-lime-200"
-                                                category-image="gift"/>
-                        </x-transactions.group>
-
-                        <x-transactions.group heading="Yesterday, May 20">
-                            <x-transactions.row :href="route('transactions.index')" type="income" title="Salary"
-                                                date="26 March 2020, at 13:45 PM"
-                                                amount="2,500 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                        </x-transactions.group>
+                        @foreach ($groupedIncomes as $date => $transactions)
+                            <x-transactions.group :heading="$date">
+                                @foreach($transactions as $transaction)
+                                    <x-transactions.row :href="route('transactions.index')"
+                                                        :type="$transaction->category->type"
+                                                        :title="$transaction->title"
+                                                        :date="$transaction->created_at"
+                                                        :description="$transaction->description"
+                                                        :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
+                                                        :category-color="$transaction->category->color_class"
+                                                        :category-icon="$transaction->category->icon"/>
+                                @endforeach
+                            </x-transactions.group>
+                        @endforeach
                     </x-tabs.content>
                 </x-tabs.content-group>
-
             </x-tabs.body>
         </x-panels.panel>
     </div>

@@ -15,7 +15,7 @@ class CreateDefaultCategories implements ShouldQueue
     {
         $user = $event->user;
 
-        $defaultCategories = Config::get('default_categories');
+        $defaultCategories = Config::get('default-categories');
 
         foreach ($defaultCategories as $category) {
             $user->categories()->create($category);

@@ -1,3 +1,4 @@
+@php use Carbon\Carbon; @endphp
 @props([
     'type' => 'expense',
     'title',
@@ -17,7 +18,7 @@
 
             <div class="flex flex-col">
                 <x-transactions.title>{{ $title }}</x-transactions.title>
-                <x-transactions.date>{{ $date }}</x-transactions.date>
+                <x-transactions.date>{{ Carbon::parse($date)->format('d F Y, \a\t h:i A') }}</x-transactions.date>
             </div>
         </div>
         <div class="flex items-center gap-2">

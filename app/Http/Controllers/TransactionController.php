@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
 use App\Models\Transaction;
+use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
@@ -13,9 +14,21 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::all();
+        $transactions = Transaction::orderBy('created_at', 'desc')->get();
 
-        return view('transactions.index', ['transactions' => $transactions]);
+        $groupedTransactions = $this->groupTransactionsByDate($transactions);
+
+        $expenses = $transactions->filter(function ($transaction) {
+            return $transaction->category->type === 'expense';
+        });
+        $groupedExpenses = $this->groupTransactionsByDate($expenses);
+
+        $incomes = $transactions->filter(function ($transaction) {
+            return $transaction->category->type === 'income';
+        });
+        $groupedIncomes = $this->groupTransactionsByDate($incomes);
+
+        return view('transactions.index', compact('groupedTransactions', 'groupedExpenses', 'groupedIncomes'));
     }
 
     /**
@@ -64,5 +77,35 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction)
     {
         //
+    }
+
+    private function groupTransactionsByDate($transactions)
+    {
+        $grouped = [];
+        foreach ($transactions as $transaction) {
+            $date = $this->formatDateGroup($transaction->created_at);
+            $grouped[$date][] = $transaction;
+        }
+        return $grouped;
+    }
+
+    private function formatDateGroup($date)
+    {
+        $carbonDate = Carbon::parse($date);
+        $today = Carbon::today();
+        $yesterday = Carbon::yesterday();
+
+        if ($carbonDate->isToday()) {
+            return 'TODAY, '.$carbonDate->format('F d');
+        } elseif ($carbonDate->isYesterday()) {
+            return 'YESTERDAY, '.$carbonDate->format('F d');
+        } else {
+            return strtoupper($carbonDate->format('l')).', '.$carbonDate->format('F d');
+        }
+    }
+
+    private function formatDate($date)
+    {
+        return Carbon::parse($date)->format('d F Y, \a\t h:i A');
     }
 }
