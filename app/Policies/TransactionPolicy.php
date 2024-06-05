@@ -20,7 +20,8 @@ class TransactionPolicy
      */
     public function update(User $user, Transaction $transaction): bool
     {
-        return $transaction->user && $transaction->user->is($user);
+        return $transaction->user && $transaction->user->is($user) && in_array($transaction->category->type,
+                ['expense', 'income']);
     }
 
     /**
@@ -28,6 +29,7 @@ class TransactionPolicy
      */
     public function delete(User $user, Transaction $transaction): bool
     {
-        return $transaction->user && $transaction->user->is($user);
+        return $transaction->user && $transaction->user->is($user) && in_array($transaction->category->type,
+                ['expense', 'income']);
     }
 }

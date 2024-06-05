@@ -33,7 +33,7 @@
                                                                 name="category_id"
                                                                 :color="$category->color_class"
                                                                 :image="$category->icon"
-                                                                :checked="old('category') == $category->id">
+                                                                :checked="old('category_id') == $category->id">
                                             {{ $category->name }}
                                         </x-forms.radio.category>
                                     @endforeach
@@ -56,7 +56,7 @@
                                                                 name="category_id"
                                                                 :color="$category->color_class"
                                                                 :image="$category->icon"
-                                                                :checked="old('category') == $category->id">
+                                                                :checked="old('category_id') == $category->id">
                                             {{ $category->name }}
                                         </x-forms.radio.category>
                                     @endforeach
@@ -81,7 +81,7 @@
                             @foreach($accounts as $account)
                                 <x-forms.radio.button name="account_id" :id="'account-'.$account->id"
                                                       :value="$account->id"
-                                                      :checked="old('account') == $account->id">
+                                                      :checked="old('account_id') == $account->id">
                                     <div class="block">
                                         <div class="w-full">{{ $account->name }}</div>
                                     </div>

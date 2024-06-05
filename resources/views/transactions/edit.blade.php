@@ -81,11 +81,43 @@
                     <a href="{{ route('transactions.index') }}">
                         <x-buttons.secondary>Cancel</x-buttons.secondary>
                     </a>
+
+                    <x-buttons.danger x-data=""
+                                      x-on:click.prevent="$dispatch('open-modal', 'confirm-transaction-{{ $transaction->id }}-deletion')">
+                        Delete
+                    </x-buttons.danger>
+
                     <x-buttons.form>Save</x-buttons.form>
                 </div>
-
             </x-panels.panel>
         </div>
     </form>
+
+    <x-modal name="confirm-transaction-{{ $transaction->id }}-deletion">
+        <form action="{{ route('transactions.destroy', $transaction->id) }}"
+              method="POST"
+              class="p-6">
+            @csrf
+            @method('DELETE')
+
+            <x-panels.heading>
+                {{ __('Are you sure you want to delete this transaction?') }}
+            </x-panels.heading>
+
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                {{ __('Once your category is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your category.') }}
+            </p>
+
+            <div class="mt-6 flex flex-col md:flex-row items-center justify-end w-full gap-2">
+                <x-buttons.secondary x-on:click="$dispatch('close')">
+                    {{ __('Cancel') }}
+                </x-buttons.secondary>
+
+                <x-buttons.danger x-on:click="$dispatch('close')">
+                    {{ __('Delete Transaction') }}
+                </x-buttons.danger>
+            </div>
+        </form>
+    </x-modal>
 </x-app-layout>
 

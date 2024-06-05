@@ -143,7 +143,28 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
-        //
+        if ($transaction->category->type == 'expense') {
+            $transaction->amount = -abs($transaction->amount);
+        }
+
+        $correctionCategory = Auth::user()->categories()->where('type', 'correction')->get();
+
+        Auth::user()->transactions()->create([
+            'user_id' => Auth::id(),
+            'category_id' => $correctionCategory->first()->id,
+            'account_id' => $transaction->account->id,
+            'title' => 'Balance Correction',
+            'amount' => -$transaction->amount,
+            'details' => 'Account: '.$transaction->account->name.' - Deleted '.$transaction->title.' transaction.',
+        ]);
+
+        $transaction->account->update([
+            'balance' => $transaction->account->balance - $transaction->amount,
+        ]);
+
+        $transaction->delete();
+
+        return Redirect::route('transactions.index');
     }
 
     private function groupTransactionsByDate($transactions)

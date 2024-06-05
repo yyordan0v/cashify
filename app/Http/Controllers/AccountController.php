@@ -94,7 +94,7 @@ class AccountController extends Controller
                 'account_id' => $account->id,
                 'title' => 'Balance Correction',
                 'amount' => $attributes['balance'] - $account->balance,
-                'details' => $account->name.' - Old Balance: '.$account->balance.', New Balance: '.$attributes['balance'].'.',
+                'details' => 'Account: '.$account->name.' - Old Balance: '.$account->balance.', New Balance: '.$attributes['balance'].'.',
             ]);
         }
 
