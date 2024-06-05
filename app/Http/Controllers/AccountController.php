@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AccountRequest;
 use App\Models\Account;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Mauricius\LaravelHtmx\Facades\HtmxResponse;
+use Mauricius\LaravelHtmx\Http\HtmxRequest;
 
 class AccountController extends Controller
 {
@@ -57,9 +58,15 @@ class AccountController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Account $account): Response
+    public function show(HtmxRequest $request, Account $account)
     {
-        return response()->view('accounts.show', [
+        if ($request->isHtmxRequest()) {
+            return HtmxResponse::addFragment('accounts.show', 'panel', [
+                'account' => $account,
+            ]);
+        }
+
+        return view('accounts.show', [
             'account' => $account,
         ]);
     }
@@ -109,6 +116,59 @@ class AccountController extends Controller
     public function destroy(Account $account): RedirectResponse
     {
         $account->delete();
+
+        return Redirect::route('accounts.index');
+    }
+
+    public function transfer(HtmxRequest $request, Account $account)
+    {
+        $account = Account::findOrFail($account->id);
+        $userAccounts = Auth::user()->accounts()->with('user')->where('id', '!=', $account->id)->get();
+
+
+        if ($request->isHtmxRequest()) {
+            return HtmxResponse::addFragment('accounts.transfer', 'form', compact('account', 'userAccounts'));
+        }
+
+        return view('accounts.transfer', compact('account', 'userAccounts'));
+
+
+    }
+
+    public function storeTransfer(HtmxRequest $request, Account $account)
+    {
+        $request->validate([
+            'to_account' => 'required', 'exists:accounts,id',
+            'amount' => 'required', 'numeric', 'min:0.01',
+        ]);
+
+        $fromAccount = Account::findOrFail($account->id);
+        $toAccount = Account::findOrFail($request->to_account);
+
+        $amount = abs($request->amount);
+
+        $transferCategory = Auth::user()->categories()->where('type', 'transfer')->get();
+
+        Auth::user()->transactions()->create([
+            'user_id' => Auth::id(),
+            'category_id' => $transferCategory->first()->id,
+            'account_id' => $toAccount->id,
+            'title' => $toAccount->name.' Transfer In',
+            'amount' => $amount,
+            'details' => 'Account: '.$toAccount->name.' - Old Balance: '.$toAccount->balance.', New Balance: '.$toAccount->balance + $amount.'.',
+        ]);
+
+        Auth::user()->transactions()->create([
+            'user_id' => Auth::id(),
+            'category_id' => $transferCategory->first()->id,
+            'account_id' => $fromAccount->id,
+            'title' => $fromAccount->name.' Transfer Out',
+            'amount' => -$amount,
+            'details' => 'Account: '.$fromAccount->name.' - Old Balance: '.$fromAccount->balance.', New Balance: '.$fromAccount->balance - $amount.'.',
+        ]);
+
+        $fromAccount->update(['balance' => $fromAccount->balance - $amount]);
+        $toAccount->update(['balance' => $toAccount->balance + $amount]);
 
         return Redirect::route('accounts.index');
     }

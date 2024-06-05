@@ -1,47 +1,48 @@
 <x-app-layout>
-    <x-panels.panel class=" flex flex-col items-start space-y-6">
-        <div class="w-full">
-            <x-forms.label for="name" :value="__('Transfer to')"/>
+    @fragment('form')
+        <form hx-post="{{ route('accounts.storeTransfer', $account->id) }}"
+              hx-target="body"
+              hx-push-url="{{ route('accounts.index') }}"
+              class="col-span-2 xl:col-span-1">
+            @csrf
+            @method('PATCH')
 
-            <x-forms.radio.group class="md:grid-cols-3">
-                <x-forms.radio.button name="type" id="fi-bank" value="fi-bank">
-                    <div class="block">
-                        <div class="w-full">Fi Bank</div>
-                    </div>
-                </x-forms.radio.button>
+            <x-panels.panel class=" flex flex-col items-start space-y-4" padding="p-4">
+                <div class="w-full">
+                    <x-forms.label :value="__('Transfer to')"/>
 
-                <x-forms.radio.button name="type" id="pro-credit-bank" value="pro-credit-bank">
-                    <div class="block">
-                        <div class="w-full">Pro Credit Bank</div>
-                    </div>
-                </x-forms.radio.button>
+                    <x-forms.radio.group class="md:grid-cols-3">
+                        @foreach($userAccounts as $acc)
+                            <x-forms.radio.button name="to_account" id="{{ $acc->id }}" value="{{ $acc->id }}">
+                                <div class="block w-4 h-4 rounded-full mr-2 {{ $acc->color_class }}"></div>
 
-                <x-forms.radio.button name="type" id="cash" value="cash">
-                    <div class="block">
-                        <div class="w-full">Cash</div>
-                    </div>
-                </x-forms.radio.button>
-            </x-forms.radio.group>
+                                <div class="block">
+                                    <div class="w-full">{{ $acc->name }}</div>
+                                </div>
+                            </x-forms.radio.button>
+                        @endforeach
 
-        </div>
 
-        <div class="w-full">
-            <x-forms.label for="amount" :value="__('Amount')"/>
-            <x-forms.input value="$420" class="w-full "></x-forms.input>
-        </div>
+                    </x-forms.radio.group>
 
-        <div class="w-full">
-            <x-forms.label for="details" :value="__('Details')"/>
-            <x-forms.textarea/>
-        </div>
+                </div>
 
-        <x-divider/>
+                <div class="w-full">
+                    <x-forms.label for="amount" :value="__('Amount')"/>
+                    <x-forms.input id="amount" name="amount" type="text"
+                                   :value="old('amount', $account->amount)"
+                                   class="w-full"/>
+                    <x-forms.error :messages="$errors->get('amount')"/>
+                </div>
 
-        <div
-            class="flex flex-col md:flex-row items-center justify-end lg:justify-center w-full gap-2 text-gray-600 dark:text-gray-400 text-sm">
-            <x-buttons.secondary>Cancel</x-buttons.secondary>
-            <x-buttons.form>Transfer Amount</x-buttons.form>
-        </div>
+                <div
+                    class="flex flex-col md:flex-row items-center justify-end lg:justify-center w-full gap-2 text-gray-600 dark:text-gray-400 text-sm">
+                    <x-buttons.cancel to="accounts" keep :id="$account->id"/>
+                    <x-buttons.form>Transfer</x-buttons.form>
+                </div>
 
-    </x-panels.panel>
+            </x-panels.panel>
+        </form>
+
+    @endfragment
 </x-app-layout>

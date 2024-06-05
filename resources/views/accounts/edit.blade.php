@@ -17,7 +17,7 @@
             </div>
 
             <div class="w-full">
-                <x-forms.label for="name" :value="__('Balance')"/>
+                <x-forms.label for="balance" :value="__('Balance')"/>
                 <x-forms.input id="balance" name="balance" type="text"
                                :value="old('balance', $account->balance)"
                                autofocus autocomplete="balance"

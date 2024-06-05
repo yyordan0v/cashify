@@ -69,6 +69,14 @@ Route::middleware('auth')->group(callback: function () {
             ->name('accounts.update')
             ->can('update', 'account');
 
+        Route::get('/accounts/{account}/transfer', 'transfer')
+            ->name('accounts.transfer')
+            ->can('update', 'account');
+
+        Route::patch('/accounts/{account}/transfer', 'storeTransfer')
+            ->name('accounts.storeTransfer')
+            ->can('update', 'account');
+
         Route::delete('/accounts/{account}', 'destroy')
             ->name('accounts.destroy')
             ->can('delete', 'account');

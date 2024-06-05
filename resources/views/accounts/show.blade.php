@@ -1,3 +1,5 @@
 <x-app-layout>
-    @include('accounts.partials.show', ['account' => $account])
+    @fragment('panel')
+        @include('accounts.partials.show', ['account' => $account])
+    @endfragment
 </x-app-layout>
