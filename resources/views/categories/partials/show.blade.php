@@ -64,7 +64,7 @@
                 <div class="flex flex-col items-start">
                     <x-cards.text
                         class="my-0 text-sm">{{ ucwords($category->type) }}</x-cards.text>
-                    <x-cards.text class="my-0 text-xs">4 transactions</x-cards.text>
+                    <x-cards.text class="my-0 text-xs">{{ count($category->transactions) }} transactions</x-cards.text>
                 </div>
             </div>
         </div>

@@ -16,6 +16,6 @@
 
     ::view-transition-old(root),
     ::view-transition-new(root) {
-        animation-duration: 0.2s;
+        animation-duration: .1s;
     }
 }

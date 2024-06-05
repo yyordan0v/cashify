@@ -82,19 +82,27 @@ class TransactionController extends Controller
 
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Transaction $transaction)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Transaction $transaction)
     {
-        //
+        $categories = Auth::user()
+            ->categories()
+            ->latest()
+            ->with('user')
+            ->get()
+            ->groupBy('type');
+
+        $accounts = Auth::user()->accounts()->with('user')->get();
+        
+        return view('transactions.edit', [
+            'incomeCategories' => $categories['income'] ?? [],
+            'expenseCategories' => $categories['expense'] ?? [],
+            'accounts' => $accounts,
+            'transaction' => $transaction,
+            'selectedCategory' => $transaction->category,
+            'selectedAccount' => $transaction->account,
+        ]);
     }
 
     /**
@@ -117,13 +125,13 @@ class TransactionController extends Controller
     {
         $grouped = [];
         foreach ($transactions as $transaction) {
-            $date = $this->formatDateGroup($transaction->created_at);
+            $date = $this->formatDate($transaction->created_at);
             $grouped[$date][] = $transaction;
         }
         return $grouped;
     }
 
-    private function formatDateGroup($date)
+    private function formatDate($date)
     {
         $carbonDate = Carbon::parse($date);
         $today = Carbon::today();
@@ -136,10 +144,5 @@ class TransactionController extends Controller
         } else {
             return strtoupper($carbonDate->format('l')).', '.$carbonDate->format('F d');
         }
-    }
-
-    private function formatDate($date)
-    {
-        return Carbon::parse($date)->format('d F Y, \a\t h:i A');
     }
 }

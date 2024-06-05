@@ -77,14 +77,15 @@
                             @foreach ($groupedTransactions as $date => $transactions)
                                 <x-transactions.group :heading="$date">
                                     @foreach($transactions as $transaction)
-                                        <x-transactions.row :href="route('transactions.index')"
-                                                            :type="$transaction->category->type"
-                                                            :title="$transaction->title"
-                                                            :date="$transaction->created_at"
-                                                            :details="$transaction->details"
-                                                            :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
-                                                            :category-color="$transaction->category->color_class"
-                                                            :category-icon="$transaction->category->icon"/>
+                                        <x-transactions.row
+                                            :href="route('transactions.edit', ['transaction' =>$transaction->id, 'tab' => $transaction->category->type === 'income' ? '2' : '1'])"
+                                            :type="$transaction->category->type"
+                                            :title="$transaction->title"
+                                            :date="$transaction->created_at"
+                                            :details="$transaction->details"
+                                            :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
+                                            :category-color="$transaction->category->color_class"
+                                            :category-icon="$transaction->category->icon"/>
                                     @endforeach
                                 </x-transactions.group>
                             @endforeach
@@ -101,14 +102,15 @@
                             @foreach ($groupedExpenses as $date => $transactions)
                                 <x-transactions.group :heading="$date">
                                     @foreach($transactions as $transaction)
-                                        <x-transactions.row :href="route('transactions.index')"
-                                                            :type="$transaction->category->type"
-                                                            :title="$transaction->title"
-                                                            :date="$transaction->created_at"
-                                                            :description="$transaction->description"
-                                                            :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
-                                                            :category-color="$transaction->category->color_class"
-                                                            :category-icon="$transaction->category->icon"/>
+                                        <x-transactions.row
+                                            :href="route('transactions.edit', ['transaction' =>$transaction->id, 'tab' => $transaction->category->type === 'income' ? '2' : '1'])"
+                                            :type="$transaction->category->type"
+                                            :title="$transaction->title"
+                                            :date="$transaction->created_at"
+                                            :description="$transaction->description"
+                                            :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
+                                            :category-color="$transaction->category->color_class"
+                                            :category-icon="$transaction->category->icon"/>
                                     @endforeach
                                 </x-transactions.group>
                             @endforeach
@@ -125,14 +127,15 @@
                             @foreach ($groupedIncomes as $date => $transactions)
                                 <x-transactions.group :heading="$date">
                                     @foreach($transactions as $transaction)
-                                        <x-transactions.row :href="route('transactions.index')"
-                                                            :type="$transaction->category->type"
-                                                            :title="$transaction->title"
-                                                            :date="$transaction->created_at"
-                                                            :description="$transaction->description"
-                                                            :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
-                                                            :category-color="$transaction->category->color_class"
-                                                            :category-icon="$transaction->category->icon"/>
+                                        <x-transactions.row
+                                            :href="route('transactions.edit', ['transaction' =>$transaction->id, 'tab' => $transaction->category->type === 'income' ? '2' : '1'])"
+                                            :type="$transaction->category->type"
+                                            :title="$transaction->title"
+                                            :date="$transaction->created_at"
+                                            :description="$transaction->description"
+                                            :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
+                                            :category-color="$transaction->category->color_class"
+                                            :category-icon="$transaction->category->icon"/>
                                     @endforeach
                                 </x-transactions.group>
                             @endforeach

@@ -114,10 +114,6 @@ Route::middleware('auth')->group(callback: function () {
         Route::post('/transactions', 'store')
             ->name('transactions.store');
 
-        Route::get('/transactions/{transaction}', 'show')
-            ->name('transactions.show')
-            ->can('view', 'transaction');
-
         Route::get('/transactions/{transaction}/edit', 'edit')
             ->name('transactions.edit')
             ->can('update', 'transaction');
