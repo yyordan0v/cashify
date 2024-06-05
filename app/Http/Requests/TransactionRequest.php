@@ -30,7 +30,7 @@ class TransactionRequest extends FormRequest
             'category_id' => ['required', 'exists:categories,id'],
             'account_id' => ['required', 'exists:accounts,id'],
             'title' => ['required', 'string', 'max:50'],
-            'amount' => ['required', 'numeric'],
+            'amount' => ['required', 'numeric', 'gt:0'],
             'details' => ['nullable'],
         ];
     }

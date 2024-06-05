@@ -91,13 +91,12 @@ class TransactionController extends Controller
             ->latest()
             ->with('user')
             ->get()
-            ->groupBy('type');
+            ->where('type', $transaction->category->type);
 
         $accounts = Auth::user()->accounts()->with('user')->get();
-        
+
         return view('transactions.edit', [
-            'incomeCategories' => $categories['income'] ?? [],
-            'expenseCategories' => $categories['expense'] ?? [],
+            'categories' => $categories,
             'accounts' => $accounts,
             'transaction' => $transaction,
             'selectedCategory' => $transaction->category,
@@ -110,7 +109,33 @@ class TransactionController extends Controller
      */
     public function update(TransactionRequest $request, Transaction $transaction)
     {
-        //
+        $attributes = $request->validated();
+
+        $oldAccount = $transaction->account;
+        $newAccount = Account::findOrFail($attributes['account_id']);
+
+        if ($transaction->category->type == 'expense') {
+            $attributes['amount'] = -abs($attributes['amount']);
+        }
+
+        if ($oldAccount->id != $newAccount->id) {
+            $oldAccount->update([
+                'balance' => $oldAccount->balance - $transaction->amount,
+            ]);
+
+            $newAccount->update([
+                'balance' => $newAccount->balance + $attributes['amount'],
+            ]);
+        } else {
+            $newAccount->update([
+                'balance' => $newAccount->balance - $transaction->amount + $attributes['amount'],
+            ]);
+        }
+
+
+        $transaction->update($attributes);
+
+        return Redirect::route('transactions.index');
     }
 
     /**

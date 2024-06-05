@@ -78,7 +78,7 @@
                                 <x-transactions.group :heading="$date">
                                     @foreach($transactions as $transaction)
                                         <x-transactions.row
-                                            :href="route('transactions.edit', ['transaction' =>$transaction->id, 'tab' => $transaction->category->type === 'income' ? '2' : '1'])"
+                                            :href="route('transactions.edit', $transaction->id)"
                                             :type="$transaction->category->type"
                                             :title="$transaction->title"
                                             :date="$transaction->created_at"
@@ -103,7 +103,7 @@
                                 <x-transactions.group :heading="$date">
                                     @foreach($transactions as $transaction)
                                         <x-transactions.row
-                                            :href="route('transactions.edit', ['transaction' =>$transaction->id, 'tab' => $transaction->category->type === 'income' ? '2' : '1'])"
+                                            :href="route('transactions.edit', $transaction->id)"
                                             :type="$transaction->category->type"
                                             :title="$transaction->title"
                                             :date="$transaction->created_at"
@@ -128,7 +128,7 @@
                                 <x-transactions.group :heading="$date">
                                     @foreach($transactions as $transaction)
                                         <x-transactions.row
-                                            :href="route('transactions.edit', ['transaction' =>$transaction->id, 'tab' => $transaction->category->type === 'income' ? '2' : '1'])"
+                                            :href="route('transactions.edit', $transaction->id)"
                                             :type="$transaction->category->type"
                                             :title="$transaction->title"
                                             :date="$transaction->created_at"
