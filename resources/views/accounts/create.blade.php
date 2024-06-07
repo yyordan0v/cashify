@@ -45,4 +45,12 @@
             </x-forms.form-actions>
         </x-panels.panel>
     </form>
+
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            @php
+                notify()->error($error);
+            @endphp
+        @endforeach
+    @endif
 </x-app-layout>

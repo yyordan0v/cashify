@@ -51,6 +51,7 @@ class AccountController extends Controller
         $attributes = $request->validated();
 
         Auth::user()->accounts()->create($attributes);
+        notify()->success('Account created successfully!');
 
         return Redirect::route('accounts.index');
     }
@@ -170,6 +171,7 @@ class AccountController extends Controller
         $fromAccount->update(['balance' => $fromAccount->balance - $amount]);
         $toAccount->update(['balance' => $toAccount->balance + $amount]);
 
+//        TODO: Return the show fragment but make update both accounts - old and new (check oob-swap)!
         return Redirect::route('accounts.index');
     }
 }

@@ -21,10 +21,8 @@
                                 </div>
                             </x-forms.radio.button>
                         @endforeach
-
-
                     </x-forms.radio.group>
-
+                    <x-forms.error :messages="$errors->get('to_account')"/>
                 </div>
 
                 <div class="w-full">

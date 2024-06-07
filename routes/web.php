@@ -21,10 +21,6 @@ Route::get('/dashboard', DashboardController::class)
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::view('/transactions', 'transactions')
-    ->middleware(['auth', 'verified'])
-    ->name('transactions');
-
 Route::view('/goals', 'goals')
     ->middleware(['auth', 'verified'])
     ->name('goals');
