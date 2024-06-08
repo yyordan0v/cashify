@@ -22,8 +22,6 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0"/>
 
-    @notifyCss
-    
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -62,8 +60,5 @@
 <script>
     htmx.config.globalViewTransitions = true;
 </script>
-
-<x-notify::notify/>
-@notifyJs
 </body>
 </html>

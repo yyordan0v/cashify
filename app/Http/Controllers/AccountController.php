@@ -51,7 +51,6 @@ class AccountController extends Controller
         $attributes = $request->validated();
 
         Auth::user()->accounts()->create($attributes);
-        notify()->success('Account created successfully!');
 
         return Redirect::route('accounts.index');
     }
