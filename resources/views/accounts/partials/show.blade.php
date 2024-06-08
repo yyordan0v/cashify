@@ -88,9 +88,10 @@
     </x-panels.panel>
 
     <x-modal name="confirm-account-{{ $account->id }}-deletion">
-        <form method="post" action="{{ route('accounts.destroy', $account->id) }}" class="p-6">
+        <form hx-delete="{{ route('accounts.destroy', $account->id) }}" hx-swap="outerHTML"
+              hx-push-url="{{ route('accounts.index') }}"
+              class="p-6">
             @csrf
-            @method('DELETE')
 
             <x-panels.heading>
                 {{ __('Are you sure you want to delete your account?') }}
