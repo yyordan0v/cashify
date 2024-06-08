@@ -27,7 +27,7 @@ class AccountController extends Controller
      */
     public function index(): View
     {
-        $accounts = Auth::user()->accounts()->with('user')->get();
+        $accounts = Auth::user()->accounts()->with('user')->latest()->get();
 
         return view('accounts.index', compact('accounts'));
     }
@@ -74,8 +74,16 @@ class AccountController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Account $account): View
+    public function edit(HtmxRequest $request, Account $account)
     {
+        if ($request->isHtmxRequest()) {
+            return HtmxResponse::addFragment('accounts.edit', 'form', [
+                'account' => $account,
+                'availableColors' => $this->availableColors,
+                'selectedColor' => $account->color,
+            ]);
+        }
+
         return view('accounts.edit', [
             'account' => $account,
             'availableColors' => $this->availableColors,
@@ -86,7 +94,7 @@ class AccountController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(AccountRequest $request, Account $account): RedirectResponse
+    public function update(AccountRequest $request, Account $account)
     {
         $attributes = $request->validated();
 
@@ -107,7 +115,10 @@ class AccountController extends Controller
 
         $account->update($attributes);
 
-        return Redirect::route('accounts.index');
+        return HtmxResponse::addFragment('accounts.show', 'panel', ['account' => $account])
+            ->pushUrl(route('accounts.index'))
+            ->retarget('this')
+            ->reswap('outerHTML');
     }
 
     /**

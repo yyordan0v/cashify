@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function __invoke(CategoryChart $categoryChart, IncomeChart $incomeChart)
     {
-        $accounts = Auth::user()->accounts()->with('user')->get();
+        $accounts = Auth::user()->accounts()->with('user')->latest()->get();
 
         $netWorth = $accounts->sum('balance');
 

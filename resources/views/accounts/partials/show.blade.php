@@ -1,16 +1,8 @@
 @props(['account'])
-
-<div id="account-{{  $account->id }}" class="col-span-2 xl:col-span-1">
-    <x-panels.panel padding="p-4" class="xl:p-8">
-        <div class="flex items-start flex-col">
-            <div class="hidden xl:flex items-center justify-between w-full">
-                <x-cards.title class="text-base mt-0 mb-0">
-                    {{ $account->name }}
-                </x-cards.title>
-                <div class=" block w-4 h-4 rounded-full {{ $account->color_class }}"></div>
-            </div>
-
-            <div class="flex xl:hidden items-center justify-between w-full">
+<div hx-target="this">
+    <x-panels.panel padding="p-4" class="xl:p-8 flex items-center justify-between">
+        <div class="flex items-start flex-col xl:w-auto w-full">
+            <div class="flex items-center justify-between w-full">
                 <div class="flex items-center">
                     <div class="block w-4 h-4 rounded-full mr-4  {{ $account->color_class }}"></div>
 
@@ -25,7 +17,6 @@
                     <x-dropdown.body>
                         <x-buttons.action hx-get="{{ route('accounts.transfer', $account->id) }}"
                                           hx-push-url="true"
-                                          hx-target="#account-{{$account->id}}"
                                           hx-swap="outerHTML"
                                           class="w-full">
                             <x-icon style="font-size: 20px">
@@ -34,14 +25,15 @@
                             Transfer Balance
                         </x-buttons.action>
 
-                        <a href="{{ route('accounts.edit', $account->id) }}">
-                            <x-buttons.action class="w-full">
-                                <x-icon style="font-size: 20px">
-                                    edit
-                                </x-icon>
-                                Edit
-                            </x-buttons.action>
-                        </a>
+                        <x-buttons.action hx-get="{{ route('accounts.edit', $account->id) }}"
+                                          hx-push-url="true"
+                                          hx-swap="outerHTML"
+                                          class="w-full">
+                            <x-icon style="font-size: 20px">
+                                edit
+                            </x-icon>
+                            Edit
+                        </x-buttons.action>
 
                         <x-buttons.action class="text-red-600"
                                           x-data=""
@@ -62,10 +54,8 @@
             <x-cards.text class="text-gray-950 text-sm">{{  count($account->transactions) }} transactions</x-cards.text>
         </div>
 
-        <x-divider class="hidden xl:block"/>
-
         <div
-            class="hidden xl:flex items-center justify-center w-full gap-2 text-gray-600 dark:text-gray-400 text-sm">
+            class="hidden xl:flex self-start justify-end gap-2 text-gray-600 dark:text-gray-400 text-sm">
 
             <x-buttons.action hx-get="{{ route('accounts.transfer', $account->id) }}"
                               hx-push-url="true"
@@ -77,14 +67,14 @@
                 Transfer Balance
             </x-buttons.action>
 
-            <a href="{{ route('accounts.edit', $account->id) }}">
-                <x-buttons.action>
-                    <x-icon style="font-size: 20px">
-                        edit
-                    </x-icon>
-                    Edit
-                </x-buttons.action>
-            </a>
+            <x-buttons.action hx-get="{{ route('accounts.edit', $account->id) }}"
+                              hx-push-url="true"
+                              hx-swap="outerHTML">
+                <x-icon style="font-size: 20px">
+                    edit
+                </x-icon>
+                Edit
+            </x-buttons.action>
 
             <x-buttons.action class="text-red-600"
                               x-data=""
