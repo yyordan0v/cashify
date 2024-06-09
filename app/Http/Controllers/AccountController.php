@@ -52,8 +52,7 @@ class AccountController extends Controller
 
         Auth::user()->accounts()->create($attributes);
 
-        $data = ['type' => 'success', 'description' => 'Account created successfully.'];
-        session()->flash('toast', $data);
+        flashToast('error', 'Account created successfully.');
 
         return Redirect::route('accounts.index');
     }

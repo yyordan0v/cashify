@@ -56,9 +56,10 @@
 
 {{ $slot }}
 
-@session('toast')
-<x-toast :data="session('toast')"/>
-@endsession
+@if (session('toast'))
+    <x-toast :type="session('toast')['type']" :title="session('toast')['title']"
+             :position="session('toast')['position']" :description="session('toast')['description']"/>
+@endif
 
 <script src="https://unpkg.com/htmx.org@1.9.12"></script>
 <script>
