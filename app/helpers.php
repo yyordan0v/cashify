@@ -5,21 +5,22 @@ if (!function_exists('flashToast')) {
     {
         if (is_null($title)) {
             $title = match ($type) {
-                'success' => 'Success!',
-                'error' => 'Error!',
-                'warning' => 'Warning!',
-                'info' => 'Info!',
+                'success' => 'Success',
+                'error' => 'Error',
+                'warning' => 'Warning',
+                'info' => 'Info',
                 default => 'Notification',
             };
         }
 
-        $data = [
+        $toasts = session()->get('toasts', []);
+        $toasts[] = [
             'type' => $type,
-            'description' => $description,
             'title' => $title,
-            'position' => $position,
+            'description' => $description,
+            'position' => $position
         ];
 
-        session()->flash('toast', $data);
+        session()->flash('toasts', $toasts);
     }
 }

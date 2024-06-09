@@ -4,7 +4,9 @@ namespace App\Http\Requests;
 
 use App\Traits\HasColor;
 use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 
 class AccountRequest extends FormRequest
@@ -35,5 +37,18 @@ class AccountRequest extends FormRequest
             'balance' => ['required', 'numeric'],
             'color' => ['required', 'string', Rule::in($this->getAvailableColors())],
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        $errors = $validator->errors()->all();
+
+        foreach ($errors as $error) {
+            flashToast('error', $error);
+        }
+
+        throw new HttpResponseException(
+            redirect()->back()->withErrors($validator)->withInput()
+        );
     }
 }

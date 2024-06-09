@@ -5,38 +5,6 @@
     'title' => ''
 ])
 
-<div class="relative w-auto h-auto">
-    <div
-        x-data="{
-            title: 'Default Toast Notification',
-            description: '',
-            type: 'default',
-            position: 'top-center',
-            expanded: false,
-            popToast (custom){
-                let html = '';
-                if(typeof custom != 'undefined'){
-                    html = custom;
-                }
-                toast(this.title, { description: this.description, type: this.type, position: this.position, html: html })
-            }
-        }"
-        x-init="
-            window.toast = function(message, options = {}){
-                let description = '';
-                let type = 'default';
-                let position = 'top-center';
-                let html = '';
-                if(typeof options.description != 'undefined') description = options.description;
-                if(typeof options.type != 'undefined') type = options.type;
-                if(typeof options.position != 'undefined') position = options.position;
-                if(typeof options.html != 'undefined') html = options.html;
-
-                window.dispatchEvent(new CustomEvent('toast-show', { detail : { type: type, message: message, description: description, position : position, html: html }}));
-            }
-        "
-</div>
-
 <template x-teleport="body"
           x-init="
     $nextTick(() => {
@@ -45,14 +13,14 @@
         type='{{ $type }}';
         description='{{ $description }}';
         popToast();
-    })
-    ">
+    })">
     <ul
         x-data="{
                 toasts: [],
                 toastsHovered: false,
                 expanded: false,
-                layout: 'default',
+{{--            layout: default/expanded --}}
+                layout: 'expanded',
                 position: 'top-center',
                 paddingBetweenToasts: 15,
                 deleteToastWithId (id){
@@ -449,4 +417,3 @@
         </template>
     </ul>
 </template>
-</div>
