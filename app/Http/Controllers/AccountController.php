@@ -52,7 +52,7 @@ class AccountController extends Controller
 
         Auth::user()->accounts()->create($attributes);
 
-        flashToast('error', 'Account created successfully.');
+        flashToast('success', 'Account created successfully.');
 
         return Redirect::route('accounts.index');
     }
