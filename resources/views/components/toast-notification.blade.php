@@ -1,5 +1,6 @@
 @if (session('toasts'))
     <div
+        class="hidden"
         x-data="{
             title: 'Default Toast Notification',
             description: '',

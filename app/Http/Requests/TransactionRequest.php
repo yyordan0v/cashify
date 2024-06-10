@@ -3,7 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class TransactionRequest extends FormRequest
 {
@@ -33,5 +35,18 @@ class TransactionRequest extends FormRequest
             'amount' => ['required', 'numeric', 'gt:0'],
             'details' => ['nullable'],
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        $errors = $validator->errors()->all();
+
+        foreach ($errors as $error) {
+            flashToast('error', $error);
+        }
+
+        throw new HttpResponseException(
+            redirect()->back()->withErrors($validator)->withInput()
+        );
     }
 }

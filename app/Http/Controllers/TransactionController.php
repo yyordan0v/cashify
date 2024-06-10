@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\TransactionFilter;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\TransactionRequest;
 use App\Models\Account;
@@ -9,6 +10,7 @@ use App\Models\Category;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -17,9 +19,14 @@ class TransactionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $transactions = Transaction::orderBy('created_at', 'desc')->get();
+        $query = Transaction::query();
+
+        $transactionFilter = new TransactionFilter($request);
+        $query = $transactionFilter->apply($query);
+
+        $transactions = $query->orderBy('created_at', 'desc')->get();
 
         $groupedTransactions = $this->groupTransactionsByDate($transactions);
 
@@ -76,6 +83,8 @@ class TransactionController extends Controller
         ]);
 
         Auth::user()->transactions()->create($attributes);
+
+        flashToast('success', 'Transaction created successfully.');
 
         return Redirect::route('transactions.index');
     }
@@ -134,6 +143,8 @@ class TransactionController extends Controller
 
 
         $transaction->update($attributes);
+
+        flashToast('success', 'Transaction updated successfully.');
 
         return Redirect::route('transactions.index');
     }

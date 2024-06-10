@@ -10,7 +10,7 @@
             <div class="w-full">
                 <x-forms.label for="name" :value="__('Name')"/>
                 <x-forms.input id="name" name="name" type="text" :value="old('name')"
-                               autofocus
+
                                class="w-full"/>
                 <x-forms.error :messages="$errors->get('name')"/>
             </div>
@@ -18,8 +18,8 @@
             <div class="w-full">
                 <x-forms.label for="name" :value="__('Starting at')"/>
                 <x-forms.input id="balance" name="balance" type="text"
-                               :value="old('balance', 0)"
-                               autofocus autocomplete="balance"
+                               :value="old('balance')"
+                               autocomplete="balance"
                                class="w-full"/>
                 <x-forms.error :messages="$errors->get('balance')"/>
             </div>

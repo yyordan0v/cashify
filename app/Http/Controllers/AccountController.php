@@ -117,6 +117,8 @@ class AccountController extends Controller
 
         $account->update($attributes);
 
+        flashToast('success', 'Account updated successfully.');
+
         return HtmxResponse::addFragment('accounts.show', 'panel', ['account' => $account])
             ->pushUrl(route('accounts.index'))
             ->retarget('this')

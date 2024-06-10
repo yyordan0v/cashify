@@ -1,40 +1,7 @@
 <x-app-layout>
     <div class="w-full max-w-xl mx-auto">
-        <x-modal name="filter-transactions" :show="$errors->userDeletion->isNotEmpty()">
-            <div class="p-6">
 
-                <x-panels.heading>
-                    {{ __('Filter Modal') }}
-                </x-panels.heading>
-
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    Make sure to select the right filters for your needs.
-                </p>
-
-                <div class="grid grid-cols-2 gap-4 mb-4">
-                    <x-forms.date/>
-
-                    <div
-                        class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
-                    ></div>
-                    <div
-                        class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
-                    ></div>
-                    <div
-                        class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
-                    ></div>
-                    <div
-                        class="border-2 border-dashed rounded-lg border-gray-300 dark:border-gray-600 h-48 md:h-72"
-                    ></div>
-                </div>
-
-                <div class="flex items-center justify-end gap-2">
-                    <x-buttons.secondary x-on:click="$dispatch('close')">Cancel</x-buttons.secondary>
-                    <x-buttons.form>Apply</x-buttons.form>
-                </div>
-
-            </div>
-        </x-modal>
+        <x-transactions.filter/>
 
         <x-panels.panel padding="p-4">
             <div class="flex flex-wrap items-center justify-between mb-8">
