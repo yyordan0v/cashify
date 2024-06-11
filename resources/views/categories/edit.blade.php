@@ -16,7 +16,7 @@
 
                     <x-forms.search class="mt-6" position="top-4">
                         <x-forms.input class="w-full" placeholder="Search..."
-                                       name="icon-search" id="icon-search" autofocus
+                                       name="icon-search" id="icon-search"
                                        hx-post="{{ route('categories.searchIcons') }}"
                                        hx-params="icon-search,_token"
                                        hx-trigger="input changed delay:300ms, search"
@@ -54,7 +54,7 @@
                                 <div class="w-full">
                                     <x-forms.input id="name" name="name" type="text"
                                                    :value="old('name', $category->name)"
-                                                   autofocus placeholder="Enter category name"
+                                                   placeholder="Enter category name"
                                                    class="w-full"/>
                                     <x-forms.error :messages="$errors->get('name')"/>
                                 </div>

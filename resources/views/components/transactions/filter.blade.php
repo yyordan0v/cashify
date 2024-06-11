@@ -137,7 +137,6 @@
             </x-tabs.content-group>
         </x-tabs.body>
 
-
         <x-forms.date/>
 
         <div class="grid grid-cols-2 gap-4 mb-4">

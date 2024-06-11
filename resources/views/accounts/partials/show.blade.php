@@ -1,5 +1,5 @@
 @props(['account'])
-<div hx-target="this">
+<div hx-target="this" id="account-{{  $account->id }}">
     <x-panels.panel padding="p-4" class="xl:p-8 flex items-center justify-between">
         <div class="flex items-start flex-col xl:w-auto w-full">
             <div class="flex items-center justify-between w-full">

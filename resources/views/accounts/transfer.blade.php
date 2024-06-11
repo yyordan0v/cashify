@@ -7,11 +7,14 @@
             @csrf
             @method('PATCH')
 
-            <x-panels.panel class=" flex flex-col items-start space-y-4" padding="p-4">
+            <x-panels.panel class="flex flex-col items-start space-y-6">
                 <div class="w-full">
                     <x-forms.label :value="__('Transfer to')"/>
 
-                    <x-forms.radio.group class="md:grid-cols-3">
+                    @php
+                        $count = count($userAccounts);
+                    @endphp
+                    <x-forms.radio.group class="md:grid-cols-{{ $count }}">
                         @foreach($userAccounts as $acc)
                             <x-forms.radio.button name="to_account" id="{{ $acc->id }}" value="{{ $acc->id }}">
                                 <div class="block w-4 h-4 rounded-full mr-2 {{ $acc->color_class }}"></div>
@@ -25,19 +28,30 @@
                     <x-forms.error :messages="$errors->get('to_account')"/>
                 </div>
 
+
                 <div class="w-full">
-                    <x-forms.label for="amount" :value="__('Amount')"/>
+                    <x-forms.label for="balance" :value="__('Balance')"/>
+                    <x-forms.input id="balance" type="text"
+                                   :value="$account->balance"
+                                   disabled
+                                   class="w-full"/>
+                </div>
+
+                <div class="w-full">
+                    <x-forms.label for="amount" :value="__('Transfer Amount')"/>
                     <x-forms.input id="amount" name="amount" type="text"
                                    :value="old('amount', $account->amount)"
                                    class="w-full"/>
                     <x-forms.error :messages="$errors->get('amount')"/>
                 </div>
 
-                <div
-                    class="flex flex-col md:flex-row items-center justify-end lg:justify-center w-full gap-2 text-gray-600 dark:text-gray-400 text-sm">
+                <x-forms.form-actions>
                     <x-buttons.cancel to="accounts" keep :id="$account->id"/>
-                    <x-buttons.form>Transfer</x-buttons.form>
-                </div>
+
+                    <x-buttons.form>
+                        Transfer
+                    </x-buttons.form>
+                </x-forms.form-actions>
 
             </x-panels.panel>
         </form>

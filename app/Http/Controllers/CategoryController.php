@@ -126,8 +126,6 @@ class CategoryController extends Controller
 
         $category->update($attributes);
 
-        flashToast('success', 'Category updated successfully.');
-
         if ($oldType !== $category->type) {
             $urlParams = $category->type === 'income' ? ['tab' => '2'] : [];
 
