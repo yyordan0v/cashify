@@ -14,6 +14,7 @@
                             <x-forms.radio.category :id="$category->id"
                                                     name="category_id"
                                                     :color="$category->color_class"
+                                                    :categoryColor="$category->color"
                                                     :image="$category->icon"
                                                     :checked="old('category', $selectedCategory->id) == $category->id">
                                 {{ $category->name }}
