@@ -7,9 +7,30 @@
 ])
 
 @php
-    $bgColor = 'bg-'.$color.'-'.$shade;
+    $bgColor = ' bg-'.$color.'-'.$shade;
+    $borderColor = 'border-'.$color.'-'.$shade;
 
-    $classes = 'snap-center inline-flex items-center justify-center w-full p-6 shadow-sm rounded-full cursor-pointer transition-all duration-200 opacity-90 hover:opacity-100 peer-checked:ring-2 dark:peer-checked:ring-4 peer-checked:ring-black dark:peer-checked:ring-white peer-checked:opacity-100 ' . $bgColor;
+    $borderSelected = [
+        'gray' => ' peer-checked:border-gray-600',
+        'orange' => ' peer-checked:border-orange-600',
+        'amber' => ' peer-checked:border-amber-600',
+        'yellow' => ' peer-checked:border-yellow-600',
+        'lime' => ' peer-checked:border-lime-600',
+        'green' => ' peer-checked:border-green-600',
+        'emerald' => ' peer-checked:border-emerald-600',
+        'teal' => ' peer-checked:border-teal-600',
+        'cyan' => ' peer-checked:border-cyan-600',
+        'sky' => ' peer-checked:border-sky-600',
+        'blue' => ' peer-checked:border-blue-600',
+        'indigo' => ' peer-checked:border-indigo-600',
+        'violet' => ' peer-checked:border-violet-600',
+        'purple' => ' peer-checked:border-purple-600',
+        'fuchsia' => ' peer-checked:border-fuchsia-600',
+        'pink' => ' peer-checked:border-pink-600',
+        'rose' => ' peer-checked:border-rose-600',
+    ];
+
+    $classes = 'snap-center inline-flex items-center justify-center w-full p-6 shadow-sm rounded-full cursor-pointer transition-all duration-200 opacity-90 hover:opacity-100 border-2 dark:border-4 peer-checked:opacity-100 ' . $borderColor . $bgColor . $borderSelected[$color];
 @endphp
 
 <li class="my-1">
