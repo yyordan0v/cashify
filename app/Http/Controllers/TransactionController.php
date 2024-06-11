@@ -21,6 +21,13 @@ class TransactionController extends Controller
      */
     public function index(Request $request)
     {
+        $categories = Auth::user()
+            ->categories()
+            ->latest()
+            ->with('user')
+            ->get()
+            ->groupBy('type');
+
         $query = Transaction::query();
 
         $transactionFilter = new TransactionFilter($request);
@@ -40,7 +47,13 @@ class TransactionController extends Controller
         });
         $groupedIncomes = $this->groupTransactionsByDate($incomes);
 
-        return view('transactions.index', compact('groupedTransactions', 'groupedExpenses', 'groupedIncomes'));
+        return view('transactions.index', [
+            'groupedTransactions' => $groupedTransactions,
+            'groupedExpenses' => $groupedExpenses,
+            'groupedIncomes' => $groupedIncomes,
+            'incomeCategories' => $categories['income'] ?? [],
+            'expenseCategories' => $categories['expense'] ?? [],
+        ]);
     }
 
     /**

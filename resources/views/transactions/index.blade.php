@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="w-full max-w-xl mx-auto">
 
-        <x-transactions.filter/>
+        <x-transactions.filter :expense-categories="$expenseCategories" :income-categories="$incomeCategories"/>
 
         <x-panels.panel padding="p-4">
             <div class="flex flex-wrap items-center justify-between mb-8">

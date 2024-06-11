@@ -4,7 +4,8 @@
     'image' => 'image',
     'name' => 'category',
     'id' => 'shopping',
-    'checked' => false
+    'checked' => false,
+    'type' => 'radio'
 ])
 
 @php
@@ -33,7 +34,7 @@
 @endphp
 
 <li>
-    <input type="radio" id="{{ $id }}" name="{{ $name }}" value="{{ $id }}" class="hidden peer"
+    <input type="{{ $type }}" id="{{ $id }}" name="{{ $name }}" value="{{ $id }}" class="hidden peer"
            {{ $checked ? 'checked' : '' }}
            @click="$dispatch('color-changed', { color: '{{ $color }}' })"/>
 
