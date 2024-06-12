@@ -1,8 +1,8 @@
 @props([
-    'categories'
+    'categories', 'minAmount', 'maxAmount'
 ])
 
-<x-modal name="filter-transactions" maxWidth="2xl">
+<x-modal name="filter-transactions" maxWidth="6xl">
     <form action="{{ route('transactions.index') }}" method="GET">
         <div class="flex flex-col space-y-6 p-6">
 
@@ -30,7 +30,7 @@
                 @endif
             </x-forms.radio.group>
 
-            <div class="flex flex-col space-x-2 w-full">
+            <div class="flex flex-col space-y-2 w-full">
                 <x-forms.label value="Transaction Type"/>
                 <x-forms.radio.group>
 
@@ -56,16 +56,33 @@
                 </x-forms.radio.group>
             </div>
 
+            <div class="flex flex-col space-y-4 w-full">
+                <x-forms.label value="Transaction Amount"/>
 
-            <x-divider/>
+                <x-forms.range :min-amount="$minAmount" :max-amount="$maxAmount"/>
+            </div>
 
-            <div class="flex items-center justify-end gap-2">
+            <div class="flex flex-col space-y-4 w-full">
+                <x-forms.label for="title" value="Title Contains"/>
+
+                <x-forms.input id="title" name="title" type="text" :value="request('title')"
+                               class="w-full"/>
+            </div>
+
+            <div class="flex flex-col space-y-4 w-full">
+                <x-forms.label for="details" value="Details Contain"/>
+
+                <x-forms.input id="details" name="details" type="text" :value="request('details')"
+                               class="w-full"/>
+            </div>
+            
+            <x-forms.form-actions>
                 <x-buttons.secondary hx-get="{{ route('transactions.index') }}" hx-target="body" hx-swap="outerHTML"
                                      hx-push-url="true">
                     Reset Filters
                 </x-buttons.secondary>
                 <x-buttons.form>Apply</x-buttons.form>
-            </div>
+            </x-forms.form-actions>
         </div>
     </form>
 </x-modal>

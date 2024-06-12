@@ -30,7 +30,7 @@
         'rose' => ' peer-checked:border-rose-600',
     ];
 
-        $classes = 'mt-4 cursor-pointer transition-all duration-200 opacity-90 hover:opacity-100 peer-checked:opacity-100 border-2 dark:border-4 border-transparent ' . $borderSelected[$categoryColor];
+        $classes = 'snap-center mt-4 cursor-pointer transition-all duration-200 opacity-90 hover:opacity-100 peer-checked:opacity-100 border-2 dark:border-4 border-transparent ' . $borderSelected[$categoryColor];
 @endphp
 
 <li>

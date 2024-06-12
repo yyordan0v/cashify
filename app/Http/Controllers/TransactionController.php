@@ -30,14 +30,18 @@ class TransactionController extends Controller
 
         $query = Transaction::query();
 
+        $minAmount = $query->min('amount');
+        $maxAmount = $query->max('amount');
+
         $transactionFilter = new TransactionFilter($request);
         $query = $transactionFilter->apply($query);
 
         $transactions = $query->orderBy('created_at', 'desc')->get();
 
+
         $groupedTransactions = $this->groupTransactionsByDate($transactions);
 
-        return view('transactions.index', compact('categories', 'groupedTransactions'));
+        return view('transactions.index', compact('categories', 'groupedTransactions', 'minAmount', 'maxAmount'));
     }
 
     /**
