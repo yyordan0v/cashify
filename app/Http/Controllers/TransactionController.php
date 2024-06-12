@@ -25,7 +25,7 @@ class TransactionController extends Controller
             ->categories()
             ->latest()
             ->with('user')
-            ->orderBy('type')
+            ->orderBy('name', 'asc')
             ->get();
 
         $query = Transaction::query();

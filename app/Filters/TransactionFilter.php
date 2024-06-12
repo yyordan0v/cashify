@@ -18,7 +18,6 @@ class TransactionFilter
     {
         $this->applyTypeFilter($query);
         $this->applyCategoryFilter($query);
-        $this->applyStatusFilter($query);
         $this->applyAmountFilter($query);
         $this->applyTitleFilter($query);
         $this->applyDetailsFilter($query);
@@ -28,16 +27,12 @@ class TransactionFilter
 
     protected function applyTypeFilter(Builder $query): void
     {
-        if ($this->request->has('type')) {
-            if ($this->request->type === 'income') {
-                $query->whereHas('category', function ($q) {
-                    $q->where('type', 'income');
-                });
-            } elseif ($this->request->type === 'expense') {
-                $query->whereHas('category', function ($q) {
-                    $q->where('type', 'expense');
-                });
-            }
+        if ($this->request->has('types')) {
+            $types = $this->request->get('types');
+
+            $query->whereHas('category', function ($q) use ($types) {
+                $q->whereIn('type', $types);
+            });
         }
     }
 
@@ -46,13 +41,6 @@ class TransactionFilter
         if ($this->request->has('categories')) {
             $categoryIds = $this->request->input('categories');
             $query->whereIn('category_id', $categoryIds);
-        }
-    }
-
-    protected function applyStatusFilter(Builder $query): void
-    {
-        if ($this->request->has('status')) {
-            $query->where('status', $this->request->status);
         }
     }
 

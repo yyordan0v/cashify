@@ -3,11 +3,12 @@
     'id',
     'value',
     'checked' => false,
-    'disabled' => false
+    'disabled' => false,
+    'type' => 'radio'
 ])
 
 <li>
-    <input type="radio" id="{{ $id }}" name="{{ $name }}" value="{{ $value }}"
+    <input type="{{ $type }}" id="{{ $id }}" name="{{ $name }}" value="{{ $value }}"
            class="hidden peer" {{ $checked ? 'checked' : '' }}
         {{ $disabled ? 'disabled' : '' }}/>
     <label for="{{ $id }}"
