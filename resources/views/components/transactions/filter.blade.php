@@ -1,79 +1,47 @@
 @props([
-'expenseCategories', 'incomeCategories'
+    'categories'
 ])
 
-<x-modal name="filter-transactions" :show="$errors->userDeletion->isNotEmpty()">
-    <div class="p-6">
+<x-modal name="filter-transactions" maxWidth="xl" :show="$errors->userDeletion->isNotEmpty()">
+    <div class="flex flex-col space-y-6 p-6">
 
         <x-panels.heading>
             {{ __('Filters') }}
         </x-panels.heading>
 
-        <x-tabs.body class="flex flex-col gap-4">
+        <x-forms.radio.group type="category" x-data="{ selectedCategory: null }">
+            @if(count($categories) > 0)
+                <x-forms.radio.category id="all"
+                                        name="category_id"
+                                        color="bg-gray-200"
+                                        categoryColor="gray"
+                                        image="image"
+                                        type="checkbox"
+                                        x-model="selectedCategory"
+                                        value="all"
+                                        :checked="true"
+                                        @change="selectedCategory = $event.target.checked ? 'all' : null">
+                    All
+                </x-forms.radio.category>
+                @foreach($categories as $category)
+                    <x-forms.radio.category :id="$category->id"
+                                            name="category_id"
+                                            :color="$category->color_class"
+                                            :categoryColor="$category->color"
+                                            :image="$category->icon"
+                                            type="checkbox"
+                                            x-model="selectedCategory"
+                                            @change="if ($event.target.checked) { selectedCategory = '{{ $category->id }}'; } else if (selectedCategory === 'all') { selectedCategory = null; }">
+                        {{ $category->name }}
+                    </x-forms.radio.category>
+                @endforeach
+            @else
+                <x-panels.heading class="text-sm text-center w-full">
+                    No expense categories found.
+                </x-panels.heading>
+            @endif
+        </x-forms.radio.group>
 
-            <x-tabs.button-group>
-                <x-tabs.button>
-                    Expense
-                    <x-icon class="text-red-500 mt-1">
-                        arrow_drop_down
-                    </x-icon>
-                </x-tabs.button>
-                <x-tabs.button>
-                    Income
-                    <x-icon class="text-emerald-500 mt-1">
-                        arrow_drop_up
-                    </x-icon>
-                </x-tabs.button>
-            </x-tabs.button-group>
-
-            <x-tabs.content-group class="mt-8">
-                {{--                    expense--}}
-                <x-tabs.content>
-                    <x-forms.radio.group type="category">
-                        @if(count($expenseCategories) > 0)
-                            @foreach($expenseCategories as $category)
-                                <x-forms.radio.category :id="$category->id"
-                                                        name="category_id"
-                                                        :color="$category->color_class"
-                                                        :categoryColor="$category->color"
-                                                        :image="$category->icon"
-                                                        :checked="old('category_id') == $category->id"
-                                                        type="checkbox">
-                                    {{ $category->name }}
-                                </x-forms.radio.category>
-                            @endforeach
-                        @else
-                            <x-panels.heading class="text-sm text-center w-full">
-                                No expense categories found.
-                            </x-panels.heading>
-                        @endif
-                    </x-forms.radio.group>
-                </x-tabs.content>
-
-                {{--                    income--}}
-                <x-tabs.content>
-                    <x-forms.radio.group type="category">
-                        @if(count($incomeCategories) > 0)
-                            @foreach($incomeCategories as $category)
-                                <x-forms.radio.category :id="$category->id"
-                                                        name="category_id"
-                                                        :color="$category->color_class"
-                                                        :categoryColor="$category->color"
-                                                        :image="$category->icon"
-                                                        :checked="old('category_id') == $category->id"
-                                                        type="checkbox">
-                                    {{ $category->name }}
-                                </x-forms.radio.category>
-                            @endforeach
-                        @else
-                            <x-panels.heading class="text-sm text-center w-full">
-                                No income categories found.
-                            </x-panels.heading>
-                        @endif
-                    </x-forms.radio.group>
-                </x-tabs.content>
-            </x-tabs.content-group>
-        </x-tabs.body>
 
         <x-forms.date/>
 

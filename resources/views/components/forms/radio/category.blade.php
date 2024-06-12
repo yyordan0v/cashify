@@ -36,6 +36,8 @@
 <li>
     <input type="{{ $type }}" id="{{ $id }}" name="{{ $name }}" value="{{ $id }}" class="hidden peer"
            {{ $checked ? 'checked' : '' }}
+           x-model="selectedCategory"
+           x-bind:checked="selectedCategory === '{{ $id }}'"
            @click="$dispatch('color-changed', { color: '{{ $color }}' })"/>
 
     <x-category-image :is-label="true" margin="mr-0" rounded="rounded-xl" :color="$color" :image="$image"

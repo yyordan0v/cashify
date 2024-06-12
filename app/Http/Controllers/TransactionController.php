@@ -25,8 +25,9 @@ class TransactionController extends Controller
             ->categories()
             ->latest()
             ->with('user')
-            ->get()
-            ->groupBy('type');
+            ->whereIn('type', ['expense', 'income'])
+            ->orderBy('type')
+            ->get();
 
         $query = Transaction::query();
 
@@ -37,23 +38,7 @@ class TransactionController extends Controller
 
         $groupedTransactions = $this->groupTransactionsByDate($transactions);
 
-        $expenses = $transactions->filter(function ($transaction) {
-            return $transaction->category->type === 'expense';
-        });
-        $groupedExpenses = $this->groupTransactionsByDate($expenses);
-
-        $incomes = $transactions->filter(function ($transaction) {
-            return $transaction->category->type === 'income';
-        });
-        $groupedIncomes = $this->groupTransactionsByDate($incomes);
-
-        return view('transactions.index', [
-            'groupedTransactions' => $groupedTransactions,
-            'groupedExpenses' => $groupedExpenses,
-            'groupedIncomes' => $groupedIncomes,
-            'incomeCategories' => $categories['income'] ?? [],
-            'expenseCategories' => $categories['expense'] ?? [],
-        ]);
+        return view('transactions.index', compact('categories', 'groupedTransactions'));
     }
 
     /**
