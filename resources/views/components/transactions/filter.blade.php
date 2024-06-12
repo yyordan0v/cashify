@@ -6,9 +6,14 @@
     <form action="{{ route('transactions.index') }}" method="GET">
         <div class="flex flex-col space-y-6 p-6">
 
-            <x-panels.heading>
-                {{ __('Filters') }}
-            </x-panels.heading>
+            <div class="flex items-center justify-between">
+                <x-panels.heading class="mt-2">
+                    {{ __('Filters') }}
+                </x-panels.heading>
+
+                <x-forms.date/>
+            </div>
+
 
             <x-forms.radio.group type="category">
                 @if(count($categories) > 0)
@@ -75,7 +80,7 @@
                 <x-forms.input id="details" name="details" type="text" :value="request('details')"
                                class="w-full"/>
             </div>
-            
+
             <x-forms.form-actions>
                 <x-buttons.secondary hx-get="{{ route('transactions.index') }}" hx-target="body" hx-swap="outerHTML"
                                      hx-push-url="true">

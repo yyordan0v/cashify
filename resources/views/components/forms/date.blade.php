@@ -129,19 +129,20 @@
         datePickerYear = currentDate.getFullYear();
         datePickerCalculateDays();
     " x-cloak>
-    <div class="w-full mb-5">
+    <div class="mr-2">
         {{--        <label for="datepicker" class="block mb-1 text-sm font-medium text-neutral-500">Select Date Range</label>--}}
         <div class="relative w-[17rem]">
-            <input x-ref="datePickerInput" type="text" @click="datePickerOpen=!datePickerOpen"
-                   :value="startDate && endDate ? `${startDate} - ${endDate}` : ''"
+            <input name="date_range"
+                   x-ref="datePickerInput" type="text" @click="datePickerOpen=!datePickerOpen"
+                   :value="startDate && endDate ? `${startDate} - ${endDate}` : '{{ request('date_range') }}'"
                    x-on:keydown.escape="datePickerOpen=false"
-                   class="flex w-full h-10 px-3 py-2 text-sm bg-white border text-neutral-600 placeholder:text-neutral-400 disabled:cursor-not-allowed disabled:opacity-50 rounded-lg shadow-sm mt-2 border-gray-300 dark:border-gray-500 dark:bg-neutral-900/50 dark:text-white focus:border-gray-500 focus:ring-gray-500"
-                   placeholder="Select date range" readonly/>
+                   class="flex h-10 px-3 py-2 text-sm bg-transparent border-none outline-none focus:border-none focus:ring-0"
+                   readonly/>
             <div @click="datePickerOpen=!datePickerOpen; if(datePickerOpen){ $refs.datePickerInput.focus() }"
-                 class="absolute top-0 right-0 px-3 py-2 cursor-pointer text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 transition-colors duration-75 ease-in">
-                <x-icon>
+                 class="absolute top-0 right-0 cursor-pointer">
+                <x-buttons.icon>
                     calendar_today
-                </x-icon>
+                </x-buttons.icon>
             </div>
             <div
                 x-show="datePickerOpen"
@@ -194,13 +195,13 @@
                                         'bg-neutral-300 dark:bg-neutral-400 dark:text-black': datePickerIsInRange(day),
                                         'text-gray-600 dark:text-gray-300 hover:bg-neutral-200 dark:hover:bg-neutral-700': !datePickerIsToday(day) && !datePickerIsSelectedDate(day) && !datePickerIsInRange(day)
                                     }"
-                                class="flex items-center justify-center text-sm leading-none text-center rounded-lg cursor-pointer h-7 w-7"></div>
+                                class="flex items-center justify-center text-sm leading-none text-center rounded-lg cursor-pointer h-7 w-7 dark:text-gray-300"></div>
                         </div>
                     </template>
                 </div>
                 <div class="flex mb-2 justify-between space-x-2 w-full">
                     <x-buttons.secondary @click="setYesterday">Yesterday</x-buttons.secondary>
-                    <x-buttons.form @click="setToday">Today</x-buttons.form>
+                    <x-buttons.form type="button" @click="setToday">Today</x-buttons.form>
                 </div>
             </div>
         </div>

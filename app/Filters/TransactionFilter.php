@@ -21,6 +21,7 @@ class TransactionFilter
         $this->applyAmountFilter($query);
         $this->applyTitleFilter($query);
         $this->applyDetailsFilter($query);
+        $this->applyDateRangeFilter($query);
 
         return $query;
     }
@@ -66,6 +67,14 @@ class TransactionFilter
     {
         if ($this->request->has('details')) {
             $query->where('details', 'like', '%'.$this->request->notes.'%');
+        }
+    }
+
+    protected function applyDateRangeFilter(Builder $query): void
+    {
+        if ($this->request->has('date_range')) {
+            [$startDate, $endDate] = parseDateRange($this->request->input('date_range'));
+            $query->whereBetween('created_at', [$startDate, $endDate]);
         }
     }
 }

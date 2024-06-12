@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 if (!function_exists('flashToast')) {
     function flashToast($type, $description, $title = null, $position = 'top-right'): void
     {
@@ -22,5 +24,19 @@ if (!function_exists('flashToast')) {
         ];
 
         session()->flash('toasts', $toasts);
+    }
+}
+
+if (!function_exists('parseDateRange')) {
+    function parseDateRange($dateRange): array
+    {
+        // Split the input string into start and end date
+        [$startDate, $endDate] = explode(' - ', $dateRange);
+
+        // Convert the start and end date to the database format
+        $startDate = Carbon::createFromFormat('M d, Y', trim($startDate))->startOfDay()->format('Y-m-d H:i:s');
+        $endDate = Carbon::createFromFormat('M d, Y', trim($endDate))->endOfDay()->format('Y-m-d H:i:s');
+
+        return [$startDate, $endDate];
     }
 }
