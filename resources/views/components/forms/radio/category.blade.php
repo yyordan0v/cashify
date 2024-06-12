@@ -30,17 +30,15 @@
         'rose' => ' peer-checked:border-rose-600',
     ];
 
-        $classes = 'cursor-pointer transition-all duration-200 opacity-90 hover:opacity-100 peer-checked:opacity-100 border-2 dark:border-4 border-transparent ' . $borderSelected[$categoryColor];
+        $classes = 'mt-4 cursor-pointer transition-all duration-200 opacity-90 hover:opacity-100 peer-checked:opacity-100 border-2 dark:border-4 border-transparent ' . $borderSelected[$categoryColor];
 @endphp
 
 <li>
     <input type="{{ $type }}" id="{{ $id }}" name="{{ $name }}" value="{{ $id }}" class="hidden peer"
            {{ $checked ? 'checked' : '' }}
-           x-model="selectedCategory"
-           x-bind:checked="selectedCategory === '{{ $id }}'"
            @click="$dispatch('color-changed', { color: '{{ $color }}' })"/>
 
-    <x-category-image :is-label="true" margin="mr-0" rounded="rounded-xl" :color="$color" :image="$image"
+    <x-category-image :is-label="true" margin="mx-2" rounded="rounded-xl" :color="$color" :image="$image"
                       for="{{ $id }}"
         {{ $attributes->merge(['class' => $classes]) }}
     />

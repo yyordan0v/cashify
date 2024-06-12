@@ -43,8 +43,9 @@ class TransactionFilter
 
     protected function applyCategoryFilter(Builder $query): void
     {
-        if ($this->request->has('category')) {
-            $query->where('category_id', $this->request->category);
+        if ($this->request->has('categories')) {
+            $categoryIds = $this->request->input('categories');
+            $query->whereIn('category_id', $categoryIds);
         }
     }
 

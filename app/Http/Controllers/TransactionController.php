@@ -25,7 +25,6 @@ class TransactionController extends Controller
             ->categories()
             ->latest()
             ->with('user')
-            ->whereIn('type', ['expense', 'income'])
             ->orderBy('type')
             ->get();
 
