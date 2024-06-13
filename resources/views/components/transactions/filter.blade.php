@@ -11,6 +11,7 @@
                     {{ __('Filters') }}
                 </x-panels.heading>
 
+                {{-- TODO: we get error when date not selected!--}}
                 <x-forms.date/>
             </div>
 

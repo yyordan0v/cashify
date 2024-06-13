@@ -73,6 +73,10 @@ class TransactionFilter
     protected function applyDateRangeFilter(Builder $query): void
     {
         if ($this->request->has('date_range')) {
+            if ($this->request->input('date_range') === '') {
+                return;
+            }
+
             [$startDate, $endDate] = parseDateRange($this->request->input('date_range'));
             $query->whereBetween('created_at', [$startDate, $endDate]);
         }
