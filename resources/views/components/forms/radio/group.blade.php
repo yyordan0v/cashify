@@ -21,8 +21,8 @@
 @if($type === 'category')
     <div x-data="{ isTouch: false }" x-init="isTouch = ('ontouchstart' in window || navigator.maxTouchPoints > 0)"
          class="w-full">
-        <ul :class="{ '': isTouch, 'flex-wrap': !isTouch }"
-            {{ $attributes->merge(['class' => 'flex items-center justify-center gap-2 whitespace-nowrap overflow-auto touch-pan-x no-scrollbar snap-x']) }}>
+        <ul :class="{ '': isTouch, 'flex-wrap justify-center': !isTouch }"
+            {{ $attributes->merge(['class' => 'flex items-center gap-2 whitespace-nowrap overflow-auto touch-pan-x no-scrollbar snap-x']) }}>
             {{ $slot }}
         </ul>
     </div>

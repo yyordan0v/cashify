@@ -33,6 +33,7 @@ class CategoryController extends Controller
             ->categories()
             ->latest()
             ->with('user')
+            ->orderBy('name', 'asc')
             ->get()
             ->groupBy('type');
 

@@ -17,9 +17,6 @@ Route::get('/features', function () {
     return view('features');
 })->name('features');
 
-Route::get('/dashboard', DashboardController::class)
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
 
 Route::view('/goals', 'goals')
     ->middleware(['auth', 'verified'])
@@ -41,6 +38,17 @@ Route::middleware('auth')->group(callback: function () {
 
     Route::post('/cancel', CancelController::class)->name('cancel');
 
+    // Dashboard
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('/dashboard', 'index')
+            ->name('dashboard');
+
+        Route::get('/dashboard/period', 'getPeriodOptions')
+            ->name('dashboard.period');
+
+        Route::get('/dashboard/balance-chart', 'balanceChart')
+            ->name('dashboard.balance');
+    });
 
     // Accounts
     Route::controller(AccountController::class)->group(function () {

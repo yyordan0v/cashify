@@ -66,8 +66,38 @@
         </div>
 
         <x-panels.panel class="col-span-2">
-            <x-panels.heading>Net Worth</x-panels.heading>
-            {!! $incomeChart->container() !!}
+            <div class="flex items-center justify-between ">
+                <x-panels.heading>Balance</x-panels.heading>
+
+                <div class="flex items-center space-x-4">
+                    <x-forms.select id="period" name="period" hx-get="{{ route('dashboard.balance') }}"
+                                    hx-target="#balanceChart" hx-trigger="load, click">
+                        @fragment('periods')
+                            @isset($periods)
+                                @foreach($periods as $period)
+                                    <option value="{{ $period }}">{{ $period }}</option>
+                                @endforeach
+                            @endisset
+                        @endfragment
+                    </x-forms.select>
+
+                    <x-forms.select id="periodType" name="periodType" hx-get="{{ route('dashboard.period') }}"
+                                    hx-target="#period" hx-trigger="load, click">
+                        <option value="month" {{ request('periodType') == 'month' ? 'selected' : '' }}>Monthly
+                        </option>
+                        <option value="year" {{ request('periodType') == 'year' ? 'selected' : '' }}>Yearly
+                        </option>
+                    </x-forms.select>
+                </div>
+            </div>
+
+            <div id="balanceChart">
+                @fragment('balanceChart')
+                    @isset($balanceChart)
+                        {!! $balanceChart->container() !!}
+                    @endisset
+                @endfragment
+            </div>
         </x-panels.panel>
     </div>
 
@@ -104,80 +134,77 @@
 
                     {{--                    All--}}
                     <x-tabs.content class="flex-auto space-y-8">
-                        <x-transactions.group heading="Today, May 21">
-                            <x-transactions.row :href="route('transactions.index')" type="income" title="Salary"
-                                                date="2024-06-02 09:00:01"
-                                                amount="2,500 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                            <x-transactions.row :href="route('transactions.index')" type="income" title="Gift"
-                                                date="2024-06-02 09:00:01" details="Sample description"
-                                                amount="500 лв." category-background="bg-lime-200"
-                                                category-image="gift"/>
-                            <x-transactions.row :href="route('transactions.index')" type="expense"
-                                                title="New iPhone"
-                                                date="2024-06-02 09:00:01"
-                                                amount="2,500 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                            <x-transactions.row :href="route('transactions.index')" type="expense" title="Rent"
-                                                date="2024-06-02 09:00:01"
-                                                amount="1000 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                        </x-transactions.group>
-
-                        <x-transactions.group heading="Yesterday, May 20">
-                            <x-transactions.row :href="route('transactions.index')" type="income" title="Salary"
-                                                date="2024-06-02 09:00:01"
-                                                amount="2,500 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                            <x-transactions.row :href="route('transactions.index')" type="expense" title="Rent"
-                                                date="2024-06-02 09:00:01"
-                                                amount="1000 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                        </x-transactions.group>
+                        @if(count($groupedTransactions) > 0)
+                            @foreach ($groupedTransactions as $date => $transactions)
+                                <x-transactions.group :heading="$date">
+                                    @foreach($transactions as $transaction)
+                                        <x-transactions.row
+                                            :href="route('transactions.edit', $transaction->id)"
+                                            :type="$transaction->category->type"
+                                            :title="$transaction->title"
+                                            :date="$transaction->created_at"
+                                            :details="$transaction->details"
+                                            :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
+                                            :category-color="$transaction->category->color_class"
+                                            :category-icon="$transaction->category->icon"/>
+                                    @endforeach
+                                </x-transactions.group>
+                            @endforeach
+                        @else
+                            <x-panels.heading class="text-sm text-center w-full">
+                                No transactions found.
+                            </x-panels.heading>
+                        @endif
                     </x-tabs.content>
 
                     {{--                    Expense--}}
                     <x-tabs.content class="flex-auto space-y-8">
-                        <x-transactions.group heading="Today, May 21">
-                            <x-transactions.row :href="route('transactions.index')" type="expense"
-                                                title="New iPhone"
-                                                date="2024-06-02 09:00:01"
-                                                amount="2,500 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                            <x-transactions.row :href="route('transactions.index')" type="expense" title="Rent"
-                                                date="2024-06-02 09:00:01"
-                                                amount="1000 лв."
-                                                category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                        </x-transactions.group>
-
-                        <x-transactions.group heading="Yesterday, May 20">
-                            <x-transactions.row :href="route('transactions.index')" type="expense" title="Rent"
-                                                date="2024-06-02 09:00:01"
-                                                amount="1000 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                        </x-transactions.group>
+                        @if(count($groupedExpenses) > 0)
+                            @foreach ($groupedExpenses as $date => $transactions)
+                                <x-transactions.group :heading="$date">
+                                    @foreach($transactions as $transaction)
+                                        <x-transactions.row
+                                            :href="route('transactions.edit', $transaction->id)"
+                                            :type="$transaction->category->type"
+                                            :title="$transaction->title"
+                                            :date="$transaction->created_at"
+                                            :description="$transaction->description"
+                                            :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
+                                            :category-color="$transaction->category->color_class"
+                                            :category-icon="$transaction->category->icon"/>
+                                    @endforeach
+                                </x-transactions.group>
+                            @endforeach
+                        @else
+                            <x-panels.heading class="text-sm text-center w-full">
+                                No transactions found.
+                            </x-panels.heading>
+                        @endif
                     </x-tabs.content>
 
                     {{--                    Income--}}
                     <x-tabs.content class="flex-auto space-y-8">
-                        <x-transactions.group heading="Today, May 21">
-                            <x-transactions.row :href="route('transactions.index')" type="income" title="Salary"
-                                                date="2024-06-02 09:00:01"
-                                                amount="2,500 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                            <x-transactions.row :href="route('transactions.index')" type="income" title="Gift"
-                                                date="2024-06-02 09:00:01"
-                                                amount="500 лв." category-background="bg-lime-200"
-                                                category-image="gift"/>
-                        </x-transactions.group>
-
-                        <x-transactions.group heading="Yesterday, May 20">
-                            <x-transactions.row :href="route('transactions.index')" type="income" title="Salary"
-                                                date="2024-06-02 09:00:01"
-                                                amount="2,500 лв." category-background="bg-rose-200"
-                                                category-image="dollar-coin"/>
-                        </x-transactions.group>
+                        @if(count($groupedIncomes) > 0)
+                            @foreach ($groupedIncomes as $date => $transactions)
+                                <x-transactions.group :heading="$date">
+                                    @foreach($transactions as $transaction)
+                                        <x-transactions.row
+                                            :href="route('transactions.edit', $transaction->id)"
+                                            :type="$transaction->category->type"
+                                            :title="$transaction->title"
+                                            :date="$transaction->created_at"
+                                            :description="$transaction->description"
+                                            :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
+                                            :category-color="$transaction->category->color_class"
+                                            :category-icon="$transaction->category->icon"/>
+                                    @endforeach
+                                </x-transactions.group>
+                            @endforeach
+                        @else
+                            <x-panels.heading class="text-sm text-center w-full">
+                                No transactions found.
+                            </x-panels.heading>
+                        @endif
                     </x-tabs.content>
                 </x-tabs.content-group>
 
@@ -187,7 +214,7 @@
         </x-panels.panel>
     </div>
 
-    <script src="{{ $incomeChart->cdn() }}"></script>
+    <script src="{{ $categoryChart->cdn() }}"></script>
     {{ $categoryChart->script() }}
-    {{ $incomeChart->script() }}
+    {{ $balanceChart->script() }}
 </x-app-layout>

@@ -73,7 +73,7 @@ class TransactionFilter
     protected function applyDateRangeFilter(Builder $query): void
     {
         if ($this->request->has('date_range')) {
-            if ($this->request->input('date_range') === '') {
+            if ($this->request->input('date_range') === '' || $this->request->input('date_range') === null) {
                 return;
             }
 

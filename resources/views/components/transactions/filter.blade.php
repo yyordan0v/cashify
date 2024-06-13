@@ -7,7 +7,7 @@
         <div class="flex flex-col space-y-6 p-6">
 
             <div class="flex items-center justify-between">
-                <x-panels.heading class="mt-2">
+                <x-panels.heading>
                     {{ __('Filters') }}
                 </x-panels.heading>
 

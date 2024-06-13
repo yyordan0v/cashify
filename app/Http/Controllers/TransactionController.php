@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Filters\TransactionFilter;
-use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\TransactionRequest;
 use App\Models\Account;
 use App\Models\Category;
 use App\Models\Transaction;
-use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +37,7 @@ class TransactionController extends Controller
         $transactions = $query->orderBy('created_at', 'desc')->get();
 
 
-        $groupedTransactions = $this->groupTransactionsByDate($transactions);
+        $groupedTransactions = groupTransactionsByDate($transactions);
 
         return view('transactions.index', compact('categories', 'groupedTransactions', 'minAmount', 'maxAmount'));
     }
@@ -53,10 +51,11 @@ class TransactionController extends Controller
             ->categories()
             ->latest()
             ->with('user')
+            ->orderBy('name', 'asc')
             ->get()
             ->groupBy('type');
 
-        $accounts = Auth::user()->accounts()->with('user')->get();
+        $accounts = Auth::user()->accounts()->with('user')->latest()->get();
 
         return view('transactions.create', [
             'incomeCategories' => $categories['income'] ?? [],
@@ -100,10 +99,11 @@ class TransactionController extends Controller
             ->categories()
             ->latest()
             ->with('user')
+            ->orderBy('name', 'asc')
             ->get()
             ->where('type', $transaction->category->type);
 
-        $accounts = Auth::user()->accounts()->with('user')->get();
+        $accounts = Auth::user()->accounts()->with('user')->latest()->get();
 
         return view('transactions.edit', [
             'categories' => $categories,
@@ -177,30 +177,5 @@ class TransactionController extends Controller
         $transaction->delete();
 
         return Redirect::route('transactions.index');
-    }
-
-    private function groupTransactionsByDate($transactions)
-    {
-        $grouped = [];
-        foreach ($transactions as $transaction) {
-            $date = $this->formatDate($transaction->created_at);
-            $grouped[$date][] = $transaction;
-        }
-        return $grouped;
-    }
-
-    private function formatDate($date)
-    {
-        $carbonDate = Carbon::parse($date);
-        $today = Carbon::today();
-        $yesterday = Carbon::yesterday();
-
-        if ($carbonDate->isToday()) {
-            return 'TODAY, '.$carbonDate->format('F d');
-        } elseif ($carbonDate->isYesterday()) {
-            return 'YESTERDAY, '.$carbonDate->format('F d');
-        } else {
-            return strtoupper($carbonDate->format('l')).', '.$carbonDate->format('F d');
-        }
     }
 }

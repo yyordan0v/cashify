@@ -40,3 +40,32 @@ if (!function_exists('parseDateRange')) {
         return [$startDate, $endDate];
     }
 }
+
+if (!function_exists('formatDate')) {
+    function formatDate($date): string
+    {
+        $carbonDate = Carbon::parse($date);
+        $today = Carbon::today();
+        $yesterday = Carbon::yesterday();
+
+        if ($carbonDate->isToday()) {
+            return 'TODAY, '.$carbonDate->format('F d');
+        } elseif ($carbonDate->isYesterday()) {
+            return 'YESTERDAY, '.$carbonDate->format('F d');
+        } else {
+            return strtoupper($carbonDate->format('l')).', '.$carbonDate->format('F d');
+        }
+    }
+}
+
+if (!function_exists('groupTransactionsByDate')) {
+    function groupTransactionsByDate($transactions)
+    {
+        $grouped = [];
+        foreach ($transactions as $transaction) {
+            $date = formatDate($transaction->created_at);
+            $grouped[$date][] = $transaction;
+        }
+        return $grouped;
+    }
+}
