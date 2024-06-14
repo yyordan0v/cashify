@@ -127,10 +127,9 @@
                     fill: {
                         type: 'gradient',
                         gradient: {
-                            shade: 'dark',
-                            shadeIntensity: 0,
-                            opacityFrom: 0,
-                            opacityTo: 0.9,
+                            type: "vertical",
+                            opacityFrom: 0.9,
+                            opacityTo: 0,
                             stops: [0, 100]
                         }
                     },
