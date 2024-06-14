@@ -66,38 +66,103 @@
         </div>
 
         <x-panels.panel class="col-span-2">
-            <div class="flex items-center justify-between ">
-                <x-panels.heading>Balance</x-panels.heading>
+            <x-panels.heading>Balance</x-panels.heading>
 
-                <div class="flex items-center space-x-4">
-                    <x-forms.select id="period" name="period" hx-get="{{ route('dashboard.balance') }}"
-                                    hx-target="#balanceChart" hx-trigger="load, click">
-                        @fragment('periods')
-                            @isset($periods)
-                                @foreach($periods as $period)
-                                    <option value="{{ $period }}">{{ $period }}</option>
-                                @endforeach
-                            @endisset
-                        @endfragment
-                    </x-forms.select>
+            <x-forms.form-actions class="flex items-center" id="chart-buttons" :divider="false">
+                <x-buttons.action class="bg-transparent" id="one_month">
+                    1M
+                </x-buttons.action>
+                <x-buttons.action class="bg-transparent" id="six_months">
+                    6M
+                </x-buttons.action>
+                <x-buttons.action class="bg-transparent" id="one_year">
+                    1Y
+                </x-buttons.action>
+                <x-buttons.action class="bg-transparent" id="ytd">
+                    YTD
+                </x-buttons.action>
+                <x-buttons.action class="bg-transparent" id="all">
+                    ALL
+                </x-buttons.action>
+            </x-forms.form-actions>
+            {!! $balanceChart->container() !!}
 
-                    <x-forms.select id="periodType" name="periodType" hx-get="{{ route('dashboard.period') }}"
-                                    hx-target="#period" hx-trigger="load, click">
-                        <option value="month" {{ request('periodType') == 'month' ? 'selected' : '' }}>Monthly
-                        </option>
-                        <option value="year" {{ request('periodType') == 'year' ? 'selected' : '' }}>Yearly
-                        </option>
-                    </x-forms.select>
-                </div>
-            </div>
+            <script>
+                function resetCssClasses(event) {
+                    // Remove the specific class names individually
+                    document.querySelector('#chart-buttons').querySelectorAll('button').forEach(button => {
+                        button.classList.remove('bg-gray-200/95');
+                        button.classList.remove('dark:bg-neutral-700/40');
+                        button.classList.add('bg-transparent');
+                    });
 
-            <div id="balanceChart">
-                @fragment('balanceChart')
-                    @isset($balanceChart)
-                        {!! $balanceChart->container() !!}
-                    @endisset
-                @endfragment
-            </div>
+                    // Add the specific class names individually to the clicked button
+                    event.target.classList.remove('bg-transparent');
+                    event.target.classList.add('bg-gray-200/95');
+                    event.target.classList.add('dark:bg-neutral-700/40');
+                }
+
+
+                function parseDate(dateString) {
+                    // Convert 'd M Y' to ISO format for reliable parsing
+                    const parts = dateString.split(' ');
+                    const day = parts[0];
+                    const month = parts[1];
+                    const year = parts[2];
+                    const date = new Date(`${year}-${month}-${day}`);
+                    if (isNaN(date.getTime())) {
+                        console.error('Invalid date:', dateString);
+                        return null;
+                    }
+                    return date.getTime();
+                }
+
+                function zoomChart(range) {
+                    const startDate = parseDate(range[0]);
+                    const endDate = parseDate(range[1]);
+                    if (startDate && endDate) {
+                        chart.zoomX(startDate, endDate);
+                    } else {
+                        console.error('Invalid date range:', range);
+                    }
+                }
+
+                document.querySelector('#one_month').addEventListener('click', function (e) {
+                    resetCssClasses(e);
+                    const oneMonthRange = @json($dateRanges['one_month']);
+                    console.log('One Month Range:', oneMonthRange);
+                    zoomChart(oneMonthRange);
+                });
+
+                document.querySelector('#six_months').addEventListener('click', function (e) {
+                    resetCssClasses(e);
+                    const sixMonthsRange = @json($dateRanges['six_months']);
+                    console.log('Six Months Range:', sixMonthsRange);
+                    zoomChart(sixMonthsRange);
+                });
+
+                document.querySelector('#one_year').addEventListener('click', function (e) {
+                    resetCssClasses(e);
+                    const oneYearRange = @json($dateRanges['one_year']);
+                    console.log('One Year Range:', oneYearRange);
+                    zoomChart(oneYearRange);
+                });
+
+                document.querySelector('#ytd').addEventListener('click', function (e) {
+                    resetCssClasses(e);
+                    const ytdRange = @json($dateRanges['ytd']);
+                    console.log('YTD Range:', ytdRange);
+                    zoomChart(ytdRange);
+                });
+
+                document.querySelector('#all').addEventListener('click', function (e) {
+                    resetCssClasses(e);
+                    const allRange = @json($dateRanges['all']);
+                    console.log('All Time Range:', allRange);
+                    zoomChart(allRange);
+                });
+            </script>
+
         </x-panels.panel>
     </div>
 

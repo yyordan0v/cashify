@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class);
     }
+
+    public function netWorth(): HasMany
+    {
+        return $this->hasMany(NetWorth::class);
+    }
 }

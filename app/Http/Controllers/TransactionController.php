@@ -84,11 +84,18 @@ class TransactionController extends Controller
 
         Auth::user()->transactions()->create($attributes);
 
+        // Calculate net worth
+        $netWorth = Account::where('user_id', Auth::id())->sum('balance');
+
+        // Store net worth with timestamp
+        Auth::user()->netWorth()->create([
+            'net_worth' => $netWorth,
+        ]);
+
         flashToast('success', 'Transaction created successfully.');
 
         return Redirect::route('transactions.index');
     }
-
 
     /**
      * Show the form for editing the specified resource.

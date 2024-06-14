@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\Account;
 use App\Models\Category;
 use App\Models\Transaction;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,9 +20,9 @@ class TransactionFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
-            'category_id' => Category::factory(),
-            'account_id' => Account::factory(),
+            'user_id' => 1,
+            'category_id' => Category::where('user_id', 1)->inRandomOrder()->first()->id,
+            'account_id' => Account::where('user_id', 1)->inRandomOrder()->first()->id,
             'title' => $this->faker->sentence,
             'amount' => $this->faker->randomFloat(2, -10000, 10000),
             'details' => $this->faker->paragraph,
