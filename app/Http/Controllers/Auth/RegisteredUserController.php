@@ -46,6 +46,10 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
+        Auth::user()->netWorth()->create([
+            'net_worth' => 0,
+        ]);
+
         return redirect(route('dashboard', absolute: false));
     }
 }

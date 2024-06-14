@@ -66,9 +66,12 @@
         </div>
 
         <x-panels.panel class="col-span-2">
-            <x-panels.heading>Balance</x-panels.heading>
+            <x-panels.heading>Net Worth</x-panels.heading>
 
             <x-forms.form-actions class="flex items-center" id="chart-buttons" :divider="false">
+                <x-buttons.action class="bg-transparent" id="one_week">
+                    1W
+                </x-buttons.action>
                 <x-buttons.action class="bg-transparent" id="one_month">
                     1M
                 </x-buttons.action>
@@ -85,18 +88,64 @@
                     ALL
                 </x-buttons.action>
             </x-forms.form-actions>
-            {!! $balanceChart->container() !!}
+
+            <div id="balanceChart"></div>
 
             <script>
+                var options = {
+                    series: [
+                        {
+                            name: "Net Worth",
+                            data: @json($networthChartData)
+                        }
+                    ],
+                    chart: {
+                        id: 'area-datetime',
+                        type: 'area',
+                        height: 350,
+                        zoom: {
+                            autoScaleYaxis: false
+                        }
+                    },
+                    dataLabels: {
+                        enabled: false
+                    },
+                    markers: {
+                        size: 0,
+                        style: 'hollow',
+                    },
+                    xaxis: {
+                        type: 'datetime',
+                        tickAmount: 6,
+                    },
+                    tooltip: {
+                        x: {
+                            format: 'dd MMM yyyy'
+                        }
+                    },
+                    colors: ['#808080'],
+                    fill: {
+                        type: 'gradient',
+                        gradient: {
+                            shade: 'dark',
+                            shadeIntensity: 0,
+                            opacityFrom: 0,
+                            opacityTo: 0.9,
+                            stops: [0, 100]
+                        }
+                    },
+                };
+
+                var chart = new ApexCharts(document.querySelector("#balanceChart"), options);
+                chart.render();
+
                 function resetCssClasses(event) {
-                    // Remove the specific class names individually
                     document.querySelector('#chart-buttons').querySelectorAll('button').forEach(button => {
                         button.classList.remove('bg-gray-200/95');
                         button.classList.remove('dark:bg-neutral-700/40');
                         button.classList.add('bg-transparent');
                     });
 
-                    // Add the specific class names individually to the clicked button
                     event.target.classList.remove('bg-transparent');
                     event.target.classList.add('bg-gray-200/95');
                     event.target.classList.add('dark:bg-neutral-700/40');
@@ -127,38 +176,39 @@
                     }
                 }
 
+                document.querySelector('#one_week').addEventListener('click', function (e) {
+                    resetCssClasses(e);
+                    const oneWeekRange = @json($dateRanges['one_week']);
+                    zoomChart(oneWeekRange);
+                });
+
                 document.querySelector('#one_month').addEventListener('click', function (e) {
                     resetCssClasses(e);
                     const oneMonthRange = @json($dateRanges['one_month']);
-                    console.log('One Month Range:', oneMonthRange);
                     zoomChart(oneMonthRange);
                 });
 
                 document.querySelector('#six_months').addEventListener('click', function (e) {
                     resetCssClasses(e);
                     const sixMonthsRange = @json($dateRanges['six_months']);
-                    console.log('Six Months Range:', sixMonthsRange);
                     zoomChart(sixMonthsRange);
                 });
 
                 document.querySelector('#one_year').addEventListener('click', function (e) {
                     resetCssClasses(e);
                     const oneYearRange = @json($dateRanges['one_year']);
-                    console.log('One Year Range:', oneYearRange);
                     zoomChart(oneYearRange);
                 });
 
                 document.querySelector('#ytd').addEventListener('click', function (e) {
                     resetCssClasses(e);
                     const ytdRange = @json($dateRanges['ytd']);
-                    console.log('YTD Range:', ytdRange);
                     zoomChart(ytdRange);
                 });
 
                 document.querySelector('#all').addEventListener('click', function (e) {
                     resetCssClasses(e);
                     const allRange = @json($dateRanges['all']);
-                    console.log('All Time Range:', allRange);
                     zoomChart(allRange);
                 });
             </script>
@@ -170,7 +220,6 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         <x-panels.panel>
             <x-panels.heading>Spending by Category</x-panels.heading>
-            {!! $categoryChart->container() !!}
         </x-panels.panel>
 
         <x-panels.panel>
@@ -278,8 +327,4 @@
 
         </x-panels.panel>
     </div>
-
-    <script src="{{ $categoryChart->cdn() }}"></script>
-    {{ $categoryChart->script() }}
-    {{ $balanceChart->script() }}
 </x-app-layout>
