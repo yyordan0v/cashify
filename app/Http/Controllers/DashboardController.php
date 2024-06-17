@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Charts\NetworthChart;
 use App\Charts\SpendingChart;
+use App\Models\Account;
 use App\Models\NetWorth;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
@@ -14,18 +15,24 @@ class DashboardController extends Controller
     public function __invoke(NetworthChart $networthChart, SpendingChart $spendingChart): View
     {
         $user = Auth::user();
-        $accounts = $user->accounts()->with('user')->latest()->get();
+        $accounts = Account::with('user', 'transactions')->latest()->get();
 
         $netWorth = NetWorth::query()
             ->where('user_id', $user->id)
             ->latest('created_at')
             ->value('net_worth');
 
-        list($groupedTransactions, $groupedExpenses, $groupedIncomes, $totalExpenses, $totalIncomes) = $this->getTransactions();
+        $totals = Transaction::query()
+            ->selectRaw('SUM(CASE WHEN categories.type = "expense" THEN transactions.amount ELSE 0 END) AS total_expenses')
+            ->selectRaw('SUM(CASE WHEN categories.type = "income" THEN transactions.amount ELSE 0 END) AS total_incomes')
+            ->where('transactions.user_id', $user->id)
+            ->join('categories', 'transactions.category_id', '=', 'categories.id')
+            ->first();
 
-        $groupedTransactions = array_slice($groupedTransactions, 0, 5);
-        $groupedExpenses = array_slice($groupedExpenses, 0, 5);
-        $groupedIncomes = array_slice($groupedIncomes, 0, 5);
+        $totalExpenses = $totals->total_expenses ?? 0;
+        $totalIncomes = $totals->total_incomes ?? 0;
+
+        list($groupedTransactions, $groupedExpenses, $groupedIncomes) = $this->getTransactions();
 
         $networthChartData = $networthChart->build();
         $spendingChartData = $spendingChart->build();
@@ -47,9 +54,12 @@ class DashboardController extends Controller
 
     private function getTransactions(): array
     {
-        $transactions = Transaction::query()->with('user', 'category')->where('user_id',
-            Auth::id())->orderBy('created_at',
-            'desc')->limit(5)->get();
+        $transactions = Transaction::query()
+            ->with('category')
+            ->where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
 
         $groupedTransactions = groupTransactionsByDate($transactions);
 
@@ -63,9 +73,6 @@ class DashboardController extends Controller
         });
         $groupedIncomes = groupTransactionsByDate($incomes);
 
-        $totalExpenses = $expenses->sum('amount');
-        $totalIncomes = $incomes->sum('amount');
-
-        return [$groupedTransactions, $groupedExpenses, $groupedIncomes, $totalExpenses, $totalIncomes];
+        return [$groupedTransactions, $groupedExpenses, $groupedIncomes];
     }
 }

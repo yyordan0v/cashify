@@ -24,8 +24,8 @@ class TransactionController extends Controller
             ->latest()
             ->orderBy('name', 'asc')
             ->get();
-        
-        $query = Transaction::query()->where('user_id', Auth::id());
+
+        $query = Transaction::query()->with('category')->where('user_id', Auth::id());
 
         $minAmount = $query->min('amount');
         $maxAmount = $query->max('amount');

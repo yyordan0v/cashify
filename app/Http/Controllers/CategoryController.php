@@ -29,10 +29,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Auth::user()
-            ->categories()
+        $categories = Category::query()
+            ->with('transactions')
+            ->where('user_id', Auth::id())
             ->latest()
-            ->with('user')
             ->orderBy('name', 'asc')
             ->get()
             ->groupBy('type');
