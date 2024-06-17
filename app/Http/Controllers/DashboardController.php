@@ -15,7 +15,10 @@ class DashboardController extends Controller
     public function __invoke(NetworthChart $networthChart, SpendingChart $spendingChart): View
     {
         $user = Auth::user();
-        $accounts = Account::with('user', 'transactions')->latest()->get();
+        $accounts = Account::with('transactions')
+            ->where('user_id', $user->id)
+            ->latest()
+            ->get();
 
         $netWorth = NetWorth::query()
             ->where('user_id', $user->id)

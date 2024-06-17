@@ -21,7 +21,6 @@ class TransactionController extends Controller
     {
         $categories = Auth::user()
             ->categories()
-            ->latest()
             ->orderBy('name', 'asc')
             ->get();
 

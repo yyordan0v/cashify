@@ -38,7 +38,7 @@
                     No transactions found.
                 </x-panels.heading>
             @endif
-
+            
         </x-panels.panel>
     </div>
 </x-app-layout>

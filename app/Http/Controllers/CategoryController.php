@@ -33,7 +33,6 @@ class CategoryController extends Controller
             ->with('transactions')
             ->where('user_id', Auth::id())
             ->latest()
-            ->orderBy('name', 'asc')
             ->get()
             ->groupBy('type');
 
