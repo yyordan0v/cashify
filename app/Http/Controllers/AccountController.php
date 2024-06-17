@@ -54,11 +54,7 @@ class AccountController extends Controller
 
         $user->accounts()->create($attributes);
 
-        $netWorth = Account::where('user_id', Auth::id())->sum('balance');
-
-        $user->netWorth()->create([
-            'net_worth' => $netWorth,
-        ]);
+        updateNetworth();
 
         flashToast('success', 'Account created successfully.');
 
@@ -125,6 +121,8 @@ class AccountController extends Controller
 
         $account->update($attributes);
 
+        updateNetworth();
+
         return HtmxResponse::addFragment('accounts.show', 'panel', ['account' => $account])
             ->pushUrl(route('accounts.index'))
             ->retarget('this')
@@ -137,6 +135,8 @@ class AccountController extends Controller
     public function destroy(Account $account)
     {
         $account->delete();
+
+        updateNetworth();
 
         return '';
     }

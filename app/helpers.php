@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Account;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 if (!function_exists('flashToast')) {
     function flashToast($type, $description, $title = null, $position = 'top-right'): void
@@ -59,7 +61,7 @@ if (!function_exists('formatDate')) {
 }
 
 if (!function_exists('groupTransactionsByDate')) {
-    function groupTransactionsByDate($transactions)
+    function groupTransactionsByDate($transactions): array
     {
         $grouped = [];
         foreach ($transactions as $transaction) {
@@ -67,5 +69,16 @@ if (!function_exists('groupTransactionsByDate')) {
             $grouped[$date][] = $transaction;
         }
         return $grouped;
+    }
+}
+
+if (!function_exists('updateNetworth')) {
+    function updateNetworth(): void
+    {
+        $netWorth = Account::where('user_id', Auth::id())->sum('balance');
+
+        Auth::user()->netWorth()->create([
+            'net_worth' => $netWorth,
+        ]);
     }
 }

@@ -84,13 +84,7 @@ class TransactionController extends Controller
 
         Auth::user()->transactions()->create($attributes);
 
-
-        $netWorth = Account::where('user_id', Auth::id())->sum('balance');
-
-        Auth::user()->netWorth()->create([
-            'net_worth' => $netWorth,
-        ]);
-
+        updateNetworth();
 
         flashToast('success', 'Transaction created successfully.');
 
@@ -149,6 +143,7 @@ class TransactionController extends Controller
             ]);
         }
 
+        updateNetworth();
 
         $transaction->update($attributes);
 
@@ -180,6 +175,8 @@ class TransactionController extends Controller
         $transaction->account->update([
             'balance' => $transaction->account->balance - $transaction->amount,
         ]);
+
+        updateNetworth();
 
         $transaction->delete();
 
