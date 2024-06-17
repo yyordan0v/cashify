@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class SpendingChart
 {
-    public function build()
+    public function build(): array
     {
         $categories = Auth::user()->categories()->where('type', 'expense')->get();
 
@@ -19,6 +19,11 @@ class SpendingChart
             $data[] = $totalAmount;
             $labels[] = $category->name;
         }
+
+        return [
+            'data' => $data,
+            'labels' => $labels,
+        ];
     }
 }
 

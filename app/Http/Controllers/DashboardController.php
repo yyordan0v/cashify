@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Charts\NetworthChart;
+use App\Charts\SpendingChart;
 use App\Models\NetWorth;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function index(NetworthChart $networthChart)
+    public function index(NetworthChart $networthChart, SpendingChart $spendingChart)
     {
         $user = Auth::user();
         $accounts = $user->accounts()->with('user')->latest()->get();
@@ -21,7 +22,8 @@ class DashboardController extends Controller
 
         list($groupedTransactions, $groupedExpenses, $groupedIncomes) = $this->getTransactions();
 
-        $chartData = $networthChart->build();
+        $networthChartData = $networthChart->build();
+        $spendingChartData = $spendingChart->build();
 
         return view('dashboard', [
             'groupedTransactions' => $groupedTransactions,
@@ -29,8 +31,10 @@ class DashboardController extends Controller
             'groupedIncomes' => $groupedIncomes,
             'accounts' => $accounts,
             'netWorth' => $netWorth,
-            'dateRanges' => $chartData['dateRanges'],
-            'networthChartData' => $chartData['data'],
+            'dateRanges' => $networthChartData['dateRanges'],
+            'networthChartData' => $networthChartData['data'],
+            'spendingChartData' => $spendingChartData['data'],
+            'spendingChartLabels' => $spendingChartData['labels'],
         ]);
     }
 

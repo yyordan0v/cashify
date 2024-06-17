@@ -226,7 +226,7 @@
                 var options = {
                     series: [{
                         name: 'Money spent',
-                        data: [44, 55, 41, 67, 22, 43, 21, 33, 45, 31, 87, 65, 35, 44, 55, 41, 67, 22, 43, 21, 33, 45, 31, 87, 65, 35]
+                        data: @json($spendingChartData)
                     }],
                     chart: {
                         height: 500,
@@ -249,9 +249,7 @@
                         labels: {
                             rotate: -45
                         },
-                        categories: ['Apples', 'Oranges', 'Strawberries', 'Pineapples', 'Mangoes', 'Bananas',
-                            'Blackberries', 'Pears', 'Watermelons', 'Cherries', 'Pomegranates', 'Tangerines', 'Papayas', 'Apples', 'Oranges', 'Strawberries', 'Pineapples', 'Mangoes', 'Bananas',
-                            'Blackberries', 'Pears', 'Watermelons', 'Cherries', 'Pomegranates', 'Tangerines', 'Papayas'],
+                        categories: @json($spendingChartLabels),
                         tickPlacement: 'on'
                     },
                     yaxis: {
