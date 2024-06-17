@@ -92,7 +92,7 @@
             <div id="balanceChart"></div>
 
             <script>
-                var options = {
+                var newtworthChartOptions = {
                     series: [
                         {
                             name: "Net Worth",
@@ -103,9 +103,15 @@
                         id: 'area-datetime',
                         type: 'area',
                         height: 350,
-                        zoom: {
-                            autoScaleYaxis: false
-                        }
+
+                        toolbar: {
+                            show: true,
+                            offsetX: 0,
+                            offsetY: 0,
+                            tools: {
+                                reset: false,
+                            }
+                        },
                     },
                     dataLabels: {
                         enabled: false
@@ -117,6 +123,18 @@
                     xaxis: {
                         type: 'datetime',
                         tickAmount: 6,
+                        labels: {
+                            style: {
+                                colors: '#808080'
+                            }
+                        },
+                    },
+                    yaxis: {
+                        labels: {
+                            style: {
+                                colors: '#808080'
+                            }
+                        },
                     },
                     tooltip: {
                         x: {
@@ -135,8 +153,8 @@
                     },
                 };
 
-                var chart = new ApexCharts(document.querySelector("#balanceChart"), options);
-                chart.render();
+                var networthChart = new ApexCharts(document.querySelector("#balanceChart"), newtworthChartOptions);
+                networthChart.render();
 
                 function resetCssClasses(event) {
                     document.querySelector('#chart-buttons').querySelectorAll('button').forEach(button => {
@@ -169,7 +187,7 @@
                     const startDate = parseDate(range[0]);
                     const endDate = parseDate(range[1]);
                     if (startDate && endDate) {
-                        chart.zoomX(startDate, endDate);
+                        networthChart.zoomX(startDate, endDate);
                     } else {
                         console.error('Invalid date range:', range);
                     }
@@ -223,7 +241,7 @@
             <div id="categories-chart"></div>
 
             <script>
-                var options = {
+                var spendingChartOptions = {
                     series: [{
                         name: 'Money spent',
                         data: @json($spendingChartData)
@@ -231,6 +249,12 @@
                     chart: {
                         height: 500,
                         type: 'bar',
+                        toolbar: {
+                            tools: {
+                                download: false,
+                                reset: false,
+                            }
+                        },
                     },
                     plotOptions: {
                         bar: {
@@ -247,7 +271,10 @@
                     },
                     xaxis: {
                         labels: {
-                            rotate: -45
+                            rotate: -45,
+                            style: {
+                                colors: '#808080'
+                            }
                         },
                         categories: @json($spendingChartLabels),
                         tickPlacement: 'on'
@@ -255,6 +282,14 @@
                     yaxis: {
                         title: {
                             text: 'Spending',
+                            style: {
+                                color: '#808080'
+                            }
+                        },
+                        labels: {
+                            style: {
+                                colors: '#808080'
+                            }
                         },
                     },
                     legend: {
@@ -284,7 +319,7 @@
                     }
                 };
 
-                var spendingChart = new ApexCharts(document.querySelector("#categories-chart"), options);
+                var spendingChart = new ApexCharts(document.querySelector("#categories-chart"), spendingChartOptions);
                 spendingChart.render();
             </script>
         </x-panels.panel>

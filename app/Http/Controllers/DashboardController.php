@@ -41,7 +41,7 @@ class DashboardController extends Controller
 
     private function getTransactions(): array
     {
-        $transactions = Transaction::query()->orderBy('created_at', 'desc')->limit(4)->get();
+        $transactions = Transaction::query()->orderBy('created_at', 'desc')->limit(5)->get();
 
         $groupedTransactions = groupTransactionsByDate($transactions);
 
