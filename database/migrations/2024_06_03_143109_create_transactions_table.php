@@ -22,6 +22,13 @@ return new class extends Migration {
             $table->decimal('amount', 15, 2)->default(0);
             $table->text('details')->nullable();
             $table->timestamps();
+            
+            $table->index('title');
+            $table->index('user_id');
+            $table->index('category_id');
+            $table->index('account_id');
+            $table->index(['user_id', 'category_id']);
+            $table->index(['user_id', 'account_id']);
         });
     }
 

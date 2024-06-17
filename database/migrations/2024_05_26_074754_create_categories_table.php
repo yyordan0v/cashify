@@ -19,6 +19,11 @@ return new class extends Migration {
             $table->string('color')->default('gray');
             $table->string('icon')->default('image');
             $table->timestamps();
+
+            $table->index('name');
+            $table->index('type');
+            $table->index('user_id');
+            $table->index(['user_id', 'type']);
         });
     }
 

@@ -50,8 +50,15 @@ class AccountController extends Controller
     public function store(AccountRequest $request): RedirectResponse
     {
         $attributes = $request->validated();
+        $user = Auth::user();
 
-        Auth::user()->accounts()->create($attributes);
+        $user->accounts()->create($attributes);
+
+        $netWorth = Account::where('user_id', Auth::id())->sum('balance');
+
+        $user->netWorth()->create([
+            'net_worth' => $netWorth,
+        ]);
 
         flashToast('success', 'Account created successfully.');
 

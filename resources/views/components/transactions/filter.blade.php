@@ -83,7 +83,10 @@
             </div>
 
             <x-forms.form-actions>
-                <x-buttons.secondary hx-get="{{ route('transactions.index') }}" hx-target="body" hx-swap="outerHTML"
+                <x-buttons.secondary x-on:click="$dispatch('close')"
+                                     hx-get="{{ route('transactions.index') }}"
+                                     hx-target="body"
+                                     hx-swap="outerHTML"
                                      hx-push-url="true">
                     Reset Filters
                 </x-buttons.secondary>

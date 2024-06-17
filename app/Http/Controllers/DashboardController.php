@@ -7,10 +7,11 @@ use App\Charts\SpendingChart;
 use App\Models\NetWorth;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-    public function index(NetworthChart $networthChart, SpendingChart $spendingChart)
+    public function __invoke(NetworthChart $networthChart, SpendingChart $spendingChart): View
     {
         $user = Auth::user();
         $accounts = $user->accounts()->with('user')->latest()->get();

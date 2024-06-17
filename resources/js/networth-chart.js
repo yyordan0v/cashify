@@ -1,10 +1,11 @@
 import ApexCharts from 'apexcharts';
 
 document.addEventListener('DOMContentLoaded', () => {
+
     const networthChartData = window.networthChartData;
     const dateRanges = window.dateRanges;
 
-    var networthChartOptions = {
+    const networthChartOptions = {
         series: [
             {
                 name: "Net Worth",
@@ -64,47 +65,50 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     };
 
-    var networthChart = new ApexCharts(document.querySelector("#balanceChart"), networthChartOptions);
-    networthChart.render();
+    htmx.onLoad(function (content) {
+        const networthChart = new ApexCharts(content.querySelector("#balanceChart"), networthChartOptions);
+        networthChart.render();
 
-    function resetCssClasses(event) {
-        document.querySelector('#chart-buttons').querySelectorAll('button').forEach(button => {
-            button.classList.remove('bg-gray-200/95', 'dark:bg-neutral-700/40', 'bg-transparent');
-            button.classList.add('bg-transparent');
-        });
+        function resetCssClasses(event) {
+            content.querySelector('#chart-buttons').querySelectorAll('button').forEach(button => {
+                button.classList.remove('bg-gray-200/95', 'dark:bg-neutral-700/40', 'bg-transparent');
+                button.classList.add('bg-transparent');
+            });
 
-        event.target.classList.remove('bg-transparent');
-        event.target.classList.add('bg-gray-200/95', 'dark:bg-neutral-700/40');
-    }
-
-    function parseDate(dateString) {
-        const parts = dateString.split(' ');
-        const day = parts[0];
-        const month = parts[1];
-        const year = parts[2];
-        const date = new Date(`${year}-${month}-${day}`);
-        if (isNaN(date.getTime())) {
-            console.error('Invalid date:', dateString);
-            return null;
+            event.target.classList.remove('bg-transparent');
+            event.target.classList.add('bg-gray-200/95', 'dark:bg-neutral-700/40');
         }
-        return date.getTime();
-    }
 
-    function zoomChart(range) {
-        const startDate = parseDate(range[0]);
-        const endDate = parseDate(range[1]);
-        if (startDate && endDate) {
-            networthChart.zoomX(startDate, endDate);
-        } else {
-            console.error('Invalid date range:', range);
+        function parseDate(dateString) {
+            const parts = dateString.split(' ');
+            const day = parts[0];
+            const month = parts[1];
+            const year = parts[2];
+            const date = new Date(`${year}-${month}-${day}`);
+            if (isNaN(date.getTime())) {
+                console.error('Invalid date:', dateString);
+                return null;
+            }
+            return date.getTime();
         }
-    }
 
-    document.querySelectorAll('#chart-buttons .bg-transparent').forEach(button => {
-        button.addEventListener('click', function (e) {
-            resetCssClasses(e);
-            const range = dateRanges[e.target.id];
-            zoomChart(range);
+        function zoomChart(range) {
+            const startDate = parseDate(range[0]);
+            const endDate = parseDate(range[1]);
+            if (startDate && endDate) {
+                networthChart.zoomX(startDate, endDate);
+            } else {
+                console.error('Invalid date range:', range);
+            }
+        }
+
+        content.querySelectorAll('#chart-buttons .bg-transparent').forEach(button => {
+            button.addEventListener('click', function (e) {
+                resetCssClasses(e);
+                const range = dateRanges[e.target.id];
+                zoomChart(range);
+            });
         });
     });
+
 });

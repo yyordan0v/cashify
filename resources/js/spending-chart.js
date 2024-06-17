@@ -76,6 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    var spendingChart = new ApexCharts(document.querySelector("#categories-chart"), spendingChartOptions);
-    spendingChart.render();
+    htmx.onLoad(function (content) {
+        var spendingChart = new ApexCharts(content.querySelector("#categories-chart"), spendingChartOptions);
+        spendingChart.render();
+    });
 });

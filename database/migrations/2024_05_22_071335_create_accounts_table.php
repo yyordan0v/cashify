@@ -18,6 +18,9 @@ return new class extends Migration {
             $table->decimal('balance', 15, 2)->default(0);
             $table->string('color')->default('gray');
             $table->timestamps();
+
+            $table->index('name');
+            $table->index(['user_id', 'balance']);
         });
     }
 

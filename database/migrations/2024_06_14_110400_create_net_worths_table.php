@@ -16,6 +16,8 @@ return new class extends Migration {
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->decimal('net_worth', 15, 2)->default(0);
             $table->timestamps();
+
+            $table->index('user_id');
         });
     }
 

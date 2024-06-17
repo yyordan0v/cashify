@@ -29,7 +29,7 @@
                         @csrf
                         <x-forms.input class="w-full" style="margin-top: 0 !important"
                                        placeholder="Search your categories..."
-                                       name="search" autofocus
+                                       name="search"
                                        hx-post="{{ route('categories.searchCategories', 'expense') }}"
                                        hx-trigger="input changed delay:300ms, search"
                                        hx-target="#expense-list"/>
@@ -58,7 +58,7 @@
                         @csrf
                         <x-forms.input class="w-full" style="margin-top: 0 !important"
                                        placeholder="Search your categories..."
-                                       name="search" autofocus
+                                       name="search"
                                        hx-post="{{ route('categories.searchCategories', 'income') }}"
                                        hx-trigger="input changed delay:300ms, search"
                                        hx-target="#income-list"/>
