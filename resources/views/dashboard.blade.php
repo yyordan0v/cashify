@@ -90,146 +90,6 @@
             </x-forms.form-actions>
 
             <div id="balanceChart"></div>
-
-            <script>
-                var newtworthChartOptions = {
-                    series: [
-                        {
-                            name: "Net Worth",
-                            data: @json($networthChartData)
-                        }
-                    ],
-                    chart: {
-                        id: 'area-datetime',
-                        type: 'area',
-                        height: 350,
-
-                        toolbar: {
-                            show: true,
-                            offsetX: 0,
-                            offsetY: 0,
-                            tools: {
-                                reset: false,
-                            }
-                        },
-                    },
-                    dataLabels: {
-                        enabled: false
-                    },
-                    markers: {
-                        size: 0,
-                        style: 'hollow',
-                    },
-                    xaxis: {
-                        type: 'datetime',
-                        tickAmount: 6,
-                        labels: {
-                            style: {
-                                colors: '#808080'
-                            }
-                        },
-                    },
-                    yaxis: {
-                        labels: {
-                            style: {
-                                colors: '#808080'
-                            }
-                        },
-                    },
-                    tooltip: {
-                        x: {
-                            format: 'dd MMM yyyy'
-                        }
-                    },
-                    colors: ['#808080'],
-                    fill: {
-                        type: 'gradient',
-                        gradient: {
-                            type: "vertical",
-                            opacityFrom: 0.9,
-                            opacityTo: 0,
-                            stops: [0, 100]
-                        }
-                    },
-                };
-
-                var networthChart = new ApexCharts(document.querySelector("#balanceChart"), newtworthChartOptions);
-                networthChart.render();
-
-                function resetCssClasses(event) {
-                    document.querySelector('#chart-buttons').querySelectorAll('button').forEach(button => {
-                        button.classList.remove('bg-gray-200/95');
-                        button.classList.remove('dark:bg-neutral-700/40');
-                        button.classList.add('bg-transparent');
-                    });
-
-                    event.target.classList.remove('bg-transparent');
-                    event.target.classList.add('bg-gray-200/95');
-                    event.target.classList.add('dark:bg-neutral-700/40');
-                }
-
-
-                function parseDate(dateString) {
-                    // Convert 'd M Y' to ISO format for reliable parsing
-                    const parts = dateString.split(' ');
-                    const day = parts[0];
-                    const month = parts[1];
-                    const year = parts[2];
-                    const date = new Date(`${year}-${month}-${day}`);
-                    if (isNaN(date.getTime())) {
-                        console.error('Invalid date:', dateString);
-                        return null;
-                    }
-                    return date.getTime();
-                }
-
-                function zoomChart(range) {
-                    const startDate = parseDate(range[0]);
-                    const endDate = parseDate(range[1]);
-                    if (startDate && endDate) {
-                        networthChart.zoomX(startDate, endDate);
-                    } else {
-                        console.error('Invalid date range:', range);
-                    }
-                }
-
-                document.querySelector('#one_week').addEventListener('click', function (e) {
-                    resetCssClasses(e);
-                    const oneWeekRange = @json($dateRanges['one_week']);
-                    zoomChart(oneWeekRange);
-                });
-
-                document.querySelector('#one_month').addEventListener('click', function (e) {
-                    resetCssClasses(e);
-                    const oneMonthRange = @json($dateRanges['one_month']);
-                    zoomChart(oneMonthRange);
-                });
-
-                document.querySelector('#six_months').addEventListener('click', function (e) {
-                    resetCssClasses(e);
-                    const sixMonthsRange = @json($dateRanges['six_months']);
-                    zoomChart(sixMonthsRange);
-                });
-
-                document.querySelector('#one_year').addEventListener('click', function (e) {
-                    resetCssClasses(e);
-                    const oneYearRange = @json($dateRanges['one_year']);
-                    zoomChart(oneYearRange);
-                });
-
-                document.querySelector('#ytd').addEventListener('click', function (e) {
-                    resetCssClasses(e);
-                    const ytdRange = @json($dateRanges['ytd']);
-                    zoomChart(ytdRange);
-                });
-
-                document.querySelector('#all').addEventListener('click', function (e) {
-                    resetCssClasses(e);
-                    const allRange = @json($dateRanges['all']);
-                    zoomChart(allRange);
-                });
-            </script>
-
         </x-panels.panel>
     </div>
 
@@ -239,89 +99,6 @@
             <x-panels.heading>Spending by Category</x-panels.heading>
 
             <div id="categories-chart"></div>
-
-            <script>
-                var spendingChartOptions = {
-                    series: [{
-                        name: 'Money spent',
-                        data: @json($spendingChartData)
-                    }],
-                    chart: {
-                        height: 500,
-                        type: 'bar',
-                        toolbar: {
-                            tools: {
-                                download: false,
-                                reset: false,
-                            }
-                        },
-                    },
-                    plotOptions: {
-                        bar: {
-                            borderRadius: 5,
-                            columnWidth: '50%',
-                            distributed: true,
-                        }
-                    },
-                    dataLabels: {
-                        enabled: false
-                    },
-                    stroke: {
-                        width: 0
-                    },
-                    xaxis: {
-                        labels: {
-                            rotate: -45,
-                            style: {
-                                colors: '#808080'
-                            }
-                        },
-                        categories: @json($spendingChartLabels),
-                        tickPlacement: 'on'
-                    },
-                    yaxis: {
-                        title: {
-                            text: 'Spending',
-                            style: {
-                                color: '#808080'
-                            }
-                        },
-                        labels: {
-                            style: {
-                                colors: '#808080'
-                            }
-                        },
-                    },
-                    legend: {
-                        show: false
-                    },
-                    theme: {
-                        mode: 'light',
-                        palette: 'palette1',
-                        monochrome: {
-                            enabled: false,
-                            color: '#6bd1ad',
-                            shadeTo: 'dark',
-                            shadeIntensity: 0.1
-                        },
-                    },
-                    fill: {
-                        type: 'gradient',
-                        gradient: {
-                            shade: 'light',
-                            type: "horizontal",
-                            shadeIntensity: 0.25,
-                            inverseColors: true,
-                            opacityFrom: .85,
-                            opacityTo: 0.8,
-                            stops: [50, 0, 100],
-                        },
-                    }
-                };
-
-                var spendingChart = new ApexCharts(document.querySelector("#categories-chart"), spendingChartOptions);
-                spendingChart.render();
-            </script>
         </x-panels.panel>
 
         <x-panels.panel>
@@ -430,3 +207,11 @@
         </x-panels.panel>
     </div>
 </x-app-layout>
+
+<script>
+    window.networthChartData = @json($networthChartData);
+    window.dateRanges = @json($dateRanges);
+    window.spendingChartData = @json($spendingChartData);
+    window.spendingChartLabels = @json($spendingChartLabels);
+</script>
+@vite(['resources/js/networth-chart.js', 'resources/js/spending-chart.js'])
