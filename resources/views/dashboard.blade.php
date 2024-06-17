@@ -219,6 +219,76 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         <x-panels.panel>
             <x-panels.heading>Spending by Category</x-panels.heading>
+
+            <div id="categories-chart"></div>
+
+            <script>
+                var options = {
+                    series: [{
+                        name: 'Money spent',
+                        data: [44, 55, 41, 67, 22, 43, 21, 33, 45, 31, 87, 65, 35, 44, 55, 41, 67, 22, 43, 21, 33, 45, 31, 87, 65, 35]
+                    }],
+                    chart: {
+                        height: 500,
+                        type: 'bar',
+                    },
+                    plotOptions: {
+                        bar: {
+                            borderRadius: 5,
+                            columnWidth: '50%',
+                            distributed: true,
+                        }
+                    },
+                    dataLabels: {
+                        enabled: false
+                    },
+                    stroke: {
+                        width: 0
+                    },
+                    xaxis: {
+                        labels: {
+                            rotate: -45
+                        },
+                        categories: ['Apples', 'Oranges', 'Strawberries', 'Pineapples', 'Mangoes', 'Bananas',
+                            'Blackberries', 'Pears', 'Watermelons', 'Cherries', 'Pomegranates', 'Tangerines', 'Papayas', 'Apples', 'Oranges', 'Strawberries', 'Pineapples', 'Mangoes', 'Bananas',
+                            'Blackberries', 'Pears', 'Watermelons', 'Cherries', 'Pomegranates', 'Tangerines', 'Papayas'],
+                        tickPlacement: 'on'
+                    },
+                    yaxis: {
+                        title: {
+                            text: 'Spending',
+                        },
+                    },
+                    legend: {
+                        show: false
+                    },
+                    theme: {
+                        mode: 'light',
+                        palette: 'palette1',
+                        monochrome: {
+                            enabled: false,
+                            color: '#6bd1ad',
+                            shadeTo: 'dark',
+                            shadeIntensity: 0.1
+                        },
+                    },
+                    fill: {
+                        type: 'gradient',
+                        gradient: {
+                            shade: 'light',
+                            type: "horizontal",
+                            shadeIntensity: 0.25,
+                            inverseColors: true,
+                            opacityFrom: .85,
+                            opacityTo: 0.8,
+                            stops: [50, 0, 100],
+                        },
+                    }
+                };
+
+                var spendingChart = new ApexCharts(document.querySelector("#categories-chart"), options);
+                spendingChart.render();
+            </script>
         </x-panels.panel>
 
         <x-panels.panel>

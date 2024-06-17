@@ -3,6 +3,7 @@
 namespace App\Charts;
 
 use App\Models\NetWorth;
+use Carbon\Carbon;
 
 class NetworthChart
 {
@@ -20,6 +21,36 @@ class NetworthChart
             $chartData[] = [$timestamp, $data->net_worth];
         }
 
-        return $chartData;
+        $dateRanges = $this->getChartsDateRanges();
+
+        return [
+            'data' => $chartData,
+            'dateRanges' => $dateRanges
+        ];
+    }
+
+    private function getChartsDateRanges(): array
+    {
+        $now = Carbon::now();
+        $oneWeekAgo = $now->copy()->subWeek();
+        $oneMonthAgo = $now->copy()->subMonth();
+        $sixMonthsAgo = $now->copy()->subMonths(6);
+        $oneYearAgo = $now->copy()->subYear();
+        $startOfYear = $now->copy()->startOfYear();
+        $allTimeStart = NetWorth::query()->where('user_id', auth()->id())->min('created_at');
+
+        return [
+            'one_week' => [$this->formatDate($oneWeekAgo), $this->formatDate($now)],
+            'one_month' => [$this->formatDate($oneMonthAgo), $this->formatDate($now)],
+            'six_months' => [$this->formatDate($sixMonthsAgo), $this->formatDate($now)],
+            'one_year' => [$this->formatDate($oneYearAgo), $this->formatDate($now)],
+            'ytd' => [$this->formatDate($startOfYear), $this->formatDate($now)],
+            'all' => [$this->formatDate($allTimeStart), $this->formatDate($now)],
+        ];
+    }
+
+    private function formatDate($date): string
+    {
+        return Carbon::parse($date)->format('d M Y');
     }
 }
