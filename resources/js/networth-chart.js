@@ -20,9 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 show: true,
                 offsetX: 0,
                 offsetY: 0,
-                tools: {
-                    reset: false,
-                }
             },
         },
         dataLabels: {

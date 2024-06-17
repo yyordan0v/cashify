@@ -51,7 +51,9 @@
 
                     <x-cards.title>Income</x-cards.title>
                     <x-divider/>
-                    <x-cards.text class="text-gray-950">$4,000</x-cards.text>
+                    <x-cards.text class="text-gray-950">
+                        {{ Number::currency($totalIncomes, in: 'BGN', locale: 'bg') }}
+                    </x-cards.text>
                 </x-panels.panel>
 
                 <x-panels.panel>
@@ -62,7 +64,9 @@
 
                     <x-cards.title>Expense</x-cards.title>
                     <x-divider/>
-                    <x-cards.text class="text-gray-950">$4,000</x-cards.text>
+                    <x-cards.text class="text-gray-950">
+                        {{ Number::currency($totalExpenses, in: 'BGN', locale: 'bg') }}
+                    </x-cards.text>
                 </x-panels.panel>
             </div>
 

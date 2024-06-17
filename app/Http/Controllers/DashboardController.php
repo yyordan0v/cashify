@@ -21,7 +21,11 @@ class DashboardController extends Controller
             ->latest('created_at')
             ->value('net_worth');
 
-        list($groupedTransactions, $groupedExpenses, $groupedIncomes) = $this->getTransactions();
+        list($groupedTransactions, $groupedExpenses, $groupedIncomes, $totalExpenses, $totalIncomes) = $this->getTransactions();
+
+        $groupedTransactions = array_slice($groupedTransactions, 0, 5);
+        $groupedExpenses = array_slice($groupedExpenses, 0, 5);
+        $groupedIncomes = array_slice($groupedIncomes, 0, 5);
 
         $networthChartData = $networthChart->build();
         $spendingChartData = $spendingChart->build();
@@ -36,13 +40,16 @@ class DashboardController extends Controller
             'networthChartData' => $networthChartData['data'],
             'spendingChartData' => $spendingChartData['data'],
             'spendingChartLabels' => $spendingChartData['labels'],
+            'totalExpenses' => $totalExpenses,
+            'totalIncomes' => $totalIncomes,
         ]);
     }
 
-
     private function getTransactions(): array
     {
-        $transactions = Transaction::query()->orderBy('created_at', 'desc')->limit(5)->get();
+        $transactions = Transaction::query()->with('user', 'category')->where('user_id',
+            Auth::id())->orderBy('created_at',
+            'desc')->limit(5)->get();
 
         $groupedTransactions = groupTransactionsByDate($transactions);
 
@@ -55,6 +62,10 @@ class DashboardController extends Controller
             return $transaction->category->type === 'income';
         });
         $groupedIncomes = groupTransactionsByDate($incomes);
-        return array($groupedTransactions, $groupedExpenses, $groupedIncomes);
+
+        $totalExpenses = $expenses->sum('amount');
+        $totalIncomes = $incomes->sum('amount');
+
+        return [$groupedTransactions, $groupedExpenses, $groupedIncomes, $totalExpenses, $totalIncomes];
     }
 }

@@ -22,11 +22,10 @@ class TransactionController extends Controller
         $categories = Auth::user()
             ->categories()
             ->latest()
-            ->with('user')
             ->orderBy('name', 'asc')
             ->get();
-
-        $query = Transaction::query();
+        
+        $query = Transaction::query()->where('user_id', Auth::id());
 
         $minAmount = $query->min('amount');
         $maxAmount = $query->max('amount');
@@ -179,6 +178,8 @@ class TransactionController extends Controller
         updateNetworth();
 
         $transaction->delete();
+
+        flashToast('success', 'Transaction deleted successfully.');
 
         return Redirect::route('transactions.index');
     }

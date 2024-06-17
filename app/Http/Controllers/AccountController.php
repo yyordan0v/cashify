@@ -52,7 +52,20 @@ class AccountController extends Controller
         $attributes = $request->validated();
         $user = Auth::user();
 
-        $user->accounts()->create($attributes);
+        $account = $user->accounts()->create($attributes);
+
+        if ($attributes['balance'] != 0) {
+            $correctionCategory = Auth::user()->categories()->where('type', 'correction')->get();
+
+            Auth::user()->transactions()->create([
+                'user_id' => Auth::id(),
+                'category_id' => $correctionCategory->first()->id,
+                'account_id' => $account->id,
+                'title' => 'Balance Correction',
+                'amount' => $attributes['balance'],
+                'details' => 'Account '.$account->name.' created with balance of '.$attributes['balance'].'.',
+            ]);
+        }
 
         updateNetworth();
 
