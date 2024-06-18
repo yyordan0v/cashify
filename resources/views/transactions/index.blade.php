@@ -17,19 +17,36 @@
                 </div>
             </div>
 
-            @if(count($transactions) > 0)
+            <div id="transactions">
                 @foreach ($transactions as $date => $groupedTransaction)
                     <x-transactions.group :heading="$date">
                         @foreach($groupedTransaction as $transaction)
                             @include('transactions.partials.show', ['transaction' => $transaction])
                         @endforeach
+
+                        @if ($loop->last)
+                            <div
+                                @if ($transactions->hasMorePages())
+                                    hx-get="{{ $transactions->nextPageUrl() }}"
+                                @endif
+                                hx-target="#transactions"
+                                hx-swap="beforeend"
+                                hx-indicator="#spinner"
+                                hx-trigger="revealed"
+                                hx-select=".transactions-group">
+                            </div>
+                        @endif
                     </x-transactions.group>
                 @endforeach
-            @else
+            </div>
+
+            <x-spinner/>
+
+            @unless($transactions->count() > 0)
                 <x-panels.heading class="text-sm text-center w-full">
                     No transactions found.
                 </x-panels.heading>
-            @endif
+            @endunless
 
         </x-panels.panel>
     </div>
