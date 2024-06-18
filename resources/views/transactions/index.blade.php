@@ -17,19 +17,11 @@
                 </div>
             </div>
 
-            @if(count($groupedTransactions) > 0)
-                @foreach ($groupedTransactions as $date => $transactions)
+            @if(count($transactions) > 0)
+                @foreach ($transactions as $date => $groupedTransaction)
                     <x-transactions.group :heading="$date">
-                        @foreach($transactions as $transaction)
-                            <x-transactions.row
-                                :href="route('transactions.edit', $transaction->id)"
-                                :type="$transaction->category->type"
-                                :title="$transaction->title"
-                                :date="$transaction->created_at"
-                                :details="$transaction->details"
-                                :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
-                                :category-color="$transaction->category->color_class"
-                                :category-icon="$transaction->category->icon"/>
+                        @foreach($groupedTransaction as $transaction)
+                            @include('transactions.partials.show', ['transaction' => $transaction])
                         @endforeach
                     </x-transactions.group>
                 @endforeach
@@ -38,7 +30,7 @@
                     No transactions found.
                 </x-panels.heading>
             @endif
-            
+
         </x-panels.panel>
     </div>
 </x-app-layout>

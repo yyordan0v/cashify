@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Transaction;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -32,13 +33,24 @@ class TransactionController extends Controller
         $transactionFilter = new TransactionFilter($request);
         $query = $transactionFilter->apply($query);
 
-        $transactions = $query->orderBy('created_at', 'desc')->get();
+        $allTransactions = $query->orderBy('created_at', 'desc')->paginate(10);
 
+        $groupedTransactions = groupTransactionsByDate($allTransactions->items());
 
-        $groupedTransactions = groupTransactionsByDate($transactions);
+        $groupedTransactionsCollection = collect($groupedTransactions);
 
-        return view('transactions.index', compact('categories', 'groupedTransactions', 'minAmount', 'maxAmount'));
+        $transactions = new LengthAwarePaginator(
+            $groupedTransactionsCollection,
+            $allTransactions->total(),
+            $allTransactions->perPage(),
+            $allTransactions->currentPage(),
+            ['path' => $allTransactions->path()]
+        );
+
+        return view('transactions.index',
+            compact('categories', 'transactions', 'minAmount', 'maxAmount'));
     }
+
 
     /**
      * Show the form for creating a new resource.
