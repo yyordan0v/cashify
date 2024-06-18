@@ -57,25 +57,29 @@ class DashboardController extends Controller
 
     private function getTransactions(): array
     {
-        $transactions = Transaction::query()
+        $groupedTransactions = $this->fetchAndGroupTransactions();
+        $groupedExpenses = $this->fetchAndGroupTransactions('expense');
+        $groupedIncomes = $this->fetchAndGroupTransactions('income');
+
+        return [$groupedTransactions, $groupedExpenses, $groupedIncomes];
+    }
+
+    private function fetchAndGroupTransactions(string $type = null): array
+    {
+        $query = Transaction::query()
             ->with('category')
             ->where('user_id', Auth::id())
             ->orderBy('created_at', 'desc')
-            ->limit(5)
-            ->get();
+            ->limit(5);
 
-        $groupedTransactions = groupTransactionsByDate($transactions);
+        if ($type) {
+            $query->whereHas('category', function ($query) use ($type) {
+                $query->where('type', $type);
+            });
+        }
 
-        $expenses = $transactions->filter(function ($transaction) {
-            return $transaction->category->type === 'expense';
-        });
-        $groupedExpenses = groupTransactionsByDate($expenses);
+        $transactions = $query->get();
 
-        $incomes = $transactions->filter(function ($transaction) {
-            return $transaction->category->type === 'income';
-        });
-        $groupedIncomes = groupTransactionsByDate($incomes);
-
-        return [$groupedTransactions, $groupedExpenses, $groupedIncomes];
+        return groupTransactionsByDate($transactions);
     }
 }

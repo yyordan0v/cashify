@@ -34,7 +34,6 @@
                                 hx-indicator="#spinner"
                                 hx-trigger="revealed"
                                 hx-select=".transactions-group">
-                            </div>
                         @endif
                     </x-transactions.group>
                 @endforeach

@@ -132,77 +132,77 @@
 
                         {{--                    All--}}
                         <x-tabs.content class="flex-auto space-y-8">
-                            @if(count($groupedTransactions) > 0)
-                                @foreach ($groupedTransactions as $date => $transactions)
-                                    <x-transactions.group :heading="$date">
-                                        @foreach($transactions as $transaction)
-                                            <x-transactions.row
-                                                :href="route('transactions.edit', $transaction->id)"
-                                                :type="$transaction->category->type"
-                                                :title="$transaction->title"
-                                                :date="$transaction->created_at"
-                                                :details="$transaction->details"
-                                                :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
-                                                :category-color="$transaction->category->color_class"
-                                                :category-icon="$transaction->category->icon"/>
-                                        @endforeach
-                                    </x-transactions.group>
-                                @endforeach
-                            @else
+                            @foreach ($groupedTransactions as $date => $transactions)
+                                <x-transactions.group :heading="$date">
+                                    @foreach($transactions as $transaction)
+                                        <x-transactions.row
+                                            :href="route('transactions.edit', $transaction->id)"
+                                            :type="$transaction->category->type"
+                                            :title="$transaction->title"
+                                            :date="$transaction->created_at"
+                                            :details="$transaction->details"
+                                            :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
+                                            :category-color="$transaction->category->color_class"
+                                            :category-icon="$transaction->category->icon"/>
+                                    @endforeach
+                                </x-transactions.group>
+                            @endforeach
+
+                            @unless(count($groupedTransactions) > 0)
                                 <x-panels.heading class="text-sm text-center w-full">
                                     No transactions found.
                                 </x-panels.heading>
-                            @endif
+                            @endunless
                         </x-tabs.content>
 
                         {{--                    Expense--}}
                         <x-tabs.content class="flex-auto space-y-8">
-                            @if(count($groupedExpenses) > 0)
-                                @foreach ($groupedExpenses as $date => $transactions)
-                                    <x-transactions.group :heading="$date">
-                                        @foreach($transactions as $transaction)
-                                            <x-transactions.row
-                                                :href="route('transactions.edit', $transaction->id)"
-                                                :type="$transaction->category->type"
-                                                :title="$transaction->title"
-                                                :date="$transaction->created_at"
-                                                :description="$transaction->description"
-                                                :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
-                                                :category-color="$transaction->category->color_class"
-                                                :category-icon="$transaction->category->icon"/>
-                                        @endforeach
-                                    </x-transactions.group>
-                                @endforeach
-                            @else
+                            @foreach ($groupedExpenses as $date => $transactions)
+                                <x-transactions.group :heading="$date">
+                                    @foreach($transactions as $transaction)
+                                        <x-transactions.row
+                                            :href="route('transactions.edit', $transaction->id)"
+                                            :type="$transaction->category->type"
+                                            :title="$transaction->title"
+                                            :date="$transaction->created_at"
+                                            :description="$transaction->description"
+                                            :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
+                                            :category-color="$transaction->category->color_class"
+                                            :category-icon="$transaction->category->icon"/>
+                                    @endforeach
+                                </x-transactions.group>
+                            @endforeach
+
+                            @unless(count($groupedExpenses) > 0)
                                 <x-panels.heading class="text-sm text-center w-full">
                                     No transactions found.
                                 </x-panels.heading>
-                            @endif
+                            @endunless
                         </x-tabs.content>
 
                         {{--                    Income--}}
                         <x-tabs.content class="flex-auto space-y-8">
-                            @if(count($groupedIncomes) > 0)
-                                @foreach ($groupedIncomes as $date => $transactions)
-                                    <x-transactions.group :heading="$date">
-                                        @foreach($transactions as $transaction)
-                                            <x-transactions.row
-                                                :href="route('transactions.edit', $transaction->id)"
-                                                :type="$transaction->category->type"
-                                                :title="$transaction->title"
-                                                :date="$transaction->created_at"
-                                                :description="$transaction->description"
-                                                :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
-                                                :category-color="$transaction->category->color_class"
-                                                :category-icon="$transaction->category->icon"/>
-                                        @endforeach
-                                    </x-transactions.group>
-                                @endforeach
-                            @else
+                            @foreach ($groupedIncomes as $date => $transactions)
+                                <x-transactions.group :heading="$date">
+                                    @foreach($transactions as $transaction)
+                                        <x-transactions.row
+                                            :href="route('transactions.edit', $transaction->id)"
+                                            :type="$transaction->category->type"
+                                            :title="$transaction->title"
+                                            :date="$transaction->created_at"
+                                            :description="$transaction->description"
+                                            :amount="Number::currency($transaction->amount, in: 'BGN', locale: 'bg')"
+                                            :category-color="$transaction->category->color_class"
+                                            :category-icon="$transaction->category->icon"/>
+                                    @endforeach
+                                </x-transactions.group>
+                            @endforeach
+
+                            @unless(count($groupedIncomes) > 0)
                                 <x-panels.heading class="text-sm text-center w-full">
                                     No transactions found.
                                 </x-panels.heading>
-                            @endif
+                            @endunless
                         </x-tabs.content>
                     </x-tabs.content-group>
                 </x-tabs.body>
