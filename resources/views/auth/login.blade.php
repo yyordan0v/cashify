@@ -15,10 +15,12 @@
                         <!-- Session Status -->
                         <x-auth-session-status class="mb-4" :status="session('status')"/>
 
+                        <x-buttons.socialite-buttons/>
+
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
-                            <div class="space-y-10">
+                            <div class="space-y-6">
 
                                 <!-- Email Address -->
                                 <div>

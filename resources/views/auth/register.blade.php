@@ -12,16 +12,17 @@
                             Get started in minutes
                         </x-panels.heading>
 
-                        <p class="w-full my-10 text-sm text-center text-gray-500">
+                        <p class="w-full my-6 text-sm text-center text-gray-500">
                             First, let's create your account. Once your account has been created you can start using
                             Cashify.
                         </p>
 
+                        <x-buttons.socialite-buttons/>
 
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
-                            <div class="space-y-10">
+                            <div class="space-y-6">
 
                                 <!-- Name -->
                                 <div>
