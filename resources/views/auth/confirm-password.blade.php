@@ -19,7 +19,7 @@
                         <form method="POST" action="{{ route('password.confirm') }}">
                             @csrf
 
-                            <div class="space-y-10">
+                            <div class="space-y-6">
 
                                 <!-- Password -->
                                 <div>
