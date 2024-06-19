@@ -23,7 +23,7 @@ Route::view('/goals', 'goals')
     ->name('goals');
 
 
-Route::middleware('auth')->group(callback: function () {
+Route::middleware(['auth', 'verified'])->group(callback: function () {
     // profile
     Route::controller(ProfileController::class)->group(function () {
         Route::get('/profile', 'edit')
