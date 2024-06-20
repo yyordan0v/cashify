@@ -8,11 +8,11 @@ use App\Models\Account;
 use App\Models\NetWorth;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
+use Mauricius\LaravelHtmx\Facades\HtmxResponse;
 
 class DashboardController extends Controller
 {
-    public function __invoke(NetworthChart $networthChart, SpendingChart $spendingChart): View
+    public function __invoke(NetworthChart $networthChart, SpendingChart $spendingChart)
     {
         $user = Auth::user();
         $accounts = Account::with('transactions')
@@ -40,7 +40,7 @@ class DashboardController extends Controller
         $networthChartData = $networthChart->build();
         $spendingChartData = $spendingChart->build();
 
-        return view('dashboard', [
+        return HtmxResponse::renderFragment('dashboard', 'dashboard', [
             'groupedTransactions' => $groupedTransactions,
             'groupedExpenses' => $groupedExpenses,
             'groupedIncomes' => $groupedIncomes,
@@ -52,7 +52,9 @@ class DashboardController extends Controller
             'spendingChartLabels' => $spendingChartData['labels'],
             'totalExpenses' => $totalExpenses,
             'totalIncomes' => $totalIncomes,
-        ]);
+        ])
+            ->addTriggerAfterSettle('initializeSpendingChart')
+            ->addTriggerAfterSettle('initializeNetworthChart');
     }
 
     private function getTransactions(): array
