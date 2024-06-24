@@ -9,60 +9,48 @@
         pauseEnd: 1500,
         pauseStart: 20,
         direction: 'forward',
+        typingInterval: null,
+        cursorInterval: null
     }"
     x-init="$nextTick(() => {
-        let typingInterval = setInterval(startTyping, $data.typeSpeed);
-
         function startTyping(){
             let current = $data.textArray[ $data.textIndex ];
-
-            // check to see if we hit the end of the string
             if($data.charIndex > current.length){
-                    $data.direction = 'backward';
-                    clearInterval(typingInterval);
-
-                    setTimeout(function(){
-                        typingInterval = setInterval(startTyping, $data.typeSpeed);
-                    }, $data.pauseEnd);
+                $data.direction = 'backward';
+                clearInterval($data.typingInterval);
+                $data.typingInterval = setTimeout(() => {
+                    $data.typingInterval = setInterval(startTyping, $data.typeSpeed);
+                }, $data.pauseEnd);
             }
-
             $data.text = current.substring(0, $data.charIndex);
-
-            if($data.direction == 'forward')
-            {
+            if($data.direction == 'forward') {
                 $data.charIndex += 1;
-            }
-            else
-            {
-                if($data.charIndex == 0)
-                {
+            } else {
+                if($data.charIndex == 0) {
                     $data.direction = 'forward';
-                    clearInterval(typingInterval);
-                    setTimeout(function(){
+                    clearInterval($data.typingInterval);
+                    $data.typingInterval = setTimeout(() => {
                         $data.textIndex += 1;
-                        if($data.textIndex >= $data.textArray.length)
-                        {
+                        if($data.textIndex >= $data.textArray.length) {
                             $data.textIndex = 0;
                         }
-                        typingInterval = setInterval(startTyping, $data.typeSpeed);
+                        $data.typingInterval = setInterval(startTyping, $data.typeSpeed);
                     }, $data.pauseStart);
                 }
                 $data.charIndex -= 1;
             }
         }
-
-        setInterval(function(){
-            if($refs.cursor.classList.contains('hidden'))
-            {
-                $refs.cursor.classList.remove('hidden');
-            }
-            else
-            {
-                $refs.cursor.classList.add('hidden');
-            }
+        $data.typingInterval = setInterval(startTyping, $data.typeSpeed);
+        $data.cursorInterval = setInterval(() => {
+            $refs.cursor.classList.toggle('hidden');
         }, $data.cursorSpeed);
 
+        document.body.addEventListener('htmx:beforeSwap', () => {
+            clearInterval($data.typingInterval);
+            clearInterval($data.cursorInterval);
+        });
     })"
+    x-on:before-destroy="clearInterval(typingInterval); clearInterval(cursorInterval)"
     class="flex items-center justify-center mx-auto text-center max-w-7xl">
     <div class="relative hidden xl:flex items-center justify-center h-auto">
         <h1 class="text-5xl font-black text-black dark:text-white leading-tight" x-text="text"
