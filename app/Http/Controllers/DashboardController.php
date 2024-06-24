@@ -8,39 +8,27 @@ use App\Models\Account;
 use App\Models\NetWorth;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
-use Mauricius\LaravelHtmx\Facades\HtmxResponse;
 
 class DashboardController extends Controller
 {
     public function __invoke(NetworthChart $networthChart, SpendingChart $spendingChart)
     {
         $user = Auth::user();
-        $accounts = Account::with('transactions')
-            ->where('user_id', $user->id)
-            ->latest()
-            ->get();
+        $userId = $user->id;
 
-        $netWorth = NetWorth::query()
-            ->where('user_id', $user->id)
-            ->latest('created_at')
-            ->value('net_worth');
-
-        $totals = Transaction::query()
-            ->selectRaw('SUM(CASE WHEN categories.type = "expense" THEN transactions.amount ELSE 0 END) AS total_expenses')
-            ->selectRaw('SUM(CASE WHEN categories.type = "income" THEN transactions.amount ELSE 0 END) AS total_incomes')
-            ->where('transactions.user_id', $user->id)
-            ->join('categories', 'transactions.category_id', '=', 'categories.id')
-            ->first();
+        $accounts = $this->getUserAccounts($userId);
+        $netWorth = $this->getLatestNetWorth($userId);
+        $totals = $this->getTransactionTotals($userId);
 
         $totalExpenses = $totals->total_expenses ?? 0;
         $totalIncomes = $totals->total_incomes ?? 0;
 
-        list($groupedTransactions, $groupedExpenses, $groupedIncomes) = $this->getTransactions();
+        list($groupedTransactions, $groupedExpenses, $groupedIncomes) = $this->getGroupedTransactions($userId);
 
         $networthChartData = $networthChart->build();
         $spendingChartData = $spendingChart->build();
 
-        return HtmxResponse::renderFragment('dashboard', 'dashboard', [
+        return view('dashboard', [
             'groupedTransactions' => $groupedTransactions,
             'groupedExpenses' => $groupedExpenses,
             'groupedIncomes' => $groupedIncomes,
@@ -52,25 +40,49 @@ class DashboardController extends Controller
             'spendingChartLabels' => $spendingChartData['labels'],
             'totalExpenses' => $totalExpenses,
             'totalIncomes' => $totalIncomes,
-        ])
-            ->addTriggerAfterSettle('initializeSpendingChart')
-            ->addTriggerAfterSettle('initializeNetworthChart');
+        ]);
     }
 
-    private function getTransactions(): array
+    private function getUserAccounts($userId)
     {
-        $groupedTransactions = $this->fetchAndGroupTransactions();
-        $groupedExpenses = $this->fetchAndGroupTransactions('expense');
-        $groupedIncomes = $this->fetchAndGroupTransactions('income');
+        return Account::with('transactions')
+            ->where('user_id', $userId)
+            ->latest()
+            ->get();
+    }
+
+    private function getLatestNetWorth($userId)
+    {
+        return NetWorth::query()
+            ->where('user_id', $userId)
+            ->latest('created_at')
+            ->value('net_worth');
+    }
+
+    private function getTransactionTotals($userId)
+    {
+        return Transaction::query()
+            ->selectRaw('SUM(CASE WHEN categories.type = "expense" THEN transactions.amount ELSE 0 END) AS total_expenses')
+            ->selectRaw('SUM(CASE WHEN categories.type = "income" THEN transactions.amount ELSE 0 END) AS total_incomes')
+            ->where('transactions.user_id', $userId)
+            ->join('categories', 'transactions.category_id', '=', 'categories.id')
+            ->first();
+    }
+
+    private function getGroupedTransactions($userId): array
+    {
+        $groupedTransactions = $this->fetchAndGroupTransactions($userId);
+        $groupedExpenses = $this->fetchAndGroupTransactions($userId, 'expense');
+        $groupedIncomes = $this->fetchAndGroupTransactions($userId, 'income');
 
         return [$groupedTransactions, $groupedExpenses, $groupedIncomes];
     }
 
-    private function fetchAndGroupTransactions(string $type = null): array
+    private function fetchAndGroupTransactions($userId, string $type = null): array
     {
         $query = Transaction::query()
             ->with('category')
-            ->where('user_id', Auth::id())
+            ->where('user_id', $userId)
             ->orderBy('created_at', 'desc')
             ->limit(5);
 

@@ -30,7 +30,6 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0"/>
 
-
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -67,6 +66,7 @@
 
 <x-toast-notification/>
 
+@stack('dashboard-charts')
 <script src="https://unpkg.com/htmx.org@1.9.12"></script>
 <script>
     htmx.config.globalViewTransitions = true;
