@@ -33,7 +33,7 @@ class TransactionController extends Controller
         $transactionFilter = new TransactionFilter($request);
         $query = $transactionFilter->apply($query);
 
-        $allTransactions = $query->orderBy('created_at', 'desc')->paginate(5);
+        $allTransactions = $query->orderBy('created_at', 'desc')->paginate(5)->withQueryString();
 
         $groupedTransactions = groupTransactionsByDate($allTransactions->items());
 
@@ -44,7 +44,10 @@ class TransactionController extends Controller
             $allTransactions->total(),
             $allTransactions->perPage(),
             $allTransactions->currentPage(),
-            ['path' => $allTransactions->path()]
+            [
+                'path' => $allTransactions->path(),
+                'query' => $request->query()
+            ]
         );
 
         return view('transactions.index',
