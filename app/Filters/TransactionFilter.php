@@ -4,7 +4,6 @@ namespace App\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class TransactionFilter
 {
@@ -40,18 +39,9 @@ class TransactionFilter
 
     protected function applyCategoryFilter(Builder $query): void
     {
-        Log::info('Applying category filter');
-        Log::info('Request data: '.json_encode($this->request->all()));
-
         if ($this->request->filled('categories')) {
             $categoryIds = $this->request->input('categories');
-            Log::info('Category IDs: '.json_encode($categoryIds));
             $query->whereIn('category_id', $categoryIds);
-
-            Log::info('SQL: '.$query->toSql());
-            Log::info('Bindings: '.json_encode($query->getBindings()));
-        } else {
-            Log::info('No categories selected');
         }
     }
 
