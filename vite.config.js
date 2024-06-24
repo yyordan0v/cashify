@@ -11,4 +11,13 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    apexcharts: ['apexcharts'],
+                },
+            },
+        },
+    },
 });
