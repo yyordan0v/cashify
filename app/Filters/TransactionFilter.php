@@ -28,7 +28,7 @@ class TransactionFilter
 
     protected function applyTypeFilter(Builder $query): void
     {
-        if ($this->request->has('types')) {
+        if ($this->request->filled('types')) {
             $types = $this->request->get('types');
 
             $query->whereHas('category', function ($q) use ($types) {
@@ -39,7 +39,7 @@ class TransactionFilter
 
     protected function applyCategoryFilter(Builder $query): void
     {
-        if ($this->request->has('categories')) {
+        if ($this->request->filled('categories')) {
             $categoryIds = $this->request->input('categories');
             $query->whereIn('category_id', $categoryIds);
         }
@@ -47,36 +47,32 @@ class TransactionFilter
 
     protected function applyTitleFilter(Builder $query): void
     {
-        if ($this->request->has('title')) {
+        if ($this->request->filled('title')) {
             $query->where('title', 'like', '%'.$this->request->title.'%');
         }
     }
 
     protected function applyAmountFilter(Builder $query): void
     {
-        if ($this->request->has('min_amount') && $this->request->has('max_amount')) {
+        if ($this->request->filled('min_amount') && $this->request->filled('max_amount')) {
             $query->whereBetween('amount', [$this->request->min_amount, $this->request->max_amount]);
-        } elseif ($this->request->has('min_amount')) {
+        } elseif ($this->request->filled('min_amount')) {
             $query->where('amount', '>=', $this->request->min_amount);
-        } elseif ($this->request->has('max_amount')) {
+        } elseif ($this->request->filled('max_amount')) {
             $query->where('amount', '<=', $this->request->max_amount);
         }
     }
 
     protected function applyDetailsFilter(Builder $query): void
     {
-        if ($this->request->has('details')) {
-            $query->where('details', 'like', '%'.$this->request->notes.'%');
+        if ($this->request->filled('details')) {
+            $query->where('details', 'like', '%'.$this->request->details.'%');
         }
     }
 
     protected function applyDateRangeFilter(Builder $query): void
     {
-        if ($this->request->has('date_range')) {
-            if ($this->request->input('date_range') === '' || $this->request->input('date_range') === null) {
-                return;
-            }
-
+        if ($this->request->filled('date_range')) {
             [$startDate, $endDate] = parseDateRange($this->request->input('date_range'));
             $query->whereBetween('created_at', [$startDate, $endDate]);
         }

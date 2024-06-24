@@ -33,7 +33,7 @@ class TransactionController extends Controller
         $transactionFilter = new TransactionFilter($request);
         $query = $transactionFilter->apply($query);
 
-        $allTransactions = $query->orderBy('created_at', 'desc')->paginate(10);
+        $allTransactions = $query->orderBy('created_at', 'desc')->paginate(5);
 
         $groupedTransactions = groupTransactionsByDate($allTransactions->items());
 

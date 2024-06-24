@@ -90,7 +90,7 @@
                                      hx-push-url="true">
                     Reset Filters
                 </x-buttons.secondary>
-                <x-buttons.form>Apply</x-buttons.form>
+                <x-buttons.form x-on:click="$dispatch('close')">Apply</x-buttons.form>
             </x-forms.form-actions>
         </div>
     </form>
