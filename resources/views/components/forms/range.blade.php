@@ -10,7 +10,33 @@
     }
 </style>
 <div class="flex justify-center items-center">
-    <div x-data="range()" x-init="init()" class="relative w-full">
+    <div
+        x-data="{
+            minamount: {{ $minAmount }},
+            maxamount: {{ $maxAmount }},
+            min: {{ $minAmount }},
+            max: {{ $maxAmount }},
+            minthumb: 0,
+            maxthumb: 0,
+            init() {
+                const urlParams = new URLSearchParams(window.location.search);
+                this.minamount = urlParams.has('min_amount') ? parseInt(urlParams.get('min_amount')) : this.minamount;
+                this.maxamount = urlParams.has('max_amount') ? parseInt(urlParams.get('max_amount')) : this.maxamount;
+                this.mintrigger();
+                this.maxtrigger();
+            },
+            mintrigger() {
+                this.minamount = Math.min(this.minamount, this.maxamount - 30);
+                this.minthumb = ((this.minamount - this.min) / (this.max - this.min)) * 100;
+            },
+            maxtrigger() {
+                this.maxamount = Math.max(this.maxamount, this.minamount + 30);
+                this.maxthumb = 100 - (((this.maxamount - this.min) / (this.max - this.min)) * 100);
+            }
+        }"
+        x-init="init"
+        class="relative w-full"
+    >
         <div>
             <input type="range"
                    step="1"
@@ -56,37 +82,5 @@
 
     </div>
 
-    <script>
-        function range() {
-            return {
-                minamount: null,
-                maxamount: null,
-                min: null,
-                max: null,
-                minthumb: 0,
-                maxthumb: 0,
 
-                init() {
-                    // Extract values from URL if present
-                    const urlParams = new URLSearchParams(window.location.search);
-                    this.minamount = urlParams.has('min_amount') ? parseInt(urlParams.get('min_amount')) : {{ $minAmount }};
-                    this.maxamount = urlParams.has('max_amount') ? parseInt(urlParams.get('max_amount')) : {{ $maxAmount }};
-                    this.min = {{ $minAmount }};
-                    this.max = {{ $maxAmount }};
-                    this.mintrigger();
-                    this.maxtrigger();
-                },
-
-                mintrigger() {
-                    this.minamount = Math.min(this.minamount, this.maxamount - 30);
-                    this.minthumb = ((this.minamount - this.min) / (this.max - this.min)) * 100;
-                },
-
-                maxtrigger() {
-                    this.maxamount = Math.max(this.maxamount, this.minamount + 30);
-                    this.maxthumb = 100 - (((this.maxamount - this.min) / (this.max - this.min)) * 100);
-                },
-            }
-        }
-    </script>
 </div>
