@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <section class="w-full px-8 py-14 xl:px-8">
+    <section class="w-full py-14 sm:px-8">
         <div class="max-w-5xl mx-auto">
             <div class="flex flex-col items-start md:flex-row">
 
