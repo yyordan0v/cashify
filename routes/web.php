@@ -17,6 +17,10 @@ Route::get('/features', function () {
     return view('features');
 })->name('features');
 
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+})->name('privacy-policy');
+
 
 Route::view('/goals', 'goals')
     ->middleware(['auth', 'verified'])
