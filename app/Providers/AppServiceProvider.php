@@ -24,5 +24,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::preventLazyLoading();
+
+        $path = database_path('database.sqlite');
+        if (!file_exists($path) && is_dir(dirname($path))) {
+            touch($path);
+        }
     }
 }
