@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -12,10 +13,10 @@ class SearchController extends Controller
     {
         $search = $request->input('search');
 
-        $categories = Auth::user()
-            ->categories()
+        $categories = Category::query()
             ->latest()
-            ->with('user')
+            ->with('transactions')
+            ->where('user_id', Auth::user()->id)
             ->where('type', $type)
             ->where(function ($query) use ($search) {
                 $query->where('name', 'like', '%'.$search.'%');

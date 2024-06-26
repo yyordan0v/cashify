@@ -5,7 +5,7 @@
 <button>
     <div {{ $attributes->merge(['class' => $classes]) }} :class="color ? color : 'bg-gray-200'">
         <img :src="`{{ Vite::asset('resources/images/categories/') }}${icon}`"
-             class="max-w-8" alt="">
+             class="max-w-8" alt="Category Icon Image">
         <span class="sr-only">Change Category Image</span>
     </div>
 </button>

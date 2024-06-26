@@ -1,9 +1,15 @@
 <x-app-layout>
     @fragment('form')
+        @php
+            $initialIcon = old('icon', $selectedIcon);
+            $initialIcon = str_ends_with($initialIcon, '.png') ? $initialIcon : $initialIcon . '.png';
+            $initialIcon = $initialIcon ?: 'image.png';
+        @endphp
+
         <form
             hx-post="{{ route('categories.update', $category->id) }}"
             hx-params="not icon-search"
-            x-data="{ icon: '{{ old('icon', $selectedIcon) ? old('icon', $selectedIcon).'.png' : 'image.png' }}' }"
+            x-data="{ icon: '{{ $initialIcon }}' }"
             @icon-changed.window="icon = $event.detail.icon">
             @csrf
             @method('PATCH')
