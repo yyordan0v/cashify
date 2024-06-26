@@ -1,9 +1,7 @@
 <x-document>
-    <div class="min-h-screen">
-        <div x-data="{ sidebarOpen: false }">
-            @include('layouts.navigation')
-            @include('layouts.aside')
-        </div>
+    <div class="min-h-screen" x-data="{ sidebarOpen: false }">
+        @include('layouts.navigation')
+        @include('layouts.aside')
 
         <!-- Page Content -->
         <div
@@ -12,7 +10,6 @@
                 {{ $slot }}
             </main>
         </div>
+        @include('layouts.bottom-nav')
     </div>
-
-    @include('layouts.bottom-nav')
 </x-document>

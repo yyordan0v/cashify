@@ -36,14 +36,21 @@
             </a>
         </div>
 
-        <x-nav.bottom-link :href="route('goals')" :active="request()->routeIs('goals')"
-                           description="Goals">
-            savings
-        </x-nav.bottom-link>
         <x-nav.bottom-link href="{{ route('accounts.index') }}"
                            :active="request()->routeIs(['accounts.index', 'accounts.edit', 'accounts.create', 'accounts.show'])"
                            description="Accounts">
             wallet
         </x-nav.bottom-link>
+        <button
+            @click="sidebarOpen = !sidebarOpen"
+            class="inline-flex flex-col items-center justify-center px-5 transition-colors duration-200 group">
+            <x-icon
+                class="transition-colors duration-200 text-gray-500 dark:text-gray-400">
+                more_horiz
+
+            </x-icon>
+            <span class="text-black/75 dark:text-white/75 text-2xs mt-1">More</span>
+            <span class="sr-only">More</span>
+        </button>
     </div>
 </div>
