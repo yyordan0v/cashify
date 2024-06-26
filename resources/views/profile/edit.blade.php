@@ -8,7 +8,7 @@
 
         <x-panels.panel>
             <div class="max-w-xl">
-                @include('profile.partials.update-password-form')
+                @include('profile.partials.update-password-form', ['isSocialiteUser' => $isSocialiteUser])
             </div>
         </x-panels.panel>
     </div>

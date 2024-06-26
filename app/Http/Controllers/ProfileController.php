@@ -16,8 +16,11 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $isSocialiteUser = Auth::user()->isSocialiteUser();
+
         return view('profile.edit', [
             'user' => $request->user(),
+            'isSocialiteUser' => $isSocialiteUser,
         ]);
     }
 

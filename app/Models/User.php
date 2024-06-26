@@ -48,6 +48,11 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    public function isSocialiteUser()
+    {
+        return is_null($this->password);
+    }
+
     public function accounts(): HasMany
     {
         return $this->hasMany(Account::class);
