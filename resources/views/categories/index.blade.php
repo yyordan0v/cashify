@@ -25,15 +25,14 @@
 
             <x-tabs.content class="flex flex-col gap-4">
                 <x-forms.search>
-                    <form>
-                        @csrf
-                        <x-forms.input class="w-full" style="margin-top: 0 !important"
-                                       placeholder="Search your categories..."
-                                       name="search"
-                                       hx-post="{{ route('categories.searchCategories', 'expense') }}"
-                                       hx-trigger="input changed delay:300ms, search"
-                                       hx-target="#expense-list"/>
-                    </form>
+                    @csrf
+                    <x-forms.input class="w-full" style="margin-top: 0 !important"
+                                   placeholder="Search your categories..."
+                                   name="search"
+                                   hx-post="{{ route('categories.searchCategories', 'expense') }}"
+                                   hx-trigger="input changed delay:300ms, search"
+                                   hx-target="#expense-list"
+                                   hx-include="[name='_token']"/>
                 </x-forms.search>
 
                 <div id="expense-list" class="flex flex-col gap-4">
@@ -54,15 +53,14 @@
 
             <x-tabs.content class="flex flex-col gap-4">
                 <x-forms.search>
-                    <form>
-                        @csrf
-                        <x-forms.input class="w-full" style="margin-top: 0 !important"
-                                       placeholder="Search your categories..."
-                                       name="search"
-                                       hx-post="{{ route('categories.searchCategories', 'income') }}"
-                                       hx-trigger="input changed delay:300ms, search"
-                                       hx-target="#income-list"/>
-                    </form>
+                    @csrf
+                    <x-forms.input class="w-full" style="margin-top: 0 !important"
+                                   placeholder="Search your categories..."
+                                   name="search"
+                                   hx-post="{{ route('categories.searchCategories', 'income') }}"
+                                   hx-trigger="input changed delay:300ms, search"
+                                   hx-target="#income-list"
+                                   hx-include="[name='_token']"/>
                 </x-forms.search>
 
                 <div id="income-list" class="flex flex-col gap-4">
