@@ -21,6 +21,12 @@ Route::get('/features', function () {
 Route::view('/goals', 'goals')
     ->middleware(['auth', 'verified'])
     ->name('goals');
+Route::view('/scheduled', 'scheduled')
+    ->middleware(['auth', 'verified'])
+    ->name('scheduled');
+Route::view('/spending', 'spending')
+    ->middleware(['auth', 'verified'])
+    ->name('spending');
 
 
 Route::middleware(['auth', 'verified'])->group(callback: function () {

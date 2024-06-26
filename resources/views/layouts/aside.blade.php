@@ -25,13 +25,13 @@
                 </x-nav.link-icon>
                 <span>Goals</span>
             </x-nav.link>
-            <x-nav.link :href="route('goals')" :active="request()->routeIs('scheduled')">
+            <x-nav.link :href="route('scheduled')" :active="request()->routeIs('scheduled')">
                 <x-nav.link-icon :active="request()->routeIs('scheduled')">
                     calendar_clock
                 </x-nav.link-icon>
                 <span>Scheduled</span>
             </x-nav.link>
-            <x-nav.link :href="route('goals')" :active="request()->routeIs('spending')">
+            <x-nav.link :href="route('spending')" :active="request()->routeIs('spending')">
                 <x-nav.link-icon :active="request()->routeIs('spending')">
                     receipt_long
                 </x-nav.link-icon>
