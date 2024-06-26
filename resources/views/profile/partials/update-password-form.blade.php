@@ -4,18 +4,20 @@
             {{ __('Update Password') }}
         </x-panels.heading>
 
-        @unless($isSocialiteUser)
+        @if($isSocialiteUser)
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                {{ __('You are logged in via social authentication. You can set a password for direct login or manage your account via your social provider.') }}
+            </p>
+        @else
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
                 {{ __('Ensure your account is using a long, random password to stay secure.') }}
             </p>
-        @endunless
+        @endif
+
+
     </header>
 
-    @if($isSocialiteUser)
-        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            {{ __('You are logged in via social authentication. You can set a password for direct login or manage your account via your social provider.') }}
-        </p>
-    @else
+    @if(! $isSocialiteUser)
         <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
             @csrf
             @method('put')
