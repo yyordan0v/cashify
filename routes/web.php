@@ -9,31 +9,30 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::middleware('guest')->group(function () {
+    Route::get('/', function () {
+        return view('home');
+    })->name('home');
 
-Route::get('/features', function () {
-    return view('features');
-})->name('features');
+    Route::get('/features', function () {
+        return view('features');
+    })->name('features');
+});
 
 Route::get('/privacy-policy', function () {
     return view('privacy-policy');
 })->name('privacy-policy');
 
 
-Route::view('/goals', 'goals')
-    ->middleware(['auth', 'verified'])
-    ->name('goals');
-Route::view('/scheduled', 'scheduled')
-    ->middleware(['auth', 'verified'])
-    ->name('scheduled');
-Route::view('/spending', 'spending')
-    ->middleware(['auth', 'verified'])
-    ->name('spending');
-
-
 Route::middleware(['auth', 'verified'])->group(callback: function () {
+    // Dummy routes
+    Route::view('/goals', 'goals')
+        ->name('goals');
+    Route::view('/scheduled', 'scheduled')
+        ->name('scheduled');
+    Route::view('/spending', 'spending')
+        ->name('spending');
+
     // profile
     Route::controller(ProfileController::class)->group(function () {
         Route::get('/profile', 'edit')
@@ -46,6 +45,7 @@ Route::middleware(['auth', 'verified'])->group(callback: function () {
             ->name('profile.destroy');
     });
 
+    // Cancel
     Route::post('/cancel', CancelController::class)->name('cancel');
 
     // Dashboard
