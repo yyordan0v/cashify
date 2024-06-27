@@ -2,6 +2,14 @@
 
 Cashify is an open-source web application for budget tracking, designed to help you manage your finances with ease. Built with modern technologies, it offers a responsive and intuitive interface for tracking transactions, managing accounts, and categorizing expenses.
 
+## Website
+
+Cashify is live at [cashify.space](https://cashify.space)
+
+Proudly hosted with [Laravel Forge](https://forge.laravel.com) and [DigitalOcean](https://www.digitalocean.com).
+
+![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2F256f3c9f-6c0e-4c44-b032-39ccc567b30c%3Fdate%3D1&style=plastic)
+
 ## Features
 
 - **Transactions**: Log and manage your income and expenses
@@ -71,27 +79,6 @@ Here are some features that are planned:
    ```
 
 Visit `http://localhost:8000` in your browser to access Cashify.
-
-## Usage
-
-1. Register for an account or log in if you already have one.
-2. Set up your financial accounts in the "Accounts" section.
-3. Start adding transactions, categorizing them as you go.
-4. Use the dashboard to get an overview of your financial situation.
-5. Explore different features to manage your budget effectively.
-
-## Contributing
-
-Contributions to Cashify are welcomed! If you'd like to contribute, please follow these steps:
-
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/AmazingFeature`)
-3. Make your changes
-4. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-5. Push to the branch (`git push origin feature/AmazingFeature`)
-6. Open a Pull Request
-
-Please make sure to update tests as appropriate and adhere to the [Contributor Covenant](https://www.contributor-covenant.org/) code of conduct.
 
 ## License
 
