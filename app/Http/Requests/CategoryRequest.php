@@ -19,7 +19,7 @@ class CategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        $icons = File::files(resource_path("images/categories"));
+        $icons = File::files(public_path("images/categories"));
         $availableIcons = array_map(function ($icon) {
             return $icon->getBasename('.png');
         }, $icons);

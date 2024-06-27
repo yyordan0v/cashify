@@ -47,7 +47,7 @@ class CategoryController extends Controller
      */
     public function create(HtmxRequest $request)
     {
-        $icons = File::files(resource_path("images/categories"));
+        $icons = File::files(public_path("images/categories"));
         $data = [
             'availableColors' => $this->availableColors,
             'selectedColor' => $this->selectedColor,
@@ -96,7 +96,7 @@ class CategoryController extends Controller
      */
     public function edit(HtmxRequest $request, Category $category)
     {
-        $icons = File::files(resource_path("images/categories"));
+        $icons = File::files(public_path("images/categories"));
         $data = [
             'category' => $category,
             'availableColors' => $this->availableColors,
