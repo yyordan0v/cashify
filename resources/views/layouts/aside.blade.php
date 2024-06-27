@@ -1,5 +1,5 @@
 <aside
-    class="fixed top-0 left-0 z-40 w-64 h-screen md:h-[calc(100vh-7rem)] pt-14 md:pt-4 md:rounded-xl md:m-4 md:mt-24 transition-all duration-200 -translate-x-full bg-white/80 md:bg-white/20 border-r md:border border-neutral-400/50 md:translate-x-0 dark:bg-neutral-900/20 backdrop-blur-lg dark:border-neutral-600/50"
+    class="fixed top-0 left-0 z-40 w-64 h-full md:h-[calc(100vh-7rem)] pt-14 md:pt-4 md:rounded-xl md:m-4 md:mt-24 transition-all duration-200 -translate-x-full bg-white/80 md:bg-white/20 border-r md:border border-neutral-400/50 md:translate-x-0 dark:bg-neutral-900/20 backdrop-blur-lg dark:border-neutral-600/50"
     aria-label="Sidenav"
     :class="{ 'ml-64': sidebarOpen }"
 >
