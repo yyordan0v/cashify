@@ -22,12 +22,12 @@
 
 @if($isLabel)
     <label {{ $attributes->merge(['class' => $classes]) }}>
-        <img src="{{ Vite::asset('resources/images/categories/'.$image.'.png') }}" alt="{{ $image }}"
+        <img src="{{ asset('storage/images/categories/'.$image.'.png') }}" alt="{{ $image }}"
              class="max-w-8" loading="lazy">
     </label>
 @else
     <div {{ $attributes->merge(['class' => $classes]) }}>
-        <img src="{{ Vite::asset('resources/images/categories/'.$image.'.png') }}" alt="{{ $image }}"
+        <img src="{{ asset('storage/images/categories/'.$image.'.png') }}" alt="{{ $image }}"
              class="max-w-8" loading="lazy">
         <span class="sr-only">{{ $image }}</span>
     </div>
