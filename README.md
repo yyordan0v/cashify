@@ -8,8 +8,6 @@ Cashify is live at [cashify.space](https://cashify.space)
 
 Proudly hosted with [Laravel Forge](https://forge.laravel.com) and [DigitalOcean](https://www.digitalocean.com).
 
-![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2F256f3c9f-6c0e-4c44-b032-39ccc567b30c%3Fdate%3D1&style=plastic)
-
 ## Features
 
 - **Transactions**: Log and manage your income and expenses
