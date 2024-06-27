@@ -4,7 +4,7 @@
 
 <button>
     <div {{ $attributes->merge(['class' => $classes]) }} :class="color ? color : 'bg-gray-200'">
-        <img :src="`{{ asset('storage/images/categories').'/' }}${icon}`"
+        <img :src="`{{  asset('images/categoriries').'/' }}${icon}`"
              class="max-w-8" alt="Category Icon Image">
         <span class="sr-only">Change Category Image</span>
     </div>

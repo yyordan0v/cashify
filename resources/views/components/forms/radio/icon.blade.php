@@ -19,7 +19,7 @@
            x-on:click="$dispatch('close')"
            @click="$dispatch('icon-changed', { icon: '{{ $icon }}' })"
     >
-        <img src="{{ asset('storage/images/categories/' . $icon) }}"
+        <img src="{{  asset('images/categoriries/' . $icon) }}"
              alt="{{ $id }}" width="40" height="40" loading="lazy">
     </label>
 </li>
