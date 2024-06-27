@@ -10,7 +10,7 @@ Cashify is an open-source web application for budget tracking, designed to help 
 
 ## Upcoming Features
 
-We're constantly working to improve Cashify. Here are some features we plan to implement:
+Here are some features that are planned:
 
 - Goals: Set and track financial goals
 - Deep spending inspections: Gain insights into your spending habits
@@ -27,7 +27,7 @@ We're constantly working to improve Cashify. Here are some features we plan to i
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/cashify.git
+   git clone https://github.com/yyordan0v/cashify.git
    ```
 
 2. Navigate to the project directory:
@@ -80,11 +80,9 @@ Visit `http://localhost:8000` in your browser to access Cashify.
 4. Use the dashboard to get an overview of your financial situation.
 5. Explore different features to manage your budget effectively.
 
-For more detailed instructions, please refer to our [User Guide](link-to-user-guide).
-
 ## Contributing
 
-We welcome contributions to Cashify! If you'd like to contribute, please follow these steps:
+Contributions to Cashify are welcomed! If you'd like to contribute, please follow these steps:
 
 1. Fork the repository
 2. Create a new branch (`git checkout -b feature/AmazingFeature`)
@@ -101,6 +99,6 @@ Cashify is open-source software licensed under the [MIT license](https://opensou
 
 ---
 
-For any questions or support, please [open an issue](https://github.com/yourusername/cashify/issues) or contact the maintainers.
+For any questions or support, please [open an issue](https://github.com/yyordan0v/cashify/issues) or contact the maintainer.
 
 Thank you for using or contributing to Cashify!
