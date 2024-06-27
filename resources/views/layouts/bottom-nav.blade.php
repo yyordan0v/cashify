@@ -16,7 +16,7 @@
 
 <div
     class="block md:hidden fixed z-50 w-full h-20 -translate-x-1/2 bottom-0 left-1/2 border-neutral-200/50 border-t bg-white/80 dark:border-neutral-800/50 dark:bg-neutral-900/75 backdrop-blur-lg">
-    <div class="grid h-full max-w-lg grid-cols-4 mx-8">
+    <div class="grid h-full max-w-lg grid-cols-4 mx-auto px-8">
         <x-nav.bottom-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" description="Dashboard">
             grid_view
         </x-nav.bottom-link>
