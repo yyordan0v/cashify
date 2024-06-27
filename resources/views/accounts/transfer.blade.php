@@ -24,6 +24,12 @@
                                 </div>
                             </x-forms.radio.button>
                         @endforeach
+
+                        @unless($userAccounts->count() > 0)
+                            <x-panels.heading class="text-sm w-full">
+                                No other accounts found.
+                            </x-panels.heading>
+                        @endunless
                     </x-forms.radio.group>
                     <x-forms.error :messages="$errors->get('to_account')"/>
                 </div>
