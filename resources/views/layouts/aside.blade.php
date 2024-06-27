@@ -38,7 +38,7 @@
                 <span>All Spending</span>
             </x-nav.link>
         </ul>
-        <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
+        <ul class="pt-5 mt-5 space-y-2 border-t border-neutral-400/50 dark:border-neutral-600/50">
             <x-nav.link :href="route('accounts.index')"
                         :active="request()->routeIs(['accounts.index', 'accounts.edit', 'accounts.create', 'accounts.show'])">
                 <x-nav.link-icon
