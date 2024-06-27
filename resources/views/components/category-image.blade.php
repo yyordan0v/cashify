@@ -27,7 +27,7 @@
     </label>
 @else
     <div {{ $attributes->merge(['class' => $classes]) }}>
-        <img src="{{  asset('images/categoriries/'.$image.'.png') }}" alt="{{ $image }}"
+        <img src="{{   asset('images/categories/'.$image.'.png') }}" alt="{{ $image }}"
              class="max-w-8" loading="lazy">
         <span class="sr-only">{{ $image }}</span>
     </div>
