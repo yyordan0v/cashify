@@ -12,6 +12,7 @@
         "laravel/breeze": "^2.0",
         "laravel/framework": "^11.0",
         "laravel/socialite": "^5.15",
+        "laravel/telescope": "^5.1",
         "laravel/tinker": "^2.9",
         "mauricius/laravel-htmx": "^0.6.0",
         "predis/predis": "^2.2"
@@ -20,7 +21,6 @@
         "fakerphp/faker": "^1.23",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
-        "laravel/telescope": "^5.0",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.0",
         "pestphp/pest": "^2.0",
@@ -58,13 +58,6 @@
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
         ]
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": [
-                "laravel/telescope"
-            ]
-        }
     },
     "config": {
         "optimize-autoloader": true,
