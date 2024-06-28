@@ -17,7 +17,8 @@
                     <x-forms.radio.group class="md:grid-cols-{{ $count }}">
                         @foreach($userAccounts as $acc)
                             <x-forms.radio.button name="to_account" id="{{ $acc->id }}" value="{{ $acc->id }}">
-                                <div class="block w-4 h-4 rounded-full mr-2 {{ $acc->color_class }}"></div>
+                                <div
+                                    class="block w-4 h-4 min-w-4 min-h-4 rounded-full mr-2 {{ $acc->color_class }}"></div>
 
                                 <div class="block">
                                     <div class="w-full">{{ $acc->name }}</div>

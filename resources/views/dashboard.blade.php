@@ -8,7 +8,7 @@
                         <x-cards.title class="text-base mt-0 mb-0"
                                        style="text-align: left">{{ $account->name }}</x-cards.title>
 
-                        <div class="block w-4 h-4 rounded-full {{ $account->color_class }}">
+                        <div class="block w-4 h-4 rounded-full min-w-4 min-h-4 {{ $account->color_class }}">
                         </div>
                     </div>
                     <div class="flex flex-col items-start">
