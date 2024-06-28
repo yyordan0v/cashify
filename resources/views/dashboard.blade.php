@@ -74,7 +74,10 @@
         <x-panels.panel class="col-span-2">
             <x-panels.heading>Net Worth</x-panels.heading>
 
-            <x-forms.form-actions style="flex-direction: row !important;" id="chart-buttons" :divider="false">
+            <x-forms.form-actions
+                style="flex-direction: row !important; gap: 0; @media (min-width: 640px) { gap: .5rem }"
+                class="text-xs sm:text-sm"
+                id="chart-buttons" :divider="false">
                 <x-buttons.action class="bg-transparent" id="one_week">
                     1W
                 </x-buttons.action>
