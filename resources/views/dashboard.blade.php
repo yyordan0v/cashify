@@ -3,20 +3,22 @@
 
         @foreach($accounts as $account)
             <x-panels.panel padding="p-4">
-                <div class="flex items-start flex-col">
-
+                <div class="flex items-start justify-between flex-col space-y-4 h-full">
                     <div class="flex items-center justify-between w-full">
-                        <x-cards.title class="text-base mt-0 mb-0">{{ $account->name }}</x-cards.title>
+                        <x-cards.title class="text-base mt-0 mb-0"
+                                       style="text-align: left">{{ $account->name }}</x-cards.title>
 
                         <div class="block w-4 h-4 rounded-full {{ $account->color_class }}">
                         </div>
                     </div>
-                    <x-cards.title class="mt-4 mb-0">
-                        {{ Number::currency($account->balance, in: 'BGN', locale: 'bg') }}
-                    </x-cards.title>
-                    <x-cards.text class="text-gray-950 text-sm">
-                        {{  count($account->transactions) }} transactions
-                    </x-cards.text>
+                    <div class="flex flex-col items-start">
+                        <x-cards.title class="mt-0 mb-0">
+                            {{ Number::currency($account->balance, in: 'BGN', locale: 'bg') }}
+                        </x-cards.title>
+                        <x-cards.text class="text-gray-950 text-sm">
+                            {{  count($account->transactions) }} transactions
+                        </x-cards.text>
+                    </div>
                 </div>
             </x-panels.panel>
         @endforeach
