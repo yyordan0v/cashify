@@ -15,7 +15,10 @@
         "laravel/telescope": "^5.1",
         "laravel/tinker": "^2.9",
         "mauricius/laravel-htmx": "^0.6.0",
-        "predis/predis": "^2.2"
+        "nyholm/psr7": "^1.8",
+        "predis/predis": "^2.2",
+        "railsware/mailtrap-php": "^1.9",
+        "symfony/http-client": "^7.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
