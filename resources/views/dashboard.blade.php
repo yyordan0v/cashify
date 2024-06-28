@@ -107,7 +107,7 @@
             <div id="spendingChart"></div>
         </x-panels.panel>
 
-        <x-panels.panel>
+        <x-panels.panel padding="p-4" class="md:p-8">
             <x-panels.heading>Latest Transactions</x-panels.heading>
 
             <x-tabs.body class="flex flex-col gap-4 mt-4">
