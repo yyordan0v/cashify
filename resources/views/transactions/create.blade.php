@@ -115,10 +115,9 @@
                 </div>
 
                 <div>
-                    <x-forms.label for="details" :value="__('Details')"/>
+                    <x-forms.label for="details" :value="__('Details (optional)')"/>
                     <x-forms.textarea id="details" name="details" :value="old('details')"/>
                     <x-forms.error :messages="$errors->get('details')"/>
-
                 </div>
 
                 <x-divider/>

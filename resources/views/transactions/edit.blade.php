@@ -68,7 +68,7 @@
                 </div>
 
                 <div>
-                    <x-forms.label for="details" :value="__('Details')"/>
+                    <x-forms.label for="details" :value="__('Details (optional)')"/>
                     <x-forms.textarea id="details"
                                       name="details">{{ old('details', $transaction->details) }}</x-forms.textarea>
                     <x-forms.error :messages="$errors->get('details')"/>
