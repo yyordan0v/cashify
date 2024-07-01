@@ -9,18 +9,18 @@
       datePickerDaysInMonth: [],
       datePickerBlankDaysInMonth: [],
       datePickerMonthNames: [
-        '{{ __('January') }}',
-        '{{ __('February') }}',
-        '{{ __('March') }}',
-        '{{ __('April') }}',
-        '{{ __('May') }}',
-        '{{ __('June') }}',
-        '{{ __('July') }}',
-        '{{ __('August') }}',
-        '{{ __('September') }}',
-        '{{ __('October') }}',
-        '{{ __('November') }}',
-        '{{ __('December') }}'
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
       ],
       datePickerDays: [
         '{{ __('Mon') }}',
@@ -157,7 +157,7 @@
                    x-ref="datePickerInput" type="text" @click="datePickerOpen=!datePickerOpen"
                    :value="startDate && endDate ? `${startDate} - ${endDate}` : '{{ request('date_range') }}'"
                    x-on:keydown.escape="datePickerOpen=false"
-                   class="flex h-10 px-3 py-2 text-sm bg-transparent border-none outline-none focus:border-none focus:ring-0"
+                   class="flex h-10 px-3 py-2 text-sm bg-transparent border-none outline-none focus:border-none focus:ring-0 dark:text-white"
                    readonly/>
             <div @click="datePickerOpen=!datePickerOpen; if(datePickerOpen){ $refs.datePickerInput.focus() }"
                  class="absolute top-0 right-0 cursor-pointer">
