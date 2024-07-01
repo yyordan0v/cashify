@@ -120,5 +120,6 @@
     "Notification": "Известие",
     "Account :account created with balance of :balance.": "Създадена сметка :account с баланс от :balance.",
     "Account: :account - Deleted :title transaction.": "Сметка: :account - Изтрита трансакция :title.",
-    "Account: :account - Old Balance: :old_balance, New Balance: :new_balance.": "Сметка: :account - Стар баланс: :old_balance, Нов баланс: :new_balance."
+    "Account: :account - Old Balance: :old_balance, New Balance: :new_balance.": "Сметка: :account - Стар баланс: :old_balance, Нов баланс: :new_balance.",
+    "Date (optional)": "Дата (по желание)"
 }

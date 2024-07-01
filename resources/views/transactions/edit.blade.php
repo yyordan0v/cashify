@@ -72,7 +72,15 @@
                     <x-forms.textarea id="details"
                                       name="details">{{ old('details', $transaction->details) }}</x-forms.textarea>
                     <x-forms.error :messages="$errors->get('details')"/>
+                </div>
 
+                <div>
+                    <x-forms.label for="date_time" :value="__('Date (optional)')"/>
+                    <x-forms.date-time
+                        :initialDate="$transaction->created_at ? $transaction->created_at->format('Y-m-d') : ''"
+                        :initialTime="$transaction->created_at ? $transaction->created_at->format('H:i') : ''"
+                    />
+                    <x-forms.error :messages="$errors->get('created_at')"/>
                 </div>
 
                 <x-divider/>

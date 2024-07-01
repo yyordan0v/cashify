@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
@@ -19,6 +20,12 @@ class TransactionRequest extends FormRequest
                 'amount' => str_replace(',', '.', $this->amount),
             ]);
         }
+
+        if (isset($this->created_at)) {
+            $this->merge([
+                'created_at' => Carbon::parse($this->created_at)->format('Y-m-d H:i:s'),
+            ]);
+        }
     }
 
     /**
@@ -34,6 +41,7 @@ class TransactionRequest extends FormRequest
             'title' => ['required', 'string', 'max:50'],
             'amount' => ['required', 'numeric', 'gt:0'],
             'details' => ['nullable'],
+            'created_at' => ['nullable', 'date_format:Y-m-d H:i:s'],
         ];
     }
 

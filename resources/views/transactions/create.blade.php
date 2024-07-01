@@ -120,6 +120,12 @@
                     <x-forms.error :messages="$errors->get('details')"/>
                 </div>
 
+                <div>
+                    <x-forms.label for="date_time" :value="__('Date (optional)')"/>
+                    <x-forms.date-time/>
+                    <x-forms.error :messages="$errors->get('created_at')"/>
+                </div>
+
                 <x-divider/>
 
                 <div

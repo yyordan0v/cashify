@@ -91,6 +91,8 @@ class TransactionController extends Controller
             $attributes['amount'] = -abs($attributes['amount']);
         }
 
+        $attributes['created_at'] = $attributes['created_at'] ?? now();
+
         $account->update([
             'balance' => $account->balance + $attributes['amount'],
         ]);

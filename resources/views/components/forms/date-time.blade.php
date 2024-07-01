@@ -1,7 +1,9 @@
+@props(['initialDate', 'initialTime'])
+
 <div x-data="{
     datePickerOpen: false,
-    selectedDate: '',
-    selectedTime: '',
+    selectedDate: '{{ $initialDate ?? '' }}',
+    selectedTime: '{{ $initialTime ?? '' }}',
     datePickerFormat: 'M d, Y',
     datePickerMonth: '',
     datePickerYear: '',
@@ -13,7 +15,6 @@
         'July', 'August', 'September', 'October', 'November', 'December'
     ],
     datePickerDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    // Time picker additions
     selectedHour: '00',
     selectedMinute: '00',
     hours: [...Array(24)].map((_, i) => i.toString().padStart(2, '0')),
@@ -34,7 +35,6 @@
     formatTime() {
         return `${this.selectedHour}:${this.selectedMinute}`;
     },
-    // Existing methods...
     datePickerDayClicked(day) {
         let selectedDate = new Date(this.datePickerYear, this.datePickerMonth, day);
         this.selectedDate = this.datePickerFormatDate(selectedDate);
@@ -105,6 +105,13 @@
         this.selectedDate = '';
         this.selectedTime = '';
         this.datePickerOpen = false;
+    },
+    getDateTime() {
+        if (!this.selectedDate || !this.selectedTime) {
+            return '';
+        }
+        let date = new Date(`${this.selectedDate} ${this.selectedTime}`);
+        return date.toISOString().slice(0, 19).replace('T', ' ');
     }
 }" x-init="
     currentDate = new Date();
@@ -120,6 +127,7 @@
                    x-on:keydown.escape="datePickerOpen=false"
                    class="w-full flex rounded-lg mt-2 border-neutral-400/50 dark:border-neutral-600/50 dark:bg-neutral-900/50 dark:text-white focus:border-gray-500 focus:ring-gray-500"
                    readonly/>
+            <input type="hidden" name="created_at" :value="getDateTime()"/>
             <div @click="clearDate()"
                  class="absolute top-0 right-0 cursor-pointer">
                 <x-buttons.icon class="pb-2.5">
