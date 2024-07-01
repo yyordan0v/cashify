@@ -5,7 +5,7 @@
 
         <div class="w-full max-w-xl mx-auto">
             <x-panels.panel padding="p-4" class="space-y-6 mb-4">
-                <x-panels.heading class="mb-2">Edit Transaction</x-panels.heading>
+                <x-panels.heading class="mb-2">{{__('Edit Transaction')}}</x-panels.heading>
 
                 <x-forms.label for="categories" :value="__('Category')"/>
                 <x-forms.radio.group type="category" id="categories">
@@ -22,7 +22,7 @@
                         @endforeach
                     @else
                         <x-panels.heading class="text-sm text-center w-full">
-                            No expense categories found.
+                            {{__('No categories found.')}}
                         </x-panels.heading>
                     @endif
                 </x-forms.radio.group>
@@ -44,7 +44,7 @@
                         @else
                             <div class="hidden md:block"></div>
                             <x-panels.heading class="text-sm text-center w-full">
-                                No accounts found.
+                                {{__('No accounts found.')}}
                             </x-panels.heading>
                         @endif
                     </x-forms.radio.group>
@@ -80,15 +80,15 @@
                 <div
                     class="flex flex-col md:flex-row items-center justify-end lg:justify-center w-full gap-2 text-gray-600 dark:text-gray-400 text-sm">
                     <a href="{{ route('transactions.index') }}">
-                        <x-buttons.secondary>Cancel</x-buttons.secondary>
+                        <x-buttons.secondary>{{__('Cancel')}}</x-buttons.secondary>
                     </a>
 
                     <x-buttons.danger x-data=""
                                       x-on:click.prevent="$dispatch('open-modal', 'confirm-transaction-{{ $transaction->id }}-deletion')">
-                        Delete
+                        {{__('Delete')}}
                     </x-buttons.danger>
 
-                    <x-buttons.form>Save</x-buttons.form>
+                    <x-buttons.form>{{__('Save')}}</x-buttons.form>
                 </div>
             </x-panels.panel>
         </div>
@@ -106,7 +106,7 @@
             </x-panels.heading>
 
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                {{ __('Once your category is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your category.') }}
+                {{ __('Once your transaction is deleted, all of its resources and data will be permanently deleted.') }}
             </p>
 
             <div class="mt-6 flex flex-col md:flex-row items-center justify-end w-full gap-2">

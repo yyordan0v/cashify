@@ -27,7 +27,7 @@
                                 <x-icon style="font-size: 20px">
                                     edit
                                 </x-icon>
-                                Edit
+                                {{__('Edit')}}
                             </x-buttons.action>
                             <x-buttons.action x-data=""
                                               x-on:click.prevent="$dispatch('open-modal', 'confirm-category-{{ $category->id }}-deletion')"
@@ -35,7 +35,7 @@
                                 <x-icon style="font-size: 20px">
                                     delete
                                 </x-icon>
-                                Delete
+                                {{__('Delete')}}
                             </x-buttons.action>
                         </x-dropdown.body>
                     </x-dropdown.menu>
@@ -48,7 +48,7 @@
                             <x-icon>
                                 edit
                             </x-icon>
-                            Edit
+                            {{__('Edit')}}
                         </x-buttons.action>
                         <x-buttons.action class="text-red-600"
                                           x-data=""
@@ -56,15 +56,16 @@
                             <x-icon>
                                 delete
                             </x-icon>
-                            Delete
+                            {{__('Delete')}}
                         </x-buttons.action>
                     </div>
                 </div>
 
                 <div class="flex flex-col items-start">
                     <x-cards.text
-                        class="my-0 text-sm">{{ ucwords($category->type) }}</x-cards.text>
-                    <x-cards.text class="my-0 text-xs">{{ count($category->transactions) }} transactions</x-cards.text>
+                        class="my-0 text-sm">{{ __(ucwords($category->type)) }}</x-cards.text>
+                    <x-cards.text
+                        class="my-0 text-xs">{{ count($category->transactions) }} {{__('transactions')}}</x-cards.text>
                 </div>
             </div>
         </div>
@@ -81,7 +82,7 @@
             </x-panels.heading>
 
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                {{ __('Once your category is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your category.') }}
+                {{ __('Once your category is deleted, all of its resources and data will be permanently deleted including all related transactions.') }}
             </p>
 
             <div class="mt-6 flex flex-col md:flex-row items-center justify-end w-full gap-2">

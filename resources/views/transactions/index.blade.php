@@ -5,7 +5,7 @@
 
         <x-panels.panel padding="p-4">
             <div class="flex flex-wrap items-center justify-between mb-8">
-                <x-panels.heading>Transactions</x-panels.heading>
+                <x-panels.heading>{{__('Transactions')}}</x-panels.heading>
                 <div
                     class="flex items-center text-gray-500 dark:text-gray-400">
 
@@ -43,7 +43,7 @@
 
             @unless($transactions->count() > 0)
                 <x-panels.heading class="text-sm text-center w-full">
-                    No transactions found.
+                    {{__('No transactions found.')}}
                 </x-panels.heading>
             @endunless
 

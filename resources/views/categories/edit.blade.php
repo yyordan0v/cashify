@@ -17,11 +17,11 @@
             <x-modal name="category-image-change">
                 <div class="p-6">
                     <x-panels.heading>
-                        {{'Select Icon' }}
+                        {{__('Select Icon')}}
                     </x-panels.heading>
 
                     <x-forms.search class="mt-6" position="top-4">
-                        <x-forms.input class="w-full" placeholder="Search..."
+                        <x-forms.input class="w-full" placeholder="{{__('Search...')}}"
                                        name="icon-search" id="icon-search"
                                        hx-post="{{ route('categories.searchIcons') }}"
                                        hx-params="icon-search,_token"
@@ -69,7 +69,7 @@
                                     <x-forms.radio.button name="type" id="expense" value="expense"
                                                           :checked="old('type', $category->type) === 'expense'">
                                         <div class="block">
-                                            <div class="w-full">Expense</div>
+                                            <div class="w-full">{{__('Expense')}}</div>
                                         </div>
                                         <x-icon class="text-red-500 mt-1">
                                             arrow_drop_down
@@ -79,7 +79,7 @@
                                     <x-forms.radio.button name="type" id="income" value="income"
                                                           :checked="old('type', $category->type) === 'income'">
                                         <div class="block">
-                                            <div class="w-full">Income</div>
+                                            <div class="w-full">{{__('Income')}}</div>
                                         </div>
                                         <x-icon class="text-emerald-500 mt-1">
                                             arrow_drop_up
@@ -108,7 +108,7 @@
                         <x-buttons.cancel to="categories" keep :id="$category->id"/>
 
                         <x-buttons.form>
-                            Save
+                            {{__('Save')}}
                         </x-buttons.form>
                     </x-forms.form-actions>
 

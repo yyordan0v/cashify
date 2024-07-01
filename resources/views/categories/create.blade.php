@@ -12,11 +12,11 @@
             <x-modal name="category-image-change">
                 <div class="p-6">
                     <x-panels.heading>
-                        {{'Select Icon' }}
+                        {{__('Select Icon')}}
                     </x-panels.heading>
 
                     <x-forms.search class="mt-6" position="top-4">
-                        <x-forms.input class="w-full" placeholder="Search..."
+                        <x-forms.input class="w-full" placeholder="{{__('Search...')}}"
                                        name="icon-search" id="icon-search" autofocus
                                        hx-post="{{ route('categories.searchIcons') }}"
                                        hx-params="icon-search,_token"
@@ -43,7 +43,7 @@
             <x-panels.panel>
 
                 <x-panels.heading class="mb-7">
-                    Add Category
+                    {{__('Add Category')}}
                 </x-panels.heading>
 
                 <div class="flex flex-col items-start w-full"
@@ -59,7 +59,7 @@
                             <div class="flex flex-col items-start justify-center w-full">
                                 <div class="w-full">
                                     <x-forms.input id="name" name="name" type="text" :value="old('name')"
-                                                   autofocus placeholder="Enter category name"
+                                                   autofocus placeholder="{{__('Enter category name')}}"
                                                    class="w-full"/>
                                     <x-forms.error :messages="$errors->get('name')"/>
                                 </div>
@@ -68,7 +68,7 @@
                                     <x-forms.radio.button name="type" id="expense" value="expense"
                                                           :checked="old('type') === 'expense'">
                                         <div class="block">
-                                            <div class="w-full">Expense</div>
+                                            <div class="w-full">{{__('Expense')}}</div>
                                         </div>
                                         <x-icon class="text-red-500 mt-1">
                                             arrow_drop_down
@@ -78,7 +78,7 @@
                                     <x-forms.radio.button name="type" id="income" value="income"
                                                           :checked="old('type') === 'income'">
                                         <div class="block">
-                                            <div class="w-full">Income</div>
+                                            <div class="w-full">{{__('Income')}}</div>
                                         </div>
                                         <x-icon class="text-emerald-500 mt-1">
                                             arrow_drop_up
@@ -107,12 +107,12 @@
                     <x-forms.form-actions>
                         <a href="{{ route('categories.index') }}">
                             <x-buttons.secondary>
-                                Cancel
+                                {{__('Cancel')}}
                             </x-buttons.secondary>
                         </a>
 
                         <x-buttons.form>
-                            Add Category
+                            {{__('Add Category')}}
                         </x-buttons.form>
                     </x-forms.form-actions>
 

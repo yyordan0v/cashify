@@ -16,7 +16,7 @@
                             {{ Number::currency($account->balance, in: 'BGN', locale: 'bg') }}
                         </x-cards.title>
                         <x-cards.text class="text-gray-950 text-sm">
-                            {{  count($account->transactions) }} transactions
+                            {{  count($account->transactions) }} {{ __('transactions') }}
                         </x-cards.text>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
         @endforeach
 
         <a href="{{ route('accounts.create') }}">
-            <x-buttons.card-button padding="p-4">Account</x-buttons.card-button>
+            <x-buttons.card-button padding="p-4">{{  __('Account') }}</x-buttons.card-button>
         </a>
 
     </div>
@@ -37,7 +37,7 @@
                     monitoring
                 </x-cards.icon>
 
-                <x-cards.title>Net Worth</x-cards.title>
+                <x-cards.title>{{__('Net Worth')}}</x-cards.title>
                 <x-divider/>
                 <x-cards.text class="text-gray-950">
                     {{ Number::currency($netWorth, in: 'BGN', locale: 'bg') }}
@@ -50,7 +50,7 @@
                     trending_up
                 </x-icon>
 
-                <x-cards.title>Income</x-cards.title>
+                <x-cards.title>{{__('Income')}}</x-cards.title>
                 <x-divider/>
                 <x-cards.text class="text-gray-950">
                     {{ Number::currency($totalIncomes, in: 'BGN', locale: 'bg') }}
@@ -63,7 +63,7 @@
                     trending_down
                 </x-icon>
 
-                <x-cards.title>Expense</x-cards.title>
+                <x-cards.title>{{__('Expense')}}</x-cards.title>
                 <x-divider/>
                 <x-cards.text class="text-gray-950">
                     {{ Number::currency($totalExpenses, in: 'BGN', locale: 'bg') }}
@@ -72,29 +72,29 @@
         </div>
 
         <x-panels.panel class="col-span-2">
-            <x-panels.heading>Net Worth</x-panels.heading>
+            <x-panels.heading>{{__('Net Worth')}}</x-panels.heading>
 
             <x-forms.form-actions
                 style="flex-direction: row !important; gap: 0; @media (min-width: 640px) { gap: .5rem }"
                 class="text-xs sm:text-sm"
                 id="chart-buttons" :divider="false">
                 <x-buttons.action class="bg-transparent" id="one_week">
-                    1W
+                    {{__('1W')}}
                 </x-buttons.action>
                 <x-buttons.action class="bg-transparent" id="one_month">
-                    1M
+                    {{__('1M')}}
                 </x-buttons.action>
                 <x-buttons.action class="bg-transparent" id="six_months">
-                    6M
+                    {{__('6M')}}
                 </x-buttons.action>
                 <x-buttons.action class="bg-transparent" id="one_year">
-                    1Y
+                    {{__('1Y')}}
                 </x-buttons.action>
                 <x-buttons.action class="bg-transparent" id="ytd">
-                    YTD
+                    {{__('YTD')}}
                 </x-buttons.action>
                 <x-buttons.action class="bg-transparent" id="all">
-                    ALL
+                    {{__('ALL')}}
                 </x-buttons.action>
             </x-forms.form-actions>
 
@@ -105,27 +105,27 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         <x-panels.panel>
-            <x-panels.heading>Spending by Category</x-panels.heading>
+            <x-panels.heading>{{__('Spending by Category')}}</x-panels.heading>
 
             <div id="spendingChart"></div>
         </x-panels.panel>
 
         <x-panels.panel padding="p-4" class="md:p-8">
-            <x-panels.heading>Latest Transactions</x-panels.heading>
+            <x-panels.heading>{{__('Latest Transactions')}}</x-panels.heading>
 
             <x-tabs.body class="flex flex-col gap-4 mt-4">
                 <x-tabs.button-group count="3">
                     <x-tabs.button>
-                        All
+                        {{__('All')}}
                     </x-tabs.button>
                     <x-tabs.button>
-                        Expense
+                        {{__('Expense')}}
                         <x-icon class="text-red-500 mt-1">
                             arrow_drop_down
                         </x-icon>
                     </x-tabs.button>
                     <x-tabs.button>
-                        Income
+                        {{__('Income')}}
                         <x-icon class="text-emerald-500 mt-1">
                             arrow_drop_up
                         </x-icon>
@@ -154,7 +154,7 @@
 
                         @unless(count($groupedTransactions) > 0)
                             <x-panels.heading class="text-sm text-center w-full">
-                                No transactions found.
+                                {{__('No transactions found.')}}
                             </x-panels.heading>
                         @endunless
                     </x-tabs.content>
@@ -179,7 +179,7 @@
 
                         @unless(count($groupedExpenses) > 0)
                             <x-panels.heading class="text-sm text-center w-full">
-                                No transactions found.
+                                {{__('No transactions found.')}}
                             </x-panels.heading>
                         @endunless
                     </x-tabs.content>
@@ -204,7 +204,7 @@
 
                         @unless(count($groupedIncomes) > 0)
                             <x-panels.heading class="text-sm text-center w-full">
-                                No transactions found.
+                                {{__('No transactions found.')}}
                             </x-panels.heading>
                         @endunless
                     </x-tabs.content>
@@ -236,7 +236,7 @@
                             window.networthChartOptions = {
                                 series: [
                                     {
-                                        name: "Net Worth",
+                                        name: "{{__('Net Worth')}}",
                                         data: window.networthChartData
                                     }
                                 ],
@@ -294,7 +294,7 @@
                         if (typeof window.spendingChartOptions === 'undefined') {
                             window.spendingChartOptions = {
                                 series: [{
-                                    name: 'Money spent',
+                                    name: "{{__('Funds spent')}}",
                                     data: spendingChartData
                                 }],
                                 chart: {

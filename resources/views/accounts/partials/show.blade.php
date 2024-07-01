@@ -22,7 +22,7 @@
                             <x-icon style="font-size: 20px">
                                 compare_arrows
                             </x-icon>
-                            Transfer Balance
+                            {{__('Transfer Balance')}}
                         </x-buttons.action>
 
                         <x-buttons.action hx-get="{{ route('accounts.edit', $account->id) }}"
@@ -32,7 +32,7 @@
                             <x-icon style="font-size: 20px">
                                 edit
                             </x-icon>
-                            Edit
+                            {{__('Edit')}}
                         </x-buttons.action>
 
                         <x-buttons.action class="text-red-600"
@@ -41,7 +41,7 @@
                             <x-icon style="font-size: 20px">
                                 delete
                             </x-icon>
-                            Delete
+                            {{__('Delete')}}
                         </x-buttons.action>
                     </x-dropdown.body>
                 </x-dropdown.menu>
@@ -51,7 +51,8 @@
                 {{ Number::currency($account->balance, in: 'BGN', locale: 'bg') }}
             </x-cards.title>
 
-            <x-cards.text class="text-gray-950 text-sm">{{  count($account->transactions) }} transactions</x-cards.text>
+            <x-cards.text
+                class="text-gray-950 text-sm">{{  count($account->transactions) }} {{__('transactions')}}</x-cards.text>
         </div>
 
         <div
@@ -64,7 +65,7 @@
                 <x-icon>
                     compare_arrows
                 </x-icon>
-                Transfer Balance
+                {{__('Transfer Balance')}}
             </x-buttons.action>
 
             <x-buttons.action hx-get="{{ route('accounts.edit', $account->id) }}"
@@ -73,7 +74,7 @@
                 <x-icon style="font-size: 20px">
                     edit
                 </x-icon>
-                Edit
+                {{__('Edit')}}
             </x-buttons.action>
 
             <x-buttons.action class="text-red-600"
@@ -82,7 +83,7 @@
                 <x-icon>
                     delete
                 </x-icon>
-                Delete
+                {{__('Delete')}}
             </x-buttons.action>
         </div>
     </x-panels.panel>
@@ -98,7 +99,7 @@
             </x-panels.heading>
 
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
+                {{ __('Once your account is deleted, all of its resources and data will be permanently deleted including all related transactions.') }}
             </p>
 
             <div class="mt-6 flex flex-col md:flex-row items-center justify-end w-full gap-2">

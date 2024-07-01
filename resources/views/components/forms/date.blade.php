@@ -8,8 +8,29 @@
       datePickerDay: '',
       datePickerDaysInMonth: [],
       datePickerBlankDaysInMonth: [],
-      datePickerMonthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-      datePickerDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      datePickerMonthNames: [
+        '{{ __('January') }}',
+        '{{ __('February') }}',
+        '{{ __('March') }}',
+        '{{ __('April') }}',
+        '{{ __('May') }}',
+        '{{ __('June') }}',
+        '{{ __('July') }}',
+        '{{ __('August') }}',
+        '{{ __('September') }}',
+        '{{ __('October') }}',
+        '{{ __('November') }}',
+        '{{ __('December') }}'
+      ],
+      datePickerDays: [
+        '{{ __('Mon') }}',
+        '{{ __('Tue') }}',
+        '{{ __('Wed') }}',
+        '{{ __('Thu') }}',
+        '{{ __('Fri') }}',
+        '{{ __('Sat') }}',
+        '{{ __('Sun') }}'
+      ],
       datePickerDayClicked(day) {
         let selectedDate = new Date(this.datePickerYear, this.datePickerMonth, day);
         let formattedDate = this.datePickerFormatDate(selectedDate);
@@ -200,8 +221,8 @@
                     </template>
                 </div>
                 <div class="flex mb-2 justify-between space-x-2 w-full">
-                    <x-buttons.secondary @click="setYesterday">Yesterday</x-buttons.secondary>
-                    <x-buttons.form type="button" @click="setToday">Today</x-buttons.form>
+                    <x-buttons.secondary @click="setYesterday">{{__('Yesterday')}}</x-buttons.secondary>
+                    <x-buttons.form type="button" @click="setToday">{{__('Today')}}</x-buttons.form>
                 </div>
             </div>
         </div>

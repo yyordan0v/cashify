@@ -6,12 +6,12 @@
         hx-push-url="{{ route($to.'.index') }}"
         hx-target="closest form"
         hx-swap="outerHTML">
-        Cancel
+        {{__('Cancel')}}
     </x-buttons.secondary>
 @else
     <x-buttons.secondary hx-post="{{ route('cancel') }}" hx-swap="outerHTML"
                          hx-push-url="{{ route($to.'.index') }}" hx-params="_token">
-        Cancel
+        {{__('Cancel')}}
     </x-buttons.secondary>
 @endif
 

@@ -3,7 +3,7 @@
         {{-- Add Account Button --}}
         <a href="{{ route('accounts.create') }}" class="col-span-2">
             <x-buttons.card-button padding="p-4" class="xl:p-8">
-                Account
+                {{__('Account')}}
             </x-buttons.card-button>
         </a>
 

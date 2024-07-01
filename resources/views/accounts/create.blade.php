@@ -5,7 +5,7 @@
         @csrf
 
         <x-panels.panel class="flex flex-col items-start justify-start w-full space-y-6">
-            <x-panels.heading>Add Account</x-panels.heading>
+            <x-panels.heading>{{__('Add Account')}}</x-panels.heading>
 
             <div class="w-full">
                 <x-forms.label for="name" :value="__('Name')"/>
@@ -36,11 +36,11 @@
 
             <x-forms.form-actions>
                 <a href="{{ route('accounts.index') }}">
-                    <x-buttons.secondary>Cancel</x-buttons.secondary>
+                    <x-buttons.secondary>{{__('Cancel')}}</x-buttons.secondary>
                 </a>
 
                 <x-buttons.form>
-                    Add Account
+                    {{__('Add Account')}}
                 </x-buttons.form>
             </x-forms.form-actions>
         </x-panels.panel>

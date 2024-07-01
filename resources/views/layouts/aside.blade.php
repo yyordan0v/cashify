@@ -9,7 +9,7 @@
                 <x-nav.link-icon :active="request()->routeIs('dashboard')">
                     grid_view
                 </x-nav.link-icon>
-                <span>Dashboard</span>
+                <span>{{__('Dashboard')}}</span>
             </x-nav.link>
             <x-nav.link :href="route('transactions.index')"
                         :active="request()->routeIs(['transactions.index', 'transactions.create', 'transactions.edit'])">
@@ -17,25 +17,25 @@
                     :active="request()->routeIs(['transactions.index', 'transactions.create', 'transactions.edit'])">
                     payments
                 </x-nav.link-icon>
-                <span>Transactions</span>
+                <span>{{__('Transactions')}}</span>
             </x-nav.link>
             <x-nav.link :href="route('goals')" :active="request()->routeIs('goals')">
                 <x-nav.link-icon :active="request()->routeIs('goals')">
                     savings
                 </x-nav.link-icon>
-                <span>Goals</span>
+                <span>{{__('Goals')}}</span>
             </x-nav.link>
             <x-nav.link :href="route('scheduled')" :active="request()->routeIs('scheduled')">
                 <x-nav.link-icon :active="request()->routeIs('scheduled')">
                     calendar_clock
                 </x-nav.link-icon>
-                <span>Scheduled</span>
+                <span>{{__('Scheduled')}}</span>
             </x-nav.link>
             <x-nav.link :href="route('spending')" :active="request()->routeIs('spending')">
                 <x-nav.link-icon :active="request()->routeIs('spending')">
                     receipt_long
                 </x-nav.link-icon>
-                <span>All Spending</span>
+                <span>{{__('All Spending')}}</span>
             </x-nav.link>
         </ul>
         <ul class="pt-5 mt-5 space-y-2 border-t border-neutral-400/50 dark:border-neutral-600/50">
@@ -45,7 +45,7 @@
                     :active="request()->routeIs(['accounts.index', 'accounts.edit', 'accounts.create', 'accounts.show'])">
                     wallet
                 </x-nav.link-icon>
-                <span>Accounts</span>
+                <span>{{__('Accounts')}}</span>
             </x-nav.link>
             <x-nav.link :href="route('categories.index')"
                         :active="request()->routeIs(['categories.index', 'categories.edit', 'categories.create'])">
@@ -53,16 +53,18 @@
                     :active="request()->routeIs(['categories.index', 'categories.edit', 'categories.create'])">
                     category
                 </x-nav.link-icon>
-                <span>Categories</span>
+                <span>{{__('Categories')}}</span>
             </x-nav.link>
             <x-nav.link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                 <x-nav.link-icon :active="request()->routeIs('profile.edit')">
                     id_card
                 </x-nav.link-icon>
-                <span>Profile</span>
+                <span>{{__('Profile')}}</span>
             </x-nav.link>
         </ul>
     </div>
+
+    <x-locale-switch/>
 </aside>
 
 <div x-show="sidebarOpen" @click="sidebarOpen = !sidebarOpen" class="fixed inset-0 z-30 bg-black opacity-85"></div>

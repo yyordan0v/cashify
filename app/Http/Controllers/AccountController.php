@@ -63,7 +63,10 @@ class AccountController extends Controller
                 'account_id' => $account->id,
                 'title' => 'Balance Correction',
                 'amount' => $attributes['balance'],
-                'details' => 'Account '.$account->name.' created with balance of '.$attributes['balance'].'.',
+                'details' => __('Account :account created with balance of :balance.', [
+                    'account' => $account->name,
+                    'balance' => $attributes['balance'],
+                ]),
             ]);
         }
 
@@ -128,7 +131,11 @@ class AccountController extends Controller
                 'account_id' => $account->id,
                 'title' => 'Balance Correction',
                 'amount' => $attributes['balance'] - $account->balance,
-                'details' => 'Account: '.$account->name.' - Old Balance: '.$account->balance.', New Balance: '.$attributes['balance'].'.',
+                'details' => __('Account: :account - Old Balance: :old_balance, New Balance: :new_balance.', [
+                    'account' => $account->name,
+                    'old_balance' => $account->balance,
+                    'new_balance' => $attributes['balance'],
+                ]),
             ]);
         }
 
@@ -210,7 +217,11 @@ class AccountController extends Controller
             'account_id' => $toAccount->id,
             'title' => $toAccount->name.' Transfer In',
             'amount' => $amount,
-            'details' => 'Account: '.$toAccount->name.' - Old Balance: '.$toAccount->balance.', New Balance: '.$toAccount->balance + $amount.'.',
+            'details' => __('Account: :account - Old Balance: :old_balance, New Balance: :new_balance.', [
+                'account' => $toAccount->name,
+                'old_balance' => $toAccount->balance,
+                'new_balance' => $toAccount->balance + $amount,
+            ]),
         ]);
 
         Auth::user()->transactions()->create([
@@ -219,7 +230,11 @@ class AccountController extends Controller
             'account_id' => $fromAccount->id,
             'title' => $fromAccount->name.' Transfer Out',
             'amount' => -$amount,
-            'details' => 'Account: '.$fromAccount->name.' - Old Balance: '.$fromAccount->balance.', New Balance: '.$fromAccount->balance - $amount.'.',
+            'details' => __('Account: :account - Old Balance: :old_balance, New Balance: :new_balance.', [
+                'account' => $fromAccount->name,
+                'old_balance' => $fromAccount->balance,
+                'new_balance' => $fromAccount->balance - $amount,
+            ]),
         ]);
     }
 }

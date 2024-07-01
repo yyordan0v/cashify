@@ -17,7 +17,8 @@
             <div class="flex flex-col flex-grow min-w-0">
                 <x-transactions.title :title="$title" class="truncate"></x-transactions.title>
                 <x-transactions.date
-                    class="truncate">{{ Carbon::parse($date)->format('d F Y, \a\t h:i A') }}</x-transactions.date>
+                    class="truncate">{{ Carbon::parse($date)->locale(app()->getLocale())->isoFormat('D MMMM YYYY, [в] h:mm A') }}
+                </x-transactions.date>
             </div>
         </div>
         <div class="flex items-center gap-2 flex-shrink-0">

@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TransactionController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -22,6 +23,15 @@ Route::middleware('guest')->group(function () {
 Route::get('/privacy-policy', function () {
     return view('privacy-policy');
 })->name('privacy-policy');
+
+Route::get('language/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'bg'])) {
+        session(['locale' => $locale]);
+    }
+    Log::info('Current locale in middleware: '.App::getLocale());
+    Log::info('Session locale in middleware: '.session()->get('locale'));
+    return redirect()->back();
+})->name('language.switch');
 
 
 Route::middleware(['auth', 'verified'])->group(callback: function () {

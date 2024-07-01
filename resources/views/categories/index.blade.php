@@ -2,13 +2,13 @@
     <x-tabs.body class="flex flex-col gap-4">
         <x-tabs.button-group>
             <x-tabs.button>
-                Expense
+                {{__('Expense')}}
                 <x-icon class="text-red-500 mt-1">
                     arrow_drop_down
                 </x-icon>
             </x-tabs.button>
             <x-tabs.button>
-                Income
+                {{__('Income')}}
                 <x-icon class="text-emerald-500 mt-1">
                     arrow_drop_up
                 </x-icon>
@@ -17,7 +17,7 @@
 
         <a href="{{ route('categories.create') }}" class="col-span-2">
             <x-buttons.card-button padding="p-8">
-                Category
+                {{__('Category')}}
             </x-buttons.card-button>
         </a>
 
@@ -27,7 +27,7 @@
                 <x-forms.search>
                     @csrf
                     <x-forms.input class="w-full" style="margin-top: 0 !important"
-                                   placeholder="Search your categories..."
+                                   placeholder="{{__('Search your categories...')}}"
                                    name="search"
                                    hx-post="{{ route('categories.searchCategories', 'expense') }}"
                                    hx-trigger="input changed delay:300ms, search"
@@ -43,7 +43,7 @@
                     @else
                         <x-panels.panel padding="p-4">
                             <x-panels.heading class="text-sm text-center w-full">
-                                No expense categories found.
+                                {{__('No expense categories found.')}}
                             </x-panels.heading>
                         </x-panels.panel>
                     @endif
@@ -55,7 +55,7 @@
                 <x-forms.search>
                     @csrf
                     <x-forms.input class="w-full" style="margin-top: 0 !important"
-                                   placeholder="Search your categories..."
+                                   placeholder="{{__('Search your categories...')}}"
                                    name="search"
                                    hx-post="{{ route('categories.searchCategories', 'income') }}"
                                    hx-trigger="input changed delay:300ms, search"
@@ -71,7 +71,7 @@
                     @else
                         <x-panels.panel padding="p-4">
                             <x-panels.heading class="text-sm text-center w-full">
-                                No income categories found.
+                                {{__('No income categories found.')}}
                             </x-panels.heading>
                         </x-panels.panel>
                     @endif

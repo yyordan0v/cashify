@@ -30,19 +30,19 @@
                     @endforeach
                 @else
                     <x-panels.heading class="text-sm text-center w-full">
-                        No expense categories found.
+                        {{__('No expense categories found.')}}
                     </x-panels.heading>
                 @endif
             </x-forms.radio.group>
 
             <div class="flex flex-col space-y-2 w-full">
-                <x-forms.label value="Transaction Type"/>
+                <x-forms.label value="{{__('Transaction Type')}}"/>
                 <x-forms.radio.group>
 
                     <x-forms.radio.button type="checkbox" name="types[]" id="expense" value="expense"
                                           :checked="in_array('expense',  request('types', []))">
                         <div class="block">
-                            <div class="w-full">Expense</div>
+                            <div class="w-full">{{__('Expense')}}</div>
                         </div>
                         <x-icon class="text-red-500 mt-1">
                             arrow_drop_down
@@ -52,7 +52,7 @@
                     <x-forms.radio.button type="checkbox" name="types[]" id="income" value="income"
                                           :checked="in_array('income',  request('types', []))">
                         <div class="block">
-                            <div class="w-full">Income</div>
+                            <div class="w-full">{{__('Income')}}</div>
                         </div>
                         <x-icon class="text-emerald-500 mt-1">
                             arrow_drop_up
@@ -62,20 +62,20 @@
             </div>
 
             <div class="flex flex-col space-y-4 w-full">
-                <x-forms.label value="Transaction Amount"/>
+                <x-forms.label value="{{__('Transaction Amount')}}"/>
 
                 <x-forms.range :min-amount="$minAmount" :max-amount="$maxAmount"/>
             </div>
 
             <div class="flex flex-col space-y-4 w-full">
-                <x-forms.label for="title" value="Title Contains"/>
+                <x-forms.label for="title" value="{{__('Title Contains')}}"/>
 
                 <x-forms.input id="title" name="title" type="text" :value="request('title')"
                                class="w-full"/>
             </div>
 
             <div class="flex flex-col space-y-4 w-full">
-                <x-forms.label for="details" value="Details Contain"/>
+                <x-forms.label for="details" value="{{__('Details Contain')}}"/>
 
                 <x-forms.input id="details" name="details" type="text" :value="request('details')"
                                class="w-full"/>
@@ -87,9 +87,9 @@
                                      hx-target="body"
                                      hx-swap="outerHTML"
                                      hx-push-url="true">
-                    Reset Filters
+                    {{__('Reset Filters')}}
                 </x-buttons.secondary>
-                <x-buttons.form x-on:click="$dispatch('close')">Apply</x-buttons.form>
+                <x-buttons.form x-on:click="$dispatch('close')">{{__('Apply')}}</x-buttons.form>
             </x-forms.form-actions>
         </div>
     </form>

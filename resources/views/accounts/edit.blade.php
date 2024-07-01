@@ -6,7 +6,7 @@
             @method('PATCH')
 
             <x-panels.panel class="flex flex-col items-start justify-start w-full space-y-6">
-                <x-panels.heading>Edit Account</x-panels.heading>
+                <x-panels.heading>{{__('Edit Account')}}</x-panels.heading>
 
                 <div class="w-full">
                     <x-forms.label for="name" :value="__('Name')"/>
@@ -40,7 +40,7 @@
                     <x-buttons.cancel to="accounts" keep :id="$account->id"/>
 
                     <x-buttons.form>
-                        Save
+                        {{__('Save')}}
                     </x-buttons.form>
                 </x-forms.form-actions>
             </x-panels.panel>

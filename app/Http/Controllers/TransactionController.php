@@ -182,7 +182,10 @@ class TransactionController extends Controller
             'account_id' => $transaction->account->id,
             'title' => 'Balance Correction',
             'amount' => -$transaction->amount,
-            'details' => 'Account: '.$transaction->account->name.' - Deleted '.$transaction->title.' transaction.',
+            'details' => __('Account: :account - Deleted :title transaction.', [
+                'account' => $transaction->account->name,
+                'title' => $transaction->title,
+            ]),
         ]);
 
         $transaction->account->update([

@@ -28,7 +28,7 @@
 
                         @unless($userAccounts->count() > 0)
                             <x-panels.heading class="text-sm w-full">
-                                No other accounts found.
+                                {{__('No other accounts found.')}}
                             </x-panels.heading>
                         @endunless
                     </x-forms.radio.group>
@@ -56,7 +56,7 @@
                     <x-buttons.cancel to="accounts" keep :id="$account->id"/>
 
                     <x-buttons.form>
-                        Transfer
+                        {{__('Transfer')}}
                     </x-buttons.form>
                 </x-forms.form-actions>
 

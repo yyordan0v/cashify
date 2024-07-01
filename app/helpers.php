@@ -9,11 +9,11 @@ if (!function_exists('flashToast')) {
     {
         if (is_null($title)) {
             $title = match ($type) {
-                'success' => 'Success',
-                'error' => 'Error',
-                'warning' => 'Warning',
-                'info' => 'Info',
-                default => 'Notification',
+                'success' => __('Success'),
+                'error' => __('Error'),
+                'warning' => __('Warning'),
+                'info' => __('Info'),
+                default => __('Notification'),
             };
         }
 
@@ -29,13 +29,12 @@ if (!function_exists('flashToast')) {
     }
 }
 
+
 if (!function_exists('parseDateRange')) {
     function parseDateRange($dateRange): array
     {
-        // Split the input string into start and end date
         [$startDate, $endDate] = explode(' - ', $dateRange);
 
-        // Convert the start and end date to the database format
         $startDate = Carbon::createFromFormat('M d, Y', trim($startDate))->startOfDay()->format('Y-m-d H:i:s');
         $endDate = Carbon::createFromFormat('M d, Y', trim($endDate))->endOfDay()->format('Y-m-d H:i:s');
 
@@ -46,19 +45,21 @@ if (!function_exists('parseDateRange')) {
 if (!function_exists('formatDate')) {
     function formatDate($date): string
     {
-        $carbonDate = Carbon::parse($date);
-        $today = Carbon::today();
-        $yesterday = Carbon::yesterday();
+        $locale = app()->getLocale();
+        $carbonDate = Carbon::parse($date)->locale($locale);
+        $today = Carbon::today()->locale($locale);
+        $yesterday = Carbon::yesterday()->locale($locale);
 
         if ($carbonDate->isToday()) {
-            return 'TODAY, '.$carbonDate->format('F d');
+            return __('TODAY').', '.$carbonDate->isoFormat('MMMM D');
         } elseif ($carbonDate->isYesterday()) {
-            return 'YESTERDAY, '.$carbonDate->format('F d');
+            return __('YESTERDAY').', '.$carbonDate->isoFormat('MMMM D');
         } else {
-            return strtoupper($carbonDate->format('l')).', '.$carbonDate->format('F d');
+            return strtoupper($carbonDate->isoFormat('dddd')).', '.$carbonDate->isoFormat('MMMM D');
         }
     }
 }
+
 
 if (!function_exists('groupTransactionsByDate')) {
     function groupTransactionsByDate($transactions): array
