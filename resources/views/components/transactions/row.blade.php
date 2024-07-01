@@ -23,8 +23,8 @@
         </div>
         <div class="flex items-center gap-2 flex-shrink-0">
             @if($details)
-                <x-tooltip text="{{ $details }}" position="bottom" ref="content">
-                    <x-icon class="text-lg text-gray-500" x-ref="content">
+                <x-tooltip text="{{ $details }}" position="bottom" ref="tooltipTrigger">
+                    <x-icon class="text-lg text-gray-500">
                         description
                     </x-icon>
                 </x-tooltip>
