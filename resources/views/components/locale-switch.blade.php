@@ -12,7 +12,7 @@
     ];
 @endphp
 
-<div class="absolute bottom-2 right-0 w-full">
+<div class="absolute bottom-24 md:bottom-2 right-0 w-full">
     <div x-data="{ dropdownOpen: false }" class="relative">
         <button @click="dropdownOpen=true"
                 class="w-full inline-flex items-center justify-start h-12 py-2 px-4 text-sm font-medium transition-colors disabled:pointer-events-none">
