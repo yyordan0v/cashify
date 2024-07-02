@@ -1,124 +1,125 @@
 @props(['initialDate', 'initialTime'])
 
 <div x-data="{
-    datePickerOpen: false,
-    selectedDate: '{{ $initialDate ?? '' }}',
-    selectedTime: '{{ $initialTime ?? '' }}',
-    datePickerFormat: 'M d, Y',
-    datePickerMonth: '',
-    datePickerYear: '',
-    datePickerDay: '',
-    datePickerDaysInMonth: [],
-    datePickerBlankDaysInMonth: [],
-    datePickerMonthNames: [
-        'January', 'February', 'March', 'April', 'May', 'June',
-        'July', 'August', 'September', 'October', 'November', 'December'
-    ],
-    datePickerDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    selectedHour: '00',
-    selectedMinute: '00',
-    hours: [...Array(24)].map((_, i) => i.toString().padStart(2, '0')),
-    minutes: [...Array(60)].map((_, i) => i.toString().padStart(2, '0')),
-    timePickerOpen: false,
-    toggleTimePicker() {
-        this.timePickerOpen = !this.timePickerOpen;
-    },
-    setTime() {
-        this.selectedTime = this.formatTime();
-        this.timePickerOpen = false;
-        if (!this.selectedDate) {
-            let today = new Date();
-            this.selectedDate = this.datePickerFormatDate(today);
-        }
-        this.datePickerOpen = false;
-    },
-    formatTime() {
-        return `${this.selectedHour}:${this.selectedMinute}`;
-    },
-    datePickerDayClicked(day) {
-        let selectedDate = new Date(this.datePickerYear, this.datePickerMonth, day);
-        this.selectedDate = this.datePickerFormatDate(selectedDate);
-    },
-    datePickerDayDoubleClicked(day) {
-        let selectedDate = new Date(this.datePickerYear, this.datePickerMonth, day);
-        this.selectedDate = this.datePickerFormatDate(selectedDate);
-        if (!this.selectedTime) {
-            this.selectedTime = '00:00';
-        }
-        this.datePickerOpen = false;
-    },
-    datePickerPreviousMonth(){
-        if (this.datePickerMonth == 0) {
-            this.datePickerYear--;
-            this.datePickerMonth = 11;
-        } else {
-            this.datePickerMonth--;
-        }
-        this.datePickerCalculateDays();
-    },
-    datePickerNextMonth(){
-        if (this.datePickerMonth == 11) {
-            this.datePickerMonth = 0;
-            this.datePickerYear++;
-        } else {
-            this.datePickerMonth++;
-        }
-        this.datePickerCalculateDays();
-    },
-    datePickerIsSelectedDate(day) {
-        const d = new Date(this.datePickerYear, this.datePickerMonth, day);
-        return this.datePickerFormatDate(d) === this.selectedDate;
-    },
-    datePickerIsToday(day) {
-        const today = new Date();
-        const d = new Date(this.datePickerYear, this.datePickerMonth, day);
-        return today.toDateString() === d.toDateString();
-    },
-    datePickerCalculateDays() {
-        let daysInMonth = new Date(this.datePickerYear, this.datePickerMonth + 1, 0).getDate();
-        let firstDayOfMonth = new Date(this.datePickerYear, this.datePickerMonth, 1).getDay();
-        firstDayOfMonth = (firstDayOfMonth === 0) ? 6 : firstDayOfMonth - 1;
-        let blankdaysArray = [];
-        for (var i = 0; i < firstDayOfMonth; i++) {
-            blankdaysArray.push(i);
-        }
-        let daysArray = [];
-        for (var i = 1; i <= daysInMonth; i++) {
-            daysArray.push(i);
-        }
-        this.datePickerBlankDaysInMonth = blankdaysArray;
-        this.datePickerDaysInMonth = daysArray;
-    },
-    datePickerFormatDate(date) {
-        let formattedDay = this.datePickerDays[date.getDay() - 1];
-        if (date.getDay() === 0) {
-            formattedDay = this.datePickerDays[6];
-        }
-        let formattedDate = ('0' + date.getDate()).slice(-2);
-        let formattedMonth = this.datePickerMonthNames[date.getMonth()];
-        let formattedMonthShortName = this.datePickerMonthNames[date.getMonth()].substring(0, 3);
-        let formattedYear = date.getFullYear();
+        datePickerOpen: false,
+        selectedDate: '{{ $initialDate ?? '' }}',
+        selectedTime: '{{ $initialTime ?? '' }}',
+        datePickerFormat: 'M d, Y',
+        datePickerMonth: '',
+        datePickerYear: '',
+        datePickerDay: '',
+        datePickerDaysInMonth: [],
+        datePickerBlankDaysInMonth: [],
+        datePickerMonthNames: [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ],
+        datePickerDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        selectedHour: '00',
+        selectedMinute: '00',
+        hours: [...Array(24)].map((_, i) => i.toString().padStart(2, '0')),
+        minutes: [...Array(60)].map((_, i) => i.toString().padStart(2, '0')),
+        timePickerOpen: false,
+        toggleTimePicker() {
+            this.timePickerOpen = !this.timePickerOpen;
+        },
+        setTime() {
+            this.selectedTime = this.formatTime();
+            this.timePickerOpen = false;
+            if (!this.selectedDate) {
+                let today = new Date();
+                this.selectedDate = this.datePickerFormatDate(today);
+            }
+            this.datePickerOpen = false;
+        },
+        formatTime() {
+            return `${this.selectedHour}:${this.selectedMinute}`;
+        },
+        datePickerDayClicked(day) {
+            let selectedDate = new Date(this.datePickerYear, this.datePickerMonth, day);
+            this.selectedDate = this.datePickerFormatDate(selectedDate);
+        },
+        datePickerDayDoubleClicked(day) {
+            let selectedDate = new Date(this.datePickerYear, this.datePickerMonth, day);
+            this.selectedDate = this.datePickerFormatDate(selectedDate);
+            if (!this.selectedTime) {
+                this.selectedTime = '00:00';
+            }
+            this.datePickerOpen = false;
+        },
+        datePickerPreviousMonth(){
+            if (this.datePickerMonth == 0) {
+                this.datePickerYear--;
+                this.datePickerMonth = 11;
+            } else {
+                this.datePickerMonth--;
+            }
+            this.datePickerCalculateDays();
+        },
+        datePickerNextMonth(){
+            if (this.datePickerMonth == 11) {
+                this.datePickerMonth = 0;
+                this.datePickerYear++;
+            } else {
+                this.datePickerMonth++;
+            }
+            this.datePickerCalculateDays();
+        },
+        datePickerIsSelectedDate(day) {
+            const d = new Date(this.datePickerYear, this.datePickerMonth, day);
+            return this.datePickerFormatDate(d) === this.selectedDate;
+        },
+        datePickerIsToday(day) {
+            const today = new Date();
+            const d = new Date(this.datePickerYear, this.datePickerMonth, day);
+            return today.toDateString() === d.toDateString();
+        },
+        datePickerCalculateDays() {
+            let daysInMonth = new Date(this.datePickerYear, this.datePickerMonth + 1, 0).getDate();
+            let firstDayOfMonth = new Date(this.datePickerYear, this.datePickerMonth, 1).getDay();
+            firstDayOfMonth = (firstDayOfMonth === 0) ? 6 : firstDayOfMonth - 1;
+            let blankdaysArray = [];
+            for (var i = 0; i < firstDayOfMonth; i++) {
+                blankdaysArray.push(i);
+            }
+            let daysArray = [];
+            for (var i = 1; i <= daysInMonth; i++) {
+                daysArray.push(i);
+            }
+            this.datePickerBlankDaysInMonth = blankdaysArray;
+            this.datePickerDaysInMonth = daysArray;
+        },
+        datePickerFormatDate(date) {
+            let formattedDay = this.datePickerDays[date.getDay() - 1];
+            if (date.getDay() === 0) {
+                formattedDay = this.datePickerDays[6];
+            }
+            let formattedDate = ('0' + date.getDate()).slice(-2);
+            let formattedMonth = this.datePickerMonthNames[date.getMonth()];
+            let formattedMonthShortName = this.datePickerMonthNames[date.getMonth()].substring(0, 3);
+            let formattedYear = date.getFullYear();
 
-        return `${formattedMonthShortName} ${formattedDate}, ${formattedYear}`;
-    },
-    clearDate() {
-        this.selectedDate = '';
-        this.selectedTime = '';
-        this.datePickerOpen = false;
-    },
-    getDateTime() {
-        if (!this.selectedDate || !this.selectedTime) {
-            return '';
+            return `${formattedMonthShortName} ${formattedDate}, ${formattedYear}`;
+        },
+        clearDate() {
+            this.selectedDate = '';
+            this.selectedTime = '';
+            this.datePickerOpen = false;
+        },
+        getDateTime() {
+            if (!this.selectedDate || !this.selectedTime) {
+                return '';
+            }
+            let date = new Date(`${this.selectedDate} ${this.selectedTime}`);
+            return date.toISOString().slice(0, 19).replace('T', ' ');
         }
-        let date = new Date(`${this.selectedDate} ${this.selectedTime}`);
-        return date.toISOString().slice(0, 19).replace('T', ' ');
-    }
-}" x-init="
-    currentDate = new Date();
-    datePickerMonth = currentDate.getMonth();
-    datePickerYear = currentDate.getFullYear();
-    datePickerCalculateDays();
-" x-cloak>
+    }" x-init="
+        currentDate = new Date();
+        datePickerMonth = currentDate.getMonth();
+        datePickerYear = currentDate.getFullYear();
+        datePickerCalculateDays();
+    " x-cloak
+>
     <div class="mr-2">
         <div class="relative w-full">
             <input name="date_time"
@@ -143,7 +144,7 @@
                     }
                     datePickerOpen = false;
                 "
-                class="absolute z-20 top-0 left-0 max-w-lg p-4 mt-12 antialiased shadow w-[17rem] rounded-xl border bg-white/95 border-neutral-300/50 dark:border-neutral-800/50 dark:bg-neutral-900/95 dark:shadow backdrop-blur-lg">
+                class="absolute z-20 bottom-full left-0 max-w-lg p-4 mb-1 antialiased shadow w-[17rem] rounded-xl border bg-white/95 border-neutral-300/50 dark:border-neutral-800/50 dark:bg-neutral-900/95 dark:shadow backdrop-blur-lg">
                 <div class="flex items-center justify-between mb-2">
                     <div>
                         <span x-text="datePickerMonthNames[datePickerMonth]"
