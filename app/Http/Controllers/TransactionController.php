@@ -101,7 +101,7 @@ class TransactionController extends Controller
 
         updateNetworth();
 
-        flashToast('success', 'Transaction created successfully.');
+        flashToast('success', __('Transaction created successfully.'));
 
         return Redirect::route('transactions.index');
     }
@@ -162,7 +162,7 @@ class TransactionController extends Controller
 
         $transaction->update($attributes);
 
-        flashToast('success', 'Transaction updated successfully.');
+        flashToast('success', __('Transaction updated successfully.'));
 
         return Redirect::route('transactions.index');
     }
@@ -198,7 +198,7 @@ class TransactionController extends Controller
 
         $transaction->delete();
 
-        flashToast('success', 'Transaction deleted successfully.');
+        flashToast('success', __('Transaction deleted successfully.'));
 
         return Redirect::route('transactions.index');
     }

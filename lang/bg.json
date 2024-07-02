@@ -124,5 +124,10 @@
     "Date (optional)": "Дата (по желание)",
     "Select time:": "Избери време:",
     "Hour": "Час",
-    "Minute": "Минута"
+    "Minute": "Минута",
+    "Transaction created successfully.": "Транзакцията е създадена успешно.",
+    "Account created successfully.": "Акаунтът е създаден успешно.",
+    "Category created successfully.": "Категорията е създадена успешно.",
+    "Transaction updated successfully.": "Транзакцията е обновена успешно.",
+    "Transaction deleted successfully.": "Транзакцията е изтрита успешно."
 }

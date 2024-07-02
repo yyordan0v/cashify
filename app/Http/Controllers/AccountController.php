@@ -72,7 +72,7 @@ class AccountController extends Controller
 
         updateNetworth();
 
-        flashToast('success', 'Account created successfully.');
+        flashToast('success', __('Account created successfully.'));
 
         return Redirect::route('accounts.index');
     }

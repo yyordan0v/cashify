@@ -70,7 +70,7 @@ class CategoryController extends Controller
 
         $urlParams = $attributes['type'] === 'income' ? ['tab' => '2'] : [];
 
-        flashToast('success', 'Category created successfully.');
+        flashToast('success', __('Category created successfully.'));
 
         return Redirect::route('categories.index', $urlParams);
     }
