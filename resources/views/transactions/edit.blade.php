@@ -77,7 +77,7 @@
                 <div>
                     <x-forms.label for="date_time" :value="__('Date (optional)')"/>
                     <x-forms.date-time
-                        :initialDate="$transaction->created_at ? $transaction->created_at->format('Y-m-d') : ''"
+                        :initialDate="$transaction->created_at ? $transaction->created_at->format('M d, Y') : ''"
                         :initialTime="$transaction->created_at ? $transaction->created_at->format('H:i') : ''"
                     />
                     <x-forms.error :messages="$errors->get('created_at')"/>
