@@ -14,7 +14,15 @@
             'January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'
         ],
-        datePickerDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datePickerDays: [
+        '{{ __('Mon') }}',
+        '{{ __('Tue') }}',
+        '{{ __('Wed') }}',
+        '{{ __('Thu') }}',
+        '{{ __('Fri') }}',
+        '{{ __('Sat') }}',
+        '{{ __('Sun') }}'
+        ],
         selectedHour: '00',
         selectedMinute: '00',
         hours: [...Array(24)].map((_, i) => i.toString().padStart(2, '0')),
@@ -144,7 +152,7 @@
                     }
                     datePickerOpen = false;
                 "
-                class="absolute z-20 bottom-full left-0 max-w-lg p-4 mb-1 antialiased shadow w-[17rem] rounded-xl border bg-white/95 border-neutral-300/50 dark:border-neutral-800/50 dark:bg-neutral-900/95 dark:shadow backdrop-blur-lg">
+                class="absolute z-20 bottom-full left-0 max-w-lg p-4 mb-2 antialiased shadow w-[17rem] rounded-xl border bg-white/95 border-neutral-300/50 dark:border-neutral-800/50 dark:bg-neutral-900/95 dark:shadow backdrop-blur-lg">
                 <div class="flex items-center justify-between mb-2">
                     <div>
                         <span x-text="datePickerMonthNames[datePickerMonth]"
@@ -197,8 +205,9 @@
                 </div>
 
                 <div class="mt-4">
-                    <label for="time" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">Select
-                        time:</label>
+                    <label for="time" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                        {{__('Select time:')}}
+                    </label>
                     <div class="relative">
                         <input type="text"
                                x-model="formatTime()"
@@ -208,10 +217,10 @@
 
                         <div x-show="timePickerOpen"
                              class="absolute z-10 mt-1 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
-                            <div class="flex justify-between mb-4">
+                            <div class="flex justify-between mb-4 space-x-1">
                                 <div>
                                     <label
-                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">Hour</label>
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{__('Hour')}}</label>
                                     <select x-model="selectedHour"
                                             class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm rounded-md">
                                         <template x-for="hour in hours">
@@ -221,7 +230,7 @@
                                 </div>
                                 <div>
                                     <label
-                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">Minute</label>
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{__('Minute')}}</label>
                                     <select x-model="selectedMinute"
                                             class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm rounded-md">
                                         <template x-for="minute in minutes">
@@ -230,11 +239,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <button @click="setTime()"
-                                    type="button"
-                                    class="w-full bg-gray-500 text-white rounded-md px-4 py-2 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
-                                Set Time
-                            </button>
+                            <x-buttons.form @click="setTime()"
+                                            type="button" class="w-full">
+                                {{__('Apply')}}
+                            </x-buttons.form>
                         </div>
                     </div>
                 </div>
