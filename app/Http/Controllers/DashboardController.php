@@ -28,6 +28,11 @@ class DashboardController extends Controller
         $networthChartData = $networthChart->build();
         $spendingChartData = $spendingChart->build();
 
+        $spendingChartDataRounded = array_map(function ($value) {
+            return round($value, 2);
+        }, $spendingChartData['data']);
+
+
         return view('dashboard', [
             'groupedTransactions' => $groupedTransactions,
             'groupedExpenses' => $groupedExpenses,
@@ -36,7 +41,7 @@ class DashboardController extends Controller
             'netWorth' => $netWorth,
             'dateRanges' => $networthChartData['dateRanges'],
             'networthChartData' => $networthChartData['data'],
-            'spendingChartData' => $spendingChartData['data'],
+            'spendingChartData' => $spendingChartDataRounded,
             'spendingChartLabels' => $spendingChartData['labels'],
             'totalExpenses' => $totalExpenses,
             'totalIncomes' => $totalIncomes,

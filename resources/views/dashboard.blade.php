@@ -212,12 +212,6 @@
             </x-tabs.body>
         </x-panels.panel>
 
-        @php
-            $spendingChartDataRounded = array_map(function($value) {
-                return round($value, 2);
-            }, $spendingChartData);
-        @endphp
-        
         @push('dashboard-charts')
             <script>
                 (function () {
@@ -231,7 +225,7 @@
                         }
 
                         if (typeof window.spendingChartData === 'undefined') {
-                            window.spendingChartData = @json($spendingChartDataRounded);
+                            window.spendingChartData = @json($spendingChartData);
                         }
 
                         if (typeof window.spendingChartLabels === 'undefined') {
