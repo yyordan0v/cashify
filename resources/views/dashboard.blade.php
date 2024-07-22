@@ -105,7 +105,13 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         <x-panels.panel>
-            <x-panels.heading>{{__('Spending by Category')}}</x-panels.heading>
+            <div class="flex items-center justify-between">
+                <x-panels.heading class="flex-1">
+                    {{__('Spending by Category')}}
+                </x-panels.heading>
+
+                <x-forms.date/>
+            </div>
 
             <div id="spendingChart"></div>
         </x-panels.panel>
