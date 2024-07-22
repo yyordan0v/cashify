@@ -154,7 +154,7 @@
         {{--        <label for="datepicker" class="block mb-1 text-sm font-medium text-neutral-500">Select Date Range</label>--}}
         <div class="relative w-[17rem]">
             <input name="date_range"
-                   x-ref="datePickerInput" type="hidden" @click="datePickerOpen=!datePickerOpen"
+                   x-ref="datePickerInput" type="text" @click="datePickerOpen=!datePickerOpen"
                    :value="startDate && endDate ? `${startDate} - ${endDate}` : '{{ request('date_range') }}'"
                    x-on:keydown.escape="datePickerOpen=false"
                    class="flex h-10 px-3 py-2 text-sm bg-transparent border-none outline-none focus:border-none focus:ring-0 dark:text-white"
