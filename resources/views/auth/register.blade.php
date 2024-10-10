@@ -21,6 +21,7 @@
 
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
+                            <input type="hidden" name="recaptcha_token" id="recaptcha_token">
 
                             <div class="space-y-6">
 
