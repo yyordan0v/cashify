@@ -87,20 +87,47 @@
             defer></script>
     <script>
         let turnstileWidget;
+        let turnstileToken = null;
 
         function onloadTurnstileCallback() {
             turnstileWidget = turnstile.render('#cf-turnstile-response', {
                 sitekey: '{{ config('services.turnstile.site_key') }}',
                 theme: 'light',
                 callback: function (token) {
-                    document.getElementById('registration-form').submit();
+                    turnstileToken = token;
+                    document.getElementById('submit-button').disabled = false;
+                },
+                'expired-callback': function () {
+                    turnstileToken = null;
+                    document.getElementById('submit-button').disabled = true;
                 }
             });
         }
 
-        document.getElementById('submit-button').addEventListener('click', function (e) {
+        document.getElementById('registration-form').addEventListener('submit', function (e) {
             e.preventDefault();
-            turnstile.reset(turnstileWidget);
+
+            if (!turnstileToken) {
+                turnstile.reset(turnstileWidget);
+                return;
+            }
+
+            // Add the token to the form
+            let tokenInput = document.createElement('input');
+            tokenInput.type = 'hidden';
+            tokenInput.name = 'cf-turnstile-response';
+            tokenInput.value = turnstileToken;
+            this.appendChild(tokenInput);
+
+            // Submit the form
+            this.submit();
+        });
+
+        document.getElementById('submit-button').addEventListener('click', function (e) {
+            if (!turnstileToken) {
+                e.preventDefault();
+                turnstile.reset(turnstileWidget);
+            }
         });
     </script>
 </x-guest-layout>
