@@ -83,21 +83,24 @@
     </section>
 
     <!-- Turnstile Script -->
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" async
+            defer></script>
     <script>
-        window.onloadTurnstileCallback = function () {
-            turnstile.render('#cf-turnstile-response', {
+        let turnstileWidget;
+
+        function onloadTurnstileCallback() {
+            turnstileWidget = turnstile.render('#cf-turnstile-response', {
                 sitekey: '{{ config('services.turnstile.site_key') }}',
                 theme: 'light',
                 callback: function (token) {
                     document.getElementById('registration-form').submit();
                 }
             });
-        };
+        }
 
         document.getElementById('submit-button').addEventListener('click', function (e) {
             e.preventDefault();
-            turnstile.execute('#cf-turnstile-response');
+            turnstile.reset(turnstileWidget);
         });
     </script>
 </x-guest-layout>
