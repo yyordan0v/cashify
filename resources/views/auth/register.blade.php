@@ -19,7 +19,7 @@
 
                         <x-buttons.socialite-buttons/>
 
-                        <form method="POST" action="{{ route('register') }}" id="registration-form">
+                        <form method="POST" action="{{ route('register') }}">
                             @csrf
 
                             <div class="space-y-6">
@@ -63,13 +63,16 @@
                                     <x-forms.error :messages="$errors->get('password_confirmation')"/>
                                 </div>
 
-                                <!-- Invisible Turnstile Widget -->
-                                <div id="cf-turnstile-response"></div>
-                                <x-forms.error :messages="$errors->get('cf-turnstile-response')"/>
+                                <!-- Turnstile Widget -->
+                                <div class="mt-4">
+                                    <div class="cf-turnstile"
+                                         data-sitekey="{{ config('services.turnstile.site_key') }}"></div>
+                                    <x-forms.error :messages="$errors->get('cf-turnstile-response')"/>
+                                </div>
 
                                 <div
                                     class="flex flex-col items-center justify-between w-full h-full pt-2 md:w-full md:flex-row md:py-0">
-                                    <x-buttons.primary id="submit-button">Register</x-buttons.primary>
+                                    <x-buttons.primary>Register</x-buttons.primary>
 
                                     <x-buttons.underline :href="route('login')">Already registered?
                                     </x-buttons.underline>
@@ -83,51 +86,5 @@
     </section>
 
     <!-- Turnstile Script -->
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" async
-            defer></script>
-    <script>
-        let turnstileWidget;
-        let turnstileToken = null;
-
-        function onloadTurnstileCallback() {
-            turnstileWidget = turnstile.render('#cf-turnstile-response', {
-                sitekey: '{{ config('services.turnstile.site_key') }}',
-                theme: 'light',
-                callback: function (token) {
-                    turnstileToken = token;
-                    document.getElementById('submit-button').disabled = false;
-                },
-                'expired-callback': function () {
-                    turnstileToken = null;
-                    document.getElementById('submit-button').disabled = true;
-                }
-            });
-        }
-
-        document.getElementById('registration-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            if (!turnstileToken) {
-                turnstile.reset(turnstileWidget);
-                return;
-            }
-
-            // Add the token to the form
-            let tokenInput = document.createElement('input');
-            tokenInput.type = 'hidden';
-            tokenInput.name = 'cf-turnstile-response';
-            tokenInput.value = turnstileToken;
-            this.appendChild(tokenInput);
-
-            // Submit the form
-            this.submit();
-        });
-
-        document.getElementById('submit-button').addEventListener('click', function (e) {
-            if (!turnstileToken) {
-                e.preventDefault();
-                turnstile.reset(turnstileWidget);
-            }
-        });
-    </script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </x-guest-layout>
