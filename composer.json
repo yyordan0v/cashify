@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "guzzlehttp/guzzle": "^7.9",
         "laravel/breeze": "^2.0",
         "laravel/framework": "^11.0",
         "laravel/socialite": "^5.15",
