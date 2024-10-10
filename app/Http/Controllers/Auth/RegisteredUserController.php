@@ -9,8 +9,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
@@ -44,8 +42,6 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $this->verifyCaptcha($request);
-
         event(new Registered($user));
 
         Auth::login($user);
@@ -55,22 +51,5 @@ class RegisteredUserController extends Controller
         ]);
 
         return redirect(route('dashboard', absolute: false));
-    }
-
-    private function verifyCaptcha(Request $request)
-    {
-        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret'   => config('services.recaptcha.secret_key'),
-            'response' => $request->recaptcha_token,
-        ]);
-
-        if ( ! $response->successful() || ! $response->json('success')) {
-            throw ValidationException::withMessages(['recaptcha' => 'Failed to validate reCAPTCHA']);
-        }
-
-        Log::info('reCAPTCHA verification attempt', [
-            'token'    => substr($request->recaptcha_token, 0, 10).'...',  // Log part of the token for privacy
-            'response' => $response->json(),
-        ]);
     }
 }
