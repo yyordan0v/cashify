@@ -63,6 +63,13 @@
                                     <x-forms.error :messages="$errors->get('password_confirmation')"/>
                                 </div>
 
+                                <!-- Turnstile Widget -->
+                                <div class="mt-4">
+                                    <div class="cf-turnstile"
+                                         data-sitekey="{{ config('services.turnstile.site_key') }}"></div>
+                                    <x-forms.error :messages="$errors->get('cf-turnstile-response')"/>
+                                </div>
+
                                 <div
                                     class="flex flex-col items-center justify-between w-full h-full pt-2 md:w-full md:flex-row md:py-0">
                                     <x-buttons.primary>Register</x-buttons.primary>
@@ -77,4 +84,7 @@
             </div>
         </div>
     </section>
+
+    <!-- Turnstile Script -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </x-guest-layout>
