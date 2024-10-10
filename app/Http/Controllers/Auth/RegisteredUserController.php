@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
@@ -66,5 +67,10 @@ class RegisteredUserController extends Controller
         if ( ! $response->successful() || ! $response->json('success')) {
             throw ValidationException::withMessages(['recaptcha' => 'Failed to validate reCAPTCHA']);
         }
+        
+        Log::info('reCAPTCHA verification attempt', [
+            'token'    => substr($request->recaptcha_token, 0, 10).'...',  // Log part of the token for privacy
+            'response' => $response->json(),
+        ]);
     }
 }
