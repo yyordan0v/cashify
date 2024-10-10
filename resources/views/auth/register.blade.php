@@ -77,4 +77,17 @@
             </div>
         </div>
     </section>
+
+    <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
+    <script>
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            grecaptcha.ready(function () {
+                grecaptcha.execute('{{ config('services.recaptcha.site_key') }}', {action: 'register'}).then(function (token) {
+                    document.getElementById('recaptcha_token').value = token;
+                    htmx.trigger('form', 'submit');
+                });
+            });
+        });
+    </script>
 </x-guest-layout>
