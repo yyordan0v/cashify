@@ -1,33 +1,67 @@
 # Cashify
 
-Cashify is an open-source web application for budget tracking, designed to help you manage your finances with ease. Built with modern technologies, it offers a responsive and intuitive interface for tracking transactions, managing accounts, and categorizing expenses.
+Cashify is an open-source personal finance management application designed to help you track your budget, manage expenses, and gain insights into your financial habits. Built with modern web technologies, it offers a responsive and intuitive interface for all your financial tracking needs.
 
-## Website
+## Demo
 
-Cashify is live at [cashify.space](https://cashify.space)
+[![Cashify Demo](https://imgur.com/0qeODlW)](https://youtu.be/8P-zu8VvGQo)
 
-Proudly hosted with [Laravel Forge](https://forge.laravel.com) and [DigitalOcean](https://www.digitalocean.com).
+Click the image above to watch a demonstration of Cashify's features and interface.
 
 ## Features
 
-- **Transactions**: Log and manage your income and expenses
-- **Accounts**: Keep track of multiple financial accounts in one place
-- **Categories**: Organize your transactions with customizable categories
+### Dashboard
 
-## Upcoming Features
+- Comprehensive financial overview with interactive charts
+- Summary cards showing income, expenses, and balance
+- Recent transactions organized in three tabs (All/Expenses/Income)
+- Quick access to all accounts with current balances
 
-Here are some features that are planned:
+### Transactions
 
-- Goals: Set and track financial goals
-- Deep spending inspections: Gain insights into your spending habits
-- Scheduled transactions: Set up recurring transactions for better forecasting
+- Detailed transaction management with infinite scrolling powered by HTMX
+- Full CRUD capabilities for all transactions
+- Filtering and sorting options
+- Seamless editing experience without page reloads
+
+### Accounts
+
+- Create and manage multiple financial accounts in one place
+- Transfer funds between accounts with automatic transaction logging
+- Customize accounts with color badges for easy recognition
+- Track account balances and transaction history
+
+### Categories
+
+- Organize transactions with customizable categories
+- Interactive color selection for visual organization
+- Icon filtering system with metadata tagging
+- Personalized category management for both income and expenses
+
+### Additional Features
+
+- Full localization support for English and Bulgarian
+- Responsive design optimized for all devices
+- GitHub authentication via Laravel Socialite
+- Detailed financial statistics and trends
 
 ## Technologies Used
 
-- [Laravel](https://laravel.com/) - PHP framework for robust backend development
-- [Alpine.js](https://alpinejs.dev/) - Lightweight JavaScript framework
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- [HTMX](https://htmx.org/) - High-power tools for HTML
+- **Backend**: [Laravel](https://laravel.com/) - PHP framework providing a robust foundation
+- **Authentication**: Laravel Breeze with [Laravel Socialite](https://laravel.com/docs/socialite) for GitHub integration
+- **Frontend Interaction
+  **: [Alpine.js](https://alpinejs.dev/) - Lightweight JavaScript framework for interactive components
+- **UI Enhancement**: [HTMX](https://htmx.org/) - Modern approach to dynamic content without heavy JavaScript
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework for custom UI components
+- **Database**: SQLite for reliable data storage
+- **Charting**: Apex Charts for visualizations
+
+## Technical Highlights
+
+- **Custom UI Components**: Mostly built from scratch without relying on UI libraries
+- **Infinite Scrolling**: Implemented with HTMX for efficient transaction browsing
+- **Dynamic Interactions**: Smooth HTMX and Alpine.js integration for responsive feel
+- **Metadata-Driven Icons**: Category icon filtering with configurable metadata tags
 
 ## Installation
 
