@@ -4,9 +4,9 @@ Cashify is an open-source personal finance management application designed to he
 
 ## Demo
 
-[![Cashify Demo](https://postimg.cc/GBK5pX34)](https://youtu.be/8P-zu8VvGQo)
+![[Cashify Demo](https://postimg.cc/GBK5pX34)](https://youtu.be/8P-zu8VvGQo)
 
-Click the image above to watch a demonstration of Cashify's features and interface.
+Click the link above to watch a demonstration of Cashify's features and interface.
 
 ## Features
 
